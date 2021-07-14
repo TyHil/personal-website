@@ -8,6 +8,15 @@
 .svg {
   filter: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
 }
+body {
+  scrollbar-color: rgba(255, 255, 255, 0.24) var(--dark0);
+}
+body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.24);
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
 @media (prefers-color-scheme: light) {
   :root {
     --light0: #000;
@@ -17,17 +26,16 @@
     --dark0: #fff;
   }
   .svg {
-    filter: invert(0%) sepia(81%) saturate(33%) hue-rotate(140deg) brightness(92%) contrast(75%);
+    filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
+  }
+  body {
+    scrollbar-color: rgba(0, 0, 0, 0.24) var(--dark0);
   }
   body::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.24);
   }
   body::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.28);
-  }
-  body {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.24) var(--dark0);
   }
   span.ripple {
     background-color: rgba(0, 0, 0, 0.4);
@@ -37,8 +45,8 @@
 body {
   background-color: var(--dark0);
   font-family: Tahoma, sans-serif;
+  scrollbar-width: thin;
 }
-/*Scrollbar Webkit*/
 body::-webkit-scrollbar {
   width: 10px;
 }
@@ -46,16 +54,7 @@ body::-webkit-scrollbar-track {
   background: var(--dark0);  
 }
 body::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.24);
   border-radius: 10px;
-}
-body::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.28);
-}
-/*Scrollbar CSS Scrollbar*/
-body {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.24) var(--dark0);
 }
 /*Alt text*/
 img {
@@ -242,7 +241,7 @@ span.ripple {
   margin: 0;
 }
 /*Buttons*/
-.button {
+.buttonlink {
   margin-right: 18px;
   width: 25px;
   min-width: 25px;
