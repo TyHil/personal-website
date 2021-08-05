@@ -247,6 +247,11 @@ span.ripple {
   min-width: 25px;
   height: 25px;
 }
+.buttonlink img {
+  width: 25px;
+  min-width: 25px;
+  height: 25px;
+}
 .rectangle:last-child {
   margin-right: 20px;
 }
