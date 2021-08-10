@@ -18,7 +18,7 @@ for (let i = 0; i < coll.length; i++) {
     } else {//open
       this.getElementsByClassName("arrow")[0].classList.add("contentopen");
       this.parentNode.classList.add("contentopen");
-      gtag("event", "Collapsible", {"event_category" : "Open collapsible", "event_label" : this.parentNode.getElementsByTagName("h3")[0].innerText});
+      gtag("event", "view_item", {"event_category" : "engagement", "event_label" : this.parentNode.getElementsByTagName("h3")[0].innerText});//log open event to analytics
       content.style.maxHeight = content.scrollHeight + "px";
       content.addEventListener("transitionend", function() {
         content.style.maxHeight = "none";
