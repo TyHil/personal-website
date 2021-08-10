@@ -1,19 +1,24 @@
+"use strict";
+
 window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
-gtag('js', new Date());
-gtag('config', 'G-0HK5QMV1SG');
+gtag("js", new Date());
+gtag("config", "G-0HK5QMV1SG");
 
 //Open and close collapsibles
 const coll = document.getElementsByClassName("dropcircle");
 for (let i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
-    this.parentNode.getElementsByClassName("arrow")[0].classList.toggle("contentopen");
-    this.parentNode.classList.toggle("contentopen");
     const content = this.parentNode.nextElementSibling;
     if (content.style.maxHeight) {//close
+      this.getElementsByClassName("arrow")[0].classList.remove("contentopen");
+      this.parentNode.classList.remove("contentopen");
       content.style.maxHeight = content.scrollHeight + "px";
       setTimeout(function() {content.style.maxHeight = null;}, 1);//delay so js runs these separately, won't animate otherwise
     } else {//open
+      this.getElementsByClassName("arrow")[0].classList.add("contentopen");
+      this.parentNode.classList.add("contentopen");
+      gtag("event", "Collapsible", {"event_category" : "Open collapsible", "event_label" : this.parentNode.getElementsByTagName("h3")[0].innerText});
       content.style.maxHeight = content.scrollHeight + "px";
       content.addEventListener("transitionend", function() {
         content.style.maxHeight = "none";
@@ -24,7 +29,7 @@ for (let i = 0; i < coll.length; i++) {
 
 //Allow arrow transform animations
 window.addEventListener("load", () => {
-  const arrows = document.getElementsByClassName('arrow');
+  const arrows = document.getElementsByClassName("arrow");
   for (let i = 0; i < arrows.length; i++) {
     arrows[i].classList.remove("preload");
   }
@@ -32,8 +37,8 @@ window.addEventListener("load", () => {
 
 //Ripples
 const circs = document.getElementsByClassName("ripplecircle");
-for (const circ of circs) {
-  circ.addEventListener("click", event => {
+for (let i = 0; i < circs.length; i++) {
+  circs[i].addEventListener("click", event => {
     const circle = event.currentTarget;
     const ripple = document.createElement("span");
     const diameter = Math.max(circle.clientWidth, circle.clientHeight);
@@ -43,7 +48,9 @@ for (const circ of circs) {
     ripple.style.top = event.clientY - (circle.offsetTop + radius) + window.scrollY + "px";
     ripple.classList.add("ripple");
     const pastRipple = circle.getElementsByClassName("ripple")[0];
-    if (pastRipple) ripple.remove();
+    if (pastRipple) {
+      pastRipple.remove();
+    }
     circle.appendChild(ripple);
   });
 }
