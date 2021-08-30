@@ -39,18 +39,17 @@ window.addEventListener("load", () => {
 const circs = document.getElementsByClassName("ripplecircle");
 for (let i = 0; i < circs.length; i++) {
   circs[i].addEventListener("click", event => {
-    const circle = event.currentTarget;
     const ripple = document.createElement("span");
-    const diameter = Math.max(circle.clientWidth, circle.clientHeight);
+    const diameter = Math.max(circs[i].clientWidth, circs[i].clientHeight);
     const radius = diameter / 2;
     ripple.style.width = ripple.style.height = diameter + "px";
-    ripple.style.left = event.clientX - (circle.offsetLeft + radius) + "px";
-    ripple.style.top = event.clientY - (circle.offsetTop + radius) + window.scrollY + "px";
+    ripple.style.left = event.clientX - (circs[i].offsetLeft + radius) + "px";
+    ripple.style.top = event.clientY - (circs[i].offsetTop + radius) + window.scrollY + "px";
     ripple.classList.add("ripple");
-    const pastRipple = circle.getElementsByClassName("ripple")[0];
+    const pastRipple = circs[i].getElementsByClassName("ripple")[0];
     if (pastRipple) {
       pastRipple.remove();
     }
-    circle.appendChild(ripple);
+    circs[i].appendChild(ripple);
   });
 }
