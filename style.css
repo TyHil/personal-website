@@ -149,8 +149,7 @@ h2 {
   transition: max-height 0.2s ease-out;
 }
 .content iframe, .content .gist, .content .cards {
-  width: calc(100% - 1.25rem);
-  margin-left: 0.625rem;
+  width: 100%;
 }
 .content iframe {
   height: 37.5rem;
