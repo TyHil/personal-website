@@ -22,9 +22,6 @@ body::-webkit-scrollbar-thumb:hover {
 span.ripple {
   background-color: rgba(255, 255, 255, 0.4);
 }
-#fullscreenbg {
-  background-color: rgba(255, 255, 255, 0.2);
-}
 
 /*Light Mode*/
 @media (prefers-color-scheme: light) {
@@ -49,9 +46,6 @@ span.ripple {
   }
   span.ripple {
     background-color: rgba(0, 0, 0, 0.4);
-  }
-  #fullscreenbg {
-    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -290,9 +284,10 @@ span.ripple {
   left: 0;
   right: 0;
   bottom: 0;
-  backdrop-filter: blur(0.063rem);
+  backdrop-filter: blur(0.1rem);
   display: none;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 #fullscreenimg {
   width: 100%;
