@@ -189,6 +189,8 @@ h2 {
   height: auto;
   margin-bottom: 0.625rem;
   border-radius: 0.3125rem;
+  transition: transform 0.2s;
+  cursor: pointer;
 }
 
 /*Ripple circles*/
@@ -293,7 +295,9 @@ span.ripple {
   justify-content: center;
 }
 #fullscreenimg {
-  height: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 /*GitHub Gist dark mode*/
