@@ -1,11 +1,12 @@
 "use strict";
 
+/*Google Analytics*/
 window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
 gtag("js", new Date());
 gtag("config", "G-0HK5QMV1SG");
 
-//Open and close collapsibles
+/*Open and close collapsibles*/
 const coll = document.getElementsByClassName("dropcircle");
 for (let i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
@@ -27,7 +28,7 @@ for (let i = 0; i < coll.length; i++) {
   });
 }
 
-//Allow arrow transform animations
+/*Allow arrow transform animations on load*/
 window.addEventListener("load", () => {
   const arrows = document.getElementsByClassName("arrow");
   for (let i = 0; i < arrows.length; i++) {
@@ -35,7 +36,7 @@ window.addEventListener("load", () => {
   }
 });
 
-//Ripples
+/*Ripples*/
 const circs = document.getElementsByClassName("ripplecircle");
 for (let i = 0; i < circs.length; i++) {
   circs[i].addEventListener("click", event => {
@@ -51,5 +52,27 @@ for (let i = 0; i < circs.length; i++) {
       pastRipple.remove();
     }
     circs[i].appendChild(ripple);
+  });
+}
+
+/*Full screen Image*/
+document.getElementById("fullscreenbg").addEventListener("click", function() {
+  this.style.display = "none";
+  document.body.classList.remove("disableScroll");
+});
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    document.getElementById("fullscreenbg").style.display = "none";
+    document.body.classList.remove("disableScroll");
+  }
+});
+let images = document.querySelectorAll(".cards img");
+for (let i = 0; i < images.length; i++) {
+  images[i].addEventListener("click", function() {
+    let fullscreenimg = document.getElementById("fullscreenimg");
+    fullscreenimg.src = this.src.substring(0, this.src.length - 3) + "2400";
+    fullscreenimg.alt = this.alt;
+    document.body.classList.add("disableScroll");
+    document.getElementById("fullscreenbg").style.display = "flex";
   });
 }
