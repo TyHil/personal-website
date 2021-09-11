@@ -107,12 +107,9 @@ header {
   display: flex;
   width: auto;
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 2.75rem;
   padding: 0.5rem;
   position: relative;
-  height: 20rem;
-  overflow: hidden;
-  transition: height 0.2s;
 }
 header > * {
   position: relative;
@@ -124,27 +121,25 @@ header > * {
   right: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  transform: skewY(6deg);
+  height: 110%;
   transform-origin: top right;
+  transition: transform 0.2s;
 }
 
 /*Header Left*/
 header #left {
-  margin-left: 0;
-  margin-right: 0.625rem;
-  margin-bottom: 0.625rem;
+  margin: 0 0.625rem 0.625rem 0;
 }
 h1 {
   font-size: 3.75rem;
-  margin-top: 0;
-  margin-bottom: 0;
+  font-size: min(3.75rem, calc(40px + (60 - 40) *  ((100vw - 480px) / (800 - 480))));
+  margin: 0;
 }
-@media only screen and (max-width: 480px) {
+/*@media only screen and (max-width: 480px) {
   h1 {
     font-size: 2.5rem;
   }
-}
+}*/
 h4 {
   font-weight: normal;
   font-size: 1.25rem;
@@ -189,12 +184,12 @@ main {
 h2 {
   color: var(--light1);
   font-size: 2.25rem;
-  margin-left: 0.625rem;
   font-weight: normal;
 }
 
 /*Item body*/
 .rectangle {
+  margin-top: 1.25rem;
   padding: 0.4375rem 0.625rem;
   min-height: 2.875rem;
   width: auto;
@@ -210,7 +205,7 @@ h2 {
 
 /*Dropdown content*/
 .content {
-  margin-bottom: 1.25rem;
+  display: none;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
