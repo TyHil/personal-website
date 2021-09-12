@@ -45,16 +45,8 @@ for (let i = 0; i < coll.length; i++) {
   });
 }
 
-/*Allow arrow transform animations on load*/
-window.addEventListener("load", () => {
-  const arrows = document.getElementsByClassName("arrow");
-  for (let i = 0; i < arrows.length; i++) {
-    arrows[i].classList.remove("transitionDisabled");
-  }
-});
-
 /*Ripples*/
-const circs = document.getElementsByClassName("ripplecircle");
+const circs = document.getElementsByClassName("ripple");
 for (let i = 0; i < circs.length; i++) {
   circs[i].addEventListener("click", event => {
     const ripple = document.createElement("span");
@@ -63,8 +55,8 @@ for (let i = 0; i < circs.length; i++) {
     ripple.style.width = ripple.style.height = diameter + "px";
     ripple.style.left = event.clientX - (circs[i].offsetLeft + radius) + "px";
     ripple.style.top = event.clientY - (circs[i].offsetTop + radius) + window.scrollY + "px";
-    ripple.classList.add("ripple");
-    const pastRipple = circs[i].getElementsByClassName("ripple")[0];
+    ripple.classList.add("ripplecircle");
+    const pastRipple = circs[i].getElementsByClassName("ripplecircle")[0];
     if (pastRipple) {
       pastRipple.remove();
     }

@@ -7,10 +7,12 @@
   --dark0: #020D0B; /*#000*/
 }
 .svg {
-  filter: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
+  -webkit-filter: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
+    filter: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
 }
 .links .svg {
-  filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
+  -webkit-filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
+    filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
 }
 body {
   scrollbar-color: rgba(255, 255, 255, 0.24) var(--dark0);
@@ -21,11 +23,11 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.28);
 }
-span.ripple {
+span.ripplecircle {
   background-color: rgba(255, 255, 255, 0.4);
 }
 #headerBg {
-  background-image: linear-gradient(96deg, #128e5a, #12858e);
+  background-image: linear-gradient(90deg, #128e5a, #12858e);
 }
 h1 {
   color: var(--dark0);
@@ -34,7 +36,8 @@ h4, .links h5 {
   color: var(--dark1);
 }
 .links {
-  text-decoration-color: var(--dark1);
+  -webkit-text-decoration-color: var(--dark1);
+    text-decoration-color: var(--dark1);
 }
 
 /*Light Mode*/
@@ -47,7 +50,8 @@ h4, .links h5 {
     --dark0: #E9F4F2; /*#fff*/
   }
   .svg {
-    filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
+    -webkit-filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
+      filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
   }
   body {
     scrollbar-color: rgba(0, 0, 0, 0.24) var(--dark0);
@@ -58,11 +62,11 @@ h4, .links h5 {
   body::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.28);
   }
-  span.ripple {
+  span.ripplecircle {
     background-color: rgba(0, 0, 0, 0.4);
   }
   #headerBg {
-    background-image: linear-gradient(96deg, #1bd285, #1bc4d2);
+    background-image: linear-gradient(90deg, #1bd285, #1bc4d2);
   }
   h1 {
     color: var(--light1);
@@ -71,7 +75,8 @@ h4, .links h5 {
     color: var(--light2);
   }
   .links {
-    text-decoration-color: var(--light2);
+    -webkit-text-decoration-color: var(--light2);
+      text-decoration-color: var(--light2);
   }
 }
 
@@ -122,8 +127,11 @@ header > * {
   left: 0;
   width: 100%;
   height: 110%;
-  transform-origin: top right;
-  transition: transform 0.2s;
+  -webkit-transform-origin: top right;
+    transform-origin: top right;
+  transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+      transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
 /*Header Left*/
@@ -131,15 +139,9 @@ header #left {
   margin: 0 0.625rem 0.625rem 0;
 }
 h1 {
-  font-size: 3.75rem;
-  font-size: min(3.75rem, calc(40px + (60 - 40) *  ((100vw - 480px) / (800 - 480))));
+  font-size: max(1.25rem, min(3.75rem, calc(40px + (60 - 40) *  ((100vw - 480px) / (800 - 480)))));
   margin: 0;
 }
-/*@media only screen and (max-width: 480px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-}*/
 h4 {
   font-weight: normal;
   font-size: 1.25rem;
@@ -160,8 +162,12 @@ header #right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: fit-content;
-  block-size: fit-content;
+  width: -webkit-fit-content;
+    width: -moz-fit-content;
+      width: fit-content;
+  block-size: -webkit-fit-content;
+    block-size: -moz-fit-content;
+      block-size: fit-content;
   cursor: pointer;
   margin-bottom: 0.625rem;
   color: var(--dark1);
@@ -218,8 +224,12 @@ h2 {
   border: none;
 }
 .content .cards {
-  columns: 3 25rem;
-  column-gap: 0.625rem;
+  -webkit-columns: 3 25rem;
+    -moz-columns: 3 25rem;
+      columns: 3 25rem;
+  -webkit-column-gap: 0.625rem;
+    -moz-column-gap: 0.625rem;
+      column-gap: 0.625rem;
 }
 .content .cards img {
   width: auto;
@@ -227,12 +237,14 @@ h2 {
   height: auto;
   margin-bottom: 0.625rem;
   border-radius: 0.3125rem;
-  transition: transform 0.2s;
+  transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+      transition: transform 0.2s, -webkit-transform 0.2s;
   cursor: pointer;
 }
 
-/*Ripple circles*/
-.ripplecircle {
+/*ripplecircle circles*/
+.ripple {
   height: 2.5rem;
   width: 2.5rem;
   min-width: 2.5rem;
@@ -244,40 +256,45 @@ h2 {
   position: relative;
   overflow: hidden;
 }
-span.ripple {
+span.ripplecircle {
   position: absolute; 
   border-radius: 50%;
-  transform: scale(0);
-  animation: ripple 600ms linear;
+  -webkit-transform: scale(0);
+    transform: scale(0);
+  -webkit-animation: ripplecircle 600ms linear;
+    animation: ripplecircle 600ms linear;
 }
-@keyframes ripple {
+@-webkit-keyframes ripplecircle {
   to {
-    transform: scale(4);
+    -webkit-transform: scale(4);
+      transform: scale(4);
+    opacity: 0;
+  }
+}
+@keyframes ripplecircle {
+  to {
+    -webkit-transform: scale(4);
+      transform: scale(4);
     opacity: 0;
   }
 }
 
 /*Dropdown arrows*/
 .transitionDisabled {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -o-transition: none !important;
   transition: none !important;
 }
 .arrow {
-  margin-top: 0;
-  margin-bottom: 0.25rem;
-  border: solid var(--light1);
-  border-width: 0 0.1875rem 0.1875rem 0;
-  display: inline-block;
-  padding: 0.3125rem;
-  transform: rotate(45deg);
-  transition: transform 0.2s ease-out;
+  margin-top: 0.125rem;
+  margin-bottom: 0;
+  transition: margin 0.2s ease-out, -webkit-transform 0.2s ease-out;
+    transition: transform 0.2s ease-out, margin 0.2s ease-out;
+      transition: transform 0.2s ease-out, margin 0.2s ease-out, -webkit-transform 0.2s ease-out;
 }
 .arrow.contentopen {
-  transform: rotate(-135deg);
-  margin-top: 0.25rem;
-  margin-bottom: 0;
+  -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+  margin-top: 0;
+  margin-bottom: 0.125rem;
 }
 
 /*Project icon*/
@@ -310,15 +327,13 @@ span.ripple {
 
 /*Buttons*/
 .buttonlink {
-  margin-left: 1.125rem;
   width: 1.5625rem;
   min-width: 1.5625rem;
   height: 1.5625rem;
+  padding: 0.625rem;
+  border-radius: 50%;
 }
-.buttonlink:last-child {
-  margin-right: 0.5rem;
-}
-.buttonlink img {
+.buttonlink img, .arrow {
   width: 1.5625rem;
   min-width: 1.5625rem;
   height: 1.5625rem;
@@ -331,7 +346,8 @@ span.ripple {
   left: 0;
   right: 0;
   bottom: 0;
-  backdrop-filter: blur(0.1rem);
+  -webkit-backdrop-filter: blur(0.1rem);
+    backdrop-filter: blur(0.1rem);
   display: none;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.8);
@@ -339,7 +355,8 @@ span.ripple {
 #fullscreenimg {
   width: 100%;
   height: auto;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 /*GitHub Gist dark mode*/
