@@ -18,9 +18,23 @@ document.getElementById("headerBg").addEventListener("transitionend", function (
 window.addEventListener("resize", headerHeight);
 
 /*Open and close collapsibles*/
+function openCollapsible(coll, log) {
+  const content = coll.parentNode.nextElementSibling;
+  coll.getElementsByClassName("arrow")[0].classList.add("contentopen");
+  coll.parentNode.classList.add("contentopen");
+  if (log) {//log open event to analytics
+    gtag("event", "view_item", { "event_category": "engagement", "event_label": coll.parentNode.getElementsByTagName("h3")[0].innerText });
+  }
+  content.style.display = "block";
+  content.style.maxHeight = content.scrollHeight + "px";
+  content.addEventListener("transitionend", function () {
+    content.style.maxHeight = "none";
+  }, { once: true });
+}
 const coll = document.getElementsByClassName("dropcircle");
 for (let i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function () {
+    window.history.replaceState("", document.title, window.location.pathname + window.location.search);
     const content = this.parentNode.nextElementSibling;
     if (content.style.maxHeight) {//close
       this.getElementsByClassName("arrow")[0].classList.remove("contentopen");
@@ -33,34 +47,37 @@ for (let i = 0; i < coll.length; i++) {
         }, { once: true });
       });//delay so js runs these separately, won't animate otherwise
     } else {//open
-      this.getElementsByClassName("arrow")[0].classList.add("contentopen");
-      this.parentNode.classList.add("contentopen");
-      gtag("event", "view_item", { "event_category": "engagement", "event_label": this.parentNode.getElementsByTagName("h3")[0].innerText });//log open event to analytics
-      content.style.display = "block";
-      content.style.maxHeight = content.scrollHeight + "px";
-      content.addEventListener("transitionend", function () {
-        content.style.maxHeight = "none";
-      }, { once: true });
+      openCollapsible(this, 1);
     }
   });
 }
+function openAndScroll() {
+  openCollapsible(document.getElementById(window.location.hash.substring(1)).getElementsByClassName("dropcircle")[0], 0);
+  document.getElementById(window.location.hash.substring(1)).scrollIntoView({
+    behavior: "smooth"
+  });
+}
+if (window.location.hash) {
+  openAndScroll();
+}
+window.addEventListener("hashchange", openAndScroll);
 
 /*Ripples*/
 const circs = document.getElementsByClassName("ripple");
 for (let i = 0; i < circs.length; i++) {
-  circs[i].addEventListener("click", event => {
+  circs[i].addEventListener("click", function () {
     const ripple = document.createElement("span");
-    const diameter = Math.max(circs[i].clientWidth, circs[i].clientHeight);
+    const diameter = Math.max(this.clientWidth, this.clientHeight);
     const radius = diameter / 2;
     ripple.style.width = ripple.style.height = diameter + "px";
-    ripple.style.left = event.clientX - (circs[i].offsetLeft + radius) + "px";
-    ripple.style.top = event.clientY - (circs[i].offsetTop + radius) + window.scrollY + "px";
+    ripple.style.left = event.clientX - (this.offsetLeft + radius) + "px";
+    ripple.style.top = event.clientY - (this.offsetTop + radius) + window.scrollY + "px";
     ripple.classList.add("ripplecircle");
-    const pastRipple = circs[i].getElementsByClassName("ripplecircle")[0];
+    const pastRipple = this.getElementsByClassName("ripplecircle")[0];
     if (pastRipple) {
       pastRipple.remove();
     }
-    circs[i].appendChild(ripple);
+    this.appendChild(ripple);
   });
 }
 
@@ -75,7 +92,7 @@ document.addEventListener("keydown", function (e) {
     document.body.classList.remove("disableScroll");
   }
 });
-let images = document.querySelectorAll(".cards img");
+const images = document.querySelectorAll(".cards img");
 for (let i = 0; i < images.length; i++) {
   images[i].addEventListener("click", function () {
     let fullscreenimg = document.getElementById("fullscreenimg");
@@ -89,9 +106,34 @@ for (let i = 0; i < images.length; i++) {
 /*Tab enter/space clicks*/
 const dcircs = document.getElementsByClassName("dropcircle");
 for (let i = 0; i < dcircs.length; i++) {
-  dcircs[i].addEventListener("keydown", event => {
+  dcircs[i].addEventListener("keydown", function () {
     if (event.code === 'Space' || event.code === 'Enter') {
-      dcircs[i].click();
+      this.click();
+    }
+  });
+}
+
+/*Copy links*/
+const shares = document.getElementsByClassName("share");
+for (let i = 0; i < shares.length; i++) {
+  shares[i].addEventListener("click", function () {
+    if (!navigator.clipboard) {
+      console.error("URL Copy Error!");
+    } else {
+      navigator.clipboard.writeText(window.location.href.replace(window.location.hash, "") + "#" + this.parentNode.id).then(function () {
+        const check = shares[i].getElementsByClassName("check")[0];
+        check.classList.add("copied");
+        check.addEventListener("animationend", function () {
+          this.classList.remove("copied");
+        });
+        const shareIcon = shares[i].getElementsByClassName("shareIcon")[0];
+        shareIcon.classList.add("copied");
+        shareIcon.addEventListener("animationend", function () {
+          this.classList.remove("copied");
+        });
+      }, function (err) {
+        console.error("URL Copy Error!", err);
+      });
     }
   });
 }
