@@ -142,4 +142,4 @@ for (let i = 0; i < shares.length; i++) {
 window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
 gtag("js", new Date());
-gtag("config", "G-0HK5QMV1SG");
+gtag("config", "G-BVTJ5JS3H2");
