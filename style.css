@@ -230,8 +230,10 @@ h2 {
 .content iframe, .content .gist, .content .cards {
   width: 100%;
 }
+.content iframe, .gist {
+  height: 80vh;
+}
 .content iframe {
-  height: 40rem;
   border: none;
 }
 .content .cards {
@@ -252,6 +254,23 @@ h2 {
     transition: transform 0.2s;
       transition: transform 0.2s, -webkit-transform 0.2s;
   cursor: pointer;
+}
+
+/*GitHub Gist*/
+.gist {
+  overflow-x: auto;
+}
+.content .gist .gist-file {
+  margin-bottom: 0;
+}
+.gist-meta {
+  display: none;
+}
+.content .gist .gist-file .gist-data, .content .gist .gist-file {
+  border: none;
+}
+.content .gist .gist-data, .content .gist .file-box, .content .gist .file, .content .gist .Box-body {
+  overflow: visible;
 }
 
 /*ripplecircle circles*/
@@ -418,24 +437,6 @@ button.buttonlink {
   height: auto;
   -o-object-fit: contain;
      object-fit: contain;
-}
-
-/*GitHub Gist*/
-.gist {
-  height: 40rem;
-  overflow-x: auto;
-}
-.content .gist .gist-file {
-  margin-bottom: 0;
-}
-.gist-meta {
-  display: none;
-}
-.content .gist .gist-file .gist-data, .content .gist .gist-file {
-  border: none;
-}
-.content .gist .gist-data, .content .gist .file-box, .content .gist .file, .content .gist .Box-body {
-  overflow: visible;
 }
 
 
