@@ -17,10 +17,10 @@
 body {
   scrollbar-color: rgba(255, 255, 255, 0.24) var(--dark0);
 }
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.24);
 }
-body::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.28);
 }
 span.ripplecircle {
@@ -56,10 +56,10 @@ h4, .links h5 {
   body {
     scrollbar-color: rgba(0, 0, 0, 0.24) var(--dark0);
   }
-  body::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.24);
   }
-  body::-webkit-scrollbar-thumb:hover {
+  ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.28);
   }
   span.ripplecircle {
@@ -80,25 +80,33 @@ h4, .links h5 {
   }
 }
 
-/*Scrollbar*/
+/*Body*/
 body {
   background-color: var(--dark0);
   font-family: Tahoma, sans-serif;
-  scrollbar-width: thin;
   margin: 0;
   word-break: break-word;
+}
+
+/*Scrollbar*/
+body, .gist {
+  scrollbar-width: thin;
 }
 body.disableScroll {
   height: 100%;
   overflow: hidden;
 }
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0.625rem;
+  height: 0.625rem;
 }
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+::-webkit-scrollbar-track {
   background: var(--dark0);
 }
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   border-radius: 0.625rem;
 }
 html {
@@ -223,7 +231,7 @@ h2 {
   width: 100%;
 }
 .content iframe {
-  height: 37.5rem;
+  height: 40rem;
   border: none;
 }
 .content .cards {
@@ -411,6 +419,25 @@ button.buttonlink {
   -o-object-fit: contain;
      object-fit: contain;
 }
+
+/*GitHub Gist*/
+.gist {
+  height: 40rem;
+  overflow-x: auto;
+}
+.content .gist .gist-file {
+  margin-bottom: 0;
+}
+.gist-meta {
+  display: none;
+}
+.content .gist .gist-file .gist-data, .content .gist .gist-file {
+  border: none;
+}
+.content .gist .gist-data, .content .gist .file-box, .content .gist .file, .content .gist .Box-body {
+  overflow: visible;
+}
+
 
 /*GitHub Gist dark mode*/
 @media (prefers-color-scheme: dark) {
