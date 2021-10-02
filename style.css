@@ -26,6 +26,9 @@ body {
 span.ripplecircle {
   background-color: rgba(255, 255, 255, 0.4);
 }
+.ripple:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 #headerBg {
   background-image: linear-gradient(90deg, #128e5a, #12858e);
 }
@@ -64,6 +67,9 @@ h4, .links h5 {
   }
   span.ripplecircle {
     background-color: rgba(0, 0, 0, 0.4);
+  }
+  .ripple:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
   #headerBg {
     background-image: linear-gradient(90deg, #1bd285, #1bc4d2);
@@ -196,7 +202,7 @@ header #right {
 
 /*Projects*/
 main {
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
 h2 {
   color: var(--light1);
@@ -285,6 +291,7 @@ h2 {
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  transition: background-color 0.2s;
 }
 span.ripplecircle {
   position: absolute;
@@ -373,6 +380,17 @@ button.buttonlink {
   background-color: Transparent;
   box-sizing: unset;
   cursor: pointer;
+}
+.share {
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+}
+.shareIcon {
+  margin-right: 0.125rem;
+}
+.thangs {
+  padding-top: 0.725rem;
+  padding-bottom: 0.525rem;
 }
 
 /*Share Copied*/
