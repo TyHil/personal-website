@@ -208,16 +208,22 @@ document.getElementById("clearSort").addEventListener("click", function () {
   for (let i = 0; i < sorts.length; i++) {//show all buttons
     sorts[i].style.display = "inline-block";
     setTimeout(function () {
-      sorts[i].style.maxWidth = "";
+      sorts[i].style.maxWidth = "200px";
       sorts[i].classList.remove("remove");
+      transitionend(sorts[i], function() {
+        sorts[i].style.maxWidth = "";
+      });
     });
   }
   const rectangles = document.getElementsByClassName("rectangle");//show all rectangles
   for (let i = 0; i < rectangles.length; i++) {
     rectangles[i].style.display = "flex";
     setTimeout(function () {
-      rectangles[i].style.maxHeight = "";
+      rectangles[i].style.maxHeight = "300px";
       rectangles[i].classList.remove("remove");
+      transitionend(rectangles[i], function() {
+        rectangles[i].style.maxHeight = "";
+      });
     });
   }
 });
