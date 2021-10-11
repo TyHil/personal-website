@@ -31,21 +31,24 @@ function openCollapsible(coll, log) {
     content.style.maxHeight = "none";
   }, { once: true });
 }
+function closeCollapsible(coll) {
+  const content = coll.parentNode.nextElementSibling;
+  coll.getElementsByClassName("arrow")[0].classList.remove("contentopen");
+  coll.parentNode.classList.remove("contentopen");
+  content.style.maxHeight = content.scrollHeight + "px";
+  setTimeout(function () {
+    content.style.maxHeight = null;
+    content.addEventListener("transitionend", function () {
+      content.style.display = "none";
+    }, { once: true });
+  });//delay so js runs these separately, won't animate otherwise
+}
 const coll = document.getElementsByClassName("dropcircle");
 for (let i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function () {
     window.history.replaceState("", document.title, window.location.pathname + window.location.search);
-    const content = this.parentNode.nextElementSibling;
-    if (content.style.maxHeight) {//close
-      this.getElementsByClassName("arrow")[0].classList.remove("contentopen");
-      this.parentNode.classList.remove("contentopen");
-      content.style.maxHeight = content.scrollHeight + "px";
-      setTimeout(function () {
-        content.style.maxHeight = null;
-        content.addEventListener("transitionend", function () {
-          content.style.display = "none";
-        }, { once: true });
-      });//delay so js runs these separately, won't animate otherwise
+    if (this.parentNode.nextElementSibling.style.maxHeight) {//close
+      closeCollapsible(this);
     } else {//open
       openCollapsible(this, 1);
     }
@@ -65,19 +68,18 @@ window.addEventListener("hashchange", openAndScroll);
 /*Ripples*/
 const circs = document.getElementsByClassName("ripple");
 for (let i = 0; i < circs.length; i++) {
-  circs[i].addEventListener("click", function () {
+  circs[i].addEventListener("click", function (e) {
     const ripple = document.createElement("span");
     const diameter = Math.max(this.clientWidth, this.clientHeight);
     const radius = diameter / 2;
     ripple.style.width = ripple.style.height = diameter + "px";
-    ripple.style.left = event.clientX - (this.offsetLeft + radius) + "px";
-    ripple.style.top = event.clientY - (this.offsetTop + radius) + window.scrollY + "px";
+    ripple.style.left = e.clientX - (this.offsetLeft + radius) + "px";
+    ripple.style.top = e.clientY - (this.offsetTop + radius) + window.scrollY + "px";
     ripple.classList.add("ripplecircle");
-    const pastRipple = this.getElementsByClassName("ripplecircle")[0];
-    if (pastRipple) {
-      pastRipple.remove();
-    }
-    this.appendChild(ripple);
+    this.append(ripple);
+    ripple.addEventListener("animationend", function () {
+      ripple.remove();
+    });
   });
 }
 
@@ -137,6 +139,88 @@ for (let i = 0; i < shares.length; i++) {
     }
   });
 }
+
+/*Sort*/
+window.addEventListener("load", function() {//Allow transitions
+  const rectanlges = document.querySelectorAll(".rectangle.transitionDisabled");
+  for (let i = 0; i < rectanlges.length; i++) {
+    rectanlges[i].classList.remove("transitionDisabled");
+  }
+  const sorts = document.querySelectorAll(".sort.transitionDisabled");
+  for (let i = 0; i < sorts.length; i++) {
+    sorts[i].classList.remove("transitionDisabled");
+  }
+});
+function transitionend(el, callback) {
+  if (document.readyState === "complete") {
+    el.addEventListener("transitionend", callback, { once: true });
+  } else {
+    callback();
+  }
+}
+const sorts = document.getElementsByClassName("sortButton");
+for (let i = 0; i < sorts.length; i++) {
+  sorts[i].addEventListener("click", function () {
+    if (this.id !== "sorted") {//Not already clicked
+      this.id = "sorted";
+      for (let j = 0; j < sorts.length; j++) {//Hide animate others
+        if (sorts[j] !== this) {
+          sorts[j].style.maxWidth = sorts[j].getBoundingClientRect().width + "px";
+          setTimeout(function () {
+            sorts[j].classList.add("remove");
+            sorts[j].style.maxWidth = 0;
+            transitionend(sorts[j], function () {
+              sorts[j].style.display = "none";
+            });
+          });
+        }
+      }
+      const rectangles = document.getElementsByClassName("rectangle");//Hide rectangles
+      for (let i = 0; i < rectangles.length; i++) {
+        if (!rectangles[i].classList.contains(this.innerText) && rectangles[i].id !== "resume") {
+          if (rectangles[i].classList.contains("contentopen")) {
+            closeCollapsible(rectangles[i].getElementsByClassName("dropcircle")[0]);
+          }
+          rectangles[i].style.maxHeight = rectangles[i].getBoundingClientRect().height + "px";
+          setTimeout(function () {
+            rectangles[i].classList.add("remove");
+            rectangles[i].style.maxHeight = 0;
+            transitionend(rectangles[i], function () {
+              rectangles[i].style.display = "none";
+            });
+          });
+        }
+      }
+      const clearSort = document.getElementById("clearSort");//show clear sort button
+      clearSort.style.display = "flex";
+      setTimeout(function () {
+        clearSort.classList.add("show");
+      });
+    }
+  });
+}
+document.getElementById("clearSort").addEventListener("click", function () {
+  this.classList.remove("show");//hide self
+  transitionend(this, () => {
+    this.style.display = "none";
+  });
+  document.getElementById("sorted").removeAttribute("id");
+  for (let i = 0; i < sorts.length; i++) {//show all buttons
+    sorts[i].style.display = "inline-block";
+    setTimeout(function () {
+      sorts[i].style.maxWidth = "";
+      sorts[i].classList.remove("remove");
+    });
+  }
+  const rectangles = document.getElementsByClassName("rectangle");//show all rectangles
+  for (let i = 0; i < rectangles.length; i++) {
+    rectangles[i].style.display = "flex";
+    setTimeout(function () {
+      rectangles[i].style.maxHeight = "";
+      rectangles[i].classList.remove("remove");
+    });
+  }
+});
 
 /*Google Analytics*/
 window.dataLayer = window.dataLayer || [];

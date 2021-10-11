@@ -1,18 +1,19 @@
 /*Dark Mode*/
-:root { /*Gradient color average: #128A74*/
+:root { /*Gradient color average: #128A74 10 midpoints first choice*/
   --light0: #E9F4F2; /*#fff*/
   --light1: #CCD7D5; /*#dfdfdf*/
   --light2: #AFBAB8; /*#bfbfbf*/
+  --dark2: #3C4745; /*#404040*/
   --dark1: #1F2A28; /*#202020*/
   --dark0: #020D0B; /*#000*/
 }
 .svg {
   -webkit-filter: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
-    filter: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
+          filter: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
 }
 .links .svg {
   -webkit-filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
-    filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
+          filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
 }
 body {
   scrollbar-color: rgba(255, 255, 255, 0.24) var(--dark0);
@@ -26,9 +27,6 @@ body {
 span.ripplecircle {
   background-color: rgba(255, 255, 255, 0.4);
 }
-.ripple:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
 #headerBg {
   background-image: linear-gradient(90deg, #128e5a, #12858e);
 }
@@ -40,7 +38,7 @@ h4, .links h5 {
 }
 .links {
   -webkit-text-decoration-color: var(--dark1);
-    text-decoration-color: var(--dark1);
+          text-decoration-color: var(--dark1);
 }
 
 /*Light Mode*/
@@ -49,12 +47,13 @@ h4, .links h5 {
     --light0: #020D0B; /*#000*/
     --light1: #1F2A28; /*#202020*/
     --light2: #2D3836; /*#303030*/
+    --dark2: #AFBAB8; /*#bfbfbf*/
     --dark1: #CCD7D5; /*#dfdfdf*/
     --dark0: #E9F4F2; /*#fff*/
   }
   .svg {
     -webkit-filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
-      filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
+            filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
   }
   body {
     scrollbar-color: rgba(0, 0, 0, 0.24) var(--dark0);
@@ -68,9 +67,6 @@ h4, .links h5 {
   span.ripplecircle {
     background-color: rgba(0, 0, 0, 0.4);
   }
-  .ripple:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
   #headerBg {
     background-image: linear-gradient(90deg, #1bd285, #1bc4d2);
   }
@@ -82,7 +78,7 @@ h4, .links h5 {
   }
   .links {
     -webkit-text-decoration-color: var(--light2);
-      text-decoration-color: var(--light2);
+            text-decoration-color: var(--light2);
   }
 }
 
@@ -145,10 +141,10 @@ header > * {
   width: 100%;
   height: 110%;
   -webkit-transform-origin: top right;
-    transform-origin: top right;
+          transform-origin: top right;
   transition: -webkit-transform 0.2s;
-    transition: transform 0.2s;
-      transition: transform 0.2s, -webkit-transform 0.2s;
+          transition: transform 0.2s;
+          transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
 /*Header Left*/
@@ -180,11 +176,11 @@ header #right {
   align-items: center;
   justify-content: flex-end;
   width: -webkit-fit-content;
-    width: -moz-fit-content;
-      width: fit-content;
+     width: -moz-fit-content;
+          width: fit-content;
   block-size: -webkit-fit-content;
-    block-size: -moz-fit-content;
-      block-size: fit-content;
+     block-size: -moz-fit-content;
+          block-size: fit-content;
   cursor: pointer;
   margin-bottom: 0.625rem;
   color: var(--dark1);
@@ -200,14 +196,62 @@ header #right {
   width: 1.5625rem;
 }
 
-/*Projects*/
-main {
-  padding: 0.5rem 0.5rem 1rem 0.5rem;
+/*Projects and sort*/
+#projects {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
 }
 h2 {
+  margin: 0 1rem 0 0;
   color: var(--light1);
   font-size: 2.25rem;
   font-weight: normal;
+}
+.sort {
+  border: none;
+  color: var(--light0);
+  background-color: var(--dark1);
+  font-size: 1rem;
+  padding: 0 0.8rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+  opacity: 1;
+  white-space: nowrap;
+}
+.ripple.sort {
+  transition: background-color 0.2s, padding 0.2s, opacity 0.2s, max-width 0.2s;
+}
+#sorted.sort {
+  background-color: var(--dark2);
+  cursor: default;
+}
+.sort.remove {
+  opacity: 0;
+  padding: 0;
+}
+#clearSort {
+  cursor: pointer;
+  display: none;
+  width: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+#clearSort img {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+#clearSort.show {
+  opacity: 1;
+}
+
+/*Projects list*/
+main {
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
 
 /*Item body*/
@@ -220,7 +264,14 @@ h2 {
   border-radius: 0.625rem;
   display: flex;
   align-items: center;
-  transition: border-radius 0.2s;
+  transition: border-radius 0.2s, padding 0.2s, opacity 0.2s, max-height 0.2s, margin-top 0.2s;
+  overflow: hidden;
+}
+.rectangle.remove {
+  opacity: 0;
+  padding: 0;
+  margin-top: 0;
+  min-height: 0;
 }
 .rectangle.contentopen {
   border-radius: 0.625rem 0.625rem 0 0;
@@ -244,11 +295,11 @@ h2 {
 }
 .content .cards {
   -webkit-columns: 3 25rem;
-    -moz-columns: 3 25rem;
-      columns: 3 25rem;
+     -moz-columns: 3 25rem;
+          columns: 3 25rem;
   -webkit-column-gap: 0.625rem;
-    -moz-column-gap: 0.625rem;
-      column-gap: 0.625rem;
+     -moz-column-gap: 0.625rem;
+          column-gap: 0.625rem;
 }
 .content .cards img {
   width: auto;
@@ -257,8 +308,8 @@ h2 {
   margin-bottom: 0.625rem;
   border-radius: 0.3125rem;
   transition: -webkit-transform 0.2s;
-    transition: transform 0.2s;
-      transition: transform 0.2s, -webkit-transform 0.2s;
+          transition: transform 0.2s;
+          transition: transform 0.2s, -webkit-transform 0.2s;
   cursor: pointer;
 }
 
@@ -279,42 +330,38 @@ h2 {
   overflow: visible;
 }
 
-/*ripplecircle circles*/
+/*Ripple circles*/
 .ripple {
-  height: 2.5rem;
-  width: 2.5rem;
-  min-width: 2.5rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   transition: background-color 0.2s;
 }
+.ripple:hover, #clearSort:hover {
+  background-color: var(--dark2);
+}
 span.ripplecircle {
   position: absolute;
   border-radius: 50%;
   -webkit-transform: scale(0);
-    transform: scale(0);
+          transform: scale(0);
   -webkit-animation: ripplecircle 600ms linear;
-    animation: ripplecircle 600ms linear;
+          animation: ripplecircle 600ms linear;
 }
 @-webkit-keyframes ripplecircle {
   to {
     -webkit-transform: scale(4);
-      transform: scale(4);
+            transform: scale(4);
     opacity: 0;
   }
 }
-@keyframes ripplecircle {
-  to {
-    -webkit-transform: scale(4);
-      transform: scale(4);
-    opacity: 0;
-  }
-}
+        @keyframes ripplecircle {
+          to {
+            -webkit-transform: scale(4);
+                    transform: scale(4);
+            opacity: 0;
+          }
+        }
 
 /*Dropdown arrows*/
 .transitionDisabled {
@@ -324,12 +371,12 @@ span.ripplecircle {
   margin-top: 0.125rem;
   margin-bottom: 0;
   transition: margin 0.2s ease-out, -webkit-transform 0.2s ease-out;
-    transition: transform 0.2s ease-out, margin 0.2s ease-out;
-      transition: transform 0.2s ease-out, margin 0.2s ease-out, -webkit-transform 0.2s ease-out;
+          transition: transform 0.2s ease-out, margin 0.2s ease-out;
+          transition: transform 0.2s ease-out, margin 0.2s ease-out, -webkit-transform 0.2s ease-out;
 }
 .arrow.contentopen {
   -webkit-transform: rotate(-180deg);
-    transform: rotate(-180deg);
+          transform: rotate(-180deg);
   margin-top: 0;
   margin-bottom: 0.125rem;
 }
@@ -364,6 +411,9 @@ span.ripplecircle {
 
 /*Buttons*/
 .buttonlink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 1.5625rem;
   min-width: 1.5625rem;
   height: 1.5625rem;
@@ -399,7 +449,8 @@ button.buttonlink {
   position: absolute;
 }
 .check.copied {
-  animation: fadein 6s;
+  -webkit-animation: fadein 6s;
+          animation: fadein 6s;
 }
 @-webkit-keyframes fadein {
   0%, 100% {
@@ -409,16 +460,17 @@ button.buttonlink {
     opacity: 1;
   }
 }
-  @keyframes fadein {
-    0%, 100% {
-      opacity: 0;
-    }
-    5%, 85% {
-      opacity: 1;
-    }
-  }
+        @keyframes fadein {
+          0%, 100% {
+            opacity: 0;
+          }
+          5%, 85% {
+            opacity: 1;
+          }
+        }
 .shareIcon.copied {
-  animation: fadeout 6s;
+  -webkit-animation: fadeout 6s;
+          animation: fadeout 6s;
 }
 @-webkit-keyframes fadeout {
   0%, 100% {
@@ -428,14 +480,14 @@ button.buttonlink {
     opacity: 0;
   }
 }
-@keyframes fadeout {
-  0%, 100% {
-    opacity: 1;
-  }
-  5%, 85% {
-    opacity: 0;
-  }
-}
+        @keyframes fadeout {
+          0%, 100% {
+            opacity: 1;
+          }
+          5%, 85% {
+            opacity: 0;
+          }
+        }
 
 /*Fullscreen Images*/
 #fullscreenbg {
@@ -445,7 +497,7 @@ button.buttonlink {
   right: 0;
   bottom: 0;
   -webkit-backdrop-filter: blur(0.1rem);
-    backdrop-filter: blur(0.1rem);
+          backdrop-filter: blur(0.1rem);
   display: none;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.8);
