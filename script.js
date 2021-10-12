@@ -140,15 +140,15 @@ for (let i = 0; i < shares.length; i++) {
   });
 }
 
-/*Sort*/
+/*Filter*/
 window.addEventListener("load", function() {//Allow transitions
   const rectanlges = document.querySelectorAll(".rectangle.transitionDisabled");
   for (let i = 0; i < rectanlges.length; i++) {
     rectanlges[i].classList.remove("transitionDisabled");
   }
-  const sorts = document.querySelectorAll(".sort.transitionDisabled");
-  for (let i = 0; i < sorts.length; i++) {
-    sorts[i].classList.remove("transitionDisabled");
+  const filters = document.querySelectorAll(".filter.transitionDisabled");
+  for (let i = 0; i < filters.length; i++) {
+    filters[i].classList.remove("transitionDisabled");
   }
 });
 function transitionend(el, callback) {
@@ -158,19 +158,19 @@ function transitionend(el, callback) {
     callback();
   }
 }
-const sorts = document.getElementsByClassName("sortButton");
-for (let i = 0; i < sorts.length; i++) {
-  sorts[i].addEventListener("click", function () {
-    if (this.id !== "sorted") {//Not already clicked
-      this.id = "sorted";
-      for (let j = 0; j < sorts.length; j++) {//Hide animate others
-        if (sorts[j] !== this) {
-          sorts[j].style.maxWidth = sorts[j].getBoundingClientRect().width + "px";
+const filters = document.getElementsByClassName("filterButton");
+for (let i = 0; i < filters.length; i++) {
+  filters[i].addEventListener("click", function () {
+    if (this.id !== "filtered") {//Not already clicked
+      this.id = "filtered";
+      for (let j = 0; j < filters.length; j++) {//Hide animate others
+        if (filters[j] !== this) {
+          filters[j].style.maxWidth = filters[j].getBoundingClientRect().width + "px";
           setTimeout(function () {
-            sorts[j].classList.add("remove");
-            sorts[j].style.maxWidth = 0;
-            transitionend(sorts[j], function () {
-              sorts[j].style.display = "none";
+            filters[j].classList.add("remove");
+            filters[j].style.maxWidth = 0;
+            transitionend(filters[j], function () {
+              filters[j].style.display = "none";
             });
           });
         }
@@ -191,27 +191,27 @@ for (let i = 0; i < sorts.length; i++) {
           });
         }
       }
-      const clearSort = document.getElementById("clearSort");//show clear sort button
-      clearSort.style.display = "flex";
+      const clearFilter = document.getElementById("clearFilter");//show clear filter button
+      clearFilter.style.display = "flex";
       setTimeout(function () {
-        clearSort.classList.add("show");
+        clearFilter.classList.add("show");
       });
     }
   });
 }
-document.getElementById("clearSort").addEventListener("click", function () {
+document.getElementById("clearFilter").addEventListener("click", function () {
   this.classList.remove("show");//hide self
   transitionend(this, () => {
     this.style.display = "none";
   });
-  document.getElementById("sorted").removeAttribute("id");
-  for (let i = 0; i < sorts.length; i++) {//show all buttons
-    sorts[i].style.display = "inline-block";
+  document.getElementById("filtered").removeAttribute("id");
+  for (let i = 0; i < filters.length; i++) {//show all buttons
+    filters[i].style.display = "inline-block";
     setTimeout(function () {
-      sorts[i].style.maxWidth = "200px";
-      sorts[i].classList.remove("remove");
-      transitionend(sorts[i], function() {
-        sorts[i].style.maxWidth = "";
+      filters[i].style.maxWidth = "200px";
+      filters[i].classList.remove("remove");
+      transitionend(filters[i], function() {
+        filters[i].style.maxWidth = "";
       });
     });
   }
