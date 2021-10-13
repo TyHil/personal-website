@@ -500,10 +500,13 @@ button.buttonlink {
   left: 0;
   right: 0;
   bottom: 0;
-  -webkit-backdrop-filter: blur(0.1rem);
-          backdrop-filter: blur(0.1rem);
   display: none;
   justify-content: center;
+  transition: backdrop-filter 0.2s, background-color 0.2s;
+}
+#fullscreenbg.show {
+  -webkit-backdrop-filter: blur(0.1rem);
+          backdrop-filter: blur(0.1rem);
   background-color: rgba(0, 0, 0, 0.8);
 }
 #fullscreenimg {
@@ -511,8 +514,12 @@ button.buttonlink {
   height: auto;
   -o-object-fit: contain;
      object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
-
+#fullscreenbg.show #fullscreenimg {
+  opacity: 1;
+}
 
 /*GitHub Gist dark mode*/
 @media (prefers-color-scheme: dark) {

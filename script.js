@@ -84,14 +84,21 @@ for (let i = 0; i < circs.length; i++) {
 }
 
 /*Full screen image*/
-document.getElementById("fullscreenbg").addEventListener("click", function () {
-  this.style.display = "none";
+let fullscreenbg = document.getElementById("fullscreenbg");
+function closeFullscreen() {
+  fullscreenbg.classList.remove("show");
+  fullscreenbg.addEventListener("transitionend", function() {
+    this.style.display = "none";
+  }, { once: true });
+  document.body.style.marginRight = 0;
   document.body.classList.remove("disableScroll");
+}
+fullscreenbg.addEventListener("click", function () {
+  closeFullscreen();
 });
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
-    document.getElementById("fullscreenbg").style.display = "none";
-    document.body.classList.remove("disableScroll");
+    closeFullscreen();
   }
 });
 const images = document.querySelectorAll(".cards img");
@@ -100,8 +107,12 @@ for (let i = 0; i < images.length; i++) {
     let fullscreenimg = document.getElementById("fullscreenimg");
     fullscreenimg.src = this.src.substring(0, this.src.length - 3) + "2400";
     fullscreenimg.alt = this.alt;
+    document.body.style.marginRight = window.innerWidth - document.documentElement.clientWidth + "px";
     document.body.classList.add("disableScroll");
-    document.getElementById("fullscreenbg").style.display = "flex";
+    fullscreenbg.style.display = "flex";
+    setTimeout(function () {
+      fullscreenbg.classList.add("show");
+    });
   });
 }
 
