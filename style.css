@@ -227,7 +227,7 @@ h2 {
 .ripple.filter {
   transition: background-color 0.2s, padding 0.2s, opacity 0.2s, max-width 0.2s, margin-right 0.2s;
 }
-#filtered.filter {
+.filtered.filter {
   background-color: var(--dark2);
   cursor: default;
 }

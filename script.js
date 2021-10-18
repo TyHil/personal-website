@@ -54,16 +54,6 @@ for (let i = 0; i < coll.length; i++) {
     }
   });
 }
-function openAndScroll() {
-  openCollapsible(document.getElementById(window.location.hash.substring(1)).getElementsByClassName("dropcircle")[0], 0);
-  document.getElementById(window.location.hash.substring(1)).scrollIntoView({
-    behavior: "smooth"
-  });
-}
-if (window.location.hash) {
-  openAndScroll();
-}
-window.addEventListener("hashchange", openAndScroll);
 
 /*Ripples*/
 const circs = document.getElementsByClassName("ripple");
@@ -87,7 +77,7 @@ for (let i = 0; i < circs.length; i++) {
 let fullscreenbg = document.getElementById("fullscreenbg");
 function closeFullscreen() {
   fullscreenbg.classList.remove("show");
-  fullscreenbg.addEventListener("transitionend", function() {
+  fullscreenbg.addEventListener("transitionend", function () {
     this.style.display = "none";
   }, { once: true });
   document.body.style.marginRight = 0;
@@ -152,7 +142,7 @@ for (let i = 0; i < shares.length; i++) {
 }
 
 /*Filter*/
-window.addEventListener("load", function() {//Allow transitions
+window.addEventListener("load", function () {//Allow transitions
   const rectanlges = document.querySelectorAll(".rectangle.transitionDisabled");
   for (let i = 0; i < rectanlges.length; i++) {
     rectanlges[i].classList.remove("transitionDisabled");
@@ -170,58 +160,65 @@ function transitionend(el, callback) {
   }
 }
 const filters = document.getElementsByClassName("filterButton");
-for (let i = 0; i < filters.length; i++) {
-  filters[i].addEventListener("click", function () {
-    if (this.id !== "filtered") {//Not already clicked
-      this.id = "filtered";
-      for (let j = 0; j < filters.length; j++) {//Hide animate others
-        if (filters[j] !== this) {
-          filters[j].style.maxWidth = filters[j].getBoundingClientRect().width + "px";
-          setTimeout(function () {
-            filters[j].classList.add("remove");
-            filters[j].style.maxWidth = 0;
-            transitionend(filters[j], function () {
-              filters[j].style.display = "none";
-            });
-          });
-        }
-      }
-      const rectangles = document.getElementsByClassName("rectangle");//Hide rectangles
-      for (let i = 0; i < rectangles.length; i++) {
-        if (!rectangles[i].classList.contains(this.innerText) && rectangles[i].id !== "resume") {
-          if (rectangles[i].classList.contains("contentopen")) {
-            closeCollapsible(rectangles[i].getElementsByClassName("dropcircle")[0]);
-          }
-          rectangles[i].style.maxHeight = rectangles[i].getBoundingClientRect().height + "px";
-          setTimeout(function () {
-            rectangles[i].classList.add("remove");
-            rectangles[i].style.maxHeight = 0;
-            transitionend(rectangles[i], function () {
-              rectangles[i].style.display = "none";
-            });
-          });
-        }
-      }
-      const clearFilter = document.getElementById("clearFilter");//show clear filter button
-      clearFilter.style.display = "flex";
-      setTimeout(function () {
-        clearFilter.classList.add("show");
-      });
+function openFilter() {
+  if (!this.classList.contains("filtered")) {//Not already clicked
+    this.classList.add("filtered");
+    if (window.history.pushState) {
+      window.history.replaceState(null, document.title, "#" + this.id);
+    } else {
+      window.location.hash = this.id;;
     }
-  });
+    for (let j = 0; j < filters.length; j++) {//Hide animate others
+      if (filters[j] !== this) {
+        filters[j].style.maxWidth = filters[j].getBoundingClientRect().width + "px";
+        setTimeout(function () {
+          filters[j].classList.add("remove");
+          filters[j].style.maxWidth = 0;
+          transitionend(filters[j], function () {
+            filters[j].style.display = "none";
+          });
+        });
+      }
+    }
+    const rectangles = document.getElementsByClassName("rectangle");//Hide rectangles
+    for (let i = 0; i < rectangles.length; i++) {
+      if (!rectangles[i].classList.contains(this.innerText) && rectangles[i].id !== "resume") {
+        if (rectangles[i].classList.contains("contentopen")) {
+          closeCollapsible(rectangles[i].getElementsByClassName("dropcircle")[0]);
+        }
+        rectangles[i].style.maxHeight = rectangles[i].getBoundingClientRect().height + "px";
+        setTimeout(function () {
+          rectangles[i].classList.add("remove");
+          rectangles[i].style.maxHeight = 0;
+          transitionend(rectangles[i], function () {
+            rectangles[i].style.display = "none";
+          });
+        });
+      }
+    }
+    const clearFilter = document.getElementById("clearFilter");//show clear filter button
+    clearFilter.style.display = "flex";
+    setTimeout(function () {
+      clearFilter.classList.add("show");
+    });
+  }
 }
-document.getElementById("clearFilter").addEventListener("click", function () {
-  this.classList.remove("show");//hide self
-  transitionend(this, () => {
-    this.style.display = "none";
+for (let i = 0; i < filters.length; i++) {
+  filters[i].addEventListener("click", openFilter);
+}
+function closeFilters() {
+  clearFilter = document.getElementById("clearFilter");
+  clearFilter.classList.remove("show");//hide self
+  transitionend(clearFilter, function () {
+    clearFilter.style.display = "none";
   });
-  document.getElementById("filtered").removeAttribute("id");
+  document.getElementsByClassName("filtered")[0].classList.remove("filtered");
   for (let i = 0; i < filters.length; i++) {//show all buttons
     filters[i].style.display = "inline-block";
     setTimeout(function () {
       filters[i].style.maxWidth = "200px";
       filters[i].classList.remove("remove");
-      transitionend(filters[i], function() {
+      transitionend(filters[i], function () {
         filters[i].style.maxWidth = "";
       });
     });
@@ -232,10 +229,48 @@ document.getElementById("clearFilter").addEventListener("click", function () {
     setTimeout(function () {
       rectangles[i].style.maxHeight = "300px";
       rectangles[i].classList.remove("remove");
-      transitionend(rectangles[i], function() {
+      transitionend(rectangles[i], function () {
         rectangles[i].style.maxHeight = "";
       });
     });
+  }
+}
+document.getElementById("clearFilter").addEventListener("click", function () {
+  window.history.replaceState("", document.title, window.location.pathname + window.location.search);
+  closeFilters();
+});
+
+/*Hash*/
+function hash() {
+  if (window.location.hash) {
+    if (document.querySelector(window.location.hash + ".rectangle")) {
+      const rectangles = document.getElementsByClassName("rectangle");
+      for (let i = 0; i < rectangles.length; i++) {
+        if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("contentopen")) {
+          closeCollapsible(rectangles[i].getElementsByClassName("dropcircle")[0]);
+        }
+      }
+      openCollapsible(document.getElementById(window.location.hash.substring(1)).getElementsByClassName("dropcircle")[0], 0);
+      document.getElementById(window.location.hash.substring(1)).scrollIntoView({
+        behavior: "smooth"
+      });
+    } else if (document.querySelector(window.location.hash + ".filterButton")) {
+      openFilter.bind(document.querySelector(window.location.hash + ".filterButton"))();
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+      });
+    }
+  }
+}
+hash();
+window.addEventListener("hashchange", function () {
+  if (document.getElementsByClassName("filtered")[0]) {
+    closeFilters();
+    transitionend(document.getElementById("clearFilter"), function () {
+      hash();
+    });
+  } else {
+    hash();
   }
 });
 
