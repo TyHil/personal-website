@@ -236,7 +236,7 @@ h2 {
   padding: 0;
   margin-right: 0;
 }
-#clearFilter {
+#clearFilter, #shareFilter {
   cursor: pointer;
   display: none;
   width: 2.5rem;
@@ -246,10 +246,14 @@ h2 {
   transition: opacity 0.2s;
 }
 #clearFilter img {
-  width: 0.9rem;
-  height: 0.9rem;
+  width: 1rem;
+  height: 1rem;
 }
-#clearFilter.show {
+#shareFilter img {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+#clearFilter.show, #shareFilter.show {
   opacity: 1;
 }
 

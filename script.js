@@ -123,13 +123,13 @@ for (let i = 0; i < shares.length; i++) {
     if (!navigator.clipboard) {
       console.error("URL Copy Error!");
     } else {
-      navigator.clipboard.writeText(window.location.href.replace(window.location.hash, "") + "#" + this.parentNode.id).then(function () {
-        const check = shares[i].getElementsByClassName("check")[0];
+      navigator.clipboard.writeText(window.location.href.replace(window.location.hash, "") + "#" + this.parentNode.id).then(() => {
+        const check = this.getElementsByClassName("check")[0];
         check.classList.add("copied");
         check.addEventListener("animationend", function () {
           this.classList.remove("copied");
         });
-        const shareIcon = shares[i].getElementsByClassName("shareIcon")[0];
+        const shareIcon = this.getElementsByClassName("shareIcon")[0];
         shareIcon.classList.add("copied");
         shareIcon.addEventListener("animationend", function () {
           this.classList.remove("copied");
@@ -163,11 +163,6 @@ const filters = document.getElementsByClassName("filterButton");
 function openFilter() {
   if (!this.classList.contains("filtered")) {//Not already clicked
     this.classList.add("filtered");
-    if (window.history.pushState) {
-      window.history.replaceState(null, document.title, "#" + this.id);
-    } else {
-      window.location.hash = this.id;;
-    }
     for (let j = 0; j < filters.length; j++) {//Hide animate others
       if (filters[j] !== this) {
         filters[j].style.maxWidth = filters[j].getBoundingClientRect().width + "px";
@@ -197,20 +192,31 @@ function openFilter() {
       }
     }
     const clearFilter = document.getElementById("clearFilter");//show clear filter button
+    const shareFilter = document.getElementById("shareFilter");//show share filter button
     clearFilter.style.display = "flex";
+    shareFilter.style.display = "flex";
     setTimeout(function () {
       clearFilter.classList.add("show");
+      shareFilter.classList.add("show");
     });
   }
 }
 for (let i = 0; i < filters.length; i++) {
-  filters[i].addEventListener("click", openFilter);
+  filters[i].addEventListener("click", function() {
+    window.history.replaceState("", document.title, window.location.pathname + window.location.search);
+    openFilter.bind(this)();
+  });
 }
 function closeFilters() {
-  clearFilter = document.getElementById("clearFilter");
+  const clearFilter = document.getElementById("clearFilter");
+  const shareFilter = document.getElementById("shareFilter");
   clearFilter.classList.remove("show");//hide self
+  shareFilter.classList.remove("show");
   transitionend(clearFilter, function () {
     clearFilter.style.display = "none";
+  });
+  transitionend(shareFilter, function () {
+    shareFilter.style.display = "none";
   });
   document.getElementsByClassName("filtered")[0].classList.remove("filtered");
   for (let i = 0; i < filters.length; i++) {//show all buttons
@@ -238,6 +244,28 @@ function closeFilters() {
 document.getElementById("clearFilter").addEventListener("click", function () {
   window.history.replaceState("", document.title, window.location.pathname + window.location.search);
   closeFilters();
+});
+
+/*Share filter*/
+document.getElementById("shareFilter").addEventListener("click", function () {
+  if (!navigator.clipboard) {
+    console.error("URL Copy Error!");
+  } else {
+    navigator.clipboard.writeText(window.location.href.replace(window.location.hash, "") + "#" + document.getElementsByClassName("filtered")[0].id).then(() => {
+      const check = this.getElementsByClassName("check")[0];
+      check.classList.add("copied");
+      check.addEventListener("animationend", function () {
+        this.classList.remove("copied");
+      });
+      const shareIcon = this.getElementsByClassName("shareIcon")[0];
+      shareIcon.classList.add("copied");
+      shareIcon.addEventListener("animationend", function () {
+        this.classList.remove("copied");
+      });
+    }, function (err) {
+      console.error("URL Copy Error!", err);
+    });
+  }
 });
 
 /*Hash*/
