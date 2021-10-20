@@ -1,4 +1,5 @@
-/*Header resize*/
+/* Header Tilt */
+
 function headerHeight() {
   const base = window.innerWidth;
   const left = document.getElementById("left").clientHeight;
@@ -11,13 +12,17 @@ function headerHeight() {
     document.getElementById("headerBg").style["transform-origin"] = "top left";
   }
 }
+
 headerHeight();
 document.getElementById("headerBg").addEventListener("transitionend", function () {
   this.classList.add("transitionDisabled");
 }, { once: true });
 window.addEventListener("resize", headerHeight);
 
-/*Open and close collapsibles*/
+
+
+/* Open and Close Collapsibles */
+
 function openCollapsible(coll, log) {
   const content = coll.parentNode.nextElementSibling;
   coll.getElementsByClassName("arrow")[0].classList.add("contentopen");
@@ -28,9 +33,10 @@ function openCollapsible(coll, log) {
   content.style.display = "block";
   content.style.maxHeight = content.scrollHeight + "px";
   content.addEventListener("transitionend", function () {
-    content.style.maxHeight = "none";
+    this.style.maxHeight = "none";
   }, { once: true });
 }
+
 function closeCollapsible(coll) {
   const content = coll.parentNode.nextElementSibling;
   coll.getElementsByClassName("arrow")[0].classList.remove("contentopen");
@@ -43,10 +49,11 @@ function closeCollapsible(coll) {
     }, { once: true });
   });//delay so js runs these separately, won't animate otherwise
 }
+
 const coll = document.getElementsByClassName("dropcircle");
 for (let i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function () {
-    window.history.replaceState("", document.title, window.location.pathname + window.location.search);
+    window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
     if (this.parentNode.nextElementSibling.style.maxHeight) {//close
       closeCollapsible(this);
     } else {//open
@@ -55,7 +62,10 @@ for (let i = 0; i < coll.length; i++) {
   });
 }
 
-/*Ripples*/
+
+
+/* Ripples */
+
 const circs = document.getElementsByClassName("ripple");
 for (let i = 0; i < circs.length; i++) {
   circs[i].addEventListener("click", function (e) {
@@ -68,12 +78,15 @@ for (let i = 0; i < circs.length; i++) {
     ripple.classList.add("ripplecircle");
     this.append(ripple);
     ripple.addEventListener("animationend", function () {
-      ripple.remove();
-    });
+      this.remove();
+    }, { once: true });
   });
 }
 
-/*Full screen image*/
+
+
+/*Full Screen Image*/
+
 let fullscreenbg = document.getElementById("fullscreenbg");
 function closeFullscreen() {
   fullscreenbg.classList.remove("show");
@@ -83,14 +96,17 @@ function closeFullscreen() {
   document.body.style.marginRight = 0;
   document.body.classList.remove("disableScroll");
 }
+
 fullscreenbg.addEventListener("click", function () {
   closeFullscreen();
 });
+
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
     closeFullscreen();
   }
 });
+
 const images = document.querySelectorAll(".cards img");
 for (let i = 0; i < images.length; i++) {
   images[i].addEventListener("click", function () {
@@ -106,43 +122,25 @@ for (let i = 0; i < images.length; i++) {
   });
 }
 
-/*Tab enter/space clicks*/
-const dcircs = document.getElementsByClassName("dropcircle");
-for (let i = 0; i < dcircs.length; i++) {
-  dcircs[i].addEventListener("keydown", function () {
-    if (event.code === 'Space' || event.code === 'Enter') {
+
+
+/*Tab Enter/Space Clicks*/
+
+const dropcircles = document.getElementsByClassName("dropcircle");
+for (let i = 0; i < dropcircles.length; i++) {
+  dropcircles[i].addEventListener("keydown", function (e) {
+    if (e.code === 'Space' || e.code === 'Enter') {
       this.click();
     }
   });
 }
 
-/*Copy links*/
-const shares = document.getElementsByClassName("share");
-for (let i = 0; i < shares.length; i++) {
-  shares[i].addEventListener("click", function () {
-    if (!navigator.clipboard) {
-      console.error("URL Copy Error!");
-    } else {
-      navigator.clipboard.writeText(window.location.href.replace(window.location.hash, "") + "#" + this.parentNode.id).then(() => {
-        const check = this.getElementsByClassName("check")[0];
-        check.classList.add("copied");
-        check.addEventListener("animationend", function () {
-          this.classList.remove("copied");
-        });
-        const shareIcon = this.getElementsByClassName("shareIcon")[0];
-        shareIcon.classList.add("copied");
-        shareIcon.addEventListener("animationend", function () {
-          this.classList.remove("copied");
-        });
-      }, function (err) {
-        console.error("URL Copy Error!", err);
-      });
-    }
-  });
-}
 
-/*Filter*/
-window.addEventListener("load", function () {//Allow transitions
+
+/* Filter */
+
+//Allow transitions
+window.addEventListener("load", function () {
   const rectanlges = document.querySelectorAll(".rectangle.transitionDisabled");
   for (let i = 0; i < rectanlges.length; i++) {
     rectanlges[i].classList.remove("transitionDisabled");
@@ -152,13 +150,15 @@ window.addEventListener("load", function () {//Allow transitions
     filters[i].classList.remove("transitionDisabled");
   }
 });
+
 function transitionend(el, callback) {
   if (document.readyState === "complete") {
-    el.addEventListener("transitionend", callback, { once: true });
+    el.addEventListener("transitionend", callback.bind(el), { once: true });
   } else {
-    callback();
+    callback.bind(el)();
   }
 }
+
 const filters = document.getElementsByClassName("filterButton");
 function openFilter() {
   if (!this.classList.contains("filtered")) {//Not already clicked
@@ -170,7 +170,7 @@ function openFilter() {
           filters[j].classList.add("remove");
           filters[j].style.maxWidth = 0;
           transitionend(filters[j], function () {
-            filters[j].style.display = "none";
+            this.style.display = "none";
           });
         });
       }
@@ -186,7 +186,7 @@ function openFilter() {
           rectangles[i].classList.add("remove");
           rectangles[i].style.maxHeight = 0;
           transitionend(rectangles[i], function () {
-            rectangles[i].style.display = "none";
+            this.style.display = "none";
           });
         });
       }
@@ -201,22 +201,24 @@ function openFilter() {
     });
   }
 }
+
 for (let i = 0; i < filters.length; i++) {
-  filters[i].addEventListener("click", function() {
-    window.history.replaceState("", document.title, window.location.pathname + window.location.search);
+  filters[i].addEventListener("click", function () {
+    window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
     openFilter.bind(this)();
   });
 }
+
 function closeFilters() {
   const clearFilter = document.getElementById("clearFilter");
   const shareFilter = document.getElementById("shareFilter");
   clearFilter.classList.remove("show");//hide self
   shareFilter.classList.remove("show");
   transitionend(clearFilter, function () {
-    clearFilter.style.display = "none";
+    this.style.display = "none";
   });
   transitionend(shareFilter, function () {
-    shareFilter.style.display = "none";
+    this.style.display = "none";
   });
   document.getElementsByClassName("filtered")[0].classList.remove("filtered");
   for (let i = 0; i < filters.length; i++) {//show all buttons
@@ -225,7 +227,7 @@ function closeFilters() {
       filters[i].style.maxWidth = "200px";
       filters[i].classList.remove("remove");
       transitionend(filters[i], function () {
-        filters[i].style.maxWidth = "";
+        this.style.maxWidth = "";
       });
     });
   }
@@ -236,73 +238,84 @@ function closeFilters() {
       rectangles[i].style.maxHeight = "300px";
       rectangles[i].classList.remove("remove");
       transitionend(rectangles[i], function () {
-        rectangles[i].style.maxHeight = "";
+        this.style.maxHeight = "";
       });
     });
   }
 }
+
 document.getElementById("clearFilter").addEventListener("click", function () {
-  window.history.replaceState("", document.title, window.location.pathname + window.location.search);
+  window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
   closeFilters();
 });
 
-/*Share filter*/
-document.getElementById("shareFilter").addEventListener("click", function () {
+
+
+/* Share */
+
+function shareLink(link) {
   if (!navigator.clipboard) {
     console.error("URL Copy Error!");
   } else {
-    navigator.clipboard.writeText(window.location.href.replace(window.location.hash, "") + "#" + document.getElementsByClassName("filtered")[0].id).then(() => {
+    navigator.clipboard.writeText(link).then(() => {
       const check = this.getElementsByClassName("check")[0];
       check.classList.add("copied");
       check.addEventListener("animationend", function () {
         this.classList.remove("copied");
-      });
+      }, { once: true });
       const shareIcon = this.getElementsByClassName("shareIcon")[0];
       shareIcon.classList.add("copied");
       shareIcon.addEventListener("animationend", function () {
         this.classList.remove("copied");
-      });
+      }, { once: true });
     }, function (err) {
       console.error("URL Copy Error!", err);
     });
   }
+}
+
+//Share filter
+document.getElementById("shareFilter").addEventListener("click", function () {
+  shareLink.bind(this, window.location.href.split('?')[0] + "?filter=" + document.getElementsByClassName("filtered")[0].id)();
 });
 
-/*Hash*/
-function hash() {
-  if (window.location.hash) {
-    if (document.querySelector(window.location.hash + ".rectangle")) {
-      const rectangles = document.getElementsByClassName("rectangle");
-      for (let i = 0; i < rectangles.length; i++) {
-        if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("contentopen")) {
-          closeCollapsible(rectangles[i].getElementsByClassName("dropcircle")[0]);
-        }
+//Share item
+const shares = document.getElementsByClassName("share");
+for (let i = 0; i < shares.length; i++) {
+  shares[i].addEventListener("click", function () {
+    shareLink.bind(this, window.location.href.split('?')[0] + "?item=" + shares[i].parentNode.id)();
+  });
+}
+
+
+
+/* Query paramaters */
+
+const params = new URLSearchParams(window.location.search);
+if (params) {
+  if (params.has("item") && document.querySelector("#" + params.get("item") + ".rectangle")) {
+    const rectangles = document.getElementsByClassName("rectangle");
+    for (let i = 0; i < rectangles.length; i++) {
+      if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("contentopen")) {
+        closeCollapsible(rectangles[i].getElementsByClassName("dropcircle")[0]);
       }
-      openCollapsible(document.getElementById(window.location.hash.substring(1)).getElementsByClassName("dropcircle")[0], 0);
-      document.getElementById(window.location.hash.substring(1)).scrollIntoView({
-        behavior: "smooth"
-      });
-    } else if (document.querySelector(window.location.hash + ".filterButton")) {
-      openFilter.bind(document.querySelector(window.location.hash + ".filterButton"))();
-      setTimeout(function() {
-        window.scrollTo(0, 0);
-      });
     }
+    openCollapsible(document.querySelector("#" + params.get("item") + ".rectangle").getElementsByClassName("dropcircle")[0], 0);
+    document.querySelector("#" + params.get("item") + ".rectangle").scrollIntoView({
+      behavior: "smooth"
+    });
+  } else if (params.has("filter") && document.querySelector("#" + params.get("filter") + ".filterButton")) {
+    openFilter.bind(document.querySelector("#" + params.get("filter") + ".filterButton"))();
+    setTimeout(function () {
+      window.scrollTo(0, 0);
+    });
   }
 }
-hash();
-window.addEventListener("hashchange", function () {
-  if (document.getElementsByClassName("filtered")[0]) {
-    closeFilters();
-    transitionend(document.getElementById("clearFilter"), function () {
-      hash();
-    });
-  } else {
-    hash();
-  }
-});
 
-/*Google Analytics*/
+
+
+/* Google Analytics */
+
 window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
 gtag("js", new Date());
