@@ -253,37 +253,45 @@ document.getElementById("clearFilter").addEventListener("click", function () {
 
 /* Share */
 
-function shareLink(link) {
-  if (!navigator.clipboard) {
-    console.error("URL Copy Error!");
+function shareLink(el, title, url) {
+  function success() {
+    const check = el.getElementsByClassName("check")[0];
+    check.classList.add("copied");
+    check.addEventListener("animationend", function () {
+      this.classList.remove("copied");
+    }, { once: true });
+    const shareIcon = el.getElementsByClassName("shareIcon")[0];
+    shareIcon.classList.add("copied");
+    shareIcon.addEventListener("animationend", function () {
+      this.classList.remove("copied");
+    }, { once: true });
+  }
+  if (navigator.share) {
+    navigator.share({
+      title: title,
+      url: url
+    }).then(() => {
+      success();
+    }).catch(console.error);
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(() => {
+      success();
+    }).catch(console.error);
   } else {
-    navigator.clipboard.writeText(link).then(() => {
-      const check = this.getElementsByClassName("check")[0];
-      check.classList.add("copied");
-      check.addEventListener("animationend", function () {
-        this.classList.remove("copied");
-      }, { once: true });
-      const shareIcon = this.getElementsByClassName("shareIcon")[0];
-      shareIcon.classList.add("copied");
-      shareIcon.addEventListener("animationend", function () {
-        this.classList.remove("copied");
-      }, { once: true });
-    }, function (err) {
-      console.error("URL Copy Error!", err);
-    });
+    alert(url);
   }
 }
 
 //Share filter
 document.getElementById("shareFilter").addEventListener("click", function () {
-  shareLink.bind(this, window.location.href.split('?')[0] + "?filter=" + document.getElementsByClassName("filtered")[0].id)();
+  shareLink(this, document.getElementsByClassName("filtered")[0].innerText + " Filter", window.location.href.split('?')[0] + "?filter=" + document.getElementsByClassName("filtered")[0].id);
 });
 
 //Share item
 const shares = document.getElementsByClassName("share");
 for (let i = 0; i < shares.length; i++) {
   shares[i].addEventListener("click", function () {
-    shareLink.bind(this, window.location.href.split('?')[0] + "?item=" + shares[i].parentNode.id)();
+    shareLink(this, shares[i].parentNode.getElementsByTagName("h3")[0].innerText, window.location.href.split('?')[0] + "?item=" + shares[i].parentNode.id);
   });
 }
 
