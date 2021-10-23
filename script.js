@@ -177,7 +177,7 @@ function openFilter() {
     }
     const rectangles = document.getElementsByClassName("rectangle");//Hide rectangles
     for (let i = 0; i < rectangles.length; i++) {
-      if (!rectangles[i].classList.contains(this.innerText) && rectangles[i].id !== "resume") {
+      if (!rectangles[i].classList.contains(this.id) && rectangles[i].id !== "resume") {
         if (rectangles[i].classList.contains("contentopen")) {
           closeCollapsible(rectangles[i].getElementsByClassName("dropcircle")[0]);
         }
