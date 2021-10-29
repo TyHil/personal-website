@@ -6,6 +6,10 @@
   --dark2: #3C4745; /*#404040*/
   --dark1: #1F2A28; /*#202020*/
   --dark0: #020D0B; /*#000*/
+  --primaryL: #128e5a;
+  --primaryR: #12858e;
+  --secondaryL: #32ae7a;
+  --secondaryR: #32a5ae;
 }
 .svg {
   -webkit-filter: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
@@ -27,10 +31,7 @@ body {
 span.ripplecircle {
   background-color: rgba(255, 255, 255, 0.4);
 }
-#headerBg {
-  background-image: linear-gradient(90deg, #128e5a, #12858e);
-}
-h1 {
+h1, #featured {
   color: var(--dark0);
 }
 h4, .links h5 {
@@ -50,6 +51,10 @@ h4, .links h5 {
     --dark2: #AFBAB8; /*#bfbfbf*/
     --dark1: #CCD7D5; /*#dfdfdf*/
     --dark0: #E9F4F2; /*#fff*/
+    --primaryL: #1bd285;
+    --primaryR: #1bc4d2;
+    --secondaryL: #00b265;
+    --secondaryR: #00a4b2;
   }
   .svg {
     -webkit-filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
@@ -67,10 +72,7 @@ h4, .links h5 {
   span.ripplecircle {
     background-color: rgba(0, 0, 0, 0.4);
   }
-  #headerBg {
-    background-image: linear-gradient(90deg, #1bd285, #1bc4d2);
-  }
-  h1 {
+  h1, #featured {
     color: var(--light1);
   }
   h4, .links h5 {
@@ -133,6 +135,7 @@ header > * {
   position: relative;
 }
 #headerBg {
+  background-image: linear-gradient(90deg, var(--primaryL), var(--primaryR));
   position: absolute;
   top: 0;
   bottom: 0;
@@ -152,7 +155,7 @@ header #left {
   margin: 0 0.625rem 0.625rem 0;
 }
 h1 {
-  font-size: max(1.25rem, min(3.75rem, calc(40px + (60 - 40) *  ((100vw - 480px) / (800 - 480)))));
+  font-size: clamp(1.25rem, 40px + (60 - 40) * ((100vw - 480px) / (800 - 480)), 3.75rem);
   margin: 0;
 }
 h4 {
@@ -225,7 +228,7 @@ h2 {
   margin-right: 0.5rem;
 }
 .ripple.filter {
-  transition: background-color 0.2s, padding 0.2s, opacity 0.2s, max-width 0.2s, margin-right 0.2s;
+  transition: background-color 0.2s, background-image 0.2s, padding 0.2s, opacity 0.2s, max-width 0.2s, margin-right 0.2s;
 }
 .filtered.filter {
   background-color: var(--dark2);
@@ -235,6 +238,12 @@ h2 {
   opacity: 0;
   padding: 0;
   margin-right: 0;
+}
+#featured {
+  background-image: linear-gradient(90deg, var(--primaryL), var(--primaryR));
+}
+#featured:hover, #featured.filtered {
+  background-image: linear-gradient(90deg, var(--secondaryL), var(--secondaryR));
 }
 #clearFilter, #shareFilter {
   cursor: pointer;
@@ -278,6 +287,16 @@ main {
   align-items: center;
   transition: border-radius 0.2s, padding 0.2s, opacity 0.2s, max-height 0.2s, min-height 0.2s, margin-top 0.2s;
   overflow: hidden;
+  position: relative;
+}
+.feature {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  clip-path: polygon(0 0, 0% 100%, 100% 0);
+  background-image: linear-gradient(90deg, var(--primaryL), var(--primaryR));
 }
 .rectangle.remove {
   opacity: 0;
@@ -417,7 +436,7 @@ span.ripplecircle {
 }
 .rectangle .text p {
   color: var(--light2);
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin: 0;
 }
 
