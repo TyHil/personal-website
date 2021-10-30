@@ -41,6 +41,9 @@ h4, .links h5 {
   -webkit-text-decoration-color: var(--dark1);
           text-decoration-color: var(--dark1);
 }
+.links.ripple:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 
 /*Light Mode*/
 @media (prefers-color-scheme: light) {
@@ -82,6 +85,9 @@ h4, .links h5 {
     -webkit-text-decoration-color: var(--light2);
             text-decoration-color: var(--light2);
   }
+  .links.ripple:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
 
 /*Body*/
@@ -101,8 +107,8 @@ body.disableScroll {
   overflow: hidden;
 }
 ::-webkit-scrollbar {
-  width: 0.625rem;
-  height: 0.625rem;
+  width: 0.5rem;
+  height: 0.5rem;
 }
 ::-webkit-scrollbar-corner {
   background: rgba(0, 0, 0, 0);
@@ -111,7 +117,7 @@ body.disableScroll {
   background: var(--dark0);
 }
 ::-webkit-scrollbar-thumb {
-  border-radius: 0.625rem;
+  border-radius: 0.25rem;
 }
 html {
   scroll-behavior: smooth;
@@ -152,7 +158,7 @@ header > * {
 
 /*Header Left*/
 header #left {
-  margin: 0 0.625rem 0.625rem 0;
+  margin: 0 0.6rem 0.6rem 0.6rem;
 }
 h1 {
   font-size: clamp(1.25rem, 40px + (60 - 40) * ((100vw - 480px) / (800 - 480)), 3.75rem);
@@ -161,7 +167,7 @@ h1 {
 h4 {
   font-weight: normal;
   font-size: 1.25rem;
-  margin-top: 0.625rem;
+  margin-top: 0.6rem;
   margin-bottom: 0;
 }
 
@@ -177,26 +183,27 @@ header #right {
 .links {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  /*justify-content: flex-end;
   width: -webkit-fit-content;
      width: -moz-fit-content;
           width: fit-content;
   block-size: -webkit-fit-content;
      block-size: -moz-fit-content;
           block-size: fit-content;
-  cursor: pointer;
-  margin-bottom: 0.625rem;
-  color: var(--dark1);
+  cursor: pointer;*/
+  min-height: 1.6rem;
+  padding: 0.7rem 1rem;
+  border-radius: 1.5rem;
 }
 .links h5 {
   font-weight: normal;
   font-size: 1rem;
   margin: 0;
-  margin-right: 0.625rem;
+  margin-right: 0.6rem;
 }
 .links img {
-  height: 1.5625rem;
-  width: 1.5625rem;
+  height: 1.6rem;
+  width: 1.6rem;
 }
 
 /*Projects and filter*/
@@ -221,8 +228,8 @@ h2 {
   background-color: var(--dark1);
   font-size: 1rem;
   padding: 0 0.8rem;
-  height: 2.5rem;
-  border-radius: 2rem;
+  height: 3rem;
+  border-radius: 1.5rem;
   opacity: 1;
   white-space: nowrap;
   margin-right: 0.5rem;
@@ -248,23 +255,19 @@ h2 {
 #clearFilter, #shareFilter {
   cursor: pointer;
   display: none;
-  width: 2.5rem;
+  width: 3rem;
   justify-content: center;
   align-items: center;
   opacity: 0;
   transition: opacity 0.2s;
 }
 #clearFilter img {
-  width: 1rem;
-  height: 1rem;
-}
-#shareFilter img.shareIcon {
   width: 1.2rem;
   height: 1.2rem;
 }
-#shareFilter img.check {
-  width: 1.4rem;
-  height: 1.4rem;
+#shareFilter img.shareIcon, #shareFilter img.check {
+  width: 1.6rem;
+  height: 1.6rem;
 }
 #clearFilter.show, #shareFilter.show {
   opacity: 1;
@@ -278,11 +281,9 @@ main {
 /*Item body*/
 .rectangle {
   margin-top: 1.25rem;
-  padding: 0.4375rem 0.625rem;
-  min-height: 2.875rem;
-  width: auto;
+  padding: 0.4rem 0.6rem;
   background-color: var(--dark1);
-  border-radius: 0.625rem;
+  border-radius: 0.6rem;
   display: flex;
   align-items: center;
   transition: border-radius 0.2s, padding 0.2s, opacity 0.2s, max-height 0.2s, min-height 0.2s, margin-top 0.2s;
@@ -300,12 +301,12 @@ main {
 }
 .rectangle.remove {
   opacity: 0;
-  padding: 0 0.625rem;
+  padding: 0 0.6rem;
   margin-top: 0;
   min-height: 0;
 }
 .rectangle.contentopen {
-  border-radius: 0.625rem 0.625rem 0 0;
+  border-radius: 0.6rem 0.6rem 0 0;
 }
 
 /*Dropdown content*/
@@ -328,16 +329,16 @@ main {
   -webkit-columns: 3 25rem;
      -moz-columns: 3 25rem;
           columns: 3 25rem;
-  -webkit-column-gap: 0.625rem;
-     -moz-column-gap: 0.625rem;
-          column-gap: 0.625rem;
+  -webkit-column-gap: 0.6rem;
+     -moz-column-gap: 0.6rem;
+          column-gap: 0.6rem;
 }
 .content .cards img {
   width: auto;
   max-width: 100%;
   height: auto;
-  margin-bottom: 0.625rem;
-  border-radius: 0.3125rem;
+  margin-bottom: 0.6rem;
+  border-radius: 0.3rem;
   transition: -webkit-transform 0.2s;
           transition: transform 0.2s;
           transition: transform 0.2s, -webkit-transform 0.2s;
@@ -368,6 +369,9 @@ main {
   overflow: hidden;
   transition: background-color 0.2s;
 }
+.ripple img {
+  pointer-events: none;
+}
 .ripple:hover, #clearFilter:hover {
   background-color: var(--dark2);
 }
@@ -376,8 +380,8 @@ span.ripplecircle {
   border-radius: 50%;
   -webkit-transform: scale(0);
           transform: scale(0);
-  -webkit-animation: ripplecircle 600ms linear;
-          animation: ripplecircle 600ms linear;
+  -webkit-animation: ripplecircle 0.6s linear;
+          animation: ripplecircle 0.6s linear;
 }
 @-webkit-keyframes ripplecircle {
   to {
@@ -414,19 +418,19 @@ span.ripplecircle {
 
 /*Project icon*/
 .icon {
-  margin-left: 0.625rem;
+  margin-left: 0.6rem;
   width: 2.5rem;
   min-width: 2.5rem;
   height: 2.5rem;
 }
 .rounded {
-  border-radius: 0.3125rem;
+  border-radius: 0.3rem;
 }
 
 /*Project title*/
 .rectangle .text {
   margin-right: auto;
-  margin-left: 0.9375rem;
+  margin-left: 1rem;
 }
 .rectangle .text h3 {
   color: var(--light1);
@@ -445,16 +449,16 @@ span.ripplecircle {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1.5625rem;
-  min-width: 1.5625rem;
-  height: 1.5625rem;
-  padding: 0.625rem;
+  width: 1.6rem;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding: 0.7rem;
   border-radius: 50%;
 }
 .buttonlink img, .arrow {
-  width: 1.5625rem;
-  min-width: 1.5625rem;
-  height: 1.5625rem;
+  width: 1.6rem;
+  min-width: 1.6rem;
+  height: 1.6rem;
 }
 button.buttonlink {
   border: none;
@@ -462,16 +466,12 @@ button.buttonlink {
   box-sizing: unset;
   cursor: pointer;
 }
-.share {
-  padding-right: 0.625rem;
-  padding-left: 0.625rem;
-}
 .shareIcon {
-  margin-right: 0.125rem;
+  margin-right: 0.15rem;
 }
 .thangs {
-  padding-top: 0.725rem;
-  padding-bottom: 0.525rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.5rem;
 }
 
 /*Share Copied*/
