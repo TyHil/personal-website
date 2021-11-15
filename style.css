@@ -289,6 +289,7 @@ main {
   transition: border-radius 0.2s, padding 0.2s, opacity 0.2s, max-height 0.2s, min-height 0.2s, margin-top 0.2s;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
 }
 .feature {
   position: absolute;
@@ -437,11 +438,15 @@ span.ripplecircle {
   font-size: 1.5rem;
   font-weight: normal;
   margin: 0 0 0.1rem 0;
+  display: inline-block;
 }
 .rectangle .text p {
   color: var(--light2);
   font-size: 1rem;
   margin: 0;
+}
+.rectangle .text h3, .rectangle .text p {
+  cursor: text;
 }
 
 /*Buttons*/

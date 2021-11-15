@@ -1,3 +1,8 @@
+/* Clear Query Paramaters */
+function clearQuery() {
+  window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
+}
+
 /* Header Tilt */
 
 function headerHeight() {
@@ -23,12 +28,12 @@ window.addEventListener("resize", headerHeight);
 
 /* Open and Close Collapsibles */
 
-function openCollapsible(coll, log) {
-  const content = coll.parentNode.nextElementSibling;
-  coll.getElementsByClassName("arrow")[0].classList.add("contentopen");
-  coll.parentNode.classList.add("contentopen");
+function openCollapsible(rect, log) {
+  const content = rect.nextElementSibling;
+  rect.getElementsByClassName("arrow")[0].classList.add("contentopen");
+  rect.classList.add("contentopen");
   if (log) {//log open event to analytics
-    gtag("event", "view_item", { "event_category": "engagement", "event_label": coll.parentNode.getElementsByTagName("h3")[0].innerText });
+    gtag("event", "view_item", { "event_category": "engagement", "event_label": rect.getElementsByTagName("h3")[0].innerText });
   }
   content.style.display = "block";
   content.style.maxHeight = content.scrollHeight + "px";
@@ -37,10 +42,10 @@ function openCollapsible(coll, log) {
   }, { once: true });
 }
 
-function closeCollapsible(coll) {
-  const content = coll.parentNode.nextElementSibling;
-  coll.getElementsByClassName("arrow")[0].classList.remove("contentopen");
-  coll.parentNode.classList.remove("contentopen");
+function closeCollapsible(rect) {
+  const content = rect.nextElementSibling;
+  rect.getElementsByClassName("arrow")[0].classList.remove("contentopen");
+  rect.classList.remove("contentopen");
   content.style.maxHeight = content.scrollHeight + "px";
   setTimeout(function () {
     content.style.maxHeight = null;
@@ -50,14 +55,16 @@ function closeCollapsible(coll) {
   });//delay so js runs these separately, won't animate otherwise
 }
 
-const coll = document.getElementsByClassName("dropcircle");
-for (let i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function () {
-    window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
-    if (this.parentNode.nextElementSibling.style.maxHeight) {//close
-      closeCollapsible(this);
-    } else {//open
-      openCollapsible(this, 1);
+const rectangles = document.getElementsByClassName("rectangle");
+for (let i = 0; i < rectangles.length; i++) {
+  rectangles[i].addEventListener("click", function (e) {
+    if ((!e.target.classList.contains("buttonlink") || e.target.classList.contains("dropcircle")) && window.getSelection().type !== "Range") {
+      clearQuery();
+      if (rectangles[i].nextElementSibling.style.maxHeight) {//close
+        closeCollapsible(rectangles[i]);
+      } else {//open
+        openCollapsible(rectangles[i], 1);
+      }
     }
   });
 }
@@ -85,7 +92,7 @@ for (let i = 0; i < circs.length; i++) {
 
 
 
-/*Full Screen Image*/
+/* Full Screen Image */
 
 let fullscreenbg = document.getElementById("fullscreenbg");
 function closeFullscreen() {
@@ -124,7 +131,7 @@ for (let i = 0; i < images.length; i++) {
 
 
 
-/*Tab Enter/Space Clicks*/
+/* Tab Enter/Space Clicks */
 
 const dropcircles = document.getElementsByClassName("dropcircle");
 for (let i = 0; i < dropcircles.length; i++) {
@@ -179,7 +186,7 @@ function openFilter() {
     for (let i = 0; i < rectangles.length; i++) {
       if (!rectangles[i].classList.contains(this.id) && rectangles[i].id !== "resume") {
         if (rectangles[i].classList.contains("contentopen")) {
-          closeCollapsible(rectangles[i].getElementsByClassName("dropcircle")[0]);
+          closeCollapsible(rectangles[i]);
         }
         rectangles[i].style.maxHeight = rectangles[i].getBoundingClientRect().height + "px";
         setTimeout(function () {
@@ -204,7 +211,7 @@ function openFilter() {
 
 for (let i = 0; i < filters.length; i++) {
   filters[i].addEventListener("click", function () {
-    window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
+    clearQuery();
     openFilter.bind(this)();
   });
 }
@@ -245,7 +252,7 @@ function closeFilters() {
 }
 
 document.getElementById("clearFilter").addEventListener("click", function () {
-  window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
+  clearQuery();
   closeFilters();
 });
 
@@ -305,10 +312,10 @@ if (params) {
     const rectangles = document.getElementsByClassName("rectangle");
     for (let i = 0; i < rectangles.length; i++) {
       if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("contentopen")) {
-        closeCollapsible(rectangles[i].getElementsByClassName("dropcircle")[0]);
+        closeCollapsible(rectangles[i]);
       }
     }
-    openCollapsible(document.querySelector("#" + params.get("item") + ".rectangle").getElementsByClassName("dropcircle")[0], 0);
+    openCollapsible(document.querySelector("#" + params.get("item") + ".rectangle"), 0);
     document.querySelector("#" + params.get("item") + ".rectangle").scrollIntoView({
       behavior: "smooth"
     });
