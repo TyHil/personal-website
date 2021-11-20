@@ -58,7 +58,7 @@ function closeCollapsible(rect) {
 const rectangles = document.getElementsByClassName("rectangle");
 for (let i = 0; i < rectangles.length; i++) {
   rectangles[i].addEventListener("click", function (e) {
-    if ((!e.target.classList.contains("buttonlink") || e.target.classList.contains("dropcircle")) && window.getSelection().type !== "Range") {
+    if (!e.target.classList.contains("buttonlink") && window.getSelection().type !== "Range") {
       clearQuery();
       if (rectangles[i].nextElementSibling.style.maxHeight) {//close
         closeCollapsible(rectangles[i]);
@@ -146,7 +146,7 @@ for (let i = 0; i < dropcircles.length; i++) {
 
 /* Filter */
 
-//Allow transitions
+//Allow transitions on load
 window.addEventListener("load", function () {
   const rectanlges = document.querySelectorAll(".rectangle.transitionDisabled");
   for (let i = 0; i < rectanlges.length; i++) {
@@ -158,6 +158,7 @@ window.addEventListener("load", function () {
   }
 });
 
+//On transition end or immediatly if transitions disabled
 function transitionend(el, callback) {
   if (document.readyState === "complete") {
     el.addEventListener("transitionend", callback.bind(el), { once: true });
@@ -298,7 +299,7 @@ document.getElementById("shareFilter").addEventListener("click", function () {
 const shares = document.getElementsByClassName("share");
 for (let i = 0; i < shares.length; i++) {
   shares[i].addEventListener("click", function () {
-    shareLink(this, shares[i].parentNode.getElementsByTagName("h3")[0].innerText, window.location.href.split('?')[0] + "?item=" + shares[i].parentNode.id);
+    shareLink(this, shares[i].parentNode.parentNode.getElementsByTagName("h3")[0].innerText, window.location.href.split('?')[0] + "?item=" + shares[i].parentNode.parentNode.id);
   });
 }
 
@@ -319,7 +320,8 @@ if (params) {
     document.querySelector("#" + params.get("item") + ".rectangle").scrollIntoView({
       behavior: "smooth"
     });
-  } else if (params.has("filter") && document.querySelector("#" + params.get("filter") + ".filterButton")) {
+  }
+  if (params.has("filter") && document.querySelector("#" + params.get("filter") + ".filterButton")) {
     openFilter.bind(document.querySelector("#" + params.get("filter") + ".filterButton"))();
     setTimeout(function () {
       window.scrollTo(0, 0);

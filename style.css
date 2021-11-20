@@ -416,6 +416,16 @@ span.ripplecircle {
   margin-top: 0;
   margin-bottom: 0.125rem;
 }
+.dropcircle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.6rem;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding: 0.7rem;
+  border-radius: 50%;
+}
 
 /*Project icon*/
 .icon {
@@ -450,6 +460,12 @@ span.ripplecircle {
 }
 
 /*Buttons*/
+.turnDiv {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  justify-content: flex-end;
+}
 .buttonlink {
   display: flex;
   justify-content: center;
