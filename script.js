@@ -38,7 +38,9 @@ function openCollapsible(rect, log) {
   content.style.display = "block";
   content.style.maxHeight = content.scrollHeight + "px";
   content.addEventListener("transitionend", function () {
-    this.style.maxHeight = "none";
+    if (!this.prevElementSibling.classList.contains("contentopen")) {//prevent leftover listener when double clicking quickly
+      this.style.maxHeight = "none";
+    }
   }, { once: true });
 }
 
@@ -50,7 +52,9 @@ function closeCollapsible(rect) {
   setTimeout(function () {
     content.style.maxHeight = null;
     content.addEventListener("transitionend", function () {
-      content.style.display = "none";
+      if (this.prevElementSibling.classList.contains("contentopen")) {//prevent leftover listener when double clicking quickly
+        content.style.display = "none";
+      }
     }, { once: true });
   });//delay so js runs these separately, won't animate otherwise
 }
