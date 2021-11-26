@@ -8,14 +8,16 @@
   --dark0: #020D0B; /*#000*/
   --primary: linear-gradient(90deg, #128e5a, #12858e);
   --secondary: linear-gradient(90deg, #32ae7a, #32a5ae);
+  --darkSVG: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
+  --lightSVG: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
 }
 .svg {
-  -webkit-filter: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
-          filter: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
+  -webkit-filter: var(--lightSVG);
+          filter: var(--lightSVG);
 }
 .links .svg {
-  -webkit-filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
-          filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
+  -webkit-filter: var(--darkSVG);
+          filter: var(--darkSVG);
 }
 body {
   scrollbar-color: rgba(255, 255, 255, 0.24) var(--dark0);
@@ -56,8 +58,8 @@ h4, .links h5 {
     --secondary: linear-gradient(90deg, #00b265, #00a4b2);
   }
   .svg {
-    -webkit-filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
-            filter: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
+    -webkit-filter: var(--darkSVG);
+            filter: var(--darkSVG);
   }
   body {
     scrollbar-color: rgba(0, 0, 0, 0.24) var(--dark0);
@@ -91,7 +93,7 @@ body {
   background-color: var(--dark0);
   font-family: Tahoma, sans-serif;
   margin: 0;
-  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 /*Scrollbar*/
@@ -179,14 +181,6 @@ header #right {
 .links {
   display: flex;
   align-items: center;
-  /*justify-content: flex-end;
-  width: -webkit-fit-content;
-     width: -moz-fit-content;
-          width: fit-content;
-  block-size: -webkit-fit-content;
-     block-size: -moz-fit-content;
-          block-size: fit-content;
-  cursor: pointer;*/
   min-height: 1.6rem;
   padding: 0.7rem 1rem;
   border-radius: 1.5rem;
