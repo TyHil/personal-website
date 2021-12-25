@@ -38,7 +38,7 @@ function openCollapsible(rect, log) {
   content.style.display = "block";
   content.style.maxHeight = content.scrollHeight + "px";
   content.addEventListener("transitionend", function () {
-    if (!this.prevElementSibling.classList.contains("contentopen")) {//prevent leftover listener when double clicking quickly
+    if (this.previousElementSibling.classList.contains("contentopen")) {//prevent leftover listener when double clicking quickly
       this.style.maxHeight = "none";
     }
   }, { once: true });
@@ -52,7 +52,7 @@ function closeCollapsible(rect) {
   setTimeout(function () {
     content.style.maxHeight = null;
     content.addEventListener("transitionend", function () {
-      if (this.prevElementSibling.classList.contains("contentopen")) {//prevent leftover listener when double clicking quickly
+      if (!this.previousElementSibling.classList.contains("contentopen")) {//prevent leftover listener when double clicking quickly
         content.style.display = "none";
       }
     }, { once: true });
