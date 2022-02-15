@@ -1,7 +1,10 @@
 /* Clear Query Paramaters */
+
 function clearQuery() {
   window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
 }
+
+
 
 /* Header Tilt */
 
@@ -32,13 +35,13 @@ function openCollapsible(rect, log) {
   const content = rect.nextElementSibling;
   rect.getElementsByClassName("arrow")[0].classList.add("contentopen");
   rect.classList.add("contentopen");
-  if (log) {//log open event to analytics
+  if (log) { //Log open event to analytics
     gtag("event", "view_item", { "event_category": "engagement", "event_label": rect.getElementsByTagName("h3")[0].innerText });
   }
   content.style.display = "block";
   content.style.maxHeight = content.scrollHeight + "px";
   content.addEventListener("transitionend", function () {
-    if (this.previousElementSibling.classList.contains("contentopen")) {//prevent leftover listener when double clicking quickly
+    if (this.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
       this.style.maxHeight = "none";
     }
   }, { once: true });
@@ -52,11 +55,11 @@ function closeCollapsible(rect) {
   setTimeout(function () {
     content.style.maxHeight = null;
     content.addEventListener("transitionend", function () {
-      if (!this.previousElementSibling.classList.contains("contentopen")) {//prevent leftover listener when double clicking quickly
+      if (!this.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
         content.style.display = "none";
       }
     }, { once: true });
-  });//delay so js runs these separately, won't animate otherwise
+  }); //Delay so js runs these separately, won't animate otherwise
 }
 
 const rectangles = document.getElementsByClassName("rectangle");
@@ -64,9 +67,9 @@ for (let i = 0; i < rectangles.length; i++) {
   rectangles[i].addEventListener("click", function (e) {
     if (!e.target.classList.contains("buttonlink") && window.getSelection().type !== "Range") {
       clearQuery();
-      if (rectangles[i].nextElementSibling.style.maxHeight) {//close
+      if (rectangles[i].nextElementSibling.style.maxHeight) { //Close
         closeCollapsible(rectangles[i]);
-      } else {//open
+      } else { //Open
         openCollapsible(rectangles[i], 1);
       }
     }
@@ -150,6 +153,9 @@ for (let i = 0; i < dropcircles.length; i++) {
 
 /* Filter */
 
+//Stop new clicks when still animating
+transitioning = 0
+
 //Allow transitions on load
 window.addEventListener("load", function () {
   const rectanlges = document.querySelectorAll(".rectangle.transitionDisabled");
@@ -171,25 +177,50 @@ function transitionend(el, callback) {
   }
 }
 
+function hideFilter(filter) {
+  if (!filter.classList.contains("remove")) {
+    transitioning = 1;
+    filter.style.maxWidth = filter.getBoundingClientRect().width + "px";
+    setTimeout(function () {
+      filter.classList.add("remove");
+      filter.style.maxWidth = 0;
+      transitionend(filter, function () {
+        this.style.display = "none";
+        transitioning = 0;
+      });
+    });
+  }
+}
+
+function showFilter(filter) {
+  if (filter.classList.contains("remove")) {
+    transitioning = 1;
+    filter.style.display = "inline-block";
+    setTimeout(function () {
+      filter.style.maxWidth = "200px";
+      filter.classList.remove("remove");
+      transitionend(filter, function () {
+        this.style.maxWidth = "";
+        transitioning = 0;
+      });
+    });
+  }
+}
+
 const filters = document.getElementsByClassName("filterButton");
-function openFilter() {
-  if (!this.classList.contains("filtered")) {//Not already clicked
-    this.classList.add("filtered");
-    for (let j = 0; j < filters.length; j++) {//Hide animate others
-      if (filters[j] !== this) {
-        filters[j].style.maxWidth = filters[j].getBoundingClientRect().width + "px";
-        setTimeout(function () {
-          filters[j].classList.add("remove");
-          filters[j].style.maxWidth = 0;
-          transitionend(filters[j], function () {
-            this.style.display = "none";
-          });
-        });
+function openFilter(filter) {
+  if (!filter.classList.contains("filtered") && !transitioning && (!document.getElementsByClassName("filtered").length || document.getElementsByClassName("filtered")[0].classList.contains(filter.id))) { //Not already clicked
+    filter.classList.add("filtered");
+    for (let i = 0; i < filters.length; i++) {
+      if (filters[i] !== filter && !filters[i].classList.contains(filter.id)) { //Hide others
+        hideFilter(filters[i]);
+      } else if (filters[i] === filter || filters[i].classList.contains(filter.id)) { //Show subfilters
+        showFilter(filters[i]);
       }
     }
-    const rectangles = document.getElementsByClassName("rectangle");//Hide rectangles
+    const rectangles = document.getElementsByClassName("rectangle"); //Hide rectangles
     for (let i = 0; i < rectangles.length; i++) {
-      if (!rectangles[i].classList.contains(this.id) && rectangles[i].id !== "resume") {
+      if (!rectangles[i].classList.contains(filter.id) && rectangles[i].id !== "resume") {
         if (rectangles[i].classList.contains("contentopen")) {
           closeCollapsible(rectangles[i]);
         }
@@ -203,8 +234,8 @@ function openFilter() {
         });
       }
     }
-    const clearFilter = document.getElementById("clearFilter");//show clear filter button
-    const shareFilter = document.getElementById("shareFilter");//show share filter button
+    const clearFilter = document.getElementById("clearFilter"); //Show clear filter button
+    const shareFilter = document.getElementById("shareFilter"); //Show share filter button
     clearFilter.style.display = "flex";
     shareFilter.style.display = "flex";
     setTimeout(function () {
@@ -217,48 +248,49 @@ function openFilter() {
 for (let i = 0; i < filters.length; i++) {
   filters[i].addEventListener("click", function () {
     clearQuery();
-    openFilter.bind(this)();
+    openFilter(this);
   });
 }
 
-function closeFilters() {
-  const clearFilter = document.getElementById("clearFilter");
-  const shareFilter = document.getElementById("shareFilter");
-  clearFilter.classList.remove("show");//hide self
-  shareFilter.classList.remove("show");
-  transitionend(clearFilter, function () {
-    this.style.display = "none";
-  });
-  transitionend(shareFilter, function () {
-    this.style.display = "none";
-  });
-  document.getElementsByClassName("filtered")[0].classList.remove("filtered");
-  for (let i = 0; i < filters.length; i++) {//show all buttons
-    filters[i].style.display = "inline-block";
-    setTimeout(function () {
-      filters[i].style.maxWidth = "200px";
-      filters[i].classList.remove("remove");
-      transitionend(filters[i], function () {
-        this.style.maxWidth = "";
-      });
-    });
-  }
-  const rectangles = document.getElementsByClassName("rectangle");//show all rectangles
-  for (let i = 0; i < rectangles.length; i++) {
-    rectangles[i].style.display = "flex";
-    setTimeout(function () {
-      rectangles[i].style.maxHeight = "300px";
-      rectangles[i].classList.remove("remove");
-      transitionend(rectangles[i], function () {
-        this.style.maxHeight = "";
-      });
-    });
-  }
-}
-
+//Close filters
 document.getElementById("clearFilter").addEventListener("click", function () {
-  clearQuery();
-  closeFilters();
+  if (!transitioning) {
+    clearQuery();
+    const shareFilter = document.getElementById("shareFilter");
+    this.classList.remove("show"); //Hide self
+    shareFilter.classList.remove("show");
+    transitioning = 1;
+    transitionend(this, function () {
+      this.style.display = "none";
+      transitioning = 0;
+    });
+    transitionend(shareFilter, function () {
+      this.style.display = "none";
+      transitioning = 0;
+    });
+
+    for (let i = 0; i < filters.length; i++) { //Show all buttons except subfilters
+      if (!filters[i].classList.contains("subfilter")) {
+        showFilter(filters[i]);
+      } else {
+        hideFilter(filters[i]);
+      }
+    }
+    const rectangles = document.getElementsByClassName("rectangle"); //Show all rectangles
+    for (let i = 0; i < rectangles.length; i++) {
+      rectangles[i].style.display = "flex";
+      setTimeout(function () {
+        rectangles[i].style.maxHeight = "300px";
+        rectangles[i].classList.remove("remove");
+        transitionend(rectangles[i], function () {
+          this.style.maxHeight = "";
+        });
+      });
+    }
+    while (document.getElementsByClassName("filtered")[0]) {
+      document.getElementsByClassName("filtered")[0].classList.remove("filtered");
+    }
+  }
 });
 
 
@@ -296,7 +328,14 @@ function shareLink(el, title, url) {
 
 //Share filter
 document.getElementById("shareFilter").addEventListener("click", function () {
-  shareLink(this, document.getElementsByClassName("filtered")[0].innerText + " Filter", window.location.href.split('?')[0] + "?filter=" + document.getElementsByClassName("filtered")[0].id);
+  const filtereds = document.getElementsByClassName("filtered");
+  let ids = [];
+  let names = [];
+  for (let i = 0; i < filtereds.length; i++) {
+    ids.push(filtereds[i].id);
+    names.push(filtereds[i].innerText);
+  }
+  shareLink(this, names.reverse().join(" ") + " Filter", window.location.href.split('?')[0] + "?filter=" + ids.join());
 });
 
 //Share item
@@ -325,11 +364,30 @@ if (params) {
       behavior: "smooth"
     });
   }
-  if (params.has("filter") && document.querySelector("#" + params.get("filter") + ".filterButton")) {
-    openFilter.bind(document.querySelector("#" + params.get("filter") + ".filterButton"))();
-    setTimeout(function () {
-      window.scrollTo(0, 0);
-    });
+  if (params.has("filter") && document.querySelector("#" + params.get("filter") + ".filterButton")) { //Open filter(s) one at a time, waiting for each
+    const filtereds = params.get("filter").split(",");
+    let i = 0;
+    function waitForNotTransitioning(timeout) {
+      var start = Date.now();
+      function wait(resolve, reject) {
+        if (transitioning === 0) {
+          resolve();
+        } else if (timeout && (Date.now() - start) >= timeout) {
+          reject(new Error("timeout"));
+        } else {
+          setTimeout(wait.bind(this, resolve, reject), 30);
+        }
+      }
+      return new Promise(wait);
+    }
+    openFilter(document.querySelector("#" + filtereds[i] + ".filterButton"));
+    function next() {
+      i++;
+      if (i < filtereds.length) {
+        openFilter(document.querySelector("#" + filtereds[i] + ".filterButton"));
+      }
+    }
+    waitForNotTransitioning(1000000).then(next).catch(next);
   }
 }
 
