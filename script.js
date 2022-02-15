@@ -220,7 +220,7 @@ function openFilter(filter) {
     }
     const rectangles = document.getElementsByClassName("rectangle"); //Hide rectangles
     for (let i = 0; i < rectangles.length; i++) {
-      if (!rectangles[i].classList.contains(filter.id) && rectangles[i].id !== "resume") {
+      if (!rectangles[i].classList.contains(filter.id) && rectangles[i].id !== "resume" && !rectangles[i].classList.contains("remove")) {
         if (rectangles[i].classList.contains("contentopen")) {
           closeCollapsible(rectangles[i]);
         }
@@ -278,14 +278,16 @@ document.getElementById("clearFilter").addEventListener("click", function () {
     }
     const rectangles = document.getElementsByClassName("rectangle"); //Show all rectangles
     for (let i = 0; i < rectangles.length; i++) {
-      rectangles[i].style.display = "flex";
-      setTimeout(function () {
-        rectangles[i].style.maxHeight = "300px";
-        rectangles[i].classList.remove("remove");
-        transitionend(rectangles[i], function () {
-          this.style.maxHeight = "";
+      if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("remove")) {
+        rectangles[i].style.display = "flex";
+        setTimeout(function () {
+          rectangles[i].style.maxHeight = "300px";
+          rectangles[i].classList.remove("remove");
+          transitionend(rectangles[i], function () {
+            this.style.maxHeight = "";
+          });
         });
-      });
+      }
     }
     while (document.getElementsByClassName("filtered")[0]) {
       document.getElementsByClassName("filtered")[0].classList.remove("filtered");
