@@ -8,7 +8,7 @@
 }
 
 /*Dark Mode*/
-:root { /*Gradient color average: #128A74 10 midpoints first choice*/
+:root, ::before, ::after { /*Gradient color average: #128A74 10 midpoints first choice*/
   --light0: #E9F4F2; /*#fff*/
   --light1: #CCD7D5; /*#dfdfdf*/
   --light2: #AFBAB8; /*#bfbfbf*/
@@ -56,7 +56,7 @@ h4, .links h5 {
 
 /*Light Mode*/
 @media (prefers-color-scheme: light) {
-  :root {
+  :root, ::before, ::after {
     --light0: #020D0B; /*#000*/
     --light1: #1F2A28; /*#202020*/
     --light2: #2D3836; /*#303030*/
@@ -251,8 +251,28 @@ h2 {
 #featured {
   background-image: var(--primary);
 }
-#featured:hover, #featured.filtered {
+#featured::before, #featured::after {
+  position: absolute;
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+#featured::before{
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background-image: var(--secondary);
+}
+#featured::after {
+  content: "Featured";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--dark0);
+}
+#featured:hover::before, #featured.filtered::before, #featured:hover::after, #featured.filtered::after {
+  opacity: 1;
 }
 #clearFilter, #shareFilter {
   cursor: pointer;
