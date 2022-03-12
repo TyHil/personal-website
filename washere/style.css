@@ -28,6 +28,8 @@ h1 {
   font-size: clamp(1rem, 40px + (60 - 40) * ((100vw - 480px) / (800 - 480)), 4rem);
   color: #fff;
   text-shadow: var(--startShadow);
+}
+h1:hover {
   animation: pulsate 0.11s ease-in-out infinite alternate;
 }
 
@@ -63,10 +65,10 @@ h2 {
   font-size: clamp(0.5rem, 20px + (30 - 20) * ((100vw - 480px) / (800 - 480)), 2rem);
   color: #fff;
   text-shadow: var(--startShadow);
-  animation: pulsate 0.11s ease-in-out infinite alternate;
   transition: opacity 0.4s ease-in-out;
   opacity: 0;
 }
 h1:hover + h2, h2:hover {
+  animation: pulsate 0.11s ease-in-out infinite alternate;
   opacity: 1;
 }
