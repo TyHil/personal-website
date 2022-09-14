@@ -177,6 +177,10 @@ h4 {
   margin-top: 0.6rem;
   margin-bottom: 0;
 }
+#o {
+  cursor: pointer;
+  display: inline-block;
+}
 
 /*Header Right*/
 header #right {

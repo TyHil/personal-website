@@ -8,24 +8,38 @@ function clearQuery() {
 
 /* Header Tilt */
 
+const headerBg = document.getElementById("headerBg");
 function headerHeight() {
   const base = window.innerWidth;
   const left = document.getElementById("left").clientHeight;
   const right = document.getElementById("right").clientHeight;
   const deg = 180 / Math.PI * Math.asin((right - left) / Math.sqrt(Math.pow(base, 2) + Math.pow(right - left, 2)));
-  document.getElementById("headerBg").style.transform = "skewY(" + deg + "deg)";
+  headerBg.style.transform = "skewY(" + deg + "deg)";
   if (deg >= 0) {
-    document.getElementById("headerBg").style["transform-origin"] = "top right";
+    headerBg.style["transform-origin"] = "top right";
   } else {
-    document.getElementById("headerBg").style["transform-origin"] = "top left";
+    headerBg.style["transform-origin"] = "top left";
   }
 }
 
 headerHeight();
-document.getElementById("headerBg").addEventListener("transitionend", function () {
+headerBg.addEventListener("transitionend", function () {
   this.classList.add("transitionDisabled");
 }, { once: true });
 window.addEventListener("resize", headerHeight);
+
+deg = 0
+document.getElementById("o").addEventListener("click", function() {
+  console.log("hey", this.style.transform);
+  deg += 10;
+  this.style.transform = "rotate(" + deg + "deg)";
+  headerBg.style.filter = "hue-rotate(" + deg + "deg)";
+  document.getElementById("featured").style.filter = "hue-rotate(" + deg + "deg)";
+  const features = document.getElementsByClassName("feature");
+  for (let i = 0; i < features.length; i++) {
+    features[i].style.filter = "hue-rotate(" + deg + "deg)";
+  }
+});
 
 
 
