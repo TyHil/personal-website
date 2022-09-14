@@ -28,10 +28,9 @@ headerBg.addEventListener("transitionend", function () {
 }, { once: true });
 window.addEventListener("resize", headerHeight);
 
-deg = 0
+let deg = 0;
 document.getElementById("o").addEventListener("click", function() {
-  console.log("hey", this.style.transform);
-  deg += 10;
+  deg = (deg + 10) % 360;
   this.style.transform = "rotate(" + deg + "deg)";
   headerBg.style.filter = "hue-rotate(" + deg + "deg)";
   document.getElementById("featured").style.filter = "hue-rotate(" + deg + "deg)";
