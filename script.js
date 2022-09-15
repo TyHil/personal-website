@@ -28,17 +28,24 @@ headerBg.addEventListener("transitionend", function () {
 }, { once: true });
 window.addEventListener("resize", headerHeight);
 
-let deg = 0;
-document.getElementById("o").addEventListener("click", function() {
-  deg = (deg + 10) % 360;
-  this.style.transform = "rotate(" + deg + "deg)";
-  headerBg.style.filter = "hue-rotate(" + deg + "deg)";
-  document.getElementById("featured").style.filter = "hue-rotate(" + deg + "deg)";
+let hueSatBri = [document.getElementById("hue"), document.getElementById("sat"), document.getElementById("bri")];
+let hueSatBriVals = [0, 0, 0];
+function updateColor() {
+  const changeTo = "hue-rotate(" + hueSatBriVals[0] + "deg) saturate(" + (hueSatBriVals[1]/360*200+100)%200 + "%) brightness(" + (hueSatBriVals[2]/360*200+100)%200 + "%)";
+  headerBg.style.filter = changeTo;
+  document.getElementById("featured").style.filter = changeTo;
   const features = document.getElementsByClassName("feature");
   for (let i = 0; i < features.length; i++) {
-    features[i].style.filter = "hue-rotate(" + deg + "deg)";
+    features[i].style.filter = changeTo;
   }
-});
+}
+for (let i = 0; i < 3; i++) {
+  hueSatBri[i].addEventListener("click", function() {
+    hueSatBriVals[i] = (hueSatBriVals[i] + 10) % 360;
+    updateColor();
+    this.style.transform = "rotate(" + hueSatBriVals[i] + "deg)";
+  });
+}
 
 
 
@@ -167,7 +174,7 @@ for (let i = 0; i < dropcircles.length; i++) {
 /* Filter */
 
 //Stop new clicks when still animating
-transitioning = 0
+let transitioning = 0;
 
 //Allow transitions on load
 window.addEventListener("load", function () {
