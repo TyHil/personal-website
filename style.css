@@ -519,8 +519,12 @@ button.buttonlink {
   margin-right: 0.15rem;
 }
 .thangs {
-  padding-top: 0.75rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.6rem;
+}
+.replit {
+  padding-left: 0.8rem;
+  padding-right: 0.6rem;
 }
 
 /*Share Copied*/
