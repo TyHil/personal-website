@@ -49,68 +49,52 @@ for (let i = 0; i < 3; i++) {
 
 
 
-/* Collapsibles */
+/* Open and Close Collapsibles */
 
-class Item {
-  constructor(item) {
-    this.item = item;
-    this.content = this.item.nextElementSibling;
-    this.item.addEventListener("click", (e) => {
-      if (!e.target.classList.contains("buttonlink") && window.getSelection().type !== "Range") {
-        clearQuery();
-        if (this.item.nextElementSibling.style.maxHeight) { //Close
-          this.close();
-        } else { //Open
-          this.open(1);
-        }
-      }
-    });
+function openCollapsible(rect, log) {
+  const content = rect.nextElementSibling;
+  rect.getElementsByClassName("arrow")[0].classList.add("contentopen");
+  rect.classList.add("contentopen");
+  if (log) { //Log open event to analytics
+    gtag("event", "view_item", { "event_category": "engagement", "event_label": rect.getElementsByTagName("h3")[0].innerText });
   }
-  open(log) {
-    this.item.getElementsByClassName("arrow")[0].classList.add("contentopen");
-    this.item.classList.add("contentopen");
-    if (log) { //Log open event to analytics
-      gtag("event", "view_item", { "event_category": "engagement", "event_label": this.item.getElementsByTagName("h3")[0].innerText }); ///add easy log
+  content.style.display = "block";
+  content.style.maxHeight = content.scrollHeight + "px";
+  content.addEventListener("transitionend", function () {
+    if (this.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
+      this.style.maxHeight = "none";
     }
-    this.content.style.display = "block";
-    this.content.style.maxHeight = this.content.scrollHeight + "px";
-    this.content.addEventListener("transitionend", () => {
-      if (this.content.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
-        this.content.style.maxHeight = "none";
+  }, { once: true });
+}
+
+function closeCollapsible(rect) {
+  const content = rect.nextElementSibling;
+  rect.getElementsByClassName("arrow")[0].classList.remove("contentopen");
+  rect.classList.remove("contentopen");
+  content.style.maxHeight = content.scrollHeight + "px";
+  setTimeout(function () {
+    content.style.maxHeight = null;
+    content.addEventListener("transitionend", function () {
+      if (!this.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
+        content.style.display = "none";
       }
     }, { once: true });
-  }
-  close() {
-    this.item.getElementsByClassName("arrow")[0].classList.remove("contentopen");
-    this.item.classList.remove("contentopen");
-    this.content.style.maxHeight = this.content.scrollHeight + "px";
-    setTimeout(() => {
-      this.content.style.maxHeight = null;
-      this.content.addEventListener("transitionend", () => {
-        if (!this.content.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
-          this.content.style.display = "none";
-        }
-      }, { once: true });
-    }); //Delay so js runs these separately, won't animate otherwise
-  }
+  }); //Delay so js runs these separately, won't animate otherwise
 }
 
-class Items {
-  constructor(items) {
-    this.items = {};
-    for (let i = 0; i < items.length; i++) {
-      this.items[items[i].id] = new Item(items[i]);
+const rectangles = document.getElementsByClassName("rectangle");
+for (let i = 0; i < rectangles.length; i++) {
+  rectangles[i].addEventListener("click", function (e) {
+    if (!e.target.classList.contains("buttonlink") && window.getSelection().type !== "Range") {
+      clearQuery();
+      if (rectangles[i].nextElementSibling.style.maxHeight) { //Close
+        closeCollapsible(rectangles[i]);
+      } else { //Open
+        openCollapsible(rectangles[i], 1);
+      }
     }
-  }
-  open(id, log) {
-    this.items[id].open(log);
-  }
-  close(id) {
-    this.items[id].close();
-  }
+  });
 }
-
-const items = new Items(document.getElementsByClassName("rectangle"));
 
 
 
@@ -137,45 +121,38 @@ for (let i = 0; i < circs.length; i++) {
 
 /* Full Screen Image */
 
-class Fullscreen {
-  constructor(fullscreenBackground, fullscreenImage) {
-    this.fullscreenBackground = fullscreenBackground;
-    this.fullscreenImage = fullscreenImage;
-    this.fullscreenBackground.addEventListener("click", () => {
-      this.close();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        this.close();
-      }
-    });
-  }
-  open(src) {
-    this.fullscreenImage.src = src;
-    this.fullscreenImage.alt = this.alt;
-    document.body.style.marginRight = window.innerWidth - document.documentElement.clientWidth + "px";
-    document.body.classList.add("disableScroll");
-    this.fullscreenBackground.style.display = "flex";
-    setTimeout(() => {
-      this.fullscreenBackground.classList.add("show");
-    });
-  }
-  close() {
-    this.fullscreenBackground.classList.remove("show");
-    this.fullscreenBackground.addEventListener("transitionend", () => {
-      this.fullscreenBackground.style.display = "none";
-      document.body.style.marginRight = 0;
-      document.body.classList.remove("disableScroll");
-    }, { once: true });
-  }
+let fullscreenbg = document.getElementById("fullscreenbg");
+function closeFullscreen() {
+  fullscreenbg.classList.remove("show");
+  fullscreenbg.addEventListener("transitionend", function () {
+    this.style.display = "none";
+  }, { once: true });
+  document.body.style.marginRight = 0;
+  document.body.classList.remove("disableScroll");
 }
 
-const fullscreen = new Fullscreen(document.getElementById("fullscreenbg"), document.getElementById("fullscreenimg"));
+fullscreenbg.addEventListener("click", function () {
+  closeFullscreen();
+});
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    closeFullscreen();
+  }
+});
 
 const images = document.querySelectorAll(".cards img");
 for (let i = 0; i < images.length; i++) {
-  images[i].addEventListener("click", () => {
-    fullscreen.open(images[i].src.substring(0, images[i].src.length - 3) + "2400");
+  images[i].addEventListener("click", function () {
+    let fullscreenimg = document.getElementById("fullscreenimg");
+    fullscreenimg.src = this.src.substring(0, this.src.length - 3) + "2400";
+    fullscreenimg.alt = this.alt;
+    document.body.style.marginRight = window.innerWidth - document.documentElement.clientWidth + "px";
+    document.body.classList.add("disableScroll");
+    fullscreenbg.style.display = "flex";
+    setTimeout(function () {
+      fullscreenbg.classList.add("show");
+    });
   });
 }
 
@@ -194,25 +171,29 @@ for (let i = 0; i < dropcircles.length; i++) {
 
 
 
-/* Filters */
+/* Filter */
 
 //Stop new clicks when still animating
 let transitioning = 0;
 
 //Allow transitions on load
 window.addEventListener("load", function () {
-  const rectanlgesAndFilters = document.querySelectorAll(".rectangle.transitionDisabled, .filter.transitionDisabled");
-  for (let i = 0; i < rectanlgesAndFilters.length; i++) {
-    rectanlgesAndFilters[i].classList.remove("transitionDisabled");
+  const rectanlges = document.querySelectorAll(".rectangle.transitionDisabled");
+  for (let i = 0; i < rectanlges.length; i++) {
+    rectanlges[i].classList.remove("transitionDisabled");
+  }
+  const filters = document.querySelectorAll(".filter.transitionDisabled");
+  for (let i = 0; i < filters.length; i++) {
+    filters[i].classList.remove("transitionDisabled");
   }
 });
 
 //On transition end or immediatly if transitions disabled
-function transitionend(el, callback) {
+function transitionend(element, callback) {
   if (document.readyState === "complete") {
-    el.addEventListener("transitionend", callback.bind(el), { once: true });
+    element.addEventListener("transitionend", callback, { once: true });
   } else {
-    callback.bind(el)();
+    callback();
   }
 }
 
@@ -223,8 +204,8 @@ function hideFilter(filter) {
     setTimeout(function () {
       filter.classList.add("remove");
       filter.style.maxWidth = 0;
-      transitionend(filter, function () {
-        this.style.display = "none";
+      transitionend(filter, () => {
+        filter.style.display = "none";
         transitioning = 0;
       });
     });
@@ -238,8 +219,8 @@ function showFilter(filter) {
     setTimeout(function () {
       filter.style.maxWidth = "200px";
       filter.classList.remove("remove");
-      transitionend(filter, function () {
-        this.style.maxWidth = "";
+      transitionend(filter, () => {
+        filter.style.maxWidth = "";
         transitioning = 0;
       });
     });
@@ -261,14 +242,14 @@ function openFilter(filter) {
     for (let i = 0; i < rectangles.length; i++) {
       if (!rectangles[i].classList.contains(filter.id) && rectangles[i].id !== "resume" && !rectangles[i].classList.contains("remove")) {
         if (rectangles[i].classList.contains("contentopen")) {
-          items.close(rectangles[i].id);
+          closeCollapsible(rectangles[i]);
         }
         rectangles[i].style.maxHeight = rectangles[i].getBoundingClientRect().height + "px";
         setTimeout(function () {
           rectangles[i].classList.add("remove");
           rectangles[i].style.maxHeight = 0;
-          transitionend(rectangles[i], function () {
-            this.style.display = "none";
+          transitionend(rectangles[i], () => {
+            rectangles[i].style.display = "none";
           });
         });
       }
@@ -299,12 +280,12 @@ document.getElementById("clearFilter").addEventListener("click", function () {
     this.classList.remove("show"); //Hide self
     shareFilter.classList.remove("show");
     transitioning = 1;
-    transitionend(this, function () {
+    transitionend(this, () => {
       this.style.display = "none";
       transitioning = 0;
     });
-    transitionend(shareFilter, function () {
-      this.style.display = "none";
+    transitionend(shareFilter, () => {
+      shareFilter.style.display = "none";
       transitioning = 0;
     });
 
@@ -322,8 +303,8 @@ document.getElementById("clearFilter").addEventListener("click", function () {
         setTimeout(function () {
           rectangles[i].style.maxHeight = "300px";
           rectangles[i].classList.remove("remove");
-          transitionend(rectangles[i], function () {
-            this.style.maxHeight = "";
+          transitionend(rectangles[i], () => {
+            rectangles[i].style.maxHeight = "";
           });
         });
       }
@@ -397,10 +378,10 @@ if (params) {
     const rectangles = document.getElementsByClassName("rectangle");
     for (let i = 0; i < rectangles.length; i++) {
       if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("contentopen")) {
-        items.close(rectangles[i].id);
+        closeCollapsible(rectangles[i]);
       }
     }
-    items.open(params.get("item"), 0);
+    openCollapsible(document.querySelector("#" + params.get("item") + ".rectangle"), 0);
     document.querySelector("#" + params.get("item") + ".rectangle").scrollIntoView({
       behavior: "smooth"
     });
