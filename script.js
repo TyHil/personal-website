@@ -1,7 +1,25 @@
-/* Clear Query Paramaters */
+/* Transition Management */
 
-function clearQuery() {
-  window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
+//Stop new clicks when still animating
+let transitioning = 0;
+
+function waitForNotTransitioning(callback) {
+  if (transitioning === 0) {
+    callback();
+  } else {
+    window.setTimeout(() => {
+      waitForNotTransitioning(callback);
+    }, 100);
+  }
+}
+
+//On transition end or immediatly if transitions disabled
+function onTransitionEnd(element, callback) {
+  if (document.readyState !== "complete") {
+    callback();
+  } else {
+    element.addEventListener("transitionend", callback, { once: true });
+  }
 }
 
 
@@ -49,51 +67,54 @@ for (let i = 0; i < 3; i++) {
 
 
 
-/* Open and Close Collapsibles */
+/* Collapsibles */
 
-function openCollapsible(rect, log) {
-  const content = rect.nextElementSibling;
-  rect.getElementsByClassName("arrow")[0].classList.add("contentopen");
-  rect.classList.add("contentopen");
-  if (log) { //Log open event to analytics
-    gtag("event", "view_item", { "event_category": "engagement", "event_label": rect.getElementsByTagName("h3")[0].innerText });
+class Collapsible {
+  constructor(collapsible) {
+    this.collapsible = collapsible;
+    this.content = this.collapsible.nextElementSibling;
+    this.collapsible.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("buttonlink") && window.getSelection().type !== "Range") {
+        query.clear();
+        if (this.collapsible.nextElementSibling.style.maxHeight) { //Close
+          this.close();
+        } else { //Open
+          this.open(1);
+          gtag("event", "view_item", { "event_category": "engagement", "event_label": this.collapsible.getElementsByTagName("h3")[0].innerText }); //Log open event to analytics
+        }
+      }
+    });
   }
-  content.style.display = "block";
-  content.style.maxHeight = content.scrollHeight + "px";
-  content.addEventListener("transitionend", function () {
-    if (this.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
-      this.style.maxHeight = "none";
-    }
-  }, { once: true });
-}
-
-function closeCollapsible(rect) {
-  const content = rect.nextElementSibling;
-  rect.getElementsByClassName("arrow")[0].classList.remove("contentopen");
-  rect.classList.remove("contentopen");
-  content.style.maxHeight = content.scrollHeight + "px";
-  setTimeout(function () {
-    content.style.maxHeight = null;
-    content.addEventListener("transitionend", function () {
-      if (!this.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
-        content.style.display = "none";
+  open() {
+    this.collapsible.getElementsByClassName("arrow")[0].classList.add("contentopen");
+    this.collapsible.classList.add("contentopen");
+    this.content.style.display = "block";
+    this.content.style.maxHeight = this.content.scrollHeight + "px";
+    this.content.addEventListener("transitionend", () => {
+      if (this.content.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
+        this.content.style.maxHeight = "none";
       }
     }, { once: true });
-  }); //Delay so js runs these separately, won't animate otherwise
+  }
+  close() {
+    this.collapsible.getElementsByClassName("arrow")[0].classList.remove("contentopen");
+    this.collapsible.classList.remove("contentopen");
+    this.content.style.maxHeight = this.content.scrollHeight + "px";
+    setTimeout(() => {
+      this.content.style.maxHeight = null;
+      this.content.addEventListener("transitionend", () => {
+        if (!this.content.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
+          this.content.style.display = "none";
+        }
+      }, { once: true });
+    }); //Delay so js runs these separately, won't animate otherwise
+  }
 }
 
 const rectangles = document.getElementsByClassName("rectangle");
+const collapsibles = {};
 for (let i = 0; i < rectangles.length; i++) {
-  rectangles[i].addEventListener("click", function (e) {
-    if (!e.target.classList.contains("buttonlink") && window.getSelection().type !== "Range") {
-      clearQuery();
-      if (rectangles[i].nextElementSibling.style.maxHeight) { //Close
-        closeCollapsible(rectangles[i]);
-      } else { //Open
-        openCollapsible(rectangles[i], 1);
-      }
-    }
-  });
+  collapsibles[rectangles[i].id] = new Collapsible(rectangles[i]);
 }
 
 
@@ -173,9 +194,6 @@ for (let i = 0; i < dropcircles.length; i++) {
 
 /* Filter */
 
-//Stop new clicks when still animating
-let transitioning = 0;
-
 //Allow transitions on load
 window.addEventListener("load", function () {
   const rectanlges = document.querySelectorAll(".rectangle.transitionDisabled");
@@ -188,15 +206,6 @@ window.addEventListener("load", function () {
   }
 });
 
-//On transition end or immediatly if transitions disabled
-function transitionend(element, callback) {
-  if (document.readyState === "complete") {
-    element.addEventListener("transitionend", callback, { once: true });
-  } else {
-    callback();
-  }
-}
-
 function hideFilter(filter) {
   if (!filter.classList.contains("remove")) {
     transitioning = 1;
@@ -204,7 +213,7 @@ function hideFilter(filter) {
     setTimeout(function () {
       filter.classList.add("remove");
       filter.style.maxWidth = 0;
-      transitionend(filter, () => {
+      onTransitionEnd(filter, () => {
         filter.style.display = "none";
         transitioning = 0;
       });
@@ -219,7 +228,7 @@ function showFilter(filter) {
     setTimeout(function () {
       filter.style.maxWidth = "200px";
       filter.classList.remove("remove");
-      transitionend(filter, () => {
+      onTransitionEnd(filter, () => {
         filter.style.maxWidth = "";
         transitioning = 0;
       });
@@ -243,13 +252,13 @@ function openFilter(filter) {
     for (let i = 0; i < rectangles.length; i++) {
       if (!rectangles[i].classList.contains(filter.id) && rectangles[i].id !== "resume" && !rectangles[i].classList.contains("remove")) {
         if (rectangles[i].classList.contains("contentopen")) {
-          closeCollapsible(rectangles[i]);
+          collapsibles[rectangles[i].id].close();
         }
         rectangles[i].style.maxHeight = rectangles[i].getBoundingClientRect().height + "px";
         setTimeout(function () {
           rectangles[i].classList.add("remove");
           rectangles[i].style.maxHeight = 0;
-          transitionend(rectangles[i], () => {
+          onTransitionEnd(rectangles[i], () => {
             rectangles[i].style.display = "none";
           });
         });
@@ -268,7 +277,7 @@ function openFilter(filter) {
 
 for (let i = 0; i < filters.length; i++) {
   filters[i].addEventListener("click", function () {
-    clearQuery();
+    query.clear();
     openFilter(this);
   });
 }
@@ -276,16 +285,16 @@ for (let i = 0; i < filters.length; i++) {
 //Close filters
 document.getElementById("clearFilter").addEventListener("click", function () {
   if (!transitioning) {
-    clearQuery();
+    query.clear();
     const shareFilter = document.getElementById("shareFilter");
     this.classList.remove("show"); //Hide self
     shareFilter.classList.remove("show");
     transitioning = 1;
-    transitionend(this, () => {
+    onTransitionEnd(this, () => {
       this.style.display = "none";
       transitioning = 0;
     });
-    transitionend(shareFilter, () => {
+    onTransitionEnd(shareFilter, () => {
       shareFilter.style.display = "none";
       transitioning = 0;
     });
@@ -304,7 +313,7 @@ document.getElementById("clearFilter").addEventListener("click", function () {
         setTimeout(function () {
           rectangles[i].style.maxHeight = "300px";
           rectangles[i].classList.remove("remove");
-          transitionend(rectangles[i], () => {
+          onTransitionEnd(rectangles[i], () => {
             rectangles[i].style.maxHeight = "";
           });
         });
@@ -373,47 +382,42 @@ for (let i = 0; i < shares.length; i++) {
 
 /* Query paramaters */
 
-const params = new URLSearchParams(window.location.search);
-if (params) {
-  if (params.has("item") && document.querySelector("#" + params.get("item") + ".rectangle")) {
-    const rectangles = document.getElementsByClassName("rectangle");
-    for (let i = 0; i < rectangles.length; i++) {
-      if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("contentopen")) {
-        closeCollapsible(rectangles[i]);
-      }
+class Query {
+  constructor(params) {
+    this.params = params;
+    if (params) {
+      this.read();
     }
-    openCollapsible(document.querySelector("#" + params.get("item") + ".rectangle"), 0);
-    document.querySelector("#" + params.get("item") + ".rectangle").scrollIntoView({
-      behavior: "smooth"
-    });
   }
-  if (params.has("filter") && params.get("filter").split(",").map(id => document.querySelector("#" + id + ".filterButton")).every(Boolean)) { //Open filter(s) one at a time, waiting for each
-    const filtereds = params.get("filter").split(",");
-    let i = 0;
-    function waitForNotTransitioning(timeout) {
-      var start = Date.now();
-      function wait(resolve, reject) {
-        if (transitioning === 0) {
-          resolve();
-        } else if (timeout && (Date.now() - start) >= timeout) {
-          reject(new Error("timeout"));
-        } else {
-          setTimeout(wait.bind(this, resolve, reject), 30);
+  read() {
+    if (this.params.has("item") && document.querySelector("#" + this.params.get("item") + ".rectangle")) {
+      const rectangles = document.getElementsByClassName("rectangle");
+      for (let i = 0; i < rectangles.length; i++) {
+        if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("contentopen")) {
+          collapsibles[rectangles[i].id].close();
         }
       }
-      return new Promise(wait);
+      collapsibles[this.params.get("item")].open();
+      document.querySelector("#" + this.params.get("item") + ".rectangle").scrollIntoView({
+        behavior: "smooth"
+      });
     }
-    openFilter(document.querySelector("#" + filtereds[i] + ".filterButton"));
-    function next() {
-      i++;
-      if (i < filtereds.length) {
-        openFilter(document.querySelector("#" + filtereds[i] + ".filterButton"));
-        waitForNotTransitioning(1000000).then(next);
+    if (this.params.has("filter") && this.params.get("filter").split(",").map(id => document.querySelector("#" + id + ".filterButton")).every(Boolean)) { //Open filter(s) one at a time, waiting for each
+      const filtereds = this.params.get("filter").split(",");
+      for (let i = 0; i < filtereds.length; i++) {
+        waitForNotTransitioning(() => {
+          openFilter(document.querySelector("#" + filtereds[i] + ".filterButton"));
+        });
       }
     }
-    waitForNotTransitioning(1000000).then(next);
+  }
+  clear() {
+    window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
   }
 }
+
+const query = new Query(new URLSearchParams(window.location.search));
+
 
 
 
