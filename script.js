@@ -229,12 +229,13 @@ function showFilter(filter) {
 
 const filters = document.getElementsByClassName("filterButton");
 function openFilter(filter) {
-  if (!filter.classList.contains("filtered") && !transitioning && (!document.getElementsByClassName("filtered").length || document.getElementsByClassName("filtered")[0].classList.contains(filter.id))) { //Not already clicked
+  let alreadyFiltered = document.getElementsByClassName("filtered");
+  if (!filter.classList.contains("filtered") && !transitioning && (!alreadyFiltered.length || alreadyFiltered[alreadyFiltered.length - 1].classList.contains(filter.id))) { //Not already clicked
     filter.classList.add("filtered");
     for (let i = 0; i < filters.length; i++) {
-      if (filters[i] !== filter && !filters[i].classList.contains(filter.id)) { //Hide others
+      if (!filters[i].classList.contains("filtered") && !filters[i].classList.contains(filter.id)) { //Hide others
         hideFilter(filters[i]);
-      } else if (filters[i] === filter || filters[i].classList.contains(filter.id)) { //Show subfilters
+      } else { //Show subfilters
         showFilter(filters[i]);
       }
     }
@@ -386,7 +387,7 @@ if (params) {
       behavior: "smooth"
     });
   }
-  if (params.has("filter") && document.querySelector("#" + params.get("filter") + ".filterButton")) { //Open filter(s) one at a time, waiting for each
+  if (params.has("filter") && params.get("filter").split(",").map(id => document.querySelector("#" + id + ".filterButton")).every(Boolean)) { //Open filter(s) one at a time, waiting for each
     const filtereds = params.get("filter").split(",");
     let i = 0;
     function waitForNotTransitioning(timeout) {
@@ -407,9 +408,10 @@ if (params) {
       i++;
       if (i < filtereds.length) {
         openFilter(document.querySelector("#" + filtereds[i] + ".filterButton"));
+        waitForNotTransitioning(1000000).then(next);
       }
     }
-    waitForNotTransitioning(1000000).then(next).catch(next);
+    waitForNotTransitioning(1000000).then(next);
   }
 }
 

@@ -92,12 +92,23 @@
       <h2>Projects</h2>
       <button class="filter transitionDisabled filterButton ripple" id="featured" title="Filter by featured">Featured</button>
       <button class="filter transitionDisabled filterButton ripple web cpp" id="programming" title="Filter by programming">Programming</button>
-      <button class="filter transitionDisabled filterButton ripple programming subfilter remove" id="web" title="Filter by web programming">Web</button>
-      <button class="filter transitionDisabled filterButton ripple programming subfilter remove" id="cpp" title="Filter by C++ programming">C++</button>
+        <button class="filter transitionDisabled filterButton ripple programming subfilter remove firebase" id="web" title="Filter by web programming">Web</button>
+          <button class="filter transitionDisabled filterButton ripple web subfilter remove" id="firebase" title="Filter by Firebase web programming">Firebase</button>
+        <button class="filter transitionDisabled filterButton ripple programming subfilter remove arduino library" id="cpp" title="Filter by C++ programming">C++</button>
+          <button class="filter transitionDisabled filterButton ripple cpp subfilter remove" id="arduino" title="Filter by Arduino C++ programming">Arduino</button>
+          <button class="filter transitionDisabled filterButton ripple cpp subfilter remove" id="library" title="Filter by library C++ programming">Library</button>
       <button class="filter transitionDisabled filterButton ripple UI physical" id="design" title="Filter by design">Design</button>
-      <button class="filter transitionDisabled filterButton ripple design subfilter remove" id="UI" title="Filter by UI design">UI</button>
-      <button class="filter transitionDisabled filterButton ripple design subfilter remove" id="physical" title="Filter by physical design">Physical</button>
-      <button class="filter transitionDisabled filterButton ripple" id="woodworking" title="Filter by woodworking">Woodworking</button>
+        <button class="filter transitionDisabled filterButton ripple design subfilter remove css adafruit" id="UI" title="Filter by UI design">UI</button>
+          <button class="filter transitionDisabled filterButton ripple UI subfilter remove" id="css" title="Filter by CSS UI design">CSS</button>
+          <button class="filter transitionDisabled filterButton ripple UI subfilter remove" id="adafruit" title="Filter by Adafruit GFX Library UI design">Adafruit GFX Library</button>
+        <button class="filter transitionDisabled filterButton ripple design subfilter remove cad paper" id="physical" title="Filter by physical design">Physical</button>
+          <button class="filter transitionDisabled filterButton ripple physical subfilter remove" id="cad" title="Filter by CAD physical design">CAD</button>
+          <button class="filter transitionDisabled filterButton ripple physical subfilter remove" id="paper" title="Filter by paper physical design">Paper</button>
+      <button class="filter transitionDisabled filterButton ripple electronics 3dprinting woodworking" id="production" title="Filter by production">Production</button>
+        <button class="filter transitionDisabled filterButton ripple production subfilter remove" id="electronics" title="Filter by electronics production">Electronics</button>
+        <button class="filter transitionDisabled filterButton ripple production subfilter remove" id="3dprinting" title="Filter by 3D printing production">3D Printing</button>
+        <button class="filter transitionDisabled filterButton ripple production subfilter remove" id="woodworking" title="Filter by woodworking production">Woodworking</button>
+      <button class="filter transitionDisabled filterButton ripple" id="group" title="Filter by group">Group</button>
       <button id="shareFilter" class="filter ripple" title="Copy share filter link to clipboard">
         <img class="svg check" src="images/check.svg" alt="Copied!" />
         <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
@@ -107,7 +118,7 @@
       </button>
     </div>
 
-    <div class="rectangle transitionDisabled programming web design UI" id="set-operations">
+    <div class="rectangle transitionDisabled programming web firebase design UI css" id="set-operations">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -133,7 +144,7 @@
       <iframe loading="lazy" title="Set Operations for Spotify website preview" src="set-operations-for-spotify/"></iframe>
     </div>
 
-    <div class="rectangle transitionDisabled programming web design UI featured" id="utd-trends">
+    <div class="rectangle transitionDisabled featured programming web design UI css group" id="utd-trends">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -157,7 +168,7 @@
       <iframe loading="lazy" title="Nebula Labs website preview" src="https://www.utdnebula.com/"></iframe>
     </div>
     
-    <div class="rectangle transitionDisabled programming web design UI" id="typewriter">
+    <div class="rectangle transitionDisabled programming web firebase design UI css" id="typewriter">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -183,7 +194,7 @@
       <iframe loading="lazy" title="Typewriter Formatting website preview" src="typewriter-formatting/"></iframe>
     </div>
 
-    <div class="rectangle transitionDisabled programming web design UI" id="fireworks">
+    <div class="rectangle transitionDisabled programming web design UI css" id="fireworks">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -209,7 +220,7 @@
       <iframe loading="lazy" title="Adjustable Fireworks website preview" src="https://onehtmlpagechallenge.com/entries/adjustable-fireworks.html"></iframe>
     </div>
 
-    <div class="rectangle transitionDisabled programming cpp featured" id="lift">
+    <div class="rectangle transitionDisabled featured programming cpp arduino production electronics group" id="lift">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -233,7 +244,7 @@
       <iframe loading="lazy" title="LIFT Aircraft website preview" src="https://liftaircraft.com"></iframe>
     </div>
 
-    <div class="rectangle transitionDisabled programming web design UI featured" id="collegematchmaking">
+    <div class="rectangle transitionDisabled featured programming web firebase design UI css group" id="collegematchmaking">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -257,39 +268,7 @@
       <iframe loading="lazy" title="College Matchmaking website preview" src="https://collegematchmaking.org"></iframe>
     </div>
 
-    <div class="rectangle transitionDisabled programming cpp" id="locationtracker">
-      <div class="ripple dropcircle" tabindex="0" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </div>
-      <img class="icon rounded" src="images/locationtracker.jpg" alt="Location tracker icon" />
-      <div class="text">
-        <h3>Location Tracker</h3>
-        <p>Logs location data to a micro SD card to display on a map</p>
-      </div>
-      <div class="turnDiv">
-        <a href="https://github.com/TyHil/location-tracker" target="_blank" rel="noopener" title="Open GitHub repository in a new tab" class="buttonlink ripple">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="https://photos.app.goo.gl/vAaSbQHWK3PFZunN9" target="_blank" rel="noopener" title="Open Google Photos album in a new tab" class="buttonlink ripple">
-          <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
-        </a>
-        <button title="Copy link to clipboard" class="buttonlink ripple share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
-        </button>
-      </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload" src="https://lh3.googleusercontent.com/sve7rBkonpmVuJh_wpLe9vKWRLDGLuv2QuqFMK57FvVpIHHy5Jl_T3vfz2FKqH1GLcsbyt_0NJS-Y5QUB-vDqlae_cgpIU0WQdj1RYzuIyWnaCNB9Ck8I6V_IkxsyJP8m5dyUUnuWg8=w800" loading="lazy" alt="Location tracker with GPS antenna, Arduino Nano, and Micro SD card reader visible" />
-        <img class="checkload" src="https://lh3.googleusercontent.com/Q9H1NIIJZqiOTDGCJQPXcaxwfwcKCkYaezRI83AkEeK9Lrcs_U7b3c1gXXWZVNwLSMWkIw_8EYRD-ZbIV5ccy1E9s9jzrKUJA4ore_wsUVg27TGgNRslA76Q09-I995aSKZRF1_fD6Q=w800" loading="lazy" alt="Location tracker with GPS receiver, Arduino Nano, power switch, and part of the 9v battery visible" />
-        <img class="checkload" src="https://lh3.googleusercontent.com/n7OFOyumgYiiiyvO9VOYC-7tJ6UbrKrfxcbt51oEQZxJ5CZ58YhOhLUmxMECUdmd3yvHD9aPcZ_SieUR9X-QXTWzn2XTc2oyg0kog3ERXgjNraKWR1V4coyszq9SuTcNZveHqw1OAL4=w800" loading="lazy" alt="Location tracker magnetized to the side of a metal table" />
-        <img class="checkload" src="https://lh3.googleusercontent.com/g2Hsvnhnyn6qn6KIWIB1ppcMPMGkwyYYpEbi7MVImHJPexKatb162sSLNYFiQgmCpWt1zdIhh9qG-UP97BdHfiQkIcfHaE_6lFSghnuVx3CZHMZG0-BtrrKWeBJf9bCnF6mcQw05YaI=w800" loading="lazy" alt="Inside of location tracker with 9v battery removed" />
-        <img class="checkload" src="https://lh3.googleusercontent.com/3eBCilW3aNlJLFesbzSEWnE-XI4ZRkDVskuAkNPrjSOcdtKSidLC0Q9DGRCOMPNgHKAUT1Q9qi6kk90a1QLvmoVfMdIuQ14gv0LFuV6poous6ln9gqIchBDqLQIMHZECQeL93Oq2jL4=w800" loading="lazy" alt="Magnets on location tracker covered by 3d printed case" />
-      </div>
-    </div>
-
-    <div class="rectangle transitionDisabled programming web design UI featured" id="website">
+    <div class="rectangle transitionDisabled featured programming web firebase design UI css" id="website">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -316,7 +295,7 @@
       <iframe loading="lazy" title="Current website preview" src="https://tylergordonhill.com"></iframe>
     </div>
 
-    <div class="rectangle transitionDisabled programming cpp" id="linkedlist">
+    <div class="rectangle transitionDisabled programming cpp library" id="linkedlist">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -367,7 +346,7 @@
       </div>
     </div>
 
-    <div class="rectangle transitionDisabled design physical woodworking featured" id="desk">
+    <div class="rectangle transitionDisabled featured design physical cad production woodworking" id="desk">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -400,7 +379,7 @@
       </div>
     </div>
 
-    <div class="rectangle transitionDisabled design physical" id="frog">
+    <div class="rectangle transitionDisabled design physical cad production 3dprinting" id="frog">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -433,7 +412,7 @@
       </div>
     </div>
 
-    <div class="rectangle transitionDisabled design physical woodworking featured" id="climbingwall">
+    <div class="rectangle transitionDisabled featured design physical paper production woodworking group" id="climbingwall">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -464,7 +443,7 @@
       </div>
     </div>
 
-    <div class="rectangle transitionDisabled design physical" id="coffeetable">
+    <div class="rectangle transitionDisabled design physical cad production 3dprinting" id="coffeetable">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -496,7 +475,7 @@
       </div>
     </div>
 
-    <div class="rectangle transitionDisabled programming cpp" id="mergesort">
+    <div class="rectangle transitionDisabled programming cpp library" id="mergesort">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -522,7 +501,7 @@
       <script src="https://gist.github.com/TyHil/e2d59d8a41931d1a2cc7af4c101ef3b8.js"></script>
     </div>
 
-    <div class="rectangle transitionDisabled programming cpp" id="headlamp">
+    <div class="rectangle transitionDisabled programming cpp arduino production electronics" id="headlamp">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -554,7 +533,7 @@
       </div>
     </div>
 
-    <div class="rectangle transitionDisabled programming cpp design UI physical featured" id="grpv2">
+    <div class="rectangle transitionDisabled featured programming cpp arduino design UI adafruit physical cad production electronics 3dprinting" id="grpv2">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -591,7 +570,7 @@
       </div>
     </div>
 
-    <div class="rectangle transitionDisabled design physical woodworking" id="bandsawbox">
+    <div class="rectangle transitionDisabled design physical paper production woodworking" id="bandsawbox">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -620,7 +599,7 @@
       </div>
     </div>
 
-    <div class="rectangle transitionDisabled programming cpp" id="desklight">
+    <div class="rectangle transitionDisabled programming cpp arduino production electronics" id="desklight">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -656,7 +635,7 @@
       </div>
     </div>
 
-    <div class="rectangle transitionDisabled programming cpp design UI physical" id="grpv1">
+    <div class="rectangle transitionDisabled programming cpp arduino design UI adafruit physical cad production electronics 3dprinting" id="grpv1">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -689,7 +668,7 @@
       </div>
     </div>
 
-    <div class="rectangle transitionDisabled design physical" id="drawings">
+    <div class="rectangle transitionDisabled design physical paper" id="drawings">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
@@ -754,7 +733,7 @@
       </div>
     </div>
 
-    <div class="rectangle transitionDisabled programming cpp" id="walllight">
+    <div class="rectangle transitionDisabled programming cpp arduino production electronics" id="walllight">
       <div class="ripple dropcircle" tabindex="0" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </div>
