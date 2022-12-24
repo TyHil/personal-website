@@ -7,7 +7,7 @@ function waitForNotTransitioning(callback) {
   if (transitioning === 0) {
     callback();
   } else {
-    window.setTimeout(() => {
+    setTimeout(() => {
       waitForNotTransitioning(callback);
     }, 100);
   }
@@ -250,10 +250,6 @@ for (let i = 0; i < dropcircles.length; i++) {
 class Filter {
   constructor(filter) {
     this.filter = filter;
-    this.filter.addEventListener("click", () => {
-      clearQuery();
-      openFilter(this.filter);
-    });
   }
   hide() {
     if (!this.filter.classList.contains("remove")) {
@@ -289,11 +285,17 @@ const filterButtons = document.getElementsByClassName("filterButton");
 const filters = {};
 for (let i = 0; i < filterButtons.length; i++) {
   filters[filterButtons[i].id] = new Filter(filterButtons[i]);
+  filterButtons[i].addEventListener("click", () => {
+    if (!transitioning) {
+      clearQuery();
+      openFilter(filterButtons[i]);
+    }
+  });
 }
 
 function openFilter(filter) {
   let alreadyFiltered = document.getElementsByClassName("filtered");
-  if (!filter.classList.contains("filtered") && !transitioning && (!alreadyFiltered.length || alreadyFiltered[alreadyFiltered.length - 1].classList.contains(filter.id))) { //Not already clicked
+  if (!filter.classList.contains("filtered") && (!alreadyFiltered.length || alreadyFiltered[alreadyFiltered.length - 1].classList.contains(filter.id))) { //Not already clicked
     filter.classList.add("filtered");
     for (let i = 0; i < filterButtons.length; i++) {
       if (!filterButtons[i].classList.contains("filtered") && !filterButtons[i].classList.contains(filter.id)) { //Hide others
@@ -312,7 +314,7 @@ function openFilter(filter) {
     const shareFilter = document.getElementById("shareFilter"); //Show share filter button
     clearFilter.style.display = "flex";
     shareFilter.style.display = "flex";
-    setTimeout(function () {
+    setTimeout(() => {
       clearFilter.classList.add("show");
       shareFilter.classList.add("show");
     });
@@ -326,15 +328,8 @@ document.getElementById("clearFilter").addEventListener("click", function () {
     const shareFilter = document.getElementById("shareFilter");
     this.classList.remove("show"); //Hide self
     shareFilter.classList.remove("show");
-    transitioning = 1;
-    onTransitionEnd(this, () => {
-      this.style.display = "none";
-      transitioning = 0;
-    });
-    onTransitionEnd(shareFilter, () => {
-      shareFilter.style.display = "none";
-      transitioning = 0;
-    });
+    this.style.display = "none";
+    shareFilter.style.display = "none";
 
     for (let i = 0; i < filterButtons.length; i++) { //Show all buttons except subfilters
       if (!filterButtons[i].classList.contains("subfilter")) {
