@@ -24,6 +24,25 @@ function onTransitionEnd(element, callback) {
 
 
 
+/* Clear Query Paramaters */
+
+function clearQuery() {
+  window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
+}
+
+
+
+/* Allow transitions on load */
+
+window.addEventListener("load", function () {
+  const rectanlgesAndFilters = document.querySelectorAll(".rectangle.transitionDisabled, .filter.transitionDisabled");
+  for (let i = 0; i < rectanlgesAndFilters.length; i++) {
+    rectanlgesAndFilters[i].classList.remove("transitionDisabled");
+  }
+});
+
+
+
 /* Header Tilt */
 
 const headerBg = document.getElementById("headerBg");
@@ -48,6 +67,7 @@ window.addEventListener("resize", headerHeight);
 
 let hueSatBri = [document.getElementById("hue"), document.getElementById("sat"), document.getElementById("bri")];
 let hueSatBriVals = [0, 0, 0];
+
 function updateColor() {
   const changeTo = "hue-rotate(" + hueSatBriVals[0] + "deg) saturate(" + (hueSatBriVals[1]/360*200+100)%200 + "%) brightness(" + (hueSatBriVals[2]/360*200+100)%200 + "%)";
   headerBg.style.filter = changeTo;
@@ -57,6 +77,7 @@ function updateColor() {
     features[i].style.filter = changeTo;
   }
 }
+
 for (let i = 0; i < 3; i++) {
   hueSatBri[i].addEventListener("click", function() {
     hueSatBriVals[i] = (hueSatBriVals[i] + 10) % 360;
@@ -70,24 +91,24 @@ for (let i = 0; i < 3; i++) {
 /* Collapsibles */
 
 class Collapsible {
-  constructor(collapsible) {
-    this.collapsible = collapsible;
-    this.content = this.collapsible.nextElementSibling;
-    this.collapsible.addEventListener("click", (e) => {
+  constructor(item) {
+    this.item = item;
+    this.content = this.item.nextElementSibling;
+    this.item.addEventListener("click", (e) => {
       if (!e.target.classList.contains("buttonlink") && window.getSelection().type !== "Range") {
-        query.clear();
-        if (this.collapsible.nextElementSibling.style.maxHeight) { //Close
+        clearQuery();
+        if (this.item.nextElementSibling.style.maxHeight) { //Close
           this.close();
         } else { //Open
           this.open(1);
-          gtag("event", "view_item", { "event_category": "engagement", "event_label": this.collapsible.getElementsByTagName("h3")[0].innerText }); //Log open event to analytics
+          gtag("event", "view_item", { "event_category": "engagement", "event_label": this.item.getElementsByTagName("h3")[0].innerText }); //Log open event to analytics
         }
       }
     });
   }
   open() {
-    this.collapsible.getElementsByClassName("arrow")[0].classList.add("contentopen");
-    this.collapsible.classList.add("contentopen");
+    this.item.getElementsByClassName("arrow")[0].classList.add("contentopen");
+    this.item.classList.add("contentopen");
     this.content.style.display = "block";
     this.content.style.maxHeight = this.content.scrollHeight + "px";
     this.content.addEventListener("transitionend", () => {
@@ -97,8 +118,8 @@ class Collapsible {
     }, { once: true });
   }
   close() {
-    this.collapsible.getElementsByClassName("arrow")[0].classList.remove("contentopen");
-    this.collapsible.classList.remove("contentopen");
+    this.item.getElementsByClassName("arrow")[0].classList.remove("contentopen");
+    this.item.classList.remove("contentopen");
     this.content.style.maxHeight = this.content.scrollHeight + "px";
     setTimeout(() => {
       this.content.style.maxHeight = null;
@@ -110,28 +131,28 @@ class Collapsible {
     }); //Delay so js runs these separately, won't animate otherwise
   }
   hide() {
-    if (this.collapsible.id !== "resume" && !this.collapsible.classList.contains("remove")) {
-      if (this.collapsible.classList.contains("contentopen")) {
+    if (this.item.id !== "resume" && !this.item.classList.contains("remove")) {
+      if (this.item.classList.contains("contentopen")) {
         this.close();
       }
-      this.collapsible.style.maxHeight = this.collapsible.getBoundingClientRect().height + "px";
+      this.item.style.maxHeight = this.item.getBoundingClientRect().height + "px";
       setTimeout(() => {
-        this.collapsible.classList.add("remove");
-        this.collapsible.style.maxHeight = 0;
-        onTransitionEnd(this.collapsible, () => {
-          this.collapsible.style.display = "none";
+        this.item.classList.add("remove");
+        this.item.style.maxHeight = 0;
+        onTransitionEnd(this.item, () => {
+          this.item.style.display = "none";
         });
       });
     }
   }
   show() {
-    if (this.collapsible.id !== "resume" && this.collapsible.classList.contains("remove")) {
-      this.collapsible.style.display = "flex";
+    if (this.item.id !== "resume" && this.item.classList.contains("remove")) {
+      this.item.style.display = "flex";
       setTimeout(() => {
-        this.collapsible.style.maxHeight = "300px";
-        this.collapsible.classList.remove("remove");
-        onTransitionEnd(this.collapsible, () => {
-          this.collapsible.style.maxHeight = "";
+        this.item.style.maxHeight = "300px";
+        this.item.classList.remove("remove");
+        onTransitionEnd(this.item, () => {
+          this.item.style.maxHeight = "";
         });
       });
     }
@@ -170,6 +191,26 @@ for (let i = 0; i < circs.length; i++) {
 /* Full Screen Image */
 
 let fullscreenbg = document.getElementById("fullscreenbg");
+
+function openFullscreen(src, alt) {
+   let fullscreenimg = document.getElementById("fullscreenimg");
+  fullscreenimg.src = src;
+  fullscreenimg.alt = alt;
+  document.body.style.marginRight = window.innerWidth - document.documentElement.clientWidth + "px";
+  document.body.classList.add("disableScroll");
+  fullscreenbg.style.display = "flex";
+  setTimeout(function () {
+    fullscreenbg.classList.add("show");
+  });
+}
+
+const images = document.querySelectorAll(".cards img");
+for (let i = 0; i < images.length; i++) {
+  images[i].addEventListener("click", () => {
+    openFullscreen(images[i].src.substring(0, images[i].src.length - 3) + "2400", images[i].alt);
+  });
+}
+
 function closeFullscreen() {
   fullscreenbg.classList.remove("show");
   fullscreenbg.addEventListener("transitionend", function () {
@@ -189,21 +230,6 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-const images = document.querySelectorAll(".cards img");
-for (let i = 0; i < images.length; i++) {
-  images[i].addEventListener("click", function () {
-    let fullscreenimg = document.getElementById("fullscreenimg");
-    fullscreenimg.src = this.src.substring(0, this.src.length - 3) + "2400";
-    fullscreenimg.alt = this.alt;
-    document.body.style.marginRight = window.innerWidth - document.documentElement.clientWidth + "px";
-    document.body.classList.add("disableScroll");
-    fullscreenbg.style.display = "flex";
-    setTimeout(function () {
-      fullscreenbg.classList.add("show");
-    });
-  });
-}
-
 
 
 /* Tab Enter/Space Clicks */
@@ -221,58 +247,59 @@ for (let i = 0; i < dropcircles.length; i++) {
 
 /* Filter */
 
-//Allow transitions on load
-window.addEventListener("load", function () {
-  const rectanlges = document.querySelectorAll(".rectangle.transitionDisabled");
-  for (let i = 0; i < rectanlges.length; i++) {
-    rectanlges[i].classList.remove("transitionDisabled");
-  }
-  const filters = document.querySelectorAll(".filter.transitionDisabled");
-  for (let i = 0; i < filters.length; i++) {
-    filters[i].classList.remove("transitionDisabled");
-  }
-});
-
-function hideFilter(filter) {
-  if (!filter.classList.contains("remove")) {
-    transitioning = 1;
-    filter.style.maxWidth = filter.getBoundingClientRect().width + "px";
-    setTimeout(function () {
-      filter.classList.add("remove");
-      filter.style.maxWidth = 0;
-      onTransitionEnd(filter, () => {
-        filter.style.display = "none";
-        transitioning = 0;
-      });
+class Filter {
+  constructor(filter) {
+    this.filter = filter;
+    this.filter.addEventListener("click", () => {
+      clearQuery();
+      openFilter(this.filter);
     });
+  }
+  hide() {
+    if (!this.filter.classList.contains("remove")) {
+      transitioning = 1;
+      this.filter.style.maxWidth = this.filter.getBoundingClientRect().width + "px";
+      setTimeout(() => {
+        this.filter.classList.add("remove");
+        this.filter.style.maxWidth = 0;
+        onTransitionEnd(this.filter, () => {
+          this.filter.style.display = "none";
+          transitioning = 0;
+        });
+      });
+    }
+  }
+  show() {
+    if (this.filter.classList.contains("remove")) {
+      transitioning = 1;
+      this.filter.style.display = "inline-block";
+      setTimeout(() => {
+        this.filter.style.maxWidth = "200px";
+        this.filter.classList.remove("remove");
+        onTransitionEnd(this.filter, () => {
+          this.filter.style.maxWidth = "";
+          transitioning = 0;
+        });
+      });
+    }
   }
 }
 
-function showFilter(filter) {
-  if (filter.classList.contains("remove")) {
-    transitioning = 1;
-    filter.style.display = "inline-block";
-    setTimeout(function () {
-      filter.style.maxWidth = "200px";
-      filter.classList.remove("remove");
-      onTransitionEnd(filter, () => {
-        filter.style.maxWidth = "";
-        transitioning = 0;
-      });
-    });
-  }
+const filterButtons = document.getElementsByClassName("filterButton");
+const filters = {};
+for (let i = 0; i < filterButtons.length; i++) {
+  filters[filterButtons[i].id] = new Filter(filterButtons[i]);
 }
 
-const filters = document.getElementsByClassName("filterButton");
 function openFilter(filter) {
   let alreadyFiltered = document.getElementsByClassName("filtered");
   if (!filter.classList.contains("filtered") && !transitioning && (!alreadyFiltered.length || alreadyFiltered[alreadyFiltered.length - 1].classList.contains(filter.id))) { //Not already clicked
     filter.classList.add("filtered");
-    for (let i = 0; i < filters.length; i++) {
-      if (!filters[i].classList.contains("filtered") && !filters[i].classList.contains(filter.id)) { //Hide others
-        hideFilter(filters[i]);
+    for (let i = 0; i < filterButtons.length; i++) {
+      if (!filterButtons[i].classList.contains("filtered") && !filterButtons[i].classList.contains(filter.id)) { //Hide others
+        filters[filterButtons[i].id].hide();
       } else { //Show subfilters
-        showFilter(filters[i]);
+        filters[filterButtons[i].id].show();
       }
     }
     const rectangles = document.getElementsByClassName("rectangle"); //Hide rectangles
@@ -292,17 +319,10 @@ function openFilter(filter) {
   }
 }
 
-for (let i = 0; i < filters.length; i++) {
-  filters[i].addEventListener("click", function () {
-    query.clear();
-    openFilter(this);
-  });
-}
-
 //Close filters
 document.getElementById("clearFilter").addEventListener("click", function () {
   if (!transitioning) {
-    query.clear();
+    clearQuery();
     const shareFilter = document.getElementById("shareFilter");
     this.classList.remove("show"); //Hide self
     shareFilter.classList.remove("show");
@@ -316,11 +336,11 @@ document.getElementById("clearFilter").addEventListener("click", function () {
       transitioning = 0;
     });
 
-    for (let i = 0; i < filters.length; i++) { //Show all buttons except subfilters
-      if (!filters[i].classList.contains("subfilter")) {
-        showFilter(filters[i]);
+    for (let i = 0; i < filterButtons.length; i++) { //Show all buttons except subfilters
+      if (!filterButtons[i].classList.contains("subfilter")) {
+        filters[filterButtons[i].id].show();
       } else {
-        hideFilter(filters[i]);
+        filters[filterButtons[i].id].hide();
       }
     }
     const rectangles = document.getElementsByClassName("rectangle"); //Show all rectangles
@@ -390,42 +410,34 @@ for (let i = 0; i < shares.length; i++) {
 
 /* Query paramaters */
 
-class Query {
-  constructor(params) {
-    this.params = params;
-    if (params) {
-      this.read();
-    }
-  }
-  read() {
-    if (this.params.has("item") && document.querySelector("#" + this.params.get("item") + ".rectangle")) {
-      const rectangles = document.getElementsByClassName("rectangle");
-      for (let i = 0; i < rectangles.length; i++) {
-        if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("contentopen")) {
-          collapsibles[rectangles[i].id].close();
-        }
-      }
-      collapsibles[this.params.get("item")].open();
-      document.querySelector("#" + this.params.get("item") + ".rectangle").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-    if (this.params.has("filter") && this.params.get("filter").split(",").map(id => document.querySelector("#" + id + ".filterButton")).every(Boolean)) { //Open filter(s) one at a time, waiting for each
-      const filtereds = this.params.get("filter").split(",");
-      for (let i = 0; i < filtereds.length; i++) {
-        waitForNotTransitioning(() => {
-          openFilter(document.querySelector("#" + filtereds[i] + ".filterButton"));
-        });
-      }
-    }
-  }
-  clear() {
-    window.history.replaceState("", document.title, window.location.toString().substring(0, window.location.toString().indexOf("?")));
+function openFilterAndWait(list) { //Open filter(s) one at a time, waiting for each
+  if (list.length) {
+    waitForNotTransitioning(() => {
+      openFilter(document.querySelector("#" + list.shift() + ".filterButton"));
+      openFilterAndWait(list);
+    });
   }
 }
 
-const query = new Query(new URLSearchParams(window.location.search));
+const params = new URLSearchParams(window.location.search);
 
+if (params) {
+  if (params.has("item") && document.querySelector("#" + params.get("item") + ".rectangle")) {
+    const rectangles = document.getElementsByClassName("rectangle");
+    for (let i = 0; i < rectangles.length; i++) {
+      if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("contentopen")) {
+        collapsibles[rectangles[i].id].close();
+      }
+    }
+    collapsibles[params.get("item")].open();
+    document.querySelector("#" + params.get("item") + ".rectangle").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+  if (params.has("filter") && params.get("filter").split(",").map(id => document.querySelector("#" + id + ".filterButton")).every(Boolean)) { //if each filter is a valid element
+    openFilterAndWait(params.get("filter").split(","));
+  }
+}
 
 
 
