@@ -109,6 +109,33 @@ class Collapsible {
       }, { once: true });
     }); //Delay so js runs these separately, won't animate otherwise
   }
+  hide() {
+    if (this.collapsible.id !== "resume" && !this.collapsible.classList.contains("remove")) {
+      if (this.collapsible.classList.contains("contentopen")) {
+        this.close();
+      }
+      this.collapsible.style.maxHeight = this.collapsible.getBoundingClientRect().height + "px";
+      setTimeout(() => {
+        this.collapsible.classList.add("remove");
+        this.collapsible.style.maxHeight = 0;
+        onTransitionEnd(this.collapsible, () => {
+          this.collapsible.style.display = "none";
+        });
+      });
+    }
+  }
+  show() {
+    if (this.collapsible.id !== "resume" && this.collapsible.classList.contains("remove")) {
+      this.collapsible.style.display = "flex";
+      setTimeout(() => {
+        this.collapsible.style.maxHeight = "300px";
+        this.collapsible.classList.remove("remove");
+        onTransitionEnd(this.collapsible, () => {
+          this.collapsible.style.maxHeight = "";
+        });
+      });
+    }
+  }
 }
 
 const rectangles = document.getElementsByClassName("rectangle");
@@ -250,18 +277,8 @@ function openFilter(filter) {
     }
     const rectangles = document.getElementsByClassName("rectangle"); //Hide rectangles
     for (let i = 0; i < rectangles.length; i++) {
-      if (!rectangles[i].classList.contains(filter.id) && rectangles[i].id !== "resume" && !rectangles[i].classList.contains("remove")) {
-        if (rectangles[i].classList.contains("contentopen")) {
-          collapsibles[rectangles[i].id].close();
-        }
-        rectangles[i].style.maxHeight = rectangles[i].getBoundingClientRect().height + "px";
-        setTimeout(function () {
-          rectangles[i].classList.add("remove");
-          rectangles[i].style.maxHeight = 0;
-          onTransitionEnd(rectangles[i], () => {
-            rectangles[i].style.display = "none";
-          });
-        });
+      if (!rectangles[i].classList.contains(filter.id)) {
+        collapsibles[rectangles[i].id].hide();
       }
     }
     const clearFilter = document.getElementById("clearFilter"); //Show clear filter button
@@ -308,16 +325,7 @@ document.getElementById("clearFilter").addEventListener("click", function () {
     }
     const rectangles = document.getElementsByClassName("rectangle"); //Show all rectangles
     for (let i = 0; i < rectangles.length; i++) {
-      if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("remove")) {
-        rectangles[i].style.display = "flex";
-        setTimeout(function () {
-          rectangles[i].style.maxHeight = "300px";
-          rectangles[i].classList.remove("remove");
-          onTransitionEnd(rectangles[i], () => {
-            rectangles[i].style.maxHeight = "";
-          });
-        });
-      }
+      collapsibles[rectangles[i].id].show();
     }
     while (document.getElementsByClassName("filtered")[0]) {
       document.getElementsByClassName("filtered")[0].classList.remove("filtered");
