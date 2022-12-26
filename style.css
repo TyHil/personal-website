@@ -1,4 +1,4 @@
-/* prefers-reduced-motion */
+/* Accessibility */
 
 @media screen and (prefers-reduced-motion: reduce), (update: slow) {
   * {
@@ -6,6 +6,10 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+*:focus-visible {
+  outline: 3px solid var(--light2);
 }
 
 
@@ -44,7 +48,7 @@ body {
 span.ripplecircle {
   background-color: rgba(255, 255, 255, 0.4);
 }
-h1, #featured {
+h1, #featured, #featured::after {
   color: var(--dark0);
 }
 h4, .links h5 {
@@ -54,7 +58,7 @@ h4, .links h5 {
   -webkit-text-decoration-color: var(--dark1);
           text-decoration-color: var(--dark1);
 }
-.links.ripple:hover {
+.links.ripple:hover, .links.ripple:focus-visible {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -89,7 +93,7 @@ h4, .links h5 {
   span.ripplecircle {
     background-color: rgba(0, 0, 0, 0.4);
   }
-  h1, #featured {
+  h1, #featured, #featured::after {
     color: var(--light1);
   }
   h4, .links h5 {
@@ -99,7 +103,7 @@ h4, .links h5 {
     -webkit-text-decoration-color: var(--light2);
             text-decoration-color: var(--light2);
   }
-  .links.ripple:hover {
+  .links.ripple:hover, .links.ripple:focus-visible {
     background-color: rgba(0, 0, 0, 0.1);
   }
 }
@@ -293,9 +297,8 @@ h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--dark0);
 }
-#featured:hover::before, #featured.filtered::before, #featured:hover::after, #featured.filtered::after {
+#featured:hover::before, #featured:focus-visible::before, #featured.filtered::before, #featured:hover::after, #featured:focus-visible::after, #featured.filtered::after {
   opacity: 1;
 }
 #clearFilter, #shareFilter {
@@ -430,7 +433,7 @@ main {
 .ripple img {
   pointer-events: none;
 }
-.ripple:hover, #clearFilter:hover {
+.ripple:hover, .ripple:focus-visible, #clearFilter:hover, #clearFilter:focus-visible {
   background-color: var(--dark2);
 }
 span.ripplecircle {
@@ -479,6 +482,9 @@ span.ripplecircle {
   margin-bottom: 0.125rem;
 }
 .dropcircle {
+  border: none;
+  background: transparent;
+  box-sizing: content-box;
   display: flex;
   justify-content: center;
   align-items: center;

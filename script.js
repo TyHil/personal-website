@@ -232,19 +232,6 @@ document.addEventListener("keydown", function (e) {
 
 
 
-/* Tab Enter/Space Clicks */
-
-const dropcircles = document.getElementsByClassName("dropcircle");
-for (let i = 0; i < dropcircles.length; i++) {
-  dropcircles[i].addEventListener("keydown", function (e) {
-    if (e.code === 'Space' || e.code === 'Enter') {
-      this.click();
-    }
-  });
-}
-
-
-
 /* Filter */
 
 class Filter {
