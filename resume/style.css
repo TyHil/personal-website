@@ -1,0 +1,23 @@
+/*Dark Mode*/
+:root {
+  --light1: #CCD7D5; /*#dfdfdf*/
+  --dark0: #020D0B; /*#000*/
+}
+
+/*Light Mode*/
+@media (prefers-color-scheme: light) {
+  :root {
+    --light1: #1F2A28; /*#202020*/
+    --dark0: #E9F4F2; /*#fff*/
+  }
+}
+body {
+  background-color: var(--dark0);
+  color: var(--light1);
+}
+a {
+  color: #8475f9;
+}
+a:visited {
+  color: #9140db;
+}
