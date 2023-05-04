@@ -1,5 +1,6 @@
 language = "html"
 run = ""
+hidden = [".config"]
 
 [languages]
 
@@ -23,3 +24,9 @@ pattern = "**/{*.less,*.scss,*.css}"
 
 [languages.css.languageServer]
 start = "vscode-css-language-server --stdio"
+
+[nix]
+channel = "stable-22_11"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix", ".config"]
