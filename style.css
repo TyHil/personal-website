@@ -1,3 +1,21 @@
+/* Reset */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+
 /* Accessibility */
 
 @media screen and (prefers-reduced-motion: reduce), (update: slow) {
@@ -7,7 +25,6 @@
     transition-duration: 0.001ms !important;
   }
 }
-
 *:focus-visible {
   outline: 3px solid var(--light2);
 }
@@ -177,9 +194,9 @@ header > * {
   height: 110%;
   -webkit-transform-origin: top right;
           transform-origin: top right;
-  transition: -webkit-transform 0.2s;
-          transition: transform 0.2s;
-          transition: transform 0.2s, -webkit-transform 0.2s;
+  transition: -webkit-transform 200ms ease-out;
+          transition: transform 200ms ease-out;
+          transition: transform 200ms ease-out, -webkit-transform 200ms ease-out;
 }
 
 /*Header Left*/
@@ -216,7 +233,7 @@ header #right {
 .links {
   display: flex;
   align-items: center;
-  min-height: 1.6rem;
+  min-height: 3rem;
   padding: 0.7rem 1rem;
   border-radius: 1.5rem;
 }
@@ -226,8 +243,9 @@ header #right {
   margin: 0;
   margin-right: 0.6rem;
 }
-.links img {
+.links img, .circleButton img {
   height: 1.6rem;
+  min-width: 1.6rem;
   width: 1.6rem;
 }
 
@@ -261,7 +279,7 @@ h2 {
   margin-right: 0.5rem;
 }
 .ripple.filter {
-  transition: background-color 0.2s, background-image 0.2s, padding 0.2s, opacity 0.2s, max-width 0.2s, margin-right 0.2s;
+  transition: background-color 200ms, background-image 200ms, padding 200ms, opacity 200ms, max-width 200ms, margin-right 200ms;
 }
 .filtered.filter {
   background-color: var(--dark2);
@@ -280,7 +298,7 @@ h2 {
 }
 #featured::before, #featured::after {
   position: absolute;
-  transition: opacity 0.2s;
+  transition: opacity 200ms;
   opacity: 0;
   border-radius: 1.5rem;
 }
@@ -307,7 +325,7 @@ h2 {
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transition: background-color 0.2s, opacity 0.2s;
+  transition: background-color 200ms, opacity 200ms;
 }
 #clearFilter img {
   cursor: pointer;
@@ -315,8 +333,8 @@ h2 {
   height: 1.2rem;
 }
 #shareFilter img.shareIcon, #shareFilter img.check {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 3rem;
+  height: 3rem;
 }
 #clearFilter.show, #shareFilter.show {
   opacity: 1;
@@ -330,16 +348,16 @@ main {
   padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
 
-/*Item body*/
+/*Collapsible body*/
 
-.rectangle {
+.collapsible {
   margin-top: 1.25rem;
   padding: 0.4rem 0.6rem;
   background-color: var(--dark1);
   border-radius: 0.6rem;
   display: flex;
   align-items: center;
-  transition: border-radius 0.2s, padding 0.2s, opacity 0.2s, max-height 0.2s, min-height 0.2s, margin-top 0.2s;
+  transition: border-radius 200ms 400ms, padding 200ms, opacity 200ms, max-height 200ms, min-height 200ms, margin-top 200ms;
   overflow: hidden;
   position: relative;
   cursor: pointer;
@@ -353,14 +371,15 @@ main {
   clip-path: polygon(0 0, 0% 100%, 100% 0);
   background-image: var(--primary);
 }
-.rectangle.remove {
+.collapsible.remove {
   opacity: 0;
   padding: 0 0.6rem;
   margin-top: 0;
   min-height: 0;
 }
-.rectangle.contentopen {
+.collapsible.open {
   border-radius: 0.6rem 0.6rem 0 0;
+  transition: border-radius 200ms, padding 200ms, opacity 200ms, max-height 200ms, min-height 200ms, margin-top 200ms;
 }
 
 /*Dropdown content*/
@@ -369,7 +388,10 @@ main {
   display: none;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: max-height 200ms ease-out;
+}
+.content.open {
+  transition: max-height 200ms ease-out 200ms;
 }
 .content iframe, .content .gist, .content .cards {
   width: 100%;
@@ -394,9 +416,9 @@ main {
   height: auto;
   margin-bottom: 0.6rem;
   border-radius: 0.3rem;
-  transition: -webkit-transform 0.2s;
-          transition: transform 0.2s;
-          transition: transform 0.2s, -webkit-transform 0.2s;
+  transition: -webkit-transform 200ms;
+          transition: transform 200ms;
+          transition: transform 200ms, -webkit-transform 200ms;
   cursor: pointer;
 }
 
@@ -428,7 +450,7 @@ main {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: background-color 0.2s;
+  transition: background-color 200ms;
 }
 .ripple img {
   pointer-events: none;
@@ -441,8 +463,8 @@ span.ripplecircle {
   border-radius: 50%;
   -webkit-transform: scale(0);
           transform: scale(0);
-  -webkit-animation: ripplecircle 0.6s linear;
-          animation: ripplecircle 0.6s linear;
+  -webkit-animation: ripplecircle 600ms linear;
+          animation: ripplecircle 600ms linear;
 }
 @-webkit-keyframes ripplecircle {
   to {
@@ -469,30 +491,17 @@ span.ripplecircle {
   transition: none !important;
 }
 .arrow {
-  margin-top: 0.125rem;
-  margin-bottom: 0;
-  transition: margin 0.2s ease-out, -webkit-transform 0.2s ease-out;
-          transition: transform 0.2s ease-out, margin 0.2s ease-out;
-          transition: transform 0.2s ease-out, margin 0.2s ease-out, -webkit-transform 0.2s ease-out;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  margin: 0 0 0 0.125rem;
+  transition: margin 200ms ease-out, -webkit-transform 200ms ease-out;
+          transition: transform 200ms ease-out, margin 200ms ease-out;
+          transition: transform 200ms ease-out, margin 200ms ease-out, -webkit-transform 200ms ease-out;
 }
-.arrow.contentopen {
-  -webkit-transform: rotate(-180deg);
-          transform: rotate(-180deg);
-  margin-top: 0;
-  margin-bottom: 0.125rem;
-}
-.dropcircle {
-  border: none;
-  background: transparent;
-  box-sizing: content-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.6rem;
-  min-width: 1.6rem;
-  height: 1.6rem;
-  padding: 0.7rem;
-  border-radius: 50%;
+.collapsible.open .arrow {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  margin: 0.125rem 0 0 0;
 }
 
 /*Project icon*/
@@ -509,54 +518,43 @@ span.ripplecircle {
 
 /*Project title*/
 
-.rectangle .text {
+.collapsible .text {
   margin-right: auto;
   margin-left: 1rem;
 }
-.rectangle .text h3 {
+.collapsible .text h3 {
   color: var(--light1);
   font-size: 1.5rem;
   font-weight: normal;
   margin: 0 0 0.1rem 0;
   display: inline-block;
 }
-.rectangle .text p {
+.collapsible .text p {
   color: var(--light2);
   font-size: 1rem;
   margin: 0;
 }
-.rectangle .text h3, .rectangle .text p {
+.collapsible .text h3, .collapsible .text p {
   cursor: text;
 }
 
 /*Buttons*/
 
-.turnDiv {
+.options {
   display: flex;
   align-items: center;
   flex-wrap: wrap-reverse;
   justify-content: flex-end;
 }
-.buttonlink {
+.circleButton {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1.6rem;
-  min-width: 1.6rem;
-  height: 1.6rem;
+  width: 3rem;
+  min-width: 3rem;
+  height: 3rem;
   padding: 0.7rem;
   border-radius: 50%;
-}
-.buttonlink img, .arrow {
-  width: 1.6rem;
-  min-width: 1.6rem;
-  height: 1.6rem;
-}
-button.buttonlink {
-  border: none;
-  background-color: Transparent;
-  box-sizing: unset;
-  cursor: pointer;
 }
 .shareIcon {
   margin-right: 0.15rem;
@@ -629,7 +627,7 @@ button.buttonlink {
   bottom: 0;
   display: none;
   justify-content: center;
-  transition: backdrop-filter 0.2s, background-color 0.2s;
+  transition: backdrop-filter 200ms, background-color 200ms;
 }
 #fullscreenbg.show {
   -webkit-backdrop-filter: blur(0.1rem);
@@ -642,7 +640,7 @@ button.buttonlink {
   -o-object-fit: contain;
      object-fit: contain;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 200ms;
 }
 #fullscreenbg.show #fullscreenimg {
   opacity: 1;

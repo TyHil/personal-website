@@ -34,8 +34,8 @@ function clearQuery() {
 
 /* Allow transitions on load */
 
-window.addEventListener("load", function () {
-  const rectanlgesAndFilters = document.querySelectorAll(".rectangle.transitionDisabled, .filter.transitionDisabled");
+window.addEventListener("load", function() {
+  const rectanlgesAndFilters = document.querySelectorAll(".collapsible.transitionDisabled, .filter.transitionDisabled");
   for (let i = 0; i < rectanlgesAndFilters.length; i++) {
     rectanlgesAndFilters[i].classList.remove("transitionDisabled");
   }
@@ -60,7 +60,7 @@ function headerHeight() {
 }
 
 headerHeight();
-headerBg.addEventListener("transitionend", function () {
+headerBg.addEventListener("transitionend", function() {
   this.classList.add("transitionDisabled");
 }, { once: true });
 window.addEventListener("resize", headerHeight);
@@ -69,7 +69,7 @@ let hueSatBri = [document.getElementById("hue"), document.getElementById("sat"),
 let hueSatBriVals = [0, 0, 0];
 
 function updateColor() {
-  const changeTo = "hue-rotate(" + hueSatBriVals[0] + "deg) saturate(" + (hueSatBriVals[1]/360*200+100)%200 + "%) brightness(" + (hueSatBriVals[2]/360*200+100)%200 + "%)";
+  const changeTo = "hue-rotate(" + hueSatBriVals[0] + "deg) saturate(" + (hueSatBriVals[1] / 360 * 200 + 100) % 200 + "%) brightness(" + (hueSatBriVals[2] / 360 * 200 + 100) % 200 + "%)";
   headerBg.style.filter = changeTo;
   document.getElementById("featured").style.filter = changeTo;
   const features = document.getElementsByClassName("feature");
@@ -95,7 +95,7 @@ class Collapsible {
     this.item = item;
     this.content = this.item.nextElementSibling;
     this.item.addEventListener("click", (e) => {
-      if (!e.target.classList.contains("buttonlink") && window.getSelection().type !== "Range") {
+      if (!e.target.classList.contains("noOpen") && window.getSelection().type !== "Range") {
         clearQuery();
         if (this.item.nextElementSibling.style.maxHeight) { //Close
           this.close();
@@ -107,24 +107,24 @@ class Collapsible {
     });
   }
   open() {
-    this.item.getElementsByClassName("arrow")[0].classList.add("contentopen");
-    this.item.classList.add("contentopen");
+    this.item.classList.add("open");
+    this.content.classList.add("open");
     this.content.style.display = "block";
     this.content.style.maxHeight = this.content.scrollHeight + "px";
     this.content.addEventListener("transitionend", () => {
-      if (this.content.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
+      if (this.content.previousElementSibling.classList.contains("open")) { //Prevent leftover listener when double clicking quickly
         this.content.style.maxHeight = "none";
       }
     }, { once: true });
   }
   close() {
-    this.item.getElementsByClassName("arrow")[0].classList.remove("contentopen");
-    this.item.classList.remove("contentopen");
+    this.item.classList.remove("open");
+    this.content.classList.remove("open");
     this.content.style.maxHeight = this.content.scrollHeight + "px";
     setTimeout(() => {
       this.content.style.maxHeight = null;
       this.content.addEventListener("transitionend", () => {
-        if (!this.content.previousElementSibling.classList.contains("contentopen")) { //Prevent leftover listener when double clicking quickly
+        if (!this.content.previousElementSibling.classList.contains("open")) { //Prevent leftover listener when double clicking quickly
           this.content.style.display = "none";
         }
       }, { once: true });
@@ -132,7 +132,7 @@ class Collapsible {
   }
   hide() {
     if (this.item.id !== "resume" && !this.item.classList.contains("remove")) {
-      if (this.item.classList.contains("contentopen")) {
+      if (this.item.classList.contains("open")) {
         this.close();
       }
       this.item.style.maxHeight = this.item.getBoundingClientRect().height + "px";
@@ -159,10 +159,10 @@ class Collapsible {
   }
 }
 
-const rectangles = document.getElementsByClassName("rectangle");
+const collapsibleItems = document.getElementsByClassName("collapsible");
 const collapsibles = {};
-for (let i = 0; i < rectangles.length; i++) {
-  collapsibles[rectangles[i].id] = new Collapsible(rectangles[i]);
+for (let i = 0; i < collapsibleItems.length; i++) {
+  collapsibles[collapsibleItems[i].id] = new Collapsible(collapsibleItems[i]);
 }
 
 
@@ -171,7 +171,7 @@ for (let i = 0; i < rectangles.length; i++) {
 
 const circs = document.getElementsByClassName("ripple");
 for (let i = 0; i < circs.length; i++) {
-  circs[i].addEventListener("click", function (e) {
+  circs[i].addEventListener("click", function(e) {
     const ripple = document.createElement("span");
     const diameter = Math.max(this.clientWidth, this.clientHeight);
     const radius = diameter / 2;
@@ -180,7 +180,7 @@ for (let i = 0; i < circs.length; i++) {
     ripple.style.top = e.offsetY - radius + "px";
     ripple.classList.add("ripplecircle");
     this.append(ripple);
-    ripple.addEventListener("animationend", function () {
+    ripple.addEventListener("animationend", function() {
       this.remove();
     }, { once: true });
   });
@@ -193,13 +193,13 @@ for (let i = 0; i < circs.length; i++) {
 let fullscreenbg = document.getElementById("fullscreenbg");
 
 function openFullscreen(src, alt) {
-   let fullscreenimg = document.getElementById("fullscreenimg");
+  let fullscreenimg = document.getElementById("fullscreenimg");
   fullscreenimg.src = src;
   fullscreenimg.alt = alt;
   document.body.style.marginRight = window.innerWidth - document.documentElement.clientWidth + "px";
   document.body.classList.add("disableScroll");
   fullscreenbg.style.display = "flex";
-  setTimeout(function () {
+  setTimeout(function() {
     fullscreenbg.classList.add("show");
   });
 }
@@ -213,18 +213,18 @@ for (let i = 0; i < images.length; i++) {
 
 function closeFullscreen() {
   fullscreenbg.classList.remove("show");
-  fullscreenbg.addEventListener("transitionend", function () {
+  fullscreenbg.addEventListener("transitionend", function() {
     this.style.display = "none";
   }, { once: true });
   document.body.style.marginRight = 0;
   document.body.classList.remove("disableScroll");
 }
 
-fullscreenbg.addEventListener("click", function () {
+fullscreenbg.addEventListener("click", function() {
   closeFullscreen();
 });
 
-document.addEventListener("keydown", function (e) {
+document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
     closeFullscreen();
   }
@@ -291,10 +291,9 @@ function openFilter(filter) {
         filters[filterButtons[i].id].show();
       }
     }
-    const rectangles = document.getElementsByClassName("rectangle"); //Hide rectangles
-    for (let i = 0; i < rectangles.length; i++) {
-      if (!rectangles[i].classList.contains(filter.id)) {
-        collapsibles[rectangles[i].id].hide();
+    for (const id in collapsibles) { //Hide collapsibles
+      if (!collapsibles[id].item.classList.contains(filter.id)) {
+        collapsibles[id].hide();
       }
     }
     const clearFilter = document.getElementById("clearFilter"); //Show clear filter button
@@ -309,7 +308,7 @@ function openFilter(filter) {
 }
 
 //Close filters
-document.getElementById("clearFilter").addEventListener("click", function () {
+document.getElementById("clearFilter").addEventListener("click", function() {
   if (!transitioning) {
     clearQuery();
     const shareFilter = document.getElementById("shareFilter");
@@ -325,9 +324,8 @@ document.getElementById("clearFilter").addEventListener("click", function () {
         filters[filterButtons[i].id].hide();
       }
     }
-    const rectangles = document.getElementsByClassName("rectangle"); //Show all rectangles
-    for (let i = 0; i < rectangles.length; i++) {
-      collapsibles[rectangles[i].id].show();
+    for (const id in collapsibles) { //Show all collapsibles
+      collapsibles[id].show();
     }
     while (document.getElementsByClassName("filtered")[0]) {
       document.getElementsByClassName("filtered")[0].classList.remove("filtered");
@@ -343,12 +341,12 @@ function shareLink(el, title, url) {
   function success() {
     const check = el.getElementsByClassName("check")[0];
     check.classList.add("copied");
-    check.addEventListener("animationend", function () {
+    check.addEventListener("animationend", function() {
       this.classList.remove("copied");
     }, { once: true });
     const shareIcon = el.getElementsByClassName("shareIcon")[0];
     shareIcon.classList.add("copied");
-    shareIcon.addEventListener("animationend", function () {
+    shareIcon.addEventListener("animationend", function() {
       this.classList.remove("copied");
     }, { once: true });
   }
@@ -369,7 +367,7 @@ function shareLink(el, title, url) {
 }
 
 //Share filter
-document.getElementById("shareFilter").addEventListener("click", function () {
+document.getElementById("shareFilter").addEventListener("click", function() {
   const filtereds = document.getElementsByClassName("filtered");
   let ids = [];
   let names = [];
@@ -383,7 +381,7 @@ document.getElementById("shareFilter").addEventListener("click", function () {
 //Share item
 const shares = document.getElementsByClassName("share");
 for (let i = 0; i < shares.length; i++) {
-  shares[i].addEventListener("click", function () {
+  shares[i].addEventListener("click", function() {
     shareLink(this, shares[i].parentNode.parentNode.getElementsByTagName("h3")[0].innerText, window.location.href.split('?')[0] + "?item=" + shares[i].parentNode.parentNode.id);
   });
 }
@@ -404,15 +402,9 @@ function openFilterAndWait(list) { //Open filter(s) one at a time, waiting for e
 const params = new URLSearchParams(window.location.search);
 
 if (params) {
-  if (params.has("item") && document.querySelector("#" + params.get("item") + ".rectangle")) {
-    const rectangles = document.getElementsByClassName("rectangle");
-    for (let i = 0; i < rectangles.length; i++) {
-      if (rectangles[i].id !== "resume" && rectangles[i].classList.contains("contentopen")) {
-        collapsibles[rectangles[i].id].close();
-      }
-    }
+  if (params.has("item") && document.querySelector("#" + params.get("item") + ".collapsible")) {
     collapsibles[params.get("item")].open();
-    document.querySelector("#" + params.get("item") + ".rectangle").scrollIntoView({
+    document.querySelector("#" + params.get("item") + ".collapsible").scrollIntoView({
       behavior: "smooth"
     });
   }
