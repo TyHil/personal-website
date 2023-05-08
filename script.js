@@ -115,7 +115,7 @@ class Collapsible {
         this.content.style.maxHeight = "none";
       }
     }, { once: true });
-    gtag("event", "view_item", { "event_category": "engagement", "event_label": this.item.getElementsByTagName("h3")[0].innerText }); //Log open event to analytics
+    gtag("event", "view_item", { "event_category": "engagement", "event_label": this.item.getElementsByTagName("h3")[0].innerText }); //Log view_item event to analytics
   }
   close() {
     this.item.classList.remove("open");
@@ -272,10 +272,11 @@ const filterButtons = document.getElementsByClassName("filterButton");
 const filters = {};
 for (let i = 0; i < filterButtons.length; i++) {
   filters[filterButtons[i].id] = new Filter(filterButtons[i]);
-  filterButtons[i].addEventListener("click", () => {
+  filterButtons[i].addEventListener("click", function() {
     if (!transitioning) {
       clearQuery();
-      openFilter(filterButtons[i]);
+      openFilter(this);
+      logOpenFilter();
     }
   });
 }
@@ -376,6 +377,7 @@ document.getElementById("shareFilter").addEventListener("click", function() {
     names.push(filtereds[i].innerText);
   }
   shareLink(this, names.reverse().join(" ") + " Filter", window.location.href.split('?')[0] + "?filter=" + ids.join());
+  gtag("event", "share_filter", { "event_category": "engagement", "event_label": names.join(" ") }); //Log share_filter event to analytics
 });
 
 //Share item
@@ -383,6 +385,7 @@ const shares = document.getElementsByClassName("share");
 for (let i = 0; i < shares.length; i++) {
   shares[i].addEventListener("click", function() {
     shareLink(this, shares[i].parentNode.parentNode.getElementsByTagName("h3")[0].innerText, window.location.href.split('?')[0] + "?item=" + shares[i].parentNode.parentNode.id);
+    gtag("event", "share_item", { "event_category": "engagement", "event_label": this.parentNode.parentNode.getElementsByTagName("h3")[0].innerText }); //Log share_item event to analytics
   });
 }
 
@@ -396,6 +399,8 @@ function openFilterAndWait(list) { //Open filter(s) one at a time, waiting for e
       openFilter(document.querySelector("#" + list.shift() + ".filterButton"));
       openFilterAndWait(list);
     });
+  } else {
+    logOpenFilter();
   }
 }
 
@@ -425,12 +430,15 @@ gtag("config", "G-BVTJ5JS3H2");
 const links = document.getElementsByTagName('a');
 for (let i = 0; i < links.length; i++) {
   links[i].addEventListener('click', function() {
-    gtag("event", "click_link", { "event_category": "engagement", "event_label": this.href }); //Log link event to analytics
+    gtag("event", "click_link", { "event_category": "engagement", "event_label": this.href }); //Log click_link event to analytics
   });
 }
 
-for (let i = 0; i < shares.length; i++) {
-  shares[i].addEventListener('click', function() {
-    gtag("event", "share_item", { "event_category": "engagement", "event_label": this.parentNode.parentNode.getElementsByTagName("h3")[0].innerText }); //Log share event to analytics
-  });
+function logOpenFilter() {
+  const filtereds = document.getElementsByClassName("filtered");
+  let names = [];
+  for (let i = 0; i < filtereds.length; i++) {
+    names.push(filtereds[i].innerText);
+  }
+  gtag("event", "view_filter", { "event_category": "engagement", "event_label": names.reverse().join(" ") }); //Log view_filter event to analytics
 }
