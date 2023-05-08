@@ -100,8 +100,7 @@ class Collapsible {
         if (this.item.nextElementSibling.style.maxHeight) { //Close
           this.close();
         } else { //Open
-          this.open(1);
-          gtag("event", "view_item", { "event_category": "engagement", "event_label": this.item.getElementsByTagName("h3")[0].innerText }); //Log open event to analytics
+          this.open();
         }
       }
     });
@@ -116,6 +115,7 @@ class Collapsible {
         this.content.style.maxHeight = "none";
       }
     }, { once: true });
+    gtag("event", "view_item", { "event_category": "engagement", "event_label": this.item.getElementsByTagName("h3")[0].innerText }); //Log open event to analytics
   }
   close() {
     this.item.classList.remove("open");
@@ -421,3 +421,16 @@ window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
 gtag("js", new Date());
 gtag("config", "G-BVTJ5JS3H2");
+
+const links = document.getElementsByTagName('a');
+for (let i = 0; i < links.length; i++) {
+  links[i].addEventListener('click', function() {
+    gtag("event", "click_link", { "event_category": "engagement", "event_label": this.href }); //Log link event to analytics
+  });
+}
+
+for (let i = 0; i < shares.length; i++) {
+  shares[i].addEventListener('click', function() {
+    gtag("event", "share_item", { "event_category": "engagement", "event_label": this.parentNode.parentNode.getElementsByTagName("h3")[0].innerText }); //Log share event to analytics
+  });
+}
