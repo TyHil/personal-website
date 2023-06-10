@@ -66,7 +66,7 @@
   </header>
 
   <main>
-    <div class="collapsible transitionDisabled" id="resume">
+    <div class="item collapsible transitionDisabled" id="resume">
       <button class="ripple circleButton">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -100,8 +100,10 @@
         title="Filter by featured">Featured</button>
       <button class="filter transitionDisabled filterButton ripple web cpp" id="programming"
         title="Filter by programming">Programming</button>
-      <button class="filter transitionDisabled filterButton ripple programming subfilter remove firebase" id="web"
+      <button class="filter transitionDisabled filterButton ripple programming subfilter remove react firebase" id="web"
         title="Filter by web programming">Web</button>
+      <button class="filter transitionDisabled filterButton ripple web subfilter remove" id="react"
+        title="Filter by React web programming">React</button>
       <button class="filter transitionDisabled filterButton ripple web subfilter remove" id="firebase"
         title="Filter by Firebase web programming">Firebase</button>
       <button class="filter transitionDisabled filterButton ripple programming subfilter remove arduino library"
@@ -142,7 +144,56 @@
       </button>
     </div>
 
-    <div class="collapsible transitionDisabled programming web firebase design UI css" id="set-operations">
+    <div class="item transitionDisabled featured programming web react design UI css" id="eve">
+      <div class="feature" title="Featured item"></div>
+      <img loading="lazy" class="icon" src="images/eve.png"
+        alt="eve Vehicles icon" />
+      <div class="text">
+        <h3>eve Vehicles Internship</h3>
+        <p>Develops UI tools for first responders to control a fleet of reconnaissance drones</p>
+      </div>
+      <div class="options">
+        <a href="https://github.com/eve-Vhx" target="_blank" rel="noopener"
+          title="Open GitHub organization in a new tab" class="ripple circleButton noOpen">
+          <img class="svg" src="images/github.svg" alt="GitHub icon" />
+        </a>
+        <a href="https://www.evevehicles.com/" target="_blank" title="Open site in a new tab" class="ripple circleButton noOpen">
+          <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
+        </a>
+        <button title="Share link to project" class="ripple circleButton noOpen share">
+          <img class="svg check" src="images/check.svg" alt="Copied!" />
+          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+        </button>
+      </div>
+    </div>
+
+    <div class="item collapsible transitionDisabled featured programming web react design UI css" id="govdaddy">
+      <button class="ripple circleButton" title="Expand content">
+        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
+      </button>
+      <div class="feature" title="Featured item"></div>
+      <img loading="lazy" class="icon svg" src="images/govdaddy.svg"
+        alt="GovDaddy icon" />
+      <div class="text">
+        <h3>GovDaddy Contract Work</h3>
+        <p>Created the entire GovDaddy website on a team of two in two weeks</p>
+      </div>
+      <div class="options">
+        <a href="https://jolly-moss-0d9466410.3.azurestaticapps.net/" target="_blank" title="Open site in a new tab" class="ripple circleButton noOpen">
+          <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
+        </a>
+        <button title="Share link to project" class="ripple circleButton noOpen share">
+          <img class="svg check" src="images/check.svg" alt="Copied!" />
+          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+        </button>
+      </div>
+    </div>
+    <div class="content">
+      <iframe loading="lazy" title="GovDaddy website preview"
+        src="https://jolly-moss-0d9466410.3.azurestaticapps.net/"></iframe>
+    </div>
+
+    <div class="item collapsible transitionDisabled programming web firebase design UI css" id="set-operations">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -171,7 +222,7 @@
         src="set-operations-for-spotify/"></iframe>
     </div>
 
-    <div class="collapsible transitionDisabled featured programming web design UI css group" id="utd-trends">
+    <div class="item collapsible transitionDisabled featured programming web react UI css group" id="utd-trends">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -201,7 +252,7 @@
         src="https://trends.utdnebula.com/dashboard?searchTerms=CS+3305%2CCS+3305+Ravi+Prakash"></iframe>
     </div>
 
-    <div class="collapsible transitionDisabled programming web firebase design UI css" id="typewriter">
+    <div class="item collapsible transitionDisabled programming web firebase design UI css" id="typewriter">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -228,7 +279,7 @@
       <iframe loading="lazy" title="Typewriter Formatting website preview" src="typewriter-formatting/"></iframe>
     </div>
 
-    <div class="collapsible transitionDisabled programming web design UI css" id="fireworks">
+    <div class="item collapsible transitionDisabled programming web design UI css" id="fireworks">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -257,7 +308,7 @@
         src="https://onehtmlpagechallenge.com/entries/adjustable-fireworks.html"></iframe>
     </div>
 
-    <div class="collapsible transitionDisabled featured programming cpp arduino production electronics group" id="lift">
+    <div class="item collapsible transitionDisabled featured programming cpp arduino production electronics group" id="lift">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -283,7 +334,7 @@
       <iframe loading="lazy" title="LIFT Aircraft website preview" src="https://liftaircraft.com"></iframe>
     </div>
 
-    <div class="collapsible transitionDisabled featured programming web firebase design UI css group"
+    <div class="item collapsible transitionDisabled featured programming web firebase design UI css group"
       id="collegematchmaking">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
@@ -310,7 +361,7 @@
       <iframe loading="lazy" title="College Matchmaking website preview" src="https://collegematchmaking.org"></iframe>
     </div>
 
-    <div class="collapsible transitionDisabled featured programming web firebase design UI css" id="website">
+    <div class="item collapsible transitionDisabled featured programming web firebase design UI css" id="website">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -339,7 +390,7 @@
       <iframe loading="lazy" title="Current website preview" src="https://tylergordonhill.com"></iframe>
     </div>
 
-    <div class="collapsible transitionDisabled programming cpp library" id="linkedlist">
+    <div class="item collapsible transitionDisabled programming cpp library" id="linkedlist">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -367,7 +418,7 @@
       <script src="https://gist.github.com/TyHil/2fa5b13005dc53e7b4a36763320182e6.js"></script>
     </div>
 
-    <div class="collapsible transitionDisabled design" id="homescreen">
+    <div class="item collapsible transitionDisabled design" id="homescreen">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -395,11 +446,10 @@
       </div>
     </div>
 
-    <div class="collapsible transitionDisabled featured design physical cad production woodworking" id="desk">
+    <div class="item collapsible transitionDisabled design physical cad production woodworking" id="desk">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
-      <div class="feature" title="Featured item"></div>
       <img loading="lazy" class="icon rounded" src="images/desk.jpg" alt="Desk icon" />
       <div class="text">
         <h3>Desk</h3>
@@ -440,7 +490,7 @@
       </div>
     </div>
 
-    <div class="collapsible transitionDisabled design physical cad production 3dprinting" id="frog">
+    <div class="item collapsible transitionDisabled design physical cad production 3dprinting" id="frog">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -487,12 +537,11 @@
       </div>
     </div>
 
-    <div class="collapsible transitionDisabled featured design physical paper production woodworking group"
+    <div class="item collapsible transitionDisabled design physical paper production woodworking group"
       id="climbingwall">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
-      <div class="feature" title="Featured item"></div>
       <img loading="lazy" class="icon rounded" src="images/climbingwall.jpg" alt="Climbing wall icon" />
       <div class="text">
         <h3>Climbing Wall</h3>
@@ -532,7 +581,7 @@
       </div>
     </div>
 
-    <div class="collapsible transitionDisabled design physical cad production 3dprinting" id="coffeetable">
+    <div class="item collapsible transitionDisabled design physical cad production 3dprinting" id="coffeetable">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -576,7 +625,7 @@
       </div>
     </div>
 
-    <div class="collapsible transitionDisabled programming cpp arduino production electronics" id="headlamp">
+    <div class="item collapsible transitionDisabled programming cpp arduino production electronics" id="headlamp">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -621,12 +670,11 @@
     </div>
 
     <div
-      class="collapsible transitionDisabled featured programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
+      class="item collapsible transitionDisabled programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
       id="grpv2">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
-      <div class="feature" title="Featured item"></div>
       <img loading="lazy" class="icon rounded" src="images/grpv2.jpg" alt="Game Ractangular Prism V2 icon" />
       <div class="text">
         <h3>Game Rectangular Prism V2</h3>
@@ -674,7 +722,7 @@
       </div>
     </div>
 
-    <div class="collapsible transitionDisabled design physical paper production woodworking" id="bandsawbox">
+    <div class="item collapsible transitionDisabled design physical paper production woodworking" id="bandsawbox">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -714,7 +762,7 @@
       </div>
     </div>
 
-    <div class="collapsible transitionDisabled programming cpp arduino production electronics" id="desklight">
+    <div class="item collapsible transitionDisabled programming cpp arduino production electronics" id="desklight">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -771,7 +819,7 @@
     </div>
 
     <div
-      class="collapsible transitionDisabled programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
+      class="item collapsible transitionDisabled programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
       id="grpv1">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
@@ -814,7 +862,7 @@
       </div>
     </div>
 
-    <div class="collapsible transitionDisabled design physical paper" id="drawings">
+    <div class="item collapsible transitionDisabled design physical paper" id="drawings">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -866,7 +914,7 @@
       </div>
     </div>
 
-    <div class="collapsible transitionDisabled programming web" id="notes">
+    <div class="item collapsible transitionDisabled programming web" id="notes">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -905,7 +953,7 @@
       </div>
     </div>
 
-    <div class="collapsible transitionDisabled programming cpp arduino production electronics" id="walllight">
+    <div class="item collapsible transitionDisabled programming cpp arduino production electronics" id="walllight">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>
@@ -952,7 +1000,7 @@
       </div>
     </div>
 
-    <div class="collapsible transitionDisabled" id="photography">
+    <div class="item collapsible transitionDisabled" id="photography">
       <button class="ripple circleButton" title="Expand content">
         <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
       </button>

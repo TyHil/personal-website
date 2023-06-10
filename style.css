@@ -355,9 +355,9 @@ main {
   padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
 
-/*Collapsible body*/
+/*Item body*/
 
-.collapsible {
+.item {
   margin-top: 1.25rem;
   padding: 0.4rem 0.6rem;
   background-color: var(--dark1);
@@ -367,6 +367,8 @@ main {
   transition: border-radius 200ms 400ms, padding 200ms, opacity 200ms, max-height 200ms, min-height 200ms, margin-top 200ms;
   overflow: hidden;
   position: relative;
+}
+.collapsible {
   cursor: pointer;
 }
 .feature {
@@ -378,7 +380,7 @@ main {
   clip-path: polygon(0 0, 0% 100%, 100% 0);
   background-image: var(--primary);
 }
-.collapsible.remove {
+.item.remove {
   opacity: 0;
   padding: 0 0.6rem;
   margin-top: 0;
@@ -525,23 +527,23 @@ span.ripplecircle {
 
 /*Project title*/
 
-.collapsible .text {
+.item .text {
   margin-right: auto;
   margin-left: 1rem;
 }
-.collapsible .text h3 {
+.item .text h3 {
   color: var(--light1);
   font-size: 1.5rem;
   font-weight: normal;
   margin: 0 0 0.1rem 0;
   display: inline-block;
 }
-.collapsible .text p {
+.item .text p {
   color: var(--light2);
   font-size: 1rem;
   margin: 0;
 }
-.collapsible .text h3, .collapsible .text p {
+.item .text h3, .item .text p {
   cursor: text;
 }
 

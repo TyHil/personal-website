@@ -35,7 +35,7 @@ function clearQuery() {
 /* Allow transitions on load */
 
 window.addEventListener("load", function() {
-  const rectanlgesAndFilters = document.querySelectorAll(".collapsible.transitionDisabled, .filter.transitionDisabled");
+  const rectanlgesAndFilters = document.querySelectorAll(".item.transitionDisabled, .filter.transitionDisabled");
   for (let i = 0; i < rectanlgesAndFilters.length; i++) {
     rectanlgesAndFilters[i].classList.remove("transitionDisabled");
   }
@@ -88,50 +88,57 @@ for (let i = 0; i < 3; i++) {
 
 
 
-/* Collapsibles */
+/* Items */
 
-class Collapsible {
+class Item {
   constructor(item) {
     this.item = item;
-    this.content = this.item.nextElementSibling;
-    this.item.addEventListener("click", (e) => {
-      if (!e.target.classList.contains("noOpen") && window.getSelection().type !== "Range") {
-        clearQuery();
-        if (this.item.nextElementSibling.style.maxHeight) { //Close
-          this.close();
-        } else { //Open
-          this.open();
+    this.canOpen = item.classList.contains("collapsible");
+    if (this.canOpen) {
+      this.content = this.item.nextElementSibling;
+      this.item.addEventListener("click", (e) => {
+        if (!e.target.classList.contains("noOpen") && window.getSelection().type !== "Range") {
+          clearQuery();
+          if (this.item.nextElementSibling.style.maxHeight) { //Close
+            this.close();
+          } else { //Open
+            this.open();
+          }
         }
-      }
-    });
+      });
+    }
   }
   open() {
-    this.item.classList.add("open");
-    this.content.classList.add("open");
-    this.content.style.display = "block";
-    this.content.style.maxHeight = this.content.scrollHeight + "px";
-    this.content.addEventListener("transitionend", () => {
-      if (this.content.previousElementSibling.classList.contains("open")) { //Prevent leftover listener when double clicking quickly
-        this.content.style.maxHeight = "none";
-      }
-    }, { once: true });
-    gtag("event", "view_item", { "event_category": "engagement", "event_label": this.item.getElementsByTagName("h3")[0].innerText }); //Log view_item event to analytics
-  }
-  close() {
-    this.item.classList.remove("open");
-    this.content.classList.remove("open");
-    this.content.style.maxHeight = this.content.scrollHeight + "px";
-    setTimeout(() => {
-      this.content.style.maxHeight = null;
+    if (this.canOpen) {
+      this.item.classList.add("open");
+      this.content.classList.add("open");
+      this.content.style.display = "block";
+      this.content.style.maxHeight = this.content.scrollHeight + "px";
       this.content.addEventListener("transitionend", () => {
-        if (!this.content.previousElementSibling.classList.contains("open")) { //Prevent leftover listener when double clicking quickly
-          this.content.style.display = "none";
+        if (this.content.previousElementSibling.classList.contains("open")) { //Prevent leftover listener when double clicking quickly
+          this.content.style.maxHeight = "none";
         }
       }, { once: true });
-    }); //Delay so js runs these separately, won't animate otherwise
+      gtag("event", "view_item", { "event_category": "engagement", "event_label": this.item.getElementsByTagName("h3")[0].innerText }); //Log view_item event to analytics
+    }
+  }
+  close() {
+    if (this.canOpen) {
+      this.item.classList.remove("open");
+      this.content.classList.remove("open");
+      this.content.style.maxHeight = this.content.scrollHeight + "px";
+      setTimeout(() => {
+        this.content.style.maxHeight = null;
+        this.content.addEventListener("transitionend", () => {
+          if (!this.content.previousElementSibling.classList.contains("open")) { //Prevent leftover listener when double clicking quickly
+            this.content.style.display = "none";
+          }
+        }, { once: true });
+      }); //Delay so js runs these separately, won't animate otherwise
+    }
   }
   hide() {
-    if (this.item.id !== "resume" && !this.item.classList.contains("remove")) {
+    if (this.canOpen && this.item.id !== "resume" && !this.item.classList.contains("remove")) {
       if (this.item.classList.contains("open")) {
         this.close();
       }
@@ -159,10 +166,10 @@ class Collapsible {
   }
 }
 
-const collapsibleItems = document.getElementsByClassName("collapsible");
-const collapsibles = {};
-for (let i = 0; i < collapsibleItems.length; i++) {
-  collapsibles[collapsibleItems[i].id] = new Collapsible(collapsibleItems[i]);
+const itemsDOM = document.getElementsByClassName("item");
+const items = {};
+for (let i = 0; i < itemsDOM.length; i++) {
+  items[itemsDOM[i].id] = new Item(itemsDOM[i]);
 }
 
 
@@ -292,9 +299,9 @@ function openFilter(filter) {
         filters[filterButtons[i].id].show();
       }
     }
-    for (const id in collapsibles) { //Hide collapsibles
-      if (!collapsibles[id].item.classList.contains(filter.id)) {
-        collapsibles[id].hide();
+    for (const id in items) { //Hide itemss
+      if (!items[id].item.classList.contains(filter.id)) {
+        items[id].hide();
       }
     }
     const clearFilter = document.getElementById("clearFilter"); //Show clear filter button
@@ -325,8 +332,8 @@ document.getElementById("clearFilter").addEventListener("click", function() {
         filters[filterButtons[i].id].hide();
       }
     }
-    for (const id in collapsibles) { //Show all collapsibles
-      collapsibles[id].show();
+    for (const id in items) { //Show all items
+      items[id].show();
     }
     while (document.getElementsByClassName("filtered")[0]) {
       document.getElementsByClassName("filtered")[0].classList.remove("filtered");
@@ -407,9 +414,9 @@ function openFilterAndWait(list) { //Open filter(s) one at a time, waiting for e
 const params = new URLSearchParams(window.location.search);
 
 if (params) {
-  if (params.has("item") && document.querySelector("#" + params.get("item") + ".collapsible")) {
-    collapsibles[params.get("item")].open();
-    document.querySelector("#" + params.get("item") + ".collapsible").scrollIntoView({
+  if (params.has("item") && document.querySelector("#" + params.get("item") + ".item")) {
+    items[params.get("item")].open();
+    document.querySelector("#" + params.get("item") + ".item").scrollIntoView({
       behavior: "smooth"
     });
   }
