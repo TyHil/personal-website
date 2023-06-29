@@ -8,8 +8,8 @@
       "firebase.json",
       "database.rules.json",
       ".*",
-      "**/.git",
-      "**/.github",
+      "**/.git/**",
+      "**/.github/**",
       "replit.nix",
       "README.md",
       "LICENSE.txt"
