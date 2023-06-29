@@ -1,18 +1,24 @@
 [submodule "typewriter-formatting"]
 	path = typewriter-formatting
 	url = https://github.com/TyHil/typewriter-formatting.git
+	branch = main
 [submodule "recipes"]
 	path = recipes
 	url = https://github.com/TyHil/recipes.git
+	branch = main
 [submodule "response-display"]
 	path = response-display
 	url = https://github.com/TyHil/response-display.git
+	branch = main
 [submodule "password-generator"]
 	path = password-generator
 	url = https://github.com/TyHil/password-generator.git
+	branch = main
 [submodule "dvd"]
 	path = dvd
 	url = https://github.com/TyHil/dvd.git
+	branch = main
 [submodule "set-operations-for-spotify"]
 	path = set-operations-for-spotify
 	url = https://github.com/TyHil/set-operations-for-spotify.git
+	branch = main
