@@ -6,12 +6,8 @@
     "public": "/",
     "ignore": [
       "firebase.json",
-      "**/.*",
-      "**/node_modules/**",
-      ".git",
-      ".gitattributes",
-      ".gitignore",
-      ".replit",
+      "database.rules.json",
+      ".*",
       "replit.nix",
       "README.md",
       "LICENSE.txt"
