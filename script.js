@@ -430,7 +430,7 @@ if (params) {
 /* Google Analytics */
 
 window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
+function gtag() { window.dataLayer.push(arguments); }
 gtag("js", new Date());
 gtag("config", "G-BVTJ5JS3H2");
 
