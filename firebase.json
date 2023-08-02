@@ -3,7 +3,17 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "src",
+    "public": "/",
+    "ignore": [
+      "firebase.json",
+      "database.rules.json",
+      ".*",
+      "**/.git/**",
+      "**/.github/**",
+      "replit.nix",
+      "README.md",
+      "LICENSE.txt"
+    ],
     "headers": [
       {
         "source": "**/*",
