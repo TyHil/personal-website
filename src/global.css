@@ -6,9 +6,6 @@
 * {
   margin: 0;
 }
-input, button, textarea, select {
-  font: inherit;
-}
 button {
   border: none;
   background-color: transparent;
@@ -43,6 +40,7 @@ html, body {
   --light0: #E9F4F2; /*#fff*/
   --light1: #CCD7D5; /*#dfdfdf*/
   --light2: #AFBAB8; /*#bfbfbf*/
+  --dark3: #596462; /*#606060*/
   --dark2: #3C4745; /*#404040*/
   --dark1: #1F2A28; /*#202020*/
   --dark0: #020D0B; /*#000*/
