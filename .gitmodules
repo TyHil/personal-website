@@ -22,3 +22,6 @@
 	path = set-operations-for-spotify
 	url = https://github.com/TyHil/set-operations-for-spotify.git
 	branch = main
+[submodule "cah-maker"]
+	path = cah-maker
+	url = https://github.com/TyHil/cah-maker.git
