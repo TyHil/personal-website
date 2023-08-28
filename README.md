@@ -6,6 +6,8 @@
 
 Personal website of Tyler Gordon Hill available at [tylergordonhill.com](https://tylergordonhill.com).
 
+[Style guide](https://github.com/TyHil/personal-website-styles)
+
 Also includes the following websites:
 
 - [Set Operations for Spotify](https://github.com/TyHil/set-operations-for-spotify)
