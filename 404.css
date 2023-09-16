@@ -1,4 +1,4 @@
-/* Dark Mode */
+/* Header */
 
 #title {
   color: var(--dark0);
@@ -11,10 +11,6 @@
 #byLine:hover, #byLine:focus-visible {
   background-color: rgba(255, 255, 255, 0.1);
 }
-
-
-
-/* Light Mode */
 
 @media (prefers-color-scheme: light) {
   #title {
@@ -29,10 +25,6 @@
     background-color: rgba(0, 0, 0, 0.1);
   }
 }
-
-
-
-/* Header */
 
 header {
   display: flex;
@@ -50,7 +42,7 @@ header {
   display: inline-block;
   padding: 0.8rem 1rem 0.6rem 1rem;
   border-radius: 1.5rem;
-  transition: background-color 0.2s;
+  transition: background-color 200ms;
   text-align: center;
 }
 
