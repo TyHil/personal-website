@@ -262,7 +262,11 @@ class Filter {
   show() {
     if (this.filter.classList.contains("remove")) {
       transitioning = 1;
-      this.filter.style.display = "inline-block";
+      if (this.filter.classList.contains("featured")) {
+        this.filter.style.display = "flex";
+      } else {
+        this.filter.style.display = "inline-block";
+      }
       setTimeout(() => {
         this.filter.style.maxWidth = "200px";
         this.filter.classList.remove("remove");
