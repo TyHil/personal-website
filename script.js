@@ -46,21 +46,37 @@ window.addEventListener("load", function() {
 /* Header Tilt */
 
 const headerBg = document.getElementById("headerBg");
+const header = document.getElementsByTagName('header')[0];
 function headerHeight() {
   const base = window.innerWidth;
-  const left = document.getElementById("left").clientHeight;
-  const right = document.getElementById("right").clientHeight;
-  const deg = 180 / Math.PI * Math.asin((right - left) / Math.sqrt(Math.pow(base, 2) + Math.pow(right - left, 2)));
+  const left = document.getElementById("left");
+  const right = document.getElementById("right");
+  const deg = 180 / Math.PI * Math.asin((right.clientHeight - left.clientHeight) / Math.sqrt(Math.pow(base, 2) + Math.pow(right.clientHeight - left.clientHeight, 2)));
   headerBg.style.transform = "skewY(" + deg + "deg)";
   if (deg >= 0) {
     headerBg.style["transform-origin"] = "top right";
   } else {
     headerBg.style["transform-origin"] = "top left";
   }
+
+  const bothHeight = parseInt(window.getComputedStyle(header).getPropertyValue('padding-top'));
+  const shape = document.getElementById("shape");
+  shape.style.setProperty('--left', bothHeight + left.clientHeight + "px");
+  shape.style.setProperty('--right', bothHeight + right.clientHeight + "px");
+
+  const blurb = document.getElementById("blurb");
+  let bottomDiff = blurb.getBoundingClientRect().bottom - header.getBoundingClientRect().bottom;
+  if (bottomDiff < 0) {
+    bottomDiff = 0;
+  }
+  header.style.marginBottom = 'calc(1rem + ' + bottomDiff + 'px)';
 }
 
 headerHeight();
 headerBg.addEventListener("transitionend", function() {
+  this.classList.add("transitionDisabled");
+}, { once: true });
+header.addEventListener("transitionend", function() {
   this.classList.add("transitionDisabled");
 }, { once: true });
 window.addEventListener("resize", headerHeight);
