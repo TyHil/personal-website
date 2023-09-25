@@ -281,6 +281,10 @@ h1 {
   color: var(--dark0);
   font-size: clamp(1.25rem, 40px + (60 - 40) * ((100vw - 480px) / (800 - 480)), 3.75rem);
   margin: 0;
+  overflow-wrap: normal;
+}
+span.noWrap {
+  white-space: nowrap;
 }
 h4 {
   color: var(--dark1);
