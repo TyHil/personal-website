@@ -81,6 +81,7 @@ header.addEventListener("transitionend", function() {
 }, { once: true });
 window.addEventListener("resize", headerHeight);
 
+
 let hueSatBri = [document.getElementById("hue"), document.getElementById("sat"), document.getElementById("bri")];
 let hueSatBriVals = [0, 0, 0];
 
@@ -186,6 +187,13 @@ const itemsDOM = document.getElementsByClassName("item");
 const items = {};
 for (let i = 0; i < itemsDOM.length; i++) {
   items[itemsDOM[i].id] = new Item(itemsDOM[i]);
+}
+
+const pulses = document.getElementsByClassName("pulse");
+for (let i = 0; i < pulses.length; i++) {
+  pulses[i].addEventListener("click", function() {
+    this.classList.remove("pulse");
+  }, { once: true });
 }
 
 

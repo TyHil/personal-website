@@ -657,6 +657,20 @@ span.ripplecircle {
 
 
 
+/* Pulse */
+.pulse {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% {
+    background-color: var(--dark1);
+  }
+  50% {
+    background-color: var(--dark2);
+  }
+}
+
+
 
 /* Fullscreen Images */
 
