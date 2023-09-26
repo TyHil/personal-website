@@ -662,8 +662,10 @@ span.ripplecircle {
 
 
 /* Pulse */
+
 .pulse {
   animation: pulse 2s infinite;
+  animation-delay: 2s;
 }
 @keyframes pulse {
   0%, 100% {
