@@ -278,7 +278,7 @@ header {
 /*Header Left*/
 
 header #left {
-  margin: 0 0.6rem 0.6rem 0.6rem;
+  margin: 0 0.6rem;
 }
 h1 {
   color: var(--dark0);
@@ -352,9 +352,6 @@ header #right {
 
 /*Blurb*/
 
-/*header {
-  z-index: 0;
-}*/
 #headerBg, #left, #right {
   z-index: 1;
 }
@@ -368,9 +365,6 @@ main {
   position: relative;
   padding-top: 0;
 }
-/*main, #fullscreenbg {
-  z-index: 1;
-}*/
 #shape {
   float: right;
   shape-outside: polygon(0% 0%, 100% 0%, 100% calc(var(--right) + 1rem), 0% calc(var(--left) + 1rem));
@@ -692,6 +686,7 @@ span.ripplecircle {
 /* Fullscreen Images */
 
 #fullscreenbg {
+  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
@@ -740,6 +735,18 @@ span.ripplecircle {
 
 /*Splash Text*/
 
+#splashText.splash {
+  width: fit-content;
+  animation: splash 1s infinite;
+}
+@keyframes splash {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+}
 
 /*Tilt*/
 
@@ -750,4 +757,16 @@ span.ripplecircle {
 }
 #tilt:hover {
   transform: rotate(10deg);
+}
+#tilt.hang {
+  transition: transform 1s cubic-bezier(1, 0, 0.5, 1.5);
+  transform: rotate(180deg);
+}
+@keyframes hang {
+  0%, 100% {
+    background-color: var(--dark1);
+  }
+  50% {
+    background-color: var(--dark2);
+  }
 }

@@ -48,10 +48,15 @@ window.addEventListener("load", function() {
 const headerBg = document.getElementById("headerBg");
 const header = document.getElementsByTagName('header')[0];
 function headerHeight() {
+  function fullHeight(el) {
+    const style = window.getComputedStyle(el);
+    return parseInt(style.getPropertyValue('margin-top')) + el.clientHeight + parseInt(style.getPropertyValue('margin-top'));
+  }
+
   const base = window.innerWidth;
-  const left = document.getElementById("left");
-  const right = document.getElementById("right");
-  const deg = 180 / Math.PI * Math.asin((right.clientHeight - left.clientHeight) / Math.sqrt(Math.pow(base, 2) + Math.pow(right.clientHeight - left.clientHeight, 2)));
+  const left = fullHeight(document.getElementById("left"));
+  const right = fullHeight(document.getElementById("right"));
+  const deg = 180 / Math.PI * Math.asin((right - left) / Math.sqrt(Math.pow(base, 2) + Math.pow(right - left, 2)));
   headerBg.style.transform = "skewY(" + deg + "deg)";
   if (deg >= 0) {
     headerBg.style["transform-origin"] = "top right";
@@ -61,8 +66,8 @@ function headerHeight() {
 
   const bothHeight = parseInt(window.getComputedStyle(header).getPropertyValue('padding-top'));
   const shape = document.getElementById("shape");
-  shape.style.setProperty('--left', bothHeight + left.clientHeight + "px");
-  shape.style.setProperty('--right', bothHeight + right.clientHeight + "px");
+  shape.style.setProperty('--left', bothHeight + left + "px");
+  shape.style.setProperty('--right', bothHeight + right + "px");
 
   const blurb = document.getElementById("blurb");
   let bottomDiff = blurb.getBoundingClientRect().bottom - header.getBoundingClientRect().bottom;
@@ -478,16 +483,29 @@ for (let i = 0; i < 3; i++) {
   });
 }
 
-/*Splash Text*/
+/*Tilt*/
 
-fetch('splashes.txt').then(async (response) => {
-  if (response.ok) {
-    return response.text();
-  } else {
-    throw await response.text();
+const splashText = document.getElementById('splashText');
+const defaultText = splashText.innerText;
+document.getElementById('tilt').addEventListener('dblclick', function() {
+  if (this.classList.contains('hang')) {
+    this.classList.remove('hang');
+    splashText.innerText = defaultText;
+    splashText.classList.remove('splash');
+    return;
   }
-}).then((data) => {
-  const lines = data.split('\n');
-  const line = lines[Math.floor(Math.random() * (lines.length - 1))];
-  console.log(line);
+  this.classList.add('hang');
+  fetch('splashes.txt').then(async (response) => {
+    if (response.ok) {
+      return response.text();
+    } else {
+      throw await response.text();
+    }
+  }).then((data) => {
+    const lines = data.split('\n');
+    const line = lines[Math.floor(Math.random() * (lines.length - 1))];
+    splashText.innerText = line;
+    splashText.classList.add('splash');
+    headerHeight();
+  });
 });
