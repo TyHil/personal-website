@@ -82,28 +82,6 @@ header.addEventListener("transitionend", function() {
 window.addEventListener("resize", headerHeight);
 
 
-let hueSatBri = [document.getElementById("hue"), document.getElementById("sat"), document.getElementById("bri")];
-let hueSatBriVals = [0, 0, 0];
-
-function updateColor() {
-  const changeTo = "hue-rotate(" + hueSatBriVals[0] + "deg) saturate(" + (hueSatBriVals[1] / 360 * 200 + 100) % 200 + "%) brightness(" + (hueSatBriVals[2] / 360 * 200 + 100) % 200 + "%)";
-  headerBg.style.filter = changeTo;
-  document.getElementById("featured").style.filter = changeTo;
-  const features = document.getElementsByClassName("feature");
-  for (let i = 0; i < features.length; i++) {
-    features[i].style.filter = changeTo;
-  }
-}
-
-for (let i = 0; i < 3; i++) {
-  hueSatBri[i].addEventListener("click", function() {
-    hueSatBriVals[i] = (hueSatBriVals[i] + 10) % 360;
-    updateColor();
-    this.style.transform = "rotate(" + hueSatBriVals[i] + "deg)";
-  });
-}
-
-
 
 /* Items */
 
@@ -472,3 +450,44 @@ function logOpenFilter() {
   }
   analytics.logEvent(analytics, 'view_filter', { event_category: 'engagement', event_label: names.reverse().join(" ") }); //Log view_filter event to analytics
 }
+
+
+
+/* Easter Eggs */
+
+/*Hue, Saturation, and Brightness*/
+
+let hueSatBri = [document.getElementById("hue"), document.getElementById("sat"), document.getElementById("bri")];
+let hueSatBriVals = [0, 0, 0];
+
+function updateColor() {
+  const changeTo = "hue-rotate(" + hueSatBriVals[0] + "deg) saturate(" + (hueSatBriVals[1] / 360 * 200 + 100) % 200 + "%) brightness(" + (hueSatBriVals[2] / 360 * 200 + 100) % 200 + "%)";
+  headerBg.style.filter = changeTo;
+  document.getElementById("featured").style.filter = changeTo;
+  const features = document.getElementsByClassName("feature");
+  for (let i = 0; i < features.length; i++) {
+    features[i].style.filter = changeTo;
+  }
+}
+
+for (let i = 0; i < 3; i++) {
+  hueSatBri[i].addEventListener("click", function() {
+    hueSatBriVals[i] = (hueSatBriVals[i] + 10) % 360;
+    updateColor();
+    this.style.transform = "rotate(" + hueSatBriVals[i] + "deg)";
+  });
+}
+
+/*Splash Text*/
+
+fetch('splashes.txt').then(async (response) => {
+  if (response.ok) {
+    return response.text();
+  } else {
+    throw await response.text();
+  }
+}).then((data) => {
+  const lines = data.split('\n');
+  const line = lines[Math.floor(Math.random() * (lines.length - 1))];
+  console.log(line);
+});
