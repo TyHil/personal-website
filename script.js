@@ -487,6 +487,7 @@ for (let i = 0; i < 3; i++) {
 
 const splashText = document.getElementById('splashText');
 const defaultText = splashText.innerText;
+let lines = [];
 document.getElementById('tilt').addEventListener('dblclick', function() {
   if (this.classList.contains('hang')) {
     this.classList.remove('hang');
@@ -495,17 +496,25 @@ document.getElementById('tilt').addEventListener('dblclick', function() {
     return;
   }
   this.classList.add('hang');
-  fetch('splashes.txt').then(async (response) => {
-    if (response.ok) {
-      return response.text();
-    } else {
-      throw await response.text();
-    }
-  }).then((data) => {
-    const lines = data.split('\n');
+  function setText() {
     const line = lines[Math.floor(Math.random() * (lines.length - 1))];
     splashText.innerText = line;
     splashText.classList.add('splash');
     headerHeight();
-  });
+  }
+  if (lines.length) {
+    setText();
+  } else {
+    console.log('fetch');
+    fetch('splashes.txt').then(async (response) => {
+      if (response.ok) {
+        return response.text();
+      } else {
+        throw await response.text();
+      }
+    }).then((data) => {
+      lines = data.split('\n');
+      setText();
+    });
+  }
 });
