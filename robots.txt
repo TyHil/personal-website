@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tylergordonhill.com/robots.txt
+Sitemap: https://tylergordonhill.com/sitemap.xml
