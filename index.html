@@ -107,974 +107,983 @@
     </div>
 
     <div id="projects">
-      <h2>Projects</h2>
-      <button class="featured large filter transitionDisabled filterButton ripple" id="featured"
-        title="Filter by featured">Featured</button>
-      <button class="large filter transitionDisabled filterButton ripple web cpp" id="programming"
-        title="Filter by programming">Programming</button>
-      <button class="large filter transitionDisabled filterButton ripple programming subfilter remove react firebase" id="web"
-        title="Filter by web programming">Web</button>
-      <button class="large filter transitionDisabled filterButton ripple web subfilter remove" id="react"
-        title="Filter by React web programming">React</button>
-      <button class="large filter transitionDisabled filterButton ripple web subfilter remove" id="firebase"
-        title="Filter by Firebase web programming">Firebase</button>
-      <button class="large filter transitionDisabled filterButton ripple programming subfilter remove arduino library"
-        id="cpp" title="Filter by C++ programming">C++</button>
-      <button class="large filter transitionDisabled filterButton ripple cpp subfilter remove" id="arduino"
-        title="Filter by Arduino C++ programming">Arduino</button>
-      <button class="large filter transitionDisabled filterButton ripple cpp subfilter remove" id="library"
-        title="Filter by library C++ programming">Library</button>
-      <button class="large filter transitionDisabled filterButton ripple UI physical" id="design"
-        title="Filter by design">Design</button>
-      <button class="large filter transitionDisabled filterButton ripple design subfilter remove css adafruit" id="UI"
-        title="Filter by UI design">UI</button>
-      <button class="large filter transitionDisabled filterButton ripple UI subfilter remove" id="css"
-        title="Filter by CSS UI design">CSS</button>
-      <button class="large filter transitionDisabled filterButton ripple UI subfilter remove" id="adafruit"
-        title="Filter by Adafruit GFX Library UI design">Adafruit GFX Library</button>
-      <button class="large filter transitionDisabled filterButton ripple design subfilter remove cad paper" id="physical"
-        title="Filter by physical design">Physical</button>
-      <button class="large filter transitionDisabled filterButton ripple physical subfilter remove" id="cad"
-        title="Filter by CAD physical design">CAD</button>
-      <button class="large filter transitionDisabled filterButton ripple physical subfilter remove" id="paper"
-        title="Filter by paper physical design">Paper</button>
-      <button class="large filter transitionDisabled filterButton ripple electronics 3dprinting woodworking" id="production"
-        title="Filter by production">Production</button>
-      <button class="large filter transitionDisabled filterButton ripple production subfilter remove" id="electronics"
-        title="Filter by electronics production">Electronics</button>
-      <button class="large filter transitionDisabled filterButton ripple production subfilter remove" id="3dprinting"
-        title="Filter by 3D printing production">3D Printing</button>
-      <button class="large filter transitionDisabled filterButton ripple production subfilter remove" id="woodworking"
-        title="Filter by woodworking production">Woodworking</button>
-      <button class="large filter transitionDisabled filterButton ripple" id="group" title="Filter by group">Group</button>
-      <button id="shareFilter" class="large circle filter ripple" title="Copy share filter link to clipboard">
-        <img class="svg check" src="images/check.svg" alt="Copied!" />
-        <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
-      </button>
-      <button id="clearFilter" class="large circle filter" title="Clear filter">
-        <img class="svg small" src="images/X.svg" alt="X icon" />
-      </button>
-    </div>
-
-    <div class="item transitionDisabled featured programming web react design UI css" id="eve">
-      <div class="feature" title="Featured item"></div>
-      <img loading="lazy" class="icon" src="images/eve.png"
-        alt="eve Vehicles icon" />
-      <div class="text">
-        <h3>eve Vehicles Internship</h3>
-        <p>Developed UI tools for first responders to control a fleet of reconnaissance drones</p>
-      </div>
-      <div class="options">
-        <a href="https://github.com/eve-Vhx" target="_blank" rel="noopener"
-          title="Open GitHub organization in a new tab" class="button large circle ripple">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="https://www.evevehicles.com/" target="_blank" title="Open site in a new tab" class="button large circle ripple">
-          <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple share">
+      <div class="header">
+        <h2>Projects</h2>
+        <button class="featured large filter transitionDisabled filterButton ripple" id="featured"
+          title="Filter by featured">Featured</button>
+        <button class="large filter transitionDisabled filterButton ripple web cpp" id="programming"
+          title="Filter by programming">Programming</button>
+        <button class="large filter transitionDisabled filterButton ripple programming subfilter remove react firebase" id="web"
+          title="Filter by web programming">Web</button>
+        <button class="large filter transitionDisabled filterButton ripple web subfilter remove" id="react"
+          title="Filter by React web programming">React</button>
+        <button class="large filter transitionDisabled filterButton ripple web subfilter remove" id="firebase"
+          title="Filter by Firebase web programming">Firebase</button>
+        <button class="large filter transitionDisabled filterButton ripple programming subfilter remove arduino library"
+          id="cpp" title="Filter by C++ programming">C++</button>
+        <button class="large filter transitionDisabled filterButton ripple cpp subfilter remove" id="arduino"
+          title="Filter by Arduino C++ programming">Arduino</button>
+        <button class="large filter transitionDisabled filterButton ripple cpp subfilter remove" id="library"
+          title="Filter by library C++ programming">Library</button>
+        <button class="large filter transitionDisabled filterButton ripple UI physical" id="design"
+          title="Filter by design">Design</button>
+        <button class="large filter transitionDisabled filterButton ripple design subfilter remove css adafruit" id="UI"
+          title="Filter by UI design">UI</button>
+        <button class="large filter transitionDisabled filterButton ripple UI subfilter remove" id="css"
+          title="Filter by CSS UI design">CSS</button>
+        <button class="large filter transitionDisabled filterButton ripple UI subfilter remove" id="adafruit"
+          title="Filter by Adafruit GFX Library UI design">Adafruit GFX Library</button>
+        <button class="large filter transitionDisabled filterButton ripple design subfilter remove cad paper" id="physical"
+          title="Filter by physical design">Physical</button>
+        <button class="large filter transitionDisabled filterButton ripple physical subfilter remove" id="cad"
+          title="Filter by CAD physical design">CAD</button>
+        <button class="large filter transitionDisabled filterButton ripple physical subfilter remove" id="paper"
+          title="Filter by paper physical design">Paper</button>
+        <button class="large filter transitionDisabled filterButton ripple electronics 3dprinting woodworking" id="production"
+          title="Filter by production">Production</button>
+        <button class="large filter transitionDisabled filterButton ripple production subfilter remove" id="electronics"
+          title="Filter by electronics production">Electronics</button>
+        <button class="large filter transitionDisabled filterButton ripple production subfilter remove" id="3dprinting"
+          title="Filter by 3D printing production">3D Printing</button>
+        <button class="large filter transitionDisabled filterButton ripple production subfilter remove" id="woodworking"
+          title="Filter by woodworking production">Woodworking</button>
+        <button class="large filter transitionDisabled filterButton ripple" id="group" title="Filter by group">Group</button>
+        <button id="shareFilter" class="large circle filter ripple" title="Copy share filter link to clipboard">
           <img class="svg check" src="images/check.svg" alt="Copied!" />
           <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
         </button>
-      </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled featured programming web react design UI css" id="govdaddy">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <div class="feature" title="Featured item"></div>
-      <img loading="lazy" class="icon svg" src="images/govdaddy.svg"
-        alt="GovDaddy icon" />
-      <div class="text">
-        <h3>GovDaddy Contract Work</h3>
-        <p>Created the entire GovDaddy website on a team of two in two weeks</p>
-      </div>
-      <div class="options">
-        <a href="https://jolly-moss-0d9466410.3.azurestaticapps.net/" target="_blank" title="Open site in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+        <button id="clearFilter" class="large circle filter" title="Clear filter">
+          <img class="svg small" src="images/X.svg" alt="X icon" />
         </button>
       </div>
-    </div>
-    <div class="content">
-      <iframe loading="lazy" title="GovDaddy website preview"
-        src="https://jolly-moss-0d9466410.3.azurestaticapps.net/"></iframe>
-    </div>
 
-    <div class="item collapsible transitionDisabled programming web firebase design UI css" id="set-operations">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon svg" src="set-operations-for-spotify/images/intersection.svg"
-        alt="Set Operations for Spotify icon" />
-      <div class="text">
-        <h3>Set Operations for Spotify</h3>
-        <p>A website to create new Spotify playlists using set operations on your existing playlists.</p>
+      <div class="item transitionDisabled featured programming web react design UI css" id="eve">
+        <div class="feature" title="Featured item"></div>
+        <img loading="lazy" class="icon" src="images/eve.png"
+          alt="eve Vehicles icon" />
+        <div class="text">
+          <h3>eve Vehicles Internship</h3>
+          <p>Developed UI tools for first responders to control a fleet of reconnaissance drones</p>
+        </div>
+        <div class="options">
+          <a href="https://github.com/eve-Vhx" target="_blank" rel="noopener"
+            title="Open GitHub organization in a new tab" class="button large circle ripple">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="https://www.evevehicles.com/" target="_blank" title="Open site in a new tab" class="button large circle ripple">
+            <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-      <div class="options">
-        <a href="https://github.com/TyHil/set-operations-for-spotify" target="_blank" rel="noopener"
-          title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="set-operations-for-spotify/" target="_blank" title="Open site in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled featured programming web react design UI css" id="govdaddy">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <div class="feature" title="Featured item"></div>
+        <img loading="lazy" class="icon svg" src="images/govdaddy.svg"
+          alt="GovDaddy icon" />
+        <div class="text">
+          <h3>GovDaddy Contract Work</h3>
+          <p>Created the entire GovDaddy website on a team of two in two weeks</p>
+        </div>
+        <div class="options">
+          <a href="https://jolly-moss-0d9466410.3.azurestaticapps.net/" target="_blank" title="Open site in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <iframe loading="lazy" title="Set Operations for Spotify website preview"
-        src="set-operations-for-spotify/"></iframe>
-    </div>
-
-    <div class="item collapsible transitionDisabled featured programming web react UI css group" id="utd-trends">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <div class="feature" title="Featured item"></div>
-      <img loading="lazy" class="icon" src="images/nebula.png" alt="Nebula Labs icon" />
-      <div class="text">
-        <h3>Nebula Labs UTD Trends</h3>
-        <p>Large contributions to a free and open source UTD website to view historical grade distributions and course
-          evaluation data.</p>
+      <div class="content">
+        <iframe loading="lazy" title="GovDaddy website preview"
+          src="https://jolly-moss-0d9466410.3.azurestaticapps.net/"></iframe>
       </div>
-      <div class="options">
-        <a href="https://github.com/UTDNebula/utd-trends" target="_blank" rel="noopener"
-          title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="https://trends.utdnebula.com/" target="_blank" title="Open site in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled programming web firebase design UI css" id="set-operations">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon svg" src="set-operations-for-spotify/images/intersection.svg"
+          alt="Set Operations for Spotify icon" />
+        <div class="text">
+          <h3>Set Operations for Spotify</h3>
+          <p>A website to create new Spotify playlists using set operations on your existing playlists.</p>
+        </div>
+        <div class="options">
+          <a href="https://github.com/TyHil/set-operations-for-spotify" target="_blank" rel="noopener"
+            title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="set-operations-for-spotify/" target="_blank" title="Open site in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <iframe loading="lazy" title="Nebula Labs UTD Trends website preview"
-        src="https://trends.utdnebula.com/dashboard?searchTerms=CS+3305%2CCS+3305+Ravi+Prakash"></iframe>
-    </div>
-
-    <div class="item collapsible transitionDisabled programming web firebase design UI css" id="typewriter">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon svg" src="images/typewriter.svg" alt="Typewriter Formatting icon" />
-      <div class="text">
-        <h3>Typewriter Formatting</h3>
-        <p>A website to present text to be typed on a typewriter with various formatting settings.</p>
+      <div class="content">
+        <iframe loading="lazy" title="Set Operations for Spotify website preview"
+          src="set-operations-for-spotify/"></iframe>
       </div>
-      <div class="options">
-        <a href="https://github.com/TyHil/typewriter-formatting" target="_blank" rel="noopener"
-          title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="typewriter-formatting/" target="_blank" title="Open site in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled featured programming web react UI css group" id="utd-trends">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <div class="feature" title="Featured item"></div>
+        <img loading="lazy" class="icon" src="images/nebula.png" alt="Nebula Labs icon" />
+        <div class="text">
+          <h3>Nebula Labs UTD Trends</h3>
+          <p>Large contributions to a free and open source UTD website to view historical grade distributions and course
+            evaluation data.</p>
+        </div>
+        <div class="options">
+          <a href="https://github.com/UTDNebula/utd-trends" target="_blank" rel="noopener"
+            title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="https://trends.utdnebula.com/" target="_blank" title="Open site in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <iframe loading="lazy" title="Typewriter Formatting website preview" src="typewriter-formatting/"></iframe>
-    </div>
-
-    <div class="item collapsible transitionDisabled programming web design UI css" id="fireworks">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon" src="images/fireworks.png" alt="Adjustable Fireworks icon" />
-      <div class="text">
-        <h3>Adjustable Fireworks</h3>
-        <p>A firework generating website with tons of settings for the One HTML Page Challenge.</p>
+      <div class="content">
+        <iframe loading="lazy" title="Nebula Labs UTD Trends website preview"
+          src="https://trends.utdnebula.com/dashboard?searchTerms=CS+3305%2CCS+3305+Ravi+Prakash"></iframe>
       </div>
-      <div class="options">
-        <a href="https://github.com/Metroxe/one-html-page-challenge/blob/master/entries/adjustable-fireworks.html"
-          target="_blank" rel="noopener" title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="https://onehtmlpagechallenge.com/entries/adjustable-fireworks.html" target="_blank" rel="noopener"
-          title="Open site in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled programming web firebase design UI css" id="typewriter">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon svg" src="images/typewriter.svg" alt="Typewriter Formatting icon" />
+        <div class="text">
+          <h3>Typewriter Formatting</h3>
+          <p>A website to present text to be typed on a typewriter with various formatting settings.</p>
+        </div>
+        <div class="options">
+          <a href="https://github.com/TyHil/typewriter-formatting" target="_blank" rel="noopener"
+            title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="typewriter-formatting/" target="_blank" title="Open site in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <iframe loading="lazy" title="Adjustable Fireworks website preview"
-        src="https://onehtmlpagechallenge.com/entries/adjustable-fireworks.html"></iframe>
-    </div>
-
-    <div class="item collapsible transitionDisabled featured programming cpp arduino production electronics group" id="lift">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <div class="feature" title="Featured item"></div>
-      <img loading="lazy" class="icon svg" src="images/lift.svg" alt="LIFT Aircraft icon" />
-      <div class="text">
-        <h3>LIFT Aircraft Contract Work</h3>
-        <p>Created an integral CAN bus sniffer for an 18-blade single-person drone to forward data from the control computer
-          to the vehicle's user interface</p>
+      <div class="content">
+        <iframe loading="lazy" title="Typewriter Formatting website preview" src="typewriter-formatting/"></iframe>
       </div>
-      <div class="options">
-        <a href="https://liftaircraft.com/" target="_blank" rel="noopener" title="Open site in a new tab"
-          class="button large circle ripple noOpen">
-          <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled programming web design UI css" id="fireworks">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon" src="images/fireworks.png" alt="Adjustable Fireworks icon" />
+        <div class="text">
+          <h3>Adjustable Fireworks</h3>
+          <p>A firework generating website with tons of settings for the One HTML Page Challenge.</p>
+        </div>
+        <div class="options">
+          <a href="https://github.com/Metroxe/one-html-page-challenge/blob/master/entries/adjustable-fireworks.html"
+            target="_blank" rel="noopener" title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="https://onehtmlpagechallenge.com/entries/adjustable-fireworks.html" target="_blank" rel="noopener"
+            title="Open site in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <iframe loading="lazy" title="LIFT Aircraft website preview" src="https://liftaircraft.com"></iframe>
-    </div>
-
-    <div class="item collapsible transitionDisabled featured programming web firebase design UI css group"
-      id="collegematchmaking">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <div class="feature" title="Featured item"></div>
-      <img loading="lazy" class="icon" src="images/collegematchmaking.svg" alt="College Matchmaking icon" />
-      <div class="text">
-        <h3>College Matchmaking</h3>
-        <p>A website for high school seniors to narrow down college lists with personalized data-oriented match scores
-        </p>
+      <div class="content">
+        <iframe loading="lazy" title="Adjustable Fireworks website preview"
+          src="https://onehtmlpagechallenge.com/entries/adjustable-fireworks.html"></iframe>
       </div>
-      <div class="options">
-        <a href="https://collegematchmaking.org/" target="_blank" rel="noopener" title="Open site in a new tab"
-          class="button large circle ripple noOpen">
-          <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled featured programming cpp arduino production electronics group" id="lift">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <div class="feature" title="Featured item"></div>
+        <img loading="lazy" class="icon svg" src="images/lift.svg" alt="LIFT Aircraft icon" />
+        <div class="text">
+          <h3>LIFT Aircraft Contract Work</h3>
+          <p>Created an integral CAN bus sniffer for an 18-blade single-person drone to forward data from the control computer
+            to the vehicle's user interface</p>
+        </div>
+        <div class="options">
+          <a href="https://liftaircraft.com/" target="_blank" rel="noopener" title="Open site in a new tab"
+            class="button large circle ripple noOpen">
+            <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <iframe loading="lazy" title="College Matchmaking website preview" src="https://collegematchmaking.org"></iframe>
-    </div>
-
-    <div class="item collapsible transitionDisabled featured programming web firebase design UI css" id="website">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <div class="feature" title="Featured item"></div>
-      <img loading="lazy" class="icon rounded" src="images/headshot.jpg" alt="Website headshot icon" />
-      <div class="text">
-        <h3>This Website</h3>
-        <p>A personal website with relevant links and a list of projects</p>
+      <div class="content">
+        <iframe loading="lazy" title="LIFT Aircraft website preview" src="https://liftaircraft.com"></iframe>
       </div>
-      <div class="options">
-        <a href="https://github.com/TyHil/personal-website" target="_blank" rel="noopener"
-          title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="https://tylergordonhill.com" target="_blank" rel="noopener" title="Open site in a new tab"
-          class="button large circle ripple noOpen">
-          <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled featured programming web firebase design UI css group"
+        id="collegematchmaking">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <div class="feature" title="Featured item"></div>
+        <img loading="lazy" class="icon" src="images/collegematchmaking.svg" alt="College Matchmaking icon" />
+        <div class="text">
+          <h3>College Matchmaking</h3>
+          <p>A website for high school seniors to narrow down college lists with personalized data-oriented match scores
+          </p>
+        </div>
+        <div class="options">
+          <a href="https://collegematchmaking.org/" target="_blank" rel="noopener" title="Open site in a new tab"
+            class="button large circle ripple noOpen">
+            <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <iframe loading="lazy" title="Current website preview" src="https://tylergordonhill.com"></iframe>
-    </div>
-
-    <div class="item collapsible transitionDisabled programming cpp library" id="linkedlist">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon svg" src="images/linkedlist.svg" alt="Linked list icon" />
-      <div class="text">
-        <h3>Linked List Library</h3>
-        <p>A singly linked list C++ library</p>
+      <div class="content">
+        <iframe loading="lazy" title="College Matchmaking website preview" src="https://collegematchmaking.org"></iframe>
       </div>
-      <div class="options">
-        <a href="https://replit.com/@TylerGHill/linked-list" target="_blank" rel="noopener"
-          title="Open program on Replit in a new tab" class="button large circle ripple noOpen replit">
-          <img class="svg" src="images/replit.svg" alt="Replit icon" />
-        </a>
-        <a href="https://github.com/TyHil/linked-list" target="_blank" rel="noopener"
-          title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled featured programming web firebase design UI css" id="website">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <div class="feature" title="Featured item"></div>
+        <img loading="lazy" class="icon rounded" src="images/headshot.jpg" alt="Website headshot icon" />
+        <div class="text">
+          <h3>This Website</h3>
+          <p>A personal website with relevant links and a list of projects</p>
+        </div>
+        <div class="options">
+          <a href="https://github.com/TyHil/personal-website" target="_blank" rel="noopener"
+            title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="https://tylergordonhill.com" target="_blank" rel="noopener" title="Open site in a new tab"
+            class="button large circle ripple noOpen">
+            <img class="svg" src="images/openexternal.svg" alt="Open external icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <script src="https://gist.github.com/TyHil/2fa5b13005dc53e7b4a36763320182e6.js"></script>
-    </div>
-
-    <div class="item collapsible transitionDisabled design" id="homescreen">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/homescreen.png" alt="Homescreen icon" />
-      <div class="text">
-        <h3>KWGT Widget Homescreen</h3>
-        <p>A custom homescreen using the KWGT Kustom Widget Maker app</p>
+      <div class="content">
+        <iframe loading="lazy" title="Current website preview" src="https://tylergordonhill.com"></iframe>
       </div>
-      <div class="options">
-        <a href="https://photos.app.goo.gl/eo9VKfjoDknrtdsD6" target="_blank" rel="noopener"
-          title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled programming cpp library" id="linkedlist">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon svg" src="images/linkedlist.svg" alt="Linked list icon" />
+        <div class="text">
+          <h3>Linked List Library</h3>
+          <p>A singly linked list C++ library</p>
+        </div>
+        <div class="options">
+          <a href="https://replit.com/@TylerGHill/linked-list" target="_blank" rel="noopener"
+            title="Open program on Replit in a new tab" class="button large circle ripple noOpen replit">
+            <img class="svg" src="images/replit.svg" alt="Replit icon" />
+          </a>
+          <a href="https://github.com/TyHil/linked-list" target="_blank" rel="noopener"
+            title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/pXO4Emcf2bgZR4CZ6DyVacJ4ywEbVa2GbwK4pVCCcQpqqWs4O7PS5y1iQp3rGCqwmuzv5d0bx8FMEsWpdDPhAdSZYsTJjcdHwORgR6AvvaaTDujs6AP7iv5Vzh4DtsPb6HhSDqH6Plw=w800"
-          loading="lazy" alt="Homescreen screenshot" />
+      <div class="content">
+        <script src="https://gist.github.com/TyHil/2fa5b13005dc53e7b4a36763320182e6.js"></script>
       </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled design physical cad production woodworking" id="desk">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/desk.jpg" alt="Desk icon" />
-      <div class="text">
-        <h3>Desk</h3>
-        <p>A red oak and poplar desk built to roll over a cushioned chair</p>
-      </div>
-      <div class="options">
-        <a href="https://thangs.com/m/21719" target="_blank" rel="noopener" title="Open 3D model on Thangs in a new tab"
-          class="button large circle ripple noOpen thangs">
-          <img class="svg" src="images/thangs.svg" alt="Thangs icon" />
-        </a>
-        <a href="https://photos.app.goo.gl/jm1Qeu7me6TJPvnR6" target="_blank" rel="noopener"
-          title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled design" id="homescreen">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/homescreen.png" alt="Homescreen icon" />
+        <div class="text">
+          <h3>KWGT Widget Homescreen</h3>
+          <p>A custom homescreen using the KWGT Kustom Widget Maker app</p>
+        </div>
+        <div class="options">
+          <a href="https://photos.app.goo.gl/eo9VKfjoDknrtdsD6" target="_blank" rel="noopener"
+            title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/IabwGUBWeLqdJiV83N4TpZBEiXpVE0D-lvL5WaDr1-sJR2KhefDzEGllQiqZQkJwBxb9LfR90TTfElQeUEHqO_hSMLj0MKctFErqAlWSFhsZvDYfivYj2e20zkXmShQUgUragCwgzP4=w800"
-          loading="lazy" alt="Desk rolled in with me seated behind it" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/_3nMtiVCaGac0ziYvYIAEHWdD--f-TytcF38YzjH8PwBpJScry1AW5vNMs9SMUBgQzvMXYAIDn95CZm9WQ5Z448v8FCpstClKLZg8e8h-DlnW06vt0anGlU3Mt_yJL42Bf-KIAJiRx8=w800"
-          loading="lazy" alt="Desk rolled in for storage" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/dAAKB6yWlK5EvWkE6NsR8Dkv1e-BKn8pDVBUWA4bKMRuDrzGdaN__cFx1IeKbTXYh2lh9bshIVIibKlylGgOCkElNC3PInpsHahXqGqdbSzCIkIjCbzOHYKl-UasTg3bk4Z-T7v5vbs=w800"
-          loading="lazy" alt="The inside of one of the two triple miter joints" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/OnkY58kUhmXFjzAxxSiqjJQynUXJto3GShPQ-p_hLQkf0KrYgWQ7nZIqWLI0_MvNiMFLOkZycIZK6-zpmXslNSUmjEpLvUP3AOAlaI6WDUrVIx7lq8wo7PQFEFfy5p51yWf1lX3bZbs=w800"
-          loading="lazy" alt="Desk rolled out from front to get in and out" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/ZYM9Hm_6kPpVOpIqrsorN8BOQ8J-9j-xjkY0B3r7DqiD8ZBiKdLWHhmxRHMHhQqpnj4nRff5_9JZeJZQsularCDS7E_gk779ldN1kMR_RqhaEueLHIK_g8mWfgR7Bg29feuWSOH7d-Q=w800"
-          loading="lazy" alt="Desk rolled out from side to get in and out" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/pXO4Emcf2bgZR4CZ6DyVacJ4ywEbVa2GbwK4pVCCcQpqqWs4O7PS5y1iQp3rGCqwmuzv5d0bx8FMEsWpdDPhAdSZYsTJjcdHwORgR6AvvaaTDujs6AP7iv5Vzh4DtsPb6HhSDqH6Plw=w800"
+            loading="lazy" alt="Homescreen screenshot" />
+        </div>
       </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled design physical cad production 3dprinting" id="frog">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/frog.jpg" alt="Desk icon" />
-      <div class="text">
-        <h3>3D Printed Origami Jumping Frog</h3>
-        <p>A hopping plastic frog modeled after the origami version</p>
-      </div>
-      <div class="options">
-        <a href="https://thangs.com/m/15226" target="_blank" rel="noopener" title="Open 3D model on Thangs in a new tab"
-          class="button large circle ripple noOpen thangs">
-          <img class="svg" src="images/thangs.svg" alt="Thangs icon" />
-        </a>
-        <a href="https://photos.app.goo.gl/kHLeFWL4Axe3tDka7" target="_blank" rel="noopener"
-          title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled design physical cad production woodworking" id="desk">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/desk.jpg" alt="Desk icon" />
+        <div class="text">
+          <h3>Desk</h3>
+          <p>A red oak and poplar desk built to roll over a cushioned chair</p>
+        </div>
+        <div class="options">
+          <a href="https://thangs.com/m/21719" target="_blank" rel="noopener" title="Open 3D model on Thangs in a new tab"
+            class="button large circle ripple noOpen thangs">
+            <img class="svg" src="images/thangs.svg" alt="Thangs icon" />
+          </a>
+          <a href="https://photos.app.goo.gl/jm1Qeu7me6TJPvnR6" target="_blank" rel="noopener"
+            title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/s2XqJw6iatmWFmouyanr9AM97Ekchim6NNlF7C5Nyy0J3M_3KCExjYutrl3WvT6HkearpZBJLWEGED1w2DJpIqpnAwqsfXgaqIp5g1_euEPm8mHjQ7q5TnNxFC06wnfq3aYiDmUXnVs=w800"
-          loading="lazy" alt="Close up of the 3d printed origami frog" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/8mcwU-GC9tcjCCFIE5rPes8VOD2XiwgfYMW7MbPqrzTgg_pwG9Nkn0y3bNQgt4tT6Lsn4fHFVu6WMMmpKlskRYp97Omq9jDcr_HFcEjaKTRTYrDXpdinFKgZ72qLpQCwsTAreZ_kNKg=w800"
-          loading="lazy" alt="Side view of the 3d printed origami frog" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/UhDvDkOUey3pSeKvE2ueq40TME112C-ocycJaXlSsO-DChIJFcxm81WXtWWFlgyHfics4Xr9GXp6K_4EruwsThiL1YSCORtYnFPkbkGcExEanSbkqMPEtUn-9RPmdPEmrh-b227p724=w800"
-          loading="lazy" alt="Many many 3d printed origami frogs" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/mPmhaXru3PPHWElJmBlWTtMKMpPmkqzf2jcM148Uo6ICYjfaBLhMSubDya9foq0pZND2FN8zC57AgmIcZakmsbY0mDwQa1X5x2sNWLeyKRFpHoPZgwS4dQzjWX9mcAaWRIOMyOWDYi0=w800"
-          loading="lazy" alt="Front top view of the paper origami frog" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/OezRPjgCPd3xr8Iy17miFnHXgL4wZTyCGOXA3uw1wIFYU88N2ixrxPN9WOxits9LCgi2Z16lF_OtMmoNM29s0jFtcgKa_OwvnbhKyrHZcEg84OTUWEBQ5ePR7TOy_rZ0Xcpj4fL7yf4=w800"
-          loading="lazy" alt="Front top view of the paper origami frog" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/fYydG6vd_ER5mhy3FLkx9Yo48btJiigyNBbnG5-gV8nf6duTwtxG_pNLnExnchmq2PENPiRHGFcafNth3IR5FXZfYYm1OAtj1QapBurg4ay_eZC2dYmhnRBdpGZCWXGgLxa2-dg7pbI=w800"
-          loading="lazy" alt="Many many paper origami frogs" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/IabwGUBWeLqdJiV83N4TpZBEiXpVE0D-lvL5WaDr1-sJR2KhefDzEGllQiqZQkJwBxb9LfR90TTfElQeUEHqO_hSMLj0MKctFErqAlWSFhsZvDYfivYj2e20zkXmShQUgUragCwgzP4=w800"
+            loading="lazy" alt="Desk rolled in with me seated behind it" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/_3nMtiVCaGac0ziYvYIAEHWdD--f-TytcF38YzjH8PwBpJScry1AW5vNMs9SMUBgQzvMXYAIDn95CZm9WQ5Z448v8FCpstClKLZg8e8h-DlnW06vt0anGlU3Mt_yJL42Bf-KIAJiRx8=w800"
+            loading="lazy" alt="Desk rolled in for storage" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/dAAKB6yWlK5EvWkE6NsR8Dkv1e-BKn8pDVBUWA4bKMRuDrzGdaN__cFx1IeKbTXYh2lh9bshIVIibKlylGgOCkElNC3PInpsHahXqGqdbSzCIkIjCbzOHYKl-UasTg3bk4Z-T7v5vbs=w800"
+            loading="lazy" alt="The inside of one of the two triple miter joints" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/OnkY58kUhmXFjzAxxSiqjJQynUXJto3GShPQ-p_hLQkf0KrYgWQ7nZIqWLI0_MvNiMFLOkZycIZK6-zpmXslNSUmjEpLvUP3AOAlaI6WDUrVIx7lq8wo7PQFEFfy5p51yWf1lX3bZbs=w800"
+            loading="lazy" alt="Desk rolled out from front to get in and out" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/ZYM9Hm_6kPpVOpIqrsorN8BOQ8J-9j-xjkY0B3r7DqiD8ZBiKdLWHhmxRHMHhQqpnj4nRff5_9JZeJZQsularCDS7E_gk779ldN1kMR_RqhaEueLHIK_g8mWfgR7Bg29feuWSOH7d-Q=w800"
+            loading="lazy" alt="Desk rolled out from side to get in and out" />
+        </div>
       </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled design physical paper production woodworking group"
-      id="climbingwall">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/climbingwall.jpg" alt="Climbing wall icon" />
-      <div class="text">
-        <h3>Climbing Wall</h3>
-        <p>3 climbing walls at 0°, 15°, and 30° each 4'x11'</p>
-      </div>
-      <div class="options">
-        <a href="https://photos.app.goo.gl/BUybjUFN5T3rLmdp8" target="_blank" rel="noopener"
-          title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled design physical cad production 3dprinting" id="frog">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/frog.jpg" alt="Desk icon" />
+        <div class="text">
+          <h3>3D Printed Origami Jumping Frog</h3>
+          <p>A hopping plastic frog modeled after the origami version</p>
+        </div>
+        <div class="options">
+          <a href="https://thangs.com/m/15226" target="_blank" rel="noopener" title="Open 3D model on Thangs in a new tab"
+            class="button large circle ripple noOpen thangs">
+            <img class="svg" src="images/thangs.svg" alt="Thangs icon" />
+          </a>
+          <a href="https://photos.app.goo.gl/kHLeFWL4Axe3tDka7" target="_blank" rel="noopener"
+            title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/84TPrl2GF0_v5egPgzltdErvNHmkmQMZAy9JcmbOXnOuK7gEfSaYmCD4XFiRqicZuBE2XFI8cHtwg0Q3S_8Psiy51iS-1SSLirlz76_8jM-lgcKiwYMtnQ2iILrB0x1fvxfD78Zu7ws=w800"
-          loading="lazy" alt="Me climbing on the 15° wall" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/GFlGl9DCI7_N64f5cPPb7nZEhHHFOR_nYS74JlRVzc44Mglskk87Rj1F1zzxrpjkG53P4FogWHXazWtRRftvqFdCzbIkORYzDocQvaseI2RLT09ZBmwO7T-noohp-l5-w2nxn1tebDo=w800"
-          loading="lazy" alt="The finished wall with holds attached" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/ktf9QEdfrKMDRLL6JHCsPDIeUEY0M1ZLCXe0NE8ijdhx_o5I656LwsKxfqyt69s_f9z550WyZ5S4OAhvjxRe8sXI1rlCzMIb4VTd-WrpdBiqrSMlfEm_wcIx_3IIlFBiMmj2Zc3qNy8=w800"
-          loading="lazy" alt="A traversal climb across all three walls" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/isC-IyS67cfIDJ1x94fT1rriMN9a-JBQ1Bzby3dXVbfAB9tuoTjLsfxRMGgE4Ld5l_V_bvgiTEL1CyI3QnoaMMuFmyc6weawW65akVaAHw5OXOqkzuCIU92WXuhmA51Q6kx5sRngaVk=w800"
-          loading="lazy" alt="An easy and a hard climb using the 15° and 0° degree walls" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/THG8XGwLB6RlIDomI8uoItqbT_c_MveXwe2uMEayNi8VKINdYHDu9sRznPrGpmMugZV3gMBVPEGmNmrwNo77gNzeVfng0pbDZFyXl64lepzqvCs31gwFrOwkhe7mFj5jB_ioLiiORH4=w800"
-          loading="lazy" alt="Me sitting between the unpainted walls" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/ueWaD0OfsuLcED2IbS9PCrOyzKpkGcIK5MTfG18OfOUpkIwirrlwn1HRKv0Mynla30UriIPyJhaed9wRN4AUIYiRsJRMPosHI7iqf3nlwp5b-dDq_1IOrjnlg7t_DEftCvTLD3BJdVg=w800"
-          loading="lazy" alt="Looking through the structure supporting the walls" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/s2XqJw6iatmWFmouyanr9AM97Ekchim6NNlF7C5Nyy0J3M_3KCExjYutrl3WvT6HkearpZBJLWEGED1w2DJpIqpnAwqsfXgaqIp5g1_euEPm8mHjQ7q5TnNxFC06wnfq3aYiDmUXnVs=w800"
+            loading="lazy" alt="Close up of the 3d printed origami frog" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/8mcwU-GC9tcjCCFIE5rPes8VOD2XiwgfYMW7MbPqrzTgg_pwG9Nkn0y3bNQgt4tT6Lsn4fHFVu6WMMmpKlskRYp97Omq9jDcr_HFcEjaKTRTYrDXpdinFKgZ72qLpQCwsTAreZ_kNKg=w800"
+            loading="lazy" alt="Side view of the 3d printed origami frog" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/UhDvDkOUey3pSeKvE2ueq40TME112C-ocycJaXlSsO-DChIJFcxm81WXtWWFlgyHfics4Xr9GXp6K_4EruwsThiL1YSCORtYnFPkbkGcExEanSbkqMPEtUn-9RPmdPEmrh-b227p724=w800"
+            loading="lazy" alt="Many many 3d printed origami frogs" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/mPmhaXru3PPHWElJmBlWTtMKMpPmkqzf2jcM148Uo6ICYjfaBLhMSubDya9foq0pZND2FN8zC57AgmIcZakmsbY0mDwQa1X5x2sNWLeyKRFpHoPZgwS4dQzjWX9mcAaWRIOMyOWDYi0=w800"
+            loading="lazy" alt="Front top view of the paper origami frog" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/OezRPjgCPd3xr8Iy17miFnHXgL4wZTyCGOXA3uw1wIFYU88N2ixrxPN9WOxits9LCgi2Z16lF_OtMmoNM29s0jFtcgKa_OwvnbhKyrHZcEg84OTUWEBQ5ePR7TOy_rZ0Xcpj4fL7yf4=w800"
+            loading="lazy" alt="Front top view of the paper origami frog" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/fYydG6vd_ER5mhy3FLkx9Yo48btJiigyNBbnG5-gV8nf6duTwtxG_pNLnExnchmq2PENPiRHGFcafNth3IR5FXZfYYm1OAtj1QapBurg4ay_eZC2dYmhnRBdpGZCWXGgLxa2-dg7pbI=w800"
+            loading="lazy" alt="Many many paper origami frogs" />
+        </div>
       </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled design physical cad production 3dprinting" id="coffeetable">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/coffeetable.jpg" alt="Coffee table icon" />
-      <div class="text">
-        <h3>Coffee Table Model</h3>
-        <p>A round 2 level coffee table design with extensions</p>
-      </div>
-      <div class="options">
-        <a href="https://thangs.com/m/21717" target="_blank" rel="noopener" title="Open 3D model on Thangs in a new tab"
-          class="button large circle ripple noOpen thangs">
-          <img class="svg" src="images/thangs.svg" alt="Thangs icon" />
-        </a>
-        <a href="https://photos.app.goo.gl/hMmDpo5gBVsHxx2b7" target="_blank" rel="noopener"
-          title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled design physical paper production woodworking group"
+        id="climbingwall">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/climbingwall.jpg" alt="Climbing wall icon" />
+        <div class="text">
+          <h3>Climbing Wall</h3>
+          <p>3 climbing walls at 0°, 15°, and 30° each 4'x11'</p>
+        </div>
+        <div class="options">
+          <a href="https://photos.app.goo.gl/BUybjUFN5T3rLmdp8" target="_blank" rel="noopener"
+            title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/8mgmLVB4Fl_QZxC_EpxkmSnUA_hRjLHutAWw50-WDMO0Aj4v89t0VBehClA0IN2bqGbXIRoLIwh7TPlWFp5TacfBzYmEg0rNjKo1AKMoV9NruBseg_2zJNzphAA01bHMPpQFytBjEBI=w800"
-          loading="lazy" alt="Top side view of coffee table with extensions in" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/TYrJes6bsOw_X_xbjEKx9CxUGS3Yf-MqKoJ9FrDeBUHmwcqX6JyQc2VezqVWDXFUQ1vWBgaPWx1mXqoqaOghBIVhDm4LuaQ0A_4W5ZZPC3DLoYOSfPGXbet0CvOAKFQ5ZZEq9Iw35x4=w800"
-          loading="lazy" alt="Top view of coffee table with extensions out" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/EaH8O5-EY6JrtvEhYE2vDUlvPD5egk3y5qNbsv606i91T4vqT8ntxSJMvO0ipcYMmxhyGZug71A6YHMQPM77YPRz0Vi5nH2qUNE-9sVClMSsoygyA_XFRK3OBLg6bRQ4TBcyM6RB-0c=w800"
-          loading="lazy" alt="Top side view of coffee table with extensions out" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/1kA13IZvTQF0Ps3nc8cwKuT-TcWV3TvInLR9oTCaq0XpYSU30SGlfzReNiYgj-pRMFx_OGtYv-D3nr3rhp63Wceak6bpfHFl55Fh_WOy05cEP58EcXIIXE8gaoqXtLxnVPCum2bMFSI=w800"
-          loading="lazy" alt="Top view of coffee table with extensions in" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/aLlYF06x7QvxL2EQd2n1LB3nq8U55iTbk2jk6hdYrfDhj2MRhAl5B20kNyOu5D_OfjBqYp0g3p6ksGtt1TRadAS87KTt1zNoYTNDgTb5_FGaU7mxNR7AJs8hBtvkLmlBZti005wPO6w=w800"
-          loading="lazy" alt="Underside view of coffee table" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/84TPrl2GF0_v5egPgzltdErvNHmkmQMZAy9JcmbOXnOuK7gEfSaYmCD4XFiRqicZuBE2XFI8cHtwg0Q3S_8Psiy51iS-1SSLirlz76_8jM-lgcKiwYMtnQ2iILrB0x1fvxfD78Zu7ws=w800"
+            loading="lazy" alt="Me climbing on the 15° wall" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/GFlGl9DCI7_N64f5cPPb7nZEhHHFOR_nYS74JlRVzc44Mglskk87Rj1F1zzxrpjkG53P4FogWHXazWtRRftvqFdCzbIkORYzDocQvaseI2RLT09ZBmwO7T-noohp-l5-w2nxn1tebDo=w800"
+            loading="lazy" alt="The finished wall with holds attached" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/ktf9QEdfrKMDRLL6JHCsPDIeUEY0M1ZLCXe0NE8ijdhx_o5I656LwsKxfqyt69s_f9z550WyZ5S4OAhvjxRe8sXI1rlCzMIb4VTd-WrpdBiqrSMlfEm_wcIx_3IIlFBiMmj2Zc3qNy8=w800"
+            loading="lazy" alt="A traversal climb across all three walls" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/isC-IyS67cfIDJ1x94fT1rriMN9a-JBQ1Bzby3dXVbfAB9tuoTjLsfxRMGgE4Ld5l_V_bvgiTEL1CyI3QnoaMMuFmyc6weawW65akVaAHw5OXOqkzuCIU92WXuhmA51Q6kx5sRngaVk=w800"
+            loading="lazy" alt="An easy and a hard climb using the 15° and 0° degree walls" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/THG8XGwLB6RlIDomI8uoItqbT_c_MveXwe2uMEayNi8VKINdYHDu9sRznPrGpmMugZV3gMBVPEGmNmrwNo77gNzeVfng0pbDZFyXl64lepzqvCs31gwFrOwkhe7mFj5jB_ioLiiORH4=w800"
+            loading="lazy" alt="Me sitting between the unpainted walls" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/ueWaD0OfsuLcED2IbS9PCrOyzKpkGcIK5MTfG18OfOUpkIwirrlwn1HRKv0Mynla30UriIPyJhaed9wRN4AUIYiRsJRMPosHI7iqf3nlwp5b-dDq_1IOrjnlg7t_DEftCvTLD3BJdVg=w800"
+            loading="lazy" alt="Looking through the structure supporting the walls" />
+        </div>
       </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled programming cpp arduino production electronics" id="headlamp">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/headlamp.jpg" alt="Headlamp icon" />
-      <div class="text">
-        <h3>LED Strip Headlamp</h3>
-        <p>12 head mounted LEDs with various colors and effects</p>
-      </div>
-      <div class="options">
-        <a href="https://github.com/TyHil/led-strip-effects-and-game" target="_blank" rel="noopener"
-          title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="https://photos.app.goo.gl/J84TjYratMpQhozt5" target="_blank" rel="noopener"
-          title="Open photos album in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Open photos album in a new tab" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled design physical cad production 3dprinting" id="coffeetable">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/coffeetable.jpg" alt="Coffee table icon" />
+        <div class="text">
+          <h3>Coffee Table Model</h3>
+          <p>A round 2 level coffee table design with extensions</p>
+        </div>
+        <div class="options">
+          <a href="https://thangs.com/m/21717" target="_blank" rel="noopener" title="Open 3D model on Thangs in a new tab"
+            class="button large circle ripple noOpen thangs">
+            <img class="svg" src="images/thangs.svg" alt="Thangs icon" />
+          </a>
+          <a href="https://photos.app.goo.gl/hMmDpo5gBVsHxx2b7" target="_blank" rel="noopener"
+            title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/yM8a2z6plPa90g8ltBcwPhLQsCkGfFMh1DBl7xz0CZ9TpoRs_Ky_iHevoRUNj_MSg5xZYpzCH8M6hfh9U_TzNp7b8SIbx-q784JZjLgcvx0IH8ajGsFSqooG8a4i2GBbPgfPUfLSgjE=w800"
-          loading="lazy" alt="LED Strip Headlamp electronics close up" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/sx8mjuScgbzd8CynA1MZbnk4_5Rnaub0EfWnSNSstLLSkC1myzEusMJSClTndG_6RQJnxpcs8LUvV2dJmWREF05YlQdjCh5Ip79D39HGqmP49bU_bCMUsuiKzMUq6amVvmx99up2wzU=w800"
-          loading="lazy" alt="LED Strip Headlamp off" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/_iQzdpgeju6u4S7bd5nyOIXq3CAXh-bC7Td_L5orYbz2EWgc1UPmuk1Mk8FCP4cPJ4WDzuQ5LfhjAPuKjL6dlXvVR8FteJJjvVgHDH5JWswiwzI7ntqe47pcj35iWE4v8n1XBIyfFU4=w800"
-          loading="lazy" alt="LED Strip Headlamp dim white light" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/pNWGaDMJ4lgAos0xKxBBS4960CGUwkBPf-sG3OjDZRdebyAWSSQZxdcXlcbCiJFK2A-SMkGhnqwmSSxQrvY0CUaaNWXXkzKsF5RDKwmLpjM7EJgNyV-nWgdBOqZTHoR9qrPBvcDv8Qw=w800"
-          loading="lazy" alt="LED Strip Headlamp bright white light" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/fs9WVLFiSBEkphnnhvWuwXqKouzQnirqf4-5iMiult9qcQVAoM2pwXNKfyn8qgru-HQHxnBysk7qjxHK3ftUUdh-lrJQW3qmHcjKjYJVICcAaz_LfLMbSU8cFH5-HXHiQncDJclP1fE=w800"
-          loading="lazy" alt="LED Strip Headlamp rainbow light" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/8mgmLVB4Fl_QZxC_EpxkmSnUA_hRjLHutAWw50-WDMO0Aj4v89t0VBehClA0IN2bqGbXIRoLIwh7TPlWFp5TacfBzYmEg0rNjKo1AKMoV9NruBseg_2zJNzphAA01bHMPpQFytBjEBI=w800"
+            loading="lazy" alt="Top side view of coffee table with extensions in" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/TYrJes6bsOw_X_xbjEKx9CxUGS3Yf-MqKoJ9FrDeBUHmwcqX6JyQc2VezqVWDXFUQ1vWBgaPWx1mXqoqaOghBIVhDm4LuaQ0A_4W5ZZPC3DLoYOSfPGXbet0CvOAKFQ5ZZEq9Iw35x4=w800"
+            loading="lazy" alt="Top view of coffee table with extensions out" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/EaH8O5-EY6JrtvEhYE2vDUlvPD5egk3y5qNbsv606i91T4vqT8ntxSJMvO0ipcYMmxhyGZug71A6YHMQPM77YPRz0Vi5nH2qUNE-9sVClMSsoygyA_XFRK3OBLg6bRQ4TBcyM6RB-0c=w800"
+            loading="lazy" alt="Top side view of coffee table with extensions out" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/1kA13IZvTQF0Ps3nc8cwKuT-TcWV3TvInLR9oTCaq0XpYSU30SGlfzReNiYgj-pRMFx_OGtYv-D3nr3rhp63Wceak6bpfHFl55Fh_WOy05cEP58EcXIIXE8gaoqXtLxnVPCum2bMFSI=w800"
+            loading="lazy" alt="Top view of coffee table with extensions in" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/aLlYF06x7QvxL2EQd2n1LB3nq8U55iTbk2jk6hdYrfDhj2MRhAl5B20kNyOu5D_OfjBqYp0g3p6ksGtt1TRadAS87KTt1zNoYTNDgTb5_FGaU7mxNR7AJs8hBtvkLmlBZti005wPO6w=w800"
+            loading="lazy" alt="Underside view of coffee table" />
+        </div>
       </div>
-    </div>
-
-    <div
-      class="item collapsible transitionDisabled programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
-      id="grpv2">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/grpv2.jpg" alt="Game Ractangular Prism V2 icon" />
-      <div class="text">
-        <h3>Game Rectangular Prism V2</h3>
-        <p>Asteroids, Astro Party, Clonium, Minesweeper and more on a portable device</p>
-      </div>
-      <div class="options">
-        <a href="https://thangs.com/m/15227" target="_blank" rel="noopener" title="Open 3D model on Thangs in a new tab"
-          class="button large circle ripple noOpen thangs">
-          <img class="svg" src="images/thangs.svg" alt="Thangs icon" />
-        </a>
-        <a href="https://github.com/TyHil/game-rectangular-prism" target="_blank" rel="noopener"
-          title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="https://photos.app.goo.gl/sA6EBFUa9nSxhymP7" target="_blank" rel="noopener"
-          title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled programming cpp arduino production electronics" id="headlamp">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/headlamp.jpg" alt="Headlamp icon" />
+        <div class="text">
+          <h3>LED Strip Headlamp</h3>
+          <p>12 head mounted LEDs with various colors and effects</p>
+        </div>
+        <div class="options">
+          <a href="https://github.com/TyHil/led-strip-effects-and-game" target="_blank" rel="noopener"
+            title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="https://photos.app.goo.gl/J84TjYratMpQhozt5" target="_blank" rel="noopener"
+            title="Open photos album in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Open photos album in a new tab" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/YHnDYeLX45OeeWgRwIpTSEU8iEWNianFLnbPIhmnsKLVbrF-ml0o1W8e8_U-aFYLnI_0sORW9bz2i_A_0EN7nK_DHNPEpWUfWusRfibnaeVKKebiZCcJWU7d01njlrT61-WYHoiNj-8=w800"
-          loading="lazy" alt="Game Rectangular Prism V2 full front" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/_c1tJE-RycfG6iYWy2UCE6iYG9BiT4ZoCGf2RDWj3NBOp2N0iqBpto6jHKD63o72w2ymKAqpupt30ct7xqV4K7wuiK7viUiFD0gdiCeAS5nyLCKPQSg_YkaNRq3JR9dtykwiNRSrJ6A=w800"
-          loading="lazy" alt="Game Rectangular Prism V2 front with Asteroids on screen" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/P74e9sr3nYXWTMil7W5klmSjfWk8DWPJgzCfAXAjZ9Kz42LHyUESSDMexnWWqNOWGCHJUXU6Pd5xmv0NeGhSDa2M-M-zldEU0Yi5K5cVyppjKy5sNEGVsgap1AlhRVCRf3FOF4cWBx8=w800"
-          loading="lazy" alt="Game Rectangular Prism V2 inside top view of components" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/07rA6oFbFh33w-n2ihRhWlp98D7k0KeQzsML-m_3UuT4ilZkmkaefTxIt3N_x922QvOitk22tGxBY6v7puyJRESOayp6IpqxODl56D5lIJ0vWmGayLMwvtMt-On7MvYWEW3qlcUkJ-0=w800"
-          loading="lazy" alt="Game Rectangular Prism V2 inside angled view of components" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/p-I1gvxmH0P1mCdoFztJB18Ja_nuLbp8zEG-4gRLtcr8u4ZuzIvTdiadnUx1WpXBRvn_N7SQpZA2W05e3YjT-66UM7yXc8FwCyf063KCagURi4UI7SK_kxzXhQ9qJoaZdwJBFTJXMk4=w800"
-          loading="lazy" alt="Game Rectangular Prism V2 close up with Clonium game on screen" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/1ZkgFM_7Tpc2ibnqq64jbwRX2mIZjlDJ8i96UdtGn723QZa7edUoXRAmOOm3gOnAjN2tdD2aAtswwaIORPSKC-xUpV-bST2MDnLQVIqmepFacQUIrM0M88yRMm6cc2qdWpvyU46WYOM=w800"
-          loading="lazy" alt="Game Rectangular Prism V2 close up with Minesweeper game on screen" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/yM8a2z6plPa90g8ltBcwPhLQsCkGfFMh1DBl7xz0CZ9TpoRs_Ky_iHevoRUNj_MSg5xZYpzCH8M6hfh9U_TzNp7b8SIbx-q784JZjLgcvx0IH8ajGsFSqooG8a4i2GBbPgfPUfLSgjE=w800"
+            loading="lazy" alt="LED Strip Headlamp electronics close up" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/sx8mjuScgbzd8CynA1MZbnk4_5Rnaub0EfWnSNSstLLSkC1myzEusMJSClTndG_6RQJnxpcs8LUvV2dJmWREF05YlQdjCh5Ip79D39HGqmP49bU_bCMUsuiKzMUq6amVvmx99up2wzU=w800"
+            loading="lazy" alt="LED Strip Headlamp off" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/_iQzdpgeju6u4S7bd5nyOIXq3CAXh-bC7Td_L5orYbz2EWgc1UPmuk1Mk8FCP4cPJ4WDzuQ5LfhjAPuKjL6dlXvVR8FteJJjvVgHDH5JWswiwzI7ntqe47pcj35iWE4v8n1XBIyfFU4=w800"
+            loading="lazy" alt="LED Strip Headlamp dim white light" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/pNWGaDMJ4lgAos0xKxBBS4960CGUwkBPf-sG3OjDZRdebyAWSSQZxdcXlcbCiJFK2A-SMkGhnqwmSSxQrvY0CUaaNWXXkzKsF5RDKwmLpjM7EJgNyV-nWgdBOqZTHoR9qrPBvcDv8Qw=w800"
+            loading="lazy" alt="LED Strip Headlamp bright white light" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/fs9WVLFiSBEkphnnhvWuwXqKouzQnirqf4-5iMiult9qcQVAoM2pwXNKfyn8qgru-HQHxnBysk7qjxHK3ftUUdh-lrJQW3qmHcjKjYJVICcAaz_LfLMbSU8cFH5-HXHiQncDJclP1fE=w800"
+            loading="lazy" alt="LED Strip Headlamp rainbow light" />
+        </div>
       </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled design physical paper production woodworking" id="bandsawbox">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/bandsawbox.jpg" alt="Bandsaw box icon" />
-      <div class="text">
-        <h3>Bandsaw Box</h3>
-        <p>Interlocking and symmetrical flocked drawers</p>
-      </div>
-      <div class="options">
-        <a href="https://photos.app.goo.gl/n52RNmfLwrnabPLX6" target="_blank" rel="noopener"
-          title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div
+        class="item collapsible transitionDisabled programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
+        id="grpv2">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/grpv2.jpg" alt="Game Ractangular Prism V2 icon" />
+        <div class="text">
+          <h3>Game Rectangular Prism V2</h3>
+          <p>Asteroids, Astro Party, Clonium, Minesweeper and more on a portable device</p>
+        </div>
+        <div class="options">
+          <a href="https://thangs.com/m/15227" target="_blank" rel="noopener" title="Open 3D model on Thangs in a new tab"
+            class="button large circle ripple noOpen thangs">
+            <img class="svg" src="images/thangs.svg" alt="Thangs icon" />
+          </a>
+          <a href="https://github.com/TyHil/game-rectangular-prism" target="_blank" rel="noopener"
+            title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="https://photos.app.goo.gl/sA6EBFUa9nSxhymP7" target="_blank" rel="noopener"
+            title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/yUZJc3VleUwAOGVKN45QFHwKWAZpCmywR7O4MaYDrWWRtxhq92SvcqplRq9sxBJWnd8wrJ4tOQelTDDy_VR7rIk1iKEZ3Jeakj5Ag0nUZqlAqfWEZzT0AibNhOIf3ajFEK50EEuLeCo=w800"
-          loading="lazy" alt="Upper right front view of bandsaw box with left drawer open" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/iRXzueYkHNFjoHppFg7jptfyJyfMckzUOSuTZdrsGYr8vw-rlGXLCSFTIYItTD90HXGMwGjuaWj3qfH734utc8dRteW-RNSYtjVY2jgThfYB_jCs6O6XN8DKrWEgrjZ_6Iy1bwtvoRQ=w800"
-          loading="lazy" alt="Upper front view of bandsaw box with right drawer open" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/bmMsL3uGTIL2m9Th9sa4XPq0Iw7v5iJ1IoXB9MfDpHnG1EM7cr1VmA8MLz_VrMzBIo_uDdE1wxf3DEFYibt7_M02evoWMuXI0VKYTy7q4_AOW4gg7zzq9MdNjncT08lQhQ0zUEfjNkA=w800"
-          loading="lazy" alt="Front view of bandsaw box" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/IjkEjcuGQ43A5Y-byo742-wy1V7mpRJV1_6zxpJLfBv1R3KYG79d2ex0Idb7Fvn6UvQhth3eNKrf2dmxWU0U1gZRoX1cIspNjRbRJKldy0qe_qSGeCUJ6xfqRSOf0NF0glLdUJ2GV2U=w800"
-          loading="lazy" alt="Inside flocked view of bandsaw box right drawer" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/1TTZJDp9XONYnEzPcl4FFVkL-foc1zr51XNvbSU1EV9hE_T00gXLK2nqTJYivYK9D51o9Z3KaffG8PhyWUHBkBHcoLJdC8LYnrZGa1YJrUB2DBmX0QY0RAnBsFcy09yhgdRitWzPiYI=w800"
-          loading="lazy" alt="Upper front view of bandsaw box with right drawer open" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/YHnDYeLX45OeeWgRwIpTSEU8iEWNianFLnbPIhmnsKLVbrF-ml0o1W8e8_U-aFYLnI_0sORW9bz2i_A_0EN7nK_DHNPEpWUfWusRfibnaeVKKebiZCcJWU7d01njlrT61-WYHoiNj-8=w800"
+            loading="lazy" alt="Game Rectangular Prism V2 full front" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/_c1tJE-RycfG6iYWy2UCE6iYG9BiT4ZoCGf2RDWj3NBOp2N0iqBpto6jHKD63o72w2ymKAqpupt30ct7xqV4K7wuiK7viUiFD0gdiCeAS5nyLCKPQSg_YkaNRq3JR9dtykwiNRSrJ6A=w800"
+            loading="lazy" alt="Game Rectangular Prism V2 front with Asteroids on screen" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/P74e9sr3nYXWTMil7W5klmSjfWk8DWPJgzCfAXAjZ9Kz42LHyUESSDMexnWWqNOWGCHJUXU6Pd5xmv0NeGhSDa2M-M-zldEU0Yi5K5cVyppjKy5sNEGVsgap1AlhRVCRf3FOF4cWBx8=w800"
+            loading="lazy" alt="Game Rectangular Prism V2 inside top view of components" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/07rA6oFbFh33w-n2ihRhWlp98D7k0KeQzsML-m_3UuT4ilZkmkaefTxIt3N_x922QvOitk22tGxBY6v7puyJRESOayp6IpqxODl56D5lIJ0vWmGayLMwvtMt-On7MvYWEW3qlcUkJ-0=w800"
+            loading="lazy" alt="Game Rectangular Prism V2 inside angled view of components" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/p-I1gvxmH0P1mCdoFztJB18Ja_nuLbp8zEG-4gRLtcr8u4ZuzIvTdiadnUx1WpXBRvn_N7SQpZA2W05e3YjT-66UM7yXc8FwCyf063KCagURi4UI7SK_kxzXhQ9qJoaZdwJBFTJXMk4=w800"
+            loading="lazy" alt="Game Rectangular Prism V2 close up with Clonium game on screen" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/1ZkgFM_7Tpc2ibnqq64jbwRX2mIZjlDJ8i96UdtGn723QZa7edUoXRAmOOm3gOnAjN2tdD2aAtswwaIORPSKC-xUpV-bST2MDnLQVIqmepFacQUIrM0M88yRMm6cc2qdWpvyU46WYOM=w800"
+            loading="lazy" alt="Game Rectangular Prism V2 close up with Minesweeper game on screen" />
+        </div>
       </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled programming cpp arduino production electronics" id="desklight">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/desklight.jpg" alt="Desk light icon" />
-      <div class="text">
-        <h3>LED Strip Desk Light</h3>
-        <p>Remote controlled LEDs with various colors and effects</p>
-      </div>
-      <div class="options">
-        <a href="https://github.com/TyHil/led-strip-effects-and-game" target="_blank" rel="noopener"
-          title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="https://photos.app.goo.gl/LFax8vBKRus8ia6A7" target="_blank" rel="noopener"
-          title="Open Google Photos album repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Open Google Photos album repository in a new tab" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled design physical paper production woodworking" id="bandsawbox">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/bandsawbox.jpg" alt="Bandsaw box icon" />
+        <div class="text">
+          <h3>Bandsaw Box</h3>
+          <p>Interlocking and symmetrical flocked drawers</p>
+        </div>
+        <div class="options">
+          <a href="https://photos.app.goo.gl/n52RNmfLwrnabPLX6" target="_blank" rel="noopener"
+            title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/05jWKuXmvFikQuzmnH-1rhu5wGBy5CEreOQdRBmja-jGdyRMCuQDMnNCdId4FlZALzn7F0by-bVphezZM_avFmvdrLwWv5zoNRXtRlYuIFk59G45QEj66has6-PD0gi3za2TxCrsdRQ=w800"
-          loading="lazy" alt="LED Strip Desk Light white light" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/Wk-5jTrkV3c7rWfZgMxbRtsd2UZAK5Ch-Sjd5YgyBlJmv4UCMupA0FIBDTDQ6_IQEx2nUTHQRvMGNyO_A3bVycw5lYf5Rm3FmdkrIyEUmHGVDBekYtMm7SWedamSWr12PmK63qmWXUg=w800"
-          loading="lazy" alt="LED Strip Desk Light rainbow light 1" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/8_B-z6yPsbO4cYybXe8AMT1JPsuZdSpwfTH_zPLWn7_M6tfG4gtxF2Y85z4QIFxAhEf9UCB7jIVpQkmKqmyCxBWLxC4-k7HwYmFKU6CzhwMPjvZ9MkHTIIbSDpXD59WnAqHw3oPcf7c=w800"
-          loading="lazy" alt="LED Strip Desk Light rainbow light 2" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/HElmZsjRMbbmeYVliRap2r3ghAUZJoDOEpT4EewdLr_IUt0ImL_cmcX-JzyM_5SKLWJrEgfK9iOeWz-3zxmJw5z07lbTPPqCc5DOwXm3L7IEq8mhz0SFc-8zQxxsJbjQkeGZS3LuZvk=w800"
-          loading="lazy" alt="LED Strip Desk Light rainbow light 3" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/9kwLg354J2i51VvE2mRiJzgJCd1_euhpZ6cbCK-qqosi9VCa0Kg-fWw1WGI_t6LSfJ_VcCK0tYg6U-p0FsokOx20-PL39lngMJM9mf_S-_KafEItElOPoh-IxlaRTA6TJmabJL5PnEM=w800"
-          loading="lazy" alt="LED Strip Desk Light red light" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/dv9pQT_yhgl5cJi_F2fv1Vf0LqIUIPJ7K-qRoCGJkCb7okPHArnyvCx29N3ya50EplueljgboryFURfvGtmQBCDIvqwgGUEPj75LwsWOJtXM3qMz6iO1-2HVxOx7_hBpF6SZeRj7JPI=w800"
-          loading="lazy" alt="LED Strip Desk Light green light" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/hFndFF8dtsoLrUGQA9dWv2GGPO6DDs0Dbm7a2kuTg6wGS0HGug4kCBV2qKKfDQxAJo9aXDUsXs6O-2vDnkdFhO4P3PhTH7DF_iZ981ObTT4kTxAc2XCtsF7vWDshhHEcOsRe-gNbeOM=w800"
-          loading="lazy" alt="LED Strip Desk Light blue light" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/6yXRGB5NlB_V8XlmkgNkiV550UMUC7fpfYWduVBSmwE4rYz9gZrYvDjtBTmnvr33eW8AMSEFX61MqppUZzRhTpp1sOPFMq8HhOo1lg0yTmPHQw97IFyAAtFJkglUm5lXOGxnkZymIcE=w800"
-          loading="lazy" alt="LED Strip Desk Light strobe gif" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/jq9zAS_v7XI9vKONXH-pKM2qR5g8uIxj2434WLFWLZTNJ7F8gF7Wk2boOmjZlsYyyxivcz2oOJYT2LCT3GoZg4jY1TlR-jAfJGDEU0-nKV9zsi76g4EuWmaI0uNx_ywzhyF5cmvxhfs=w800"
-          loading="lazy" alt="LED Strip Desk Light electronics" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/yUZJc3VleUwAOGVKN45QFHwKWAZpCmywR7O4MaYDrWWRtxhq92SvcqplRq9sxBJWnd8wrJ4tOQelTDDy_VR7rIk1iKEZ3Jeakj5Ag0nUZqlAqfWEZzT0AibNhOIf3ajFEK50EEuLeCo=w800"
+            loading="lazy" alt="Upper right front view of bandsaw box with left drawer open" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/iRXzueYkHNFjoHppFg7jptfyJyfMckzUOSuTZdrsGYr8vw-rlGXLCSFTIYItTD90HXGMwGjuaWj3qfH734utc8dRteW-RNSYtjVY2jgThfYB_jCs6O6XN8DKrWEgrjZ_6Iy1bwtvoRQ=w800"
+            loading="lazy" alt="Upper front view of bandsaw box with right drawer open" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/bmMsL3uGTIL2m9Th9sa4XPq0Iw7v5iJ1IoXB9MfDpHnG1EM7cr1VmA8MLz_VrMzBIo_uDdE1wxf3DEFYibt7_M02evoWMuXI0VKYTy7q4_AOW4gg7zzq9MdNjncT08lQhQ0zUEfjNkA=w800"
+            loading="lazy" alt="Front view of bandsaw box" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/IjkEjcuGQ43A5Y-byo742-wy1V7mpRJV1_6zxpJLfBv1R3KYG79d2ex0Idb7Fvn6UvQhth3eNKrf2dmxWU0U1gZRoX1cIspNjRbRJKldy0qe_qSGeCUJ6xfqRSOf0NF0glLdUJ2GV2U=w800"
+            loading="lazy" alt="Inside flocked view of bandsaw box right drawer" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/1TTZJDp9XONYnEzPcl4FFVkL-foc1zr51XNvbSU1EV9hE_T00gXLK2nqTJYivYK9D51o9Z3KaffG8PhyWUHBkBHcoLJdC8LYnrZGa1YJrUB2DBmX0QY0RAnBsFcy09yhgdRitWzPiYI=w800"
+            loading="lazy" alt="Upper front view of bandsaw box with right drawer open" />
+        </div>
       </div>
-    </div>
-
-    <div
-      class="item collapsible transitionDisabled programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
-      id="grpv1">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/grpv1.jpg" alt="Game Ractangular Prism V1 icon" />
-      <div class="text">
-        <h3>Game Rectangular Prism V1</h3>
-        <p>Astro Party on a two player friendly, portable device</p>
-      </div>
-      <div class="options">
-        <a href="https://thangs.com/m/15230" target="_blank" rel="noopener" title="Open 3D model on Thangs in a new tab"
-          class="button large circle ripple noOpen thangs">
-          <img class="svg" src="images/thangs.svg" alt="Thangs icon" />
-        </a>
-        <a href="https://github.com/TyHil/game-rectangular-prism" target="_blank" rel="noopener"
-          title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="https://photos.app.goo.gl/gadfHzLUD1J6Dd6W7" target="_blank" rel="noopener"
-          title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled programming cpp arduino production electronics" id="desklight">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/desklight.jpg" alt="Desk light icon" />
+        <div class="text">
+          <h3>LED Strip Desk Light</h3>
+          <p>Remote controlled LEDs with various colors and effects</p>
+        </div>
+        <div class="options">
+          <a href="https://github.com/TyHil/led-strip-effects-and-game" target="_blank" rel="noopener"
+            title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="https://photos.app.goo.gl/LFax8vBKRus8ia6A7" target="_blank" rel="noopener"
+            title="Open Google Photos album repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Open Google Photos album repository in a new tab" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/24WXINHMYCecEDWVG4CSBFUClFm6ML2XWvLKdJe4I5pWrI0Q6c8vAcwyxM71PSxOtH5TN2qamabzO0QQIs--_6A4CVflht_o0T3LeEkUkIxXY02qNn2E4K0gAQTzJ6lEWBaeYsGNCeE=w800"
-          loading="lazy" alt="Game Rectangular Prism V1 front with Astro Party on screen" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/AdTne3qU2qtKtYtsMokwwh1mgCHhiCYEEtCI06GkWw1IpdfKvN_THLWayOAj8B42rizf1xvM4zd4vU2vQaHyrQZgUThNBahkUAG7nJNGEUAJcN4xQ0uthiipbvbP6z-qVpPd3GSWdYM=w800"
-          loading="lazy" alt="Game Rectangular Prism V1 top view of components" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/WGr0u07OGcoB85X661PpTsGGs-uqocm-lddtKcYPBkoELUQBYrS0YVzJorLtF6Gd9oZSh-u58Rp_6kgDftRctYBOFI1dphotTo7fD_g-0mhIEPPNtViiZM5-qJDUZIta2TBCpqdAjNw=w800"
-          loading="lazy" alt="Game Rectangular Prism V1 angled view of components" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/05jWKuXmvFikQuzmnH-1rhu5wGBy5CEreOQdRBmja-jGdyRMCuQDMnNCdId4FlZALzn7F0by-bVphezZM_avFmvdrLwWv5zoNRXtRlYuIFk59G45QEj66has6-PD0gi3za2TxCrsdRQ=w800"
+            loading="lazy" alt="LED Strip Desk Light white light" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/Wk-5jTrkV3c7rWfZgMxbRtsd2UZAK5Ch-Sjd5YgyBlJmv4UCMupA0FIBDTDQ6_IQEx2nUTHQRvMGNyO_A3bVycw5lYf5Rm3FmdkrIyEUmHGVDBekYtMm7SWedamSWr12PmK63qmWXUg=w800"
+            loading="lazy" alt="LED Strip Desk Light rainbow light 1" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/8_B-z6yPsbO4cYybXe8AMT1JPsuZdSpwfTH_zPLWn7_M6tfG4gtxF2Y85z4QIFxAhEf9UCB7jIVpQkmKqmyCxBWLxC4-k7HwYmFKU6CzhwMPjvZ9MkHTIIbSDpXD59WnAqHw3oPcf7c=w800"
+            loading="lazy" alt="LED Strip Desk Light rainbow light 2" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/HElmZsjRMbbmeYVliRap2r3ghAUZJoDOEpT4EewdLr_IUt0ImL_cmcX-JzyM_5SKLWJrEgfK9iOeWz-3zxmJw5z07lbTPPqCc5DOwXm3L7IEq8mhz0SFc-8zQxxsJbjQkeGZS3LuZvk=w800"
+            loading="lazy" alt="LED Strip Desk Light rainbow light 3" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/9kwLg354J2i51VvE2mRiJzgJCd1_euhpZ6cbCK-qqosi9VCa0Kg-fWw1WGI_t6LSfJ_VcCK0tYg6U-p0FsokOx20-PL39lngMJM9mf_S-_KafEItElOPoh-IxlaRTA6TJmabJL5PnEM=w800"
+            loading="lazy" alt="LED Strip Desk Light red light" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/dv9pQT_yhgl5cJi_F2fv1Vf0LqIUIPJ7K-qRoCGJkCb7okPHArnyvCx29N3ya50EplueljgboryFURfvGtmQBCDIvqwgGUEPj75LwsWOJtXM3qMz6iO1-2HVxOx7_hBpF6SZeRj7JPI=w800"
+            loading="lazy" alt="LED Strip Desk Light green light" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/hFndFF8dtsoLrUGQA9dWv2GGPO6DDs0Dbm7a2kuTg6wGS0HGug4kCBV2qKKfDQxAJo9aXDUsXs6O-2vDnkdFhO4P3PhTH7DF_iZ981ObTT4kTxAc2XCtsF7vWDshhHEcOsRe-gNbeOM=w800"
+            loading="lazy" alt="LED Strip Desk Light blue light" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/6yXRGB5NlB_V8XlmkgNkiV550UMUC7fpfYWduVBSmwE4rYz9gZrYvDjtBTmnvr33eW8AMSEFX61MqppUZzRhTpp1sOPFMq8HhOo1lg0yTmPHQw97IFyAAtFJkglUm5lXOGxnkZymIcE=w800"
+            loading="lazy" alt="LED Strip Desk Light strobe gif" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/jq9zAS_v7XI9vKONXH-pKM2qR5g8uIxj2434WLFWLZTNJ7F8gF7Wk2boOmjZlsYyyxivcz2oOJYT2LCT3GoZg4jY1TlR-jAfJGDEU0-nKV9zsi76g4EuWmaI0uNx_ywzhyF5cmvxhfs=w800"
+            loading="lazy" alt="LED Strip Desk Light electronics" />
+        </div>
       </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled design physical paper" id="drawings">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/drawings.jpg" alt="Drawings icon" />
-      <div class="text">
-        <h3>Design Drawings</h3>
-        <p>Louisiana's Old State Capitol, the Empire State Building, the Heydar Aliyev Center, and more</p>
-      </div>
-      <div class="options">
-        <a href="https://photos.app.goo.gl/voUjRu6uDruuJf5d7" target="_blank" rel="noopener"
-          title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div
+        class="item collapsible transitionDisabled programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
+        id="grpv1">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/grpv1.jpg" alt="Game Ractangular Prism V1 icon" />
+        <div class="text">
+          <h3>Game Rectangular Prism V1</h3>
+          <p>Astro Party on a two player friendly, portable device</p>
+        </div>
+        <div class="options">
+          <a href="https://thangs.com/m/15230" target="_blank" rel="noopener" title="Open 3D model on Thangs in a new tab"
+            class="button large circle ripple noOpen thangs">
+            <img class="svg" src="images/thangs.svg" alt="Thangs icon" />
+          </a>
+          <a href="https://github.com/TyHil/game-rectangular-prism" target="_blank" rel="noopener"
+            title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="https://photos.app.goo.gl/gadfHzLUD1J6Dd6W7" target="_blank" rel="noopener"
+            title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/dpYciu5tDVwRlblsw3ZGF0nLoqj7oeemXjMo12mw8ZQbHfbjpWUao3i3ZAbPTd6NTGn6mApI8Cb4nYUBIVsXsKTjsU2q2PfOzWyVqh21ZJVxIoBGYylKSF4P4LAq-k9Y5XhKSdLlDuQ=w800"
-          loading="lazy" alt="Austin Frost Bank Tower architectural elevation drawing" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/9mEFa3oG9-Z6CR1itTVVL1-ZrLaor4AvaDkHrn6lQ1h3vYOHsjLVQiKPXvxYGB0gBddpjE_rB2eFi3c6G4WL3yJqTlWUFAeKYb0LBvUY1B2qOEST0NNKQx-U5RjuZrf0b0nugmJc0wQ=w800"
-          loading="lazy" alt="Heydar Aliyev Center architectural elevation drawing" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/HmweWn6AbO-n4K6hcuPBwh-WBgezAQMGZZHsT84Wb54K18DvKlca6jVd6op51EOyR6RcAGuEsBQktiONR2Gu2iW1r0m8DwhmssaMQ7gFFDjUpK6_nfuRmgnpOEzLC1X1EabcDpLgOh4=w800"
-          loading="lazy" alt="University of Texas Tower architectural elevation drawing" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/AkL0N0_SVQTJJpcBAqr5x9TpIbxDIdD83BdIAon9B0xFcIOyZPi5yjR_pjJli6Rmaj97jgkXU0zdxE2aMMiVUFfumJAS9GP0KGRZHOv9EQ8XVf8kxv5zO6je0j7qQZIjunsr_AqXrBQ=w800"
-          loading="lazy" alt="Empire State Building architectural elevation drawing" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/LxrUVk5ruvtAA87_FrC3qCkrn1Ug-Rmb93KMqgwo1Jno9eJ1rsXFikxPx3uhnUtFdc1qKXyO5jOKIS8uU2OkPEZFDJklOrc2xKZy4SHK_jK6FWBZkBfYlLG481S1Zj9t9S64jfWC4S4=w800"
-          loading="lazy" alt="Texas State Capitol architectural elevation drawing" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/sM0wT9dZ48JVkuumkRP5sIYtY9nCF6j2vr-I9BOFUpmdvyEPgHCYeKeUcsFI7l84VcDVaqUlzSRzsv42F1Qu-nCtSzF5f68h-yNs8mlCL3xU4b-_ZhERgOr4nIzBSUMazmslqVmQuEY=w800"
-          loading="lazy" alt="Louisiana's Old State Capitol architectural elevation drawing" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/fXwv9SFWyS3AlRWc9jYP94oytbalaaHH4jWRpDmGMayrQK6AtzDPsPxltas-0YCNDfXBO4FfJCmE5yeAvy2ltNQF5kBxlF4jpbjAkx-vipIHfydn-RB1LDOlcKXFfAFKZRfq1iJYqoE=w800"
-          loading="lazy" alt="Google Assistant and radio enabled home intercom system drawing" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/dQxh5MCoYbBYbt5SqWPnfrWnUMKTOKoZ8Gp_nn5beHgL2cOHgURB8p_CICEaxChpAKz62fJJk8LE-RJTuJNOc0yjdNDjhOl2778nqfrXAb_-sVrZN-2lguhD_pOwvu_nFxPpay6vMSQ=w800"
-          loading="lazy" alt="secretary desk drawing" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/TA6HAfcRkIyjWhlEV5CGrTq6i4WRUNku_IAAELj6sB-kORcLyJHoi-Ndl3O6l4eu7Oy7UvLHuhaPrg0thkui2WUiQZQzAf70wvah-M1SMOe1Q2KbSwb4empBZUuy25Km76AHubTJEWY=w800"
-          loading="lazy" alt="Aldo Rossi's Lighthouse Theatre drawing" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/24WXINHMYCecEDWVG4CSBFUClFm6ML2XWvLKdJe4I5pWrI0Q6c8vAcwyxM71PSxOtH5TN2qamabzO0QQIs--_6A4CVflht_o0T3LeEkUkIxXY02qNn2E4K0gAQTzJ6lEWBaeYsGNCeE=w800"
+            loading="lazy" alt="Game Rectangular Prism V1 front with Astro Party on screen" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/AdTne3qU2qtKtYtsMokwwh1mgCHhiCYEEtCI06GkWw1IpdfKvN_THLWayOAj8B42rizf1xvM4zd4vU2vQaHyrQZgUThNBahkUAG7nJNGEUAJcN4xQ0uthiipbvbP6z-qVpPd3GSWdYM=w800"
+            loading="lazy" alt="Game Rectangular Prism V1 top view of components" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/WGr0u07OGcoB85X661PpTsGGs-uqocm-lddtKcYPBkoELUQBYrS0YVzJorLtF6Gd9oZSh-u58Rp_6kgDftRctYBOFI1dphotTo7fD_g-0mhIEPPNtViiZM5-qJDUZIta2TBCpqdAjNw=w800"
+            loading="lazy" alt="Game Rectangular Prism V1 angled view of components" />
+        </div>
       </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled programming web" id="notes">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon" src="images/bulb.png" alt="Notes chrome extension icon" />
-      <div class="text">
-        <h3>Notes Chrome Extension</h3>
-        <p>A popup window that can be used to write down quick notes and make calculations</p>
-      </div>
-      <div class="options">
-        <a href="https://github.com/TyHil/notes-extension" target="_blank" rel="noopener"
-          title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="https://photos.app.goo.gl/vKH7BovTdPqbE7v7A" target="_blank" rel="noopener"
-          title="Open Google Photos album repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Open Google Photos album repository in a new tab" />
-        </a>
-        <a href="https://chrome.google.com/webstore/detail/notes/mmpafhpdjeiogbfmncenmkbemhacfcge" target="_blank"
-          rel="noopener" title="Open Google Chrome Web Store listing in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/openexternal.svg" alt="Open Google Chrome Web Store listing in a new tab" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled design physical paper" id="drawings">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/drawings.jpg" alt="Drawings icon" />
+        <div class="text">
+          <h3>Design Drawings</h3>
+          <p>Louisiana's Old State Capitol, the Empire State Building, the Heydar Aliyev Center, and more</p>
+        </div>
+        <div class="options">
+          <a href="https://photos.app.goo.gl/voUjRu6uDruuJf5d7" target="_blank" rel="noopener"
+            title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/greZ0aYqCOXLJtm0HjTBlz-qxPUY3LcpdJmkXse32Sk6VvNbtAInwhw4bArQTeYlRKVyt_WsynygjJamfvsJZ_FirGRc8HxVxao3NsBO_HkGtaFyuJzxHG4A_qoE0S6VM5c87C06gj0=w800"
-          loading="lazy" alt="Full screen notes chrome extension pop up view" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/UGcxUbfEYfFafEIsfL8EGJQvGcfpKb8EdSjfosIUDBK7Bs5styT-69jyEQSjawMefIdzPJzAy10vA63anp0vPhOvyoz-JpxsWogIG_E_5N34oKig6C8kipp6Aue4PjB0qcu4OUoydDA=w800"
-          loading="lazy" alt="Close up notes chrome extension pop up view" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/dpYciu5tDVwRlblsw3ZGF0nLoqj7oeemXjMo12mw8ZQbHfbjpWUao3i3ZAbPTd6NTGn6mApI8Cb4nYUBIVsXsKTjsU2q2PfOzWyVqh21ZJVxIoBGYylKSF4P4LAq-k9Y5XhKSdLlDuQ=w800"
+            loading="lazy" alt="Austin Frost Bank Tower architectural elevation drawing" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/9mEFa3oG9-Z6CR1itTVVL1-ZrLaor4AvaDkHrn6lQ1h3vYOHsjLVQiKPXvxYGB0gBddpjE_rB2eFi3c6G4WL3yJqTlWUFAeKYb0LBvUY1B2qOEST0NNKQx-U5RjuZrf0b0nugmJc0wQ=w800"
+            loading="lazy" alt="Heydar Aliyev Center architectural elevation drawing" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/HmweWn6AbO-n4K6hcuPBwh-WBgezAQMGZZHsT84Wb54K18DvKlca6jVd6op51EOyR6RcAGuEsBQktiONR2Gu2iW1r0m8DwhmssaMQ7gFFDjUpK6_nfuRmgnpOEzLC1X1EabcDpLgOh4=w800"
+            loading="lazy" alt="University of Texas Tower architectural elevation drawing" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/AkL0N0_SVQTJJpcBAqr5x9TpIbxDIdD83BdIAon9B0xFcIOyZPi5yjR_pjJli6Rmaj97jgkXU0zdxE2aMMiVUFfumJAS9GP0KGRZHOv9EQ8XVf8kxv5zO6je0j7qQZIjunsr_AqXrBQ=w800"
+            loading="lazy" alt="Empire State Building architectural elevation drawing" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/LxrUVk5ruvtAA87_FrC3qCkrn1Ug-Rmb93KMqgwo1Jno9eJ1rsXFikxPx3uhnUtFdc1qKXyO5jOKIS8uU2OkPEZFDJklOrc2xKZy4SHK_jK6FWBZkBfYlLG481S1Zj9t9S64jfWC4S4=w800"
+            loading="lazy" alt="Texas State Capitol architectural elevation drawing" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/sM0wT9dZ48JVkuumkRP5sIYtY9nCF6j2vr-I9BOFUpmdvyEPgHCYeKeUcsFI7l84VcDVaqUlzSRzsv42F1Qu-nCtSzF5f68h-yNs8mlCL3xU4b-_ZhERgOr4nIzBSUMazmslqVmQuEY=w800"
+            loading="lazy" alt="Louisiana's Old State Capitol architectural elevation drawing" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/fXwv9SFWyS3AlRWc9jYP94oytbalaaHH4jWRpDmGMayrQK6AtzDPsPxltas-0YCNDfXBO4FfJCmE5yeAvy2ltNQF5kBxlF4jpbjAkx-vipIHfydn-RB1LDOlcKXFfAFKZRfq1iJYqoE=w800"
+            loading="lazy" alt="Google Assistant and radio enabled home intercom system drawing" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/dQxh5MCoYbBYbt5SqWPnfrWnUMKTOKoZ8Gp_nn5beHgL2cOHgURB8p_CICEaxChpAKz62fJJk8LE-RJTuJNOc0yjdNDjhOl2778nqfrXAb_-sVrZN-2lguhD_pOwvu_nFxPpay6vMSQ=w800"
+            loading="lazy" alt="secretary desk drawing" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/TA6HAfcRkIyjWhlEV5CGrTq6i4WRUNku_IAAELj6sB-kORcLyJHoi-Ndl3O6l4eu7Oy7UvLHuhaPrg0thkui2WUiQZQzAf70wvah-M1SMOe1Q2KbSwb4empBZUuy25Km76AHubTJEWY=w800"
+            loading="lazy" alt="Aldo Rossi's Lighthouse Theatre drawing" />
+        </div>
       </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled programming cpp arduino production electronics" id="walllight">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/wall.jpg" alt="LED strip 1D game icon" />
-      <div class="text">
-        <h3>LED Strip 1D Game</h3>
-        <p>Wall mounted LEDs with lighting and a joystick controlled one dimensional game</p>
-      </div>
-      <div class="options">
-        <a href="https://github.com/TyHil/led-strip-effects-and-game" target="_blank" rel="noopener"
-          title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/github.svg" alt="GitHub icon" />
-        </a>
-        <a href="https://photos.app.goo.gl/fKTjRkkfvrJhNZch7" target="_blank" rel="noopener"
-          title="Open Google Photos album repository in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Open Google Photos album repository in a new tab" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled programming web" id="notes">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon" src="images/bulb.png" alt="Notes chrome extension icon" />
+        <div class="text">
+          <h3>Notes Chrome Extension</h3>
+          <p>A popup window that can be used to write down quick notes and make calculations</p>
+        </div>
+        <div class="options">
+          <a href="https://github.com/TyHil/notes-extension" target="_blank" rel="noopener"
+            title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="https://photos.app.goo.gl/vKH7BovTdPqbE7v7A" target="_blank" rel="noopener"
+            title="Open Google Photos album repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Open Google Photos album repository in a new tab" />
+          </a>
+          <a href="https://chrome.google.com/webstore/detail/notes/mmpafhpdjeiogbfmncenmkbemhacfcge" target="_blank"
+            rel="noopener" title="Open Google Chrome Web Store listing in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/openexternal.svg" alt="Open Google Chrome Web Store listing in a new tab" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/W6163uUzP2TpsCA9TD_v10mzXQRcR-zLL-6zgU4XBTBtenva2JxiwH604Prky5RIQ5OZpnB_s48JQJ2gogRsRaOd9JVJzajpGRCqSPM7uK2SmgpbnRvSDCAcCmnc2mNYzRH8MHihrYI=w800"
-          loading="lazy" alt="LED Strip 1D Game rainbow light 1" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/_LuG-TbEiPu1XBgUIT0z40Ngu-nAVMDlS59v2q2SKYN0TrflF4LGkvF7VKQUxYOs0Gso10fUCmNUS6gNxsSiva-1ZEf821FRIv5ra5Rp-DknQ36QQOEnp0sNuVSidKIII8OzmQCyv2s=w800"
-          loading="lazy" alt="LED Strip 1D Game rainbow light 2" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/qTNYP3Pc-HjcRnW91z4xhEoySEQtTfYbFqbpEuVTmC-7BS1Kc2Mwc-DVWdKBsMqIQQb3SfSGDg5xd4-LnkfJyD9qtkntjkXgrRZnbM7jkGJnmmeD0-hDSfSTvfWoGa57yznUrXvv5A8=w800"
-          loading="lazy" alt="LED Strip 1D Game rainbow light 3" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/TwmF9X0-dWkC2NC5NMYjcs5GxKiIO-ckPUfFYtPzGSmAoWz5AwXtL0rRvU58_HVEQBM5GQNoo3PK-_fK9I3dHxfHVNn6ehSehj8dXSyvfx04enXt3lby4hI-BqS7wNtwsirpmsZxv7o=w800"
-          loading="lazy" alt="LED Strip 1D Game gameplay gif 1" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/FaRU8-tnCZFOxf97BsjMDHYThO2icLczBEyIxLTwYNGwL9Y54r6PyTCaMhJNedJLhx4i2Kn5ycm4_izkOE3p_4J5WYtj0b5acuZUw9GICl4nbo9kFUDLmeZ4JGXXBR22nc5hOpj3ykM=w800"
-          loading="lazy" alt="LED Strip 1D Game gameplay gif 1" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/dZR45IlqRDOIvp4bLA2Gry2e29aIucvCVOu27IuOWh34nTkUPSveWiIHLya9i-BQ0zmEzZz6Rn7yilmvWvRvufIqXchN8rsoB2iUzS4VNfyZNDXDOH38xaNEKIXv3ChG2NqBh-NQyfw=w800"
-          loading="lazy" alt="LED Strip 1D Game electronics" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/greZ0aYqCOXLJtm0HjTBlz-qxPUY3LcpdJmkXse32Sk6VvNbtAInwhw4bArQTeYlRKVyt_WsynygjJamfvsJZ_FirGRc8HxVxao3NsBO_HkGtaFyuJzxHG4A_qoE0S6VM5c87C06gj0=w800"
+            loading="lazy" alt="Full screen notes chrome extension pop up view" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/UGcxUbfEYfFafEIsfL8EGJQvGcfpKb8EdSjfosIUDBK7Bs5styT-69jyEQSjawMefIdzPJzAy10vA63anp0vPhOvyoz-JpxsWogIG_E_5N34oKig6C8kipp6Aue4PjB0qcu4OUoydDA=w800"
+            loading="lazy" alt="Close up notes chrome extension pop up view" />
+        </div>
       </div>
-    </div>
-
-    <div class="item collapsible transitionDisabled" id="photography">
-      <button class="large circle ripple" title="Expand content">
-        <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
-      </button>
-      <img loading="lazy" class="icon rounded" src="images/photography.jpg" alt="Photography icon" />
-      <div class="text">
-        <h3>Photography</h3>
-        <p>Amateur smartphone photography abroad and in the every day</p>
-      </div>
-      <div class="options">
-        <a href="https://photos.app.goo.gl/kjF18RUxBj72HsSK7" target="_blank" rel="noopener"
-          title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
-          <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
-        </a>
-        <button title="Share link to project" class="large circle ripple noOpen share">
-          <img class="svg check" src="images/check.svg" alt="Copied!" />
-          <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+  
+      <div class="item collapsible transitionDisabled programming cpp arduino production electronics" id="walllight">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
         </button>
+        <img loading="lazy" class="icon rounded" src="images/wall.jpg" alt="LED strip 1D game icon" />
+        <div class="text">
+          <h3>LED Strip 1D Game</h3>
+          <p>Wall mounted LEDs with lighting and a joystick controlled one dimensional game</p>
+        </div>
+        <div class="options">
+          <a href="https://github.com/TyHil/led-strip-effects-and-game" target="_blank" rel="noopener"
+            title="Open GitHub repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/github.svg" alt="GitHub icon" />
+          </a>
+          <a href="https://photos.app.goo.gl/fKTjRkkfvrJhNZch7" target="_blank" rel="noopener"
+            title="Open Google Photos album repository in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Open Google Photos album repository in a new tab" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="cards">
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/vXDa9lifeVurazn9ZIHadcBs1g9PduDseSkDRjA5JHspVUscoiT50lY_L9SdzuJhxXUuddZskXakc5Rwly0Q1acbn_7CUj5jmHRHH88_vzU_sxLeb6etX7BQ7h5mlOUMV611dh3E0Vo=w800"
-          loading="lazy" alt="Close-up of a bee hovering near a bluebonnet" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/ZZCSRg2-lfNuvZBkNy3Fi4PU4mLE0AvSodF4YrB2d1nKc_78QKSIsN7s08klBhmkLqrbwNc-5UIYEMHl-c1WIyJhts-Uxg1WEsMIHCOdOvxCbhUPxA8Viy-yn1iPmkWs1jxfmj-NAjY=w800"
-          loading="lazy"
-          alt="Close-up of a branch of a sweet acacia tree's flowers with more flowers in the background" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/s5d0ug1Bd75ME6ImspN2rKIUcT_sGzQfJkBh_6oe7KczOjQnOrgan5gifC1KK1K1ALarYUD3jFhRD2anZu35caXMOX_zJvFnpqMI_FjjOS8F6pGEXPpPVkW2q2p0IypZdB3pG5CngcM=w800"
-          loading="lazy" alt="A rocky underwater river photo" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/5CVxNiL_yy2kBzHclCLq4DVui_lYIGi7VM31pvdUBsp_3MUo1Wo_CVTYptiTSt5hpdaiq7pYF7gIa0whEWy3hTd3F_uJbiT1LZ9sk_rnf6ObRc71LLxSAfX9QlY10d65y_SvEZvHPnM=w800"
-          loading="lazy" alt="Shot down a train bridge over a river" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/kIq-Rj4o-SKrqPicfusiSNwlWhNwMaCvyPqW2ffsWtTrfTYnaR_PpFGJi75UNUE1J2kxg_DCIxf48jgoimknjang-gICWqOrZNt-J35pd-PwPYzu4UmTiHiUwUJef_GgxZVBl7AxwZg=w800"
-          loading="lazy" alt="Phone wallpaper of a pink and white flower edited onto a black background" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/HFn52kvNfSH7IyWl2MTxXQywSuqYgmp2D56Q3fHaiwNqhemT2_IXvPTee2JU2cVAixtI_GU-3kULDo01FkyLoLzDRfFX7y7x88gWoPwhFFRQ4cDmhLZpNYlTRxOPKtK0ktwh80xaey8=w800"
-          loading="lazy" alt="Three disassembled hard drives arranged in a 3x3 grid" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/YSxukeV615pW61GjgBxz_m2JD-vjg8XwUzIGy2WmjPaXajVEBfW05zrzWubZN0XfMB0zm42IwJYU4c1U_UxNsoAyJcIslIW3tOczhRjb5QGq-3rNGiBnWV75reu65UQC-BD6JT3Rh6M=w800"
-          loading="lazy"
-          alt="Close-up of a parrot's feather plant floating on the water with tiny beads of water sitting in its leaves" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/E1T9qOZTe2RWDHQIEBflxWxLKMB0ZnjTx0E1qvitRvqXFGoD6vQiZmzZyOBVgrLeWC5ZU3hXL58autglPDG8uYlF4HLF5u-XiGo0iAPLGimiExBNf40O24zXxEtrJygLyhkb2QK4oc4=w800"
-          loading="lazy" alt="Squirrel hunched over eating a nut in a tree" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/naOM7oXqwOBRo7LH7dhqj99YRCEXkzC1BF-3iKxvazbHjDLgM28atMHowV5xGfCYA7-cVKs-Hj5Whd6DcrGc4vABFCldm_WbO1HN648__S5-TUnaEZxw206XdO6-HDNfMK6gh4TL-fA=w800"
-          loading="lazy" alt="Squrrel laying down on a tree branch" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/pw/AIL4fc-f6u0B-7frFuLnDUIfAxL2hWmJdjUzV2yt5JNAtbDeCIAFZTcbdqT9ZuFkpbRrZKXnoNCI_NovzVYafHOpFCX3cTEvR5lbWQrc7nxLMduI9-VzgL0l=w800"
-          loading="lazy" alt="Photo of the Milky Way" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/Xow5Sw_sU4c2GszK9Na9sImQ6PXeKXwfF-6QWo2KY-y70H7uV2q1ePFbAFWjT4oG1D1xyFemGnwLGar6abIpLy84zQAmf-gtRqp65Q_5m-zF3rpIBX6dVt9wCLIVHsVPsyaE9oh25Kg=w800"
-          loading="lazy" alt="Straight on shot of three seals sitting on the bulbous bow of a large ship" />
-        <img class="checkload"
-          src="https://lh3.googleusercontent.com/-ekT88K2WQv-uxpNXLZ8EnF6lyVWB4xu2HKSoxPHCX3jrGDXB4_X_7vglSQ13OPfJO_nlvpGijjPHv3xXrYkWrsOzao7CeW00zRyezmsoBPKp1ASa-O02anmPeSOagGE2C4CTQuZ4IU=w800"
-          loading="lazy" alt="Squirrel clinging to a tree during golden hour, turned to look stright at the camera" />
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/W6163uUzP2TpsCA9TD_v10mzXQRcR-zLL-6zgU4XBTBtenva2JxiwH604Prky5RIQ5OZpnB_s48JQJ2gogRsRaOd9JVJzajpGRCqSPM7uK2SmgpbnRvSDCAcCmnc2mNYzRH8MHihrYI=w800"
+            loading="lazy" alt="LED Strip 1D Game rainbow light 1" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/_LuG-TbEiPu1XBgUIT0z40Ngu-nAVMDlS59v2q2SKYN0TrflF4LGkvF7VKQUxYOs0Gso10fUCmNUS6gNxsSiva-1ZEf821FRIv5ra5Rp-DknQ36QQOEnp0sNuVSidKIII8OzmQCyv2s=w800"
+            loading="lazy" alt="LED Strip 1D Game rainbow light 2" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/qTNYP3Pc-HjcRnW91z4xhEoySEQtTfYbFqbpEuVTmC-7BS1Kc2Mwc-DVWdKBsMqIQQb3SfSGDg5xd4-LnkfJyD9qtkntjkXgrRZnbM7jkGJnmmeD0-hDSfSTvfWoGa57yznUrXvv5A8=w800"
+            loading="lazy" alt="LED Strip 1D Game rainbow light 3" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/TwmF9X0-dWkC2NC5NMYjcs5GxKiIO-ckPUfFYtPzGSmAoWz5AwXtL0rRvU58_HVEQBM5GQNoo3PK-_fK9I3dHxfHVNn6ehSehj8dXSyvfx04enXt3lby4hI-BqS7wNtwsirpmsZxv7o=w800"
+            loading="lazy" alt="LED Strip 1D Game gameplay gif 1" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/FaRU8-tnCZFOxf97BsjMDHYThO2icLczBEyIxLTwYNGwL9Y54r6PyTCaMhJNedJLhx4i2Kn5ycm4_izkOE3p_4J5WYtj0b5acuZUw9GICl4nbo9kFUDLmeZ4JGXXBR22nc5hOpj3ykM=w800"
+            loading="lazy" alt="LED Strip 1D Game gameplay gif 1" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/dZR45IlqRDOIvp4bLA2Gry2e29aIucvCVOu27IuOWh34nTkUPSveWiIHLya9i-BQ0zmEzZz6Rn7yilmvWvRvufIqXchN8rsoB2iUzS4VNfyZNDXDOH38xaNEKIXv3ChG2NqBh-NQyfw=w800"
+            loading="lazy" alt="LED Strip 1D Game electronics" />
+        </div>
+      </div>
+  
+      <div class="item collapsible transitionDisabled" id="photography">
+        <button class="large circle ripple" title="Expand content">
+          <img class="arrow svg" src="images/arrow.svg" alt="Expand arrow icon" title="Expand content" />
+        </button>
+        <img loading="lazy" class="icon rounded" src="images/photography.jpg" alt="Photography icon" />
+        <div class="text">
+          <h3>Photography</h3>
+          <p>Amateur smartphone photography abroad and in the every day</p>
+        </div>
+        <div class="options">
+          <a href="https://photos.app.goo.gl/kjF18RUxBj72HsSK7" target="_blank" rel="noopener"
+            title="Open Google Photos album in a new tab" class="button large circle ripple noOpen">
+            <img class="svg" src="images/photos.svg" alt="Google Photos icon" />
+          </a>
+          <button title="Share link to project" class="large circle ripple noOpen share">
+            <img class="svg check" src="images/check.svg" alt="Copied!" />
+            <img class="shareIcon svg" src="images/share.svg" alt="Share icon" />
+          </button>
+        </div>
+      </div>
+      <div class="content">
+        <div class="cards">
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/vXDa9lifeVurazn9ZIHadcBs1g9PduDseSkDRjA5JHspVUscoiT50lY_L9SdzuJhxXUuddZskXakc5Rwly0Q1acbn_7CUj5jmHRHH88_vzU_sxLeb6etX7BQ7h5mlOUMV611dh3E0Vo=w800"
+            loading="lazy" alt="Close-up of a bee hovering near a bluebonnet" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/ZZCSRg2-lfNuvZBkNy3Fi4PU4mLE0AvSodF4YrB2d1nKc_78QKSIsN7s08klBhmkLqrbwNc-5UIYEMHl-c1WIyJhts-Uxg1WEsMIHCOdOvxCbhUPxA8Viy-yn1iPmkWs1jxfmj-NAjY=w800"
+            loading="lazy"
+            alt="Close-up of a branch of a sweet acacia tree's flowers with more flowers in the background" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/s5d0ug1Bd75ME6ImspN2rKIUcT_sGzQfJkBh_6oe7KczOjQnOrgan5gifC1KK1K1ALarYUD3jFhRD2anZu35caXMOX_zJvFnpqMI_FjjOS8F6pGEXPpPVkW2q2p0IypZdB3pG5CngcM=w800"
+            loading="lazy" alt="A rocky underwater river photo" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/5CVxNiL_yy2kBzHclCLq4DVui_lYIGi7VM31pvdUBsp_3MUo1Wo_CVTYptiTSt5hpdaiq7pYF7gIa0whEWy3hTd3F_uJbiT1LZ9sk_rnf6ObRc71LLxSAfX9QlY10d65y_SvEZvHPnM=w800"
+            loading="lazy" alt="Shot down a train bridge over a river" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/kIq-Rj4o-SKrqPicfusiSNwlWhNwMaCvyPqW2ffsWtTrfTYnaR_PpFGJi75UNUE1J2kxg_DCIxf48jgoimknjang-gICWqOrZNt-J35pd-PwPYzu4UmTiHiUwUJef_GgxZVBl7AxwZg=w800"
+            loading="lazy" alt="Phone wallpaper of a pink and white flower edited onto a black background" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/HFn52kvNfSH7IyWl2MTxXQywSuqYgmp2D56Q3fHaiwNqhemT2_IXvPTee2JU2cVAixtI_GU-3kULDo01FkyLoLzDRfFX7y7x88gWoPwhFFRQ4cDmhLZpNYlTRxOPKtK0ktwh80xaey8=w800"
+            loading="lazy" alt="Three disassembled hard drives arranged in a 3x3 grid" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/YSxukeV615pW61GjgBxz_m2JD-vjg8XwUzIGy2WmjPaXajVEBfW05zrzWubZN0XfMB0zm42IwJYU4c1U_UxNsoAyJcIslIW3tOczhRjb5QGq-3rNGiBnWV75reu65UQC-BD6JT3Rh6M=w800"
+            loading="lazy"
+            alt="Close-up of a parrot's feather plant floating on the water with tiny beads of water sitting in its leaves" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/E1T9qOZTe2RWDHQIEBflxWxLKMB0ZnjTx0E1qvitRvqXFGoD6vQiZmzZyOBVgrLeWC5ZU3hXL58autglPDG8uYlF4HLF5u-XiGo0iAPLGimiExBNf40O24zXxEtrJygLyhkb2QK4oc4=w800"
+            loading="lazy" alt="Squirrel hunched over eating a nut in a tree" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/naOM7oXqwOBRo7LH7dhqj99YRCEXkzC1BF-3iKxvazbHjDLgM28atMHowV5xGfCYA7-cVKs-Hj5Whd6DcrGc4vABFCldm_WbO1HN648__S5-TUnaEZxw206XdO6-HDNfMK6gh4TL-fA=w800"
+            loading="lazy" alt="Squrrel laying down on a tree branch" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/pw/AIL4fc-f6u0B-7frFuLnDUIfAxL2hWmJdjUzV2yt5JNAtbDeCIAFZTcbdqT9ZuFkpbRrZKXnoNCI_NovzVYafHOpFCX3cTEvR5lbWQrc7nxLMduI9-VzgL0l=w800"
+            loading="lazy" alt="Photo of the Milky Way" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/Xow5Sw_sU4c2GszK9Na9sImQ6PXeKXwfF-6QWo2KY-y70H7uV2q1ePFbAFWjT4oG1D1xyFemGnwLGar6abIpLy84zQAmf-gtRqp65Q_5m-zF3rpIBX6dVt9wCLIVHsVPsyaE9oh25Kg=w800"
+            loading="lazy" alt="Straight on shot of three seals sitting on the bulbous bow of a large ship" />
+          <img class="checkload"
+            src="https://lh3.googleusercontent.com/-ekT88K2WQv-uxpNXLZ8EnF6lyVWB4xu2HKSoxPHCX3jrGDXB4_X_7vglSQ13OPfJO_nlvpGijjPHv3xXrYkWrsOzao7CeW00zRyezmsoBPKp1ASa-O02anmPeSOagGE2C4CTQuZ4IU=w800"
+            loading="lazy" alt="Squirrel clinging to a tree during golden hour, turned to look stright at the camera" />
+        </div>
+      </div>
+
+      <div id="shadowOverlay">
+        <button class="large ripple" title="Expand projects section">Show More</button>
       </div>
     </div>
 
+    <div class="header">
+      <h2>Testimonials</h2>
+    </div>
   </main>
 
   <div id="fullscreenbg">

@@ -90,6 +90,29 @@ window.addEventListener('resize', headerHeight);
 
 /* Items */
 
+const projects = document.getElementById('projects');
+function projectsResize() {
+  let heightAdd = 0;
+  for (const id in items) {
+    if (items[id].canOpen) {
+      console.log(items[id].content.getBoundingClientRect().height);
+      heightAdd += parseInt(items[id].content.getBoundingClientRect().height);
+    }
+  }
+  projects.style.setProperty('--extraHeight', heightAdd + "px");
+}
+
+const shadowOverlay = document.getElementById('shadowOverlay');
+shadowOverlay.getElementsByTagName('button')[0].addEventListener('click', function() {
+  projects.style.transition = 'max-height 1000ms ease-out';
+  projects.style.maxHeight = projects.scrollHeight + 'px';
+  shadowOverlay.style.opacity = 0;
+  projects.addEventListener('transitionend', () => {
+    projects.style.maxHeight = 'none';
+    shadowOverlay.style.display = 'none';
+  }, { once: true });
+});
+
 class Item {
   constructor(item) {
     this.item = item;
@@ -118,6 +141,7 @@ class Item {
         if (this.content.previousElementSibling.classList.contains('open')) { //Prevent leftover listener when double clicking quickly
           this.content.style.maxHeight = 'none';
         }
+        projectsResize();
       }, { once: true });
       analytics.logEvent(analytics, 'view_item', { event_category: 'engagement', event_label: this.item.getElementsByTagName('h3')[0].innerText }); //Log view_item event to analytics
     }
@@ -133,6 +157,7 @@ class Item {
           if (!this.content.previousElementSibling.classList.contains('open')) { //Prevent leftover listener when double clicking quickly
             this.content.style.display = 'none';
           }
+          projectsResize();
         }, { once: true });
       }); //Delay so js runs these separately, won't animate otherwise
     }
