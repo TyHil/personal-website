@@ -455,15 +455,12 @@ h2 {
   height: 10rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   transition: opacity 200ms ease-out;
 }
 #shadowOverlay button {
   pointer-events: auto;
-  background-color: var(--dark2);
-}
-#shadowOverlay button:hover, #shadowOverlay button:focus-visible {
-  background-color: var(--dark3);
+  box-shadow: 0 0 2rem var(--dark0);
 }
 
 
@@ -472,9 +469,9 @@ h2 {
 
 .item {
   margin-top: 1.25rem;
-  padding: 0.4rem 0.6rem;
+  padding: 0.5rem;
   background-color: var(--dark1);
-  border-radius: 0.6rem;
+  border-radius: 2rem;
   display: flex;
   align-items: center;
   transition: border-radius 200ms 400ms, padding 200ms, opacity 200ms, max-height 200ms, min-height 200ms, margin-top 200ms;
@@ -716,6 +713,63 @@ span.ripplecircle {
   50% {
     background-color: var(--dark2);
   }
+}
+
+
+
+/* Testimonials */
+
+#testimonialBox {
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.testimonial {
+  background-color: var(--dark1);
+  border-radius: 2rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 55ch;
+}
+.testimonial blockquote, .testimonial p {
+  text-align: center;
+}
+.testimonial blockquote {
+  color: var(--light1);
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+.testimonial p {
+  color: var(--light2);
+  font-weight: normal;
+}
+
+
+
+/* Footer */
+
+footer {
+  padding: 3rem 1rem;
+  background-color: var(--dark1);
+  display: flex;
+  justify-content: space-evenly;
+}
+footer div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+footer div p {
+  margin-bottom: 0.25rem;
+}
+footer div a, footer div a:visited {
+  color: var(--light1);
 }
 
 

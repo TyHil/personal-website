@@ -410,6 +410,10 @@ function shareLink(el, title, url) {
   }
 }
 
+function currentURL() {
+  return window.location.href.split('?')[0].split('#')[0];
+}
+
 //Share filter
 document.getElementById('shareFilter').addEventListener('click', function() {
   const filtereds = document.getElementsByClassName('filtered');
@@ -419,7 +423,7 @@ document.getElementById('shareFilter').addEventListener('click', function() {
     ids.push(filtereds[i].id);
     names.push(filtereds[i].innerText);
   }
-  shareLink(this, names.reverse().join(' ') + ' Filter', window.location.href.split('?')[0] + '?filter=' + ids.join());
+  shareLink(this, names.reverse().join(' ') + ' Filter', currentURL() + '?filter=' + ids.join());
   analytics.logEvent(analytics, 'share_filter', { event_category: 'engagement', event_label: names.join(' ') }); //Log share_filter event to analytics
 });
 
@@ -427,7 +431,7 @@ document.getElementById('shareFilter').addEventListener('click', function() {
 const shares = document.getElementsByClassName('share');
 for (let i = 0; i < shares.length; i++) {
   shares[i].addEventListener('click', function() {
-    shareLink(this, shares[i].parentNode.parentNode.getElementsByTagName('h3')[0].innerText, window.location.href.split('?')[0] + '?item=' + shares[i].parentNode.parentNode.id);
+    shareLink(this, shares[i].parentNode.parentNode.getElementsByTagName('h3')[0].innerText, currentURL() + '?item=' + shares[i].parentNode.parentNode.id);
     analytics.logEvent(analytics, 'share_item', { event_category: 'engagement', event_label: this.parentNode.parentNode.getElementsByTagName('h3')[0].innerText }); //Log share_item event to analytics
   });
 }

@@ -35,7 +35,7 @@
 
 <body>
   <!-- Embed Google Photos Link: https://www.labnol.org/embed/google/photos/ -->
-  <header>
+  <header id="header">
     <div id="headerBg"></div>
     <div id="left">
       <h1>
@@ -106,7 +106,7 @@
         src="https://drive.google.com/file/d/1_Rd6t2spJ1CZxrm1srb5ITw91HaDv4GX/preview"></iframe>
     </div>
 
-    <div id="projects">
+    <section id="projects">
       <div class="header">
         <h2>Projects</h2>
         <button class="featured large filter transitionDisabled filterButton ripple" id="featured"
@@ -1079,12 +1079,58 @@
       <div id="shadowOverlay">
         <button class="large ripple" title="Expand projects section">Show More</button>
       </div>
-    </div>
+    </section>
 
-    <div class="header">
-      <h2>Testimonials</h2>
-    </div>
+    <section id="testimonials">
+      <div class="header">
+        <h2>Testimonials</h2>
+      </div>
+      <div id="testimonialBox">
+        <div class="testimonial">
+          <blockquote>Tyler is a rare find. He is culturally astute and reflexively inclusive, with a broadminded maturity far beyond his peers.</blockquote>
+          <p>Anthony A. Cucolo III</p>
+          <p>Major General, US Army Retired</p>
+        </div>
+        <div class="testimonial">
+          <blockquote>Tyler Hill is an exceptional young man and thought provoking leader from my direct and personal experience. He embraces uncertainty with enthusiasm and demonstrates focus and in-depth understanding of complex business and technology challenges.</blockquote>
+          <p>Jason E. Kelley</p>
+          <p>Senior State Executive, State of Texas at IBM Consulting</p>
+        </div>
+        <div class="testimonial">
+          <blockquote>Tyler Hill is a wonderful person. He is an exceptional worker; attentive, intelligent, efficient, and respectful. He handles every situation with tact and sensitivity.</blockquote>
+          <p>Madhu Phillips</p>
+          <p>Small Business Owner at Sugar Pine</p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div>
+      <p><strong>Sections</strong></p>
+      <a href="#header">Header</a>
+      <a href="#resume">Resume</a>
+      <a href="#projects">Projects</a>
+      <a href="#testimonials">Testimonials</a>
+    </div>
+    <div>
+      <p><strong>Contact and Social</strong></p>
+      <a href="mailto:tylergordonhill@gmail.com" target="_blank" rel="noopener">Email</a>
+      <a href="http://www.linkedin.com/in/tylergordonhill" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/TyHil" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://replit.com/@TylerGHill" target="_blank" rel="noopener">Replit</a>
+      <a href="https://thangs.com/TylerHill" target="_blank" rel="noopener">Thangs</a>
+    </div>
+    <div>
+      <p><strong>Subsites</strong></p>
+      <a href="/set-operations-for-spotify">Set Operations for Spotify</a>
+      <a href="/typewriter-formatting">Typewriter Formatting</a>
+      <a href="/cah-maker">Cards Against Humanity Card Maker</a>
+      <a href="/response-display">Response Display</a>
+      <a href="/password-generator">Password Generator</a>
+      <a href="/recipes">Recipes</a>
+    </div>
+  </footer>
 
   <div id="fullscreenbg">
     <img id="fullscreenimg" loading="lazy" />
