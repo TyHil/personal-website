@@ -453,14 +453,21 @@ function openFilterAndWait(list) { //Open filter(s) one at a time, waiting for e
 
 const params = new URLSearchParams(window.location.search);
 
+function expandProjects() {
+  document.getElementById('projects').style.maxHeight = 'none';
+  document.getElementById('shadowOverlay').style.display = 'none';
+}
+
 if (params) {
   if (params.has('item') && document.querySelector('#' + params.get('item') + '.item')) {
+    expandProjects();
     items[params.get('item')].open();
     document.querySelector('#' + params.get('item') + '.item').scrollIntoView({
       behavior: 'smooth'
     });
   }
   if (params.has('filter') && params.get('filter').split(',').map(id => document.querySelector('#' + id + '.filterButton')).every(Boolean)) { //if each filter is a valid element
+    expandProjects();
     openFilterAndWait(params.get('filter').split(','));
   }
 }
