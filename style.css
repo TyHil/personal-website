@@ -503,7 +503,7 @@ h2 {
   min-height: 0;
 }
 .collapsible.open {
-  border-radius: 0.6rem 0.6rem 0 0;
+  border-radius: 2rem 2rem 0 0;
   transition: border-radius 200ms, padding 200ms, opacity 200ms, max-height 200ms, min-height 200ms, margin-top 200ms;
 }
 
