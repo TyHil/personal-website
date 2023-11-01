@@ -538,7 +538,7 @@ h2 {
   margin-bottom: 0.6rem;
   border-radius: 0.3rem;
   transition: transform 200ms;
-  cursor: pointer;
+  cursor: zoom-in;
 }
 
 
@@ -791,6 +791,7 @@ footer div a, footer div a:visited {
   display: none;
   justify-content: center;
   transition: backdrop-filter 200ms, background-color 200ms;
+  cursor: zoom-out;
 }
 #fullscreenbg.show {
   -webkit-backdrop-filter: blur(0.1rem);
