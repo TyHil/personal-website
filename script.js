@@ -95,7 +95,6 @@ function projectsResize() {
   let heightAdd = 0;
   for (const id in items) {
     if (items[id].canOpen) {
-      console.log(items[id].content.getBoundingClientRect().height);
       heightAdd += parseInt(items[id].content.getBoundingClientRect().height);
     }
   }
@@ -541,7 +540,6 @@ document.getElementById('tilt').addEventListener('dblclick', function() {
   if (lines.length) {
     setText();
   } else {
-    console.log('fetch');
     fetch('splashes.txt').then(async (response) => {
       if (response.ok) {
         return response.text();
