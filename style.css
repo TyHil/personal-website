@@ -629,7 +629,7 @@ span.ripplecircle {
   margin-left: 0.6rem;
 }
 .rounded {
-  border-radius: 999rem;
+  border-radius: 0.5rem;
 }
 
 /*Project title*/
