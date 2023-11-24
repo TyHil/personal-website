@@ -621,13 +621,15 @@ span.ripplecircle {
 /*Project icon*/
 
 .icon {
+  width: 3rem;
+  min-width: 3rem;
+  height: 3rem;
+}
+.collapsible .icon {
   margin-left: 0.6rem;
-  width: 2.5rem;
-  min-width: 2.5rem;
-  height: 2.5rem;
 }
 .rounded {
-  border-radius: 0.3rem;
+  border-radius: 999rem;
 }
 
 /*Project title*/
