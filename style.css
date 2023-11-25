@@ -1,3 +1,6 @@
+/* STYLE GUIDE */
+
+
 /* SVG */
 
 :root, ::before, ::after {
@@ -242,6 +245,39 @@ button.featured:hover::before, a.button.featured:hover::before, button.featured:
   content: "Featured";
 }
 
+
+
+/* Footer */
+
+footer {
+  padding: 2rem 1rem;
+  background-color: var(--dark1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+footer div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+footer div p {
+  margin-bottom: 0.25rem;
+}
+footer div a, footer div a:visited {
+  color: var(--light1);
+  text-decoration-color: transparent;
+  transition: text-decoration-color 200ms;
+}
+footer div a:hover {
+  text-decoration-color: var(--light1);
+}
+
+
+
+/* STYLES */
 
 
 /* Body */
@@ -752,31 +788,6 @@ span.ripplecircle {
 .testimonial p {
   color: var(--light2);
   font-weight: normal;
-}
-
-
-
-/* Footer */
-
-footer {
-  padding: 2rem 1rem;
-  background-color: var(--dark1);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 2rem;
-}
-footer div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-footer div p {
-  margin-bottom: 0.25rem;
-}
-footer div a, footer div a:visited {
-  color: var(--light1);
 }
 
 
