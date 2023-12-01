@@ -646,12 +646,12 @@ span.ripplecircle {
 }
 .arrow {
   transform: rotate(-90deg);
-  margin: 0 0 0 0.125rem;
+  margin: 0 0 0 0.25rem;
   transition: margin 200ms ease-out, transform 200ms ease-out;
 }
 .collapsible.open .arrow {
   transform: rotate(0deg);
-  margin: 0.125rem 0 0 0;
+  margin: 0.25rem 0 0 0;
 }
 
 /*Project icon*/
