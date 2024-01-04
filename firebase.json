@@ -48,7 +48,7 @@
           },
           {
             "key": "Content-Security-Policy",
-            "value": "script-src 'self' https://tag.manager.google.com/ https://www.googletagmanager.com/ https://www.gstatic.com https://apis.google.com https://*.firebaseio.com https://cdn.firebase.com https://www.google.com/recaptcha/ https://gist.github.com https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'self' https://personal-website.tylerghill.repl.co;"
+            "value": "script-src 'self' https://tag.manager.google.com/ https://www.googletagmanager.com/ https://www.gstatic.com https://apis.google.com https://*.firebaseio.com https://cdn.firebase.com https://www.google.com/recaptcha/ https://gist.github.com https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@gh-pages/qrcode.min.js; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'self' https://personal-website.tylerghill.repl.co;"
           }
         ]
       }
