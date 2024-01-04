@@ -701,11 +701,11 @@ span.ripplecircle {
 .shareIcon {
   margin-right: 0.15rem;
 }
-.thangs {
+a.button.large.circle.thangs {
   padding-top: 0.8rem;
   padding-bottom: 0.6rem;
 }
-.replit {
+a.button.large.circle.replit {
   padding-left: 0.8rem;
   padding-right: 0.6rem;
 }
