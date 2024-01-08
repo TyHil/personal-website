@@ -24,24 +24,6 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-      - name: Install terser
-        run: npm install -g terser
-      - name: Install CSSO
-        run: npm install -g csso-cli
-      - name: Install HTMLMinifier
-        run: npm install -g html-minifier
-
-      - name: Minify JS
-        run: for i in *.js; do terser $i --compress -o $i; done
-      - name: Minify CSS
-        run: for i in *.css; do csso $i -o $i; done
-      - name: Minify HTML
-        run: for i in *.html; do html-minifier $i -o $i; done
-
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
