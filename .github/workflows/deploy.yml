@@ -24,8 +24,10 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Minify-JS Action
-        uses: jossydevers/minify-js@v1.0.0
+      - name: Minify
+        uses: nizarmah/auto-minify@v2.1
+        with:
+          overwrite: true
 
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
