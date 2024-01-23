@@ -552,3 +552,36 @@ document.getElementById('tilt').addEventListener('dblclick', function() {
     });
   }
 });
+
+/*Hi!*/
+
+const hi = document.getElementById('hi');
+
+function setExplosion() {
+  function rand() {
+    return Math.random() * 2 - 1;
+  }
+  function genColor() {
+    let col = [0, 0, 0];
+    while (Math.sqrt(0.299*Math.pow(col[0], 2) + 0.587*Math.pow(col[1], 2) + 0.114*Math.pow(col[2], 2)) < 100) {
+      for (let i = 0; i < 3; i++) {
+        col[i] = Math.random()*(1<<8);
+      }
+    }
+    for (let i = 0; i < 3; i++) {
+      col[i] = ("0"+(col[i]|0).toString(16)).slice(-2);
+    }
+    return "#" + col[0] + col[1] + col[2];
+  }
+  function burst() {
+    return rand()*2 + 'ch ' + rand() + 'em ' + genColor();
+  }
+  let textShadow = '';
+  for (let i = 0; i < Math.random() * 3 + 2; i++) {
+    textShadow += burst() + ', ';
+  }
+  textShadow += burst();
+  hi.style.setProperty('--text-shadow', textShadow);
+}
+setExplosion();
+hi.addEventListener("mouseleave", setExplosion);

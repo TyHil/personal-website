@@ -880,3 +880,12 @@ a.button.large.circle.replit {
     background-color: var(--dark2);
   }
 }
+
+/*Hi!*/
+
+#hi {
+  transition: text-shadow 200ms;
+}
+#hi:hover {
+  text-shadow: var(--text-shadow);
+}
