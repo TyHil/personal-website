@@ -454,6 +454,9 @@ h2 {
   background-color: var(--dark2);
   cursor: default;
 }
+.filtered.filter.featured::before, .filtered.filter.featured::after {
+  opacity: 1;
+}
 .filter.remove {
   opacity: 0;
   padding: 0;
