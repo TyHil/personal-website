@@ -670,6 +670,9 @@ span.ripplecircle {
 .rounded {
   border-radius: 0.5rem;
 }
+.circle {
+  border-radius: 999rem;
+}
 
 /*Project title*/
 
