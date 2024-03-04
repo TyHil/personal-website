@@ -1,16 +1,12 @@
-:root { /*#128A74 with brightness increased to match #f09*/
+:root {
+  /*#128A74 with brightness increased to match #f09*/
   --color: #1de1bd;
-  --startShadow: 0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px var(--color),
-    0 0 82px var(--color),
-    0 0 92px var(--color),
-    0 0 102px var(--color),
-    0 0 151px var(--color);
+  --startShadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px var(--color),
+    0 0 82px var(--color), 0 0 92px var(--color), 0 0 102px var(--color), 0 0 151px var(--color);
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -34,7 +30,7 @@ h1:hover {
 }
 
 @keyframes pulsate {
-    0% {
+  0% {
     text-shadow:
       0 0 4px #fff,
       0 0 10px #fff,
@@ -68,7 +64,8 @@ h2 {
   transition: opacity 0.4s ease-in-out;
   opacity: 0;
 }
-h1:hover + h2, h2:hover {
+h1:hover + h2,
+h2:hover {
   animation: pulsate 0.11s ease-in-out infinite alternate;
   opacity: 1;
 }

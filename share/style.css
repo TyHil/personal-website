@@ -1,11 +1,13 @@
 /* STYLE GUIDE */
 
-
 /* SVG */
 
-:root, ::before, ::after {
+:root,
+::before,
+::after {
   --darkSVG: invert(12%) sepia(9%) saturate(0%) hue-rotate(230deg) brightness(99%) contrast(100%);
-  --lightSVG: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%) contrast(75%);
+  --lightSVG: invert(100%) sepia(0%) saturate(7478%) hue-rotate(195deg) brightness(121%)
+    contrast(75%);
 }
 .svg {
   filter: var(--lightSVG);
@@ -19,65 +21,75 @@
   }
 }
 
-
-
 /* Inputs */
 
 /*General*/
 
-input, button {
+input,
+button {
   border: none;
 }
-input.large, button.large {
+input.large,
+button.large {
   font-family: Tahoma, sans-serif;
 }
-.largeInputBox{
+.largeInputBox {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 }
-.smallInputBox{
+.smallInputBox {
   display: flex;
   gap: 0.3rem;
 }
 .inputBox:not(.checkbox) {
   justify-content: space-between;
 }
-input.disabled, label.disabled {
+input.disabled,
+label.disabled {
   color: var(--light2);
   cursor: default;
 }
 
 /*Button*/
 
-button, a.button {
+button,
+a.button {
   background-color: var(--dark1);
   color: var(--light0);
   transition: background-color 200ms;
 }
-button.disabled, a.button.disabled, button:disabled {
+button.disabled,
+a.button.disabled,
+button:disabled {
   background-color: var(--dark2);
   color: var(--light2);
   cursor: default;
 }
-button.small, a.button.small {
+button.small,
+a.button.small {
   font-size: 0.8rem;
   padding: 0.2rem 0.5rem;
   border-radius: 0.25rem;
 }
-button.medium, a.button.medium {
+button.medium,
+a.button.medium {
   font-size: 1rem;
   line-height: 1rem;
   padding: 0.45rem 0.75rem;
   border-radius: 1.5rem;
 }
-button.large, a.button.large {
+button.large,
+a.button.large {
   font-size: 1rem;
   line-height: 1.6rem;
   padding: 0.7rem 1rem;
   border-radius: 1.5rem;
 }
-button:hover, button:focus-visible, a.button:hover, a.button:focus-visible {
+button:hover,
+button:focus-visible,
+a.button:hover,
+a.button:focus-visible {
   background-color: var(--dark2);
 }
 a.button {
@@ -86,7 +98,8 @@ a.button {
   cursor: pointer;
 }
 /*Circle*/
-button.large.circle, a.button.large.circle {
+button.large.circle,
+a.button.large.circle {
   width: 3rem;
   height: 3rem;
   display: flex;
@@ -94,52 +107,70 @@ button.large.circle, a.button.large.circle {
   align-items: center;
   padding: 0.7rem;
 }
-button.large.circle img, a.button.large.circle img {
+button.large.circle img,
+a.button.large.circle img {
   width: 1.6rem;
   height: 1.6rem;
 }
-button.large.circle img.small, a.button.large.circle img.small {
+button.large.circle img.small,
+a.button.large.circle img.small {
   width: 1.2rem;
   height: 1.2rem;
 }
 
 /*Text, number, and textarea*/
 
-input[type=text], input[type=number], textarea {
+input[type='text'],
+input[type='number'],
+textarea {
   background-color: var(--dark1);
   color: var(--light0);
 }
-input[type=text].disabled, input[type=number].disabled, textarea.disabled, input[type=text]:disabled, input[type=number]:disabled, textarea:disabled {
+input[type='text'].disabled,
+input[type='number'].disabled,
+textarea.disabled,
+input[type='text']:disabled,
+input[type='number']:disabled,
+textarea:disabled {
   background-color: var(--dark2);
   color: var(--light2);
 }
 input::placeholder {
   color: var(--light2);
 }
-input[type=text], input[type=number], textarea {
+input[type='text'],
+input[type='number'],
+textarea {
   border: none;
 }
-input[type=text], input[type=number] {
+input[type='text'],
+input[type='number'] {
   transition: background-color 200ms;
 }
-input[type=text].small, input[type=number].small, textarea {
+input[type='text'].small,
+input[type='number'].small,
+textarea {
   margin: 0.1rem 0;
   padding: 0.15rem 0.25rem;
   border-radius: 0.25rem;
 }
-input[type=text].medium, input[type=number].medium {
+input[type='text'].medium,
+input[type='number'].medium {
   line-height: 1rem;
   padding: 0.45rem 0.75rem;
   border-radius: 1.5rem;
 }
-input[type=text].large, input[type=number].large {
+input[type='text'].large,
+input[type='number'].large {
   font-size: 1rem;
   line-height: 1.6rem;
   padding: 0.7rem 1rem;
   border-radius: 1.5rem;
 }
-input[type=text]:hover, input[type=text]:focus-visible,
-input[type=number]:hover, input[type=number]:focus-visible {
+input[type='text']:hover,
+input[type='text']:focus-visible,
+input[type='number']:hover,
+input[type='number']:focus-visible {
   background-color: var(--dark2);
 }
 /*Scrollbar*/
@@ -166,29 +197,28 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 /*File*/
 
-input[type=file]::file-selector-button {
+input[type='file']::file-selector-button {
   border: none;
   border-radius: 0.25rem;
   background-color: var(--dark1);
   color: var(--light0);
   cursor: pointer;
 }
-input[type=file].disabled::file-selector-button, input[type=file]:disabled::file-selector-button {
+input[type='file'].disabled::file-selector-button,
+input[type='file']:disabled::file-selector-button {
   background-color: var(--dark2);
   color: var(--light2);
 }
-input[type=file]::file-selector-button:hover, input[type=file]:focus-visible::file-selector-button {
+input[type='file']::file-selector-button:hover,
+input[type='file']:focus-visible::file-selector-button {
   background-color: var(--dark2);
 }
-input[type=file]::file-selector-button {
+input[type='file']::file-selector-button {
   line-height: 1rem;
   padding: 0.2rem 0.5rem;
 }
 
-
-
 /* STYLES */
-
 
 body {
   display: flex;
@@ -209,7 +239,8 @@ body {
   border-radius: 0.5rem;
   overflow: hidden;
 }
-#qrcode > img, #qrcode > canvas {
+#qrcode > img,
+#qrcode > canvas {
   height: 100%;
   width: 100%;
 }
@@ -232,6 +263,7 @@ button.large.circle.replit {
 button.selected {
   background-color: var(--dark2);
 }
-button.selected:hover, button.selected:focus-visible {
+button.selected:hover,
+button.selected:focus-visible {
   background-color: var(--dark3);
 }
