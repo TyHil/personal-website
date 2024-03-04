@@ -22,26 +22,26 @@ function onTransitionEnd(element, callback) {
   }
 }
 
-
-
 /* Clear Query Paramaters */
 
 function clearQuery() {
-  window.history.replaceState('', document.title, window.location.toString().substring(0, window.location.toString().indexOf('?')));
+  window.history.replaceState(
+    '',
+    document.title,
+    window.location.toString().substring(0, window.location.toString().indexOf('?'))
+  );
 }
-
-
 
 /* Allow transitions on load */
 
-window.addEventListener('load', function() {
-  const rectanlgesAndFilters = document.querySelectorAll('.item.transitionDisabled, .filter.transitionDisabled');
+window.addEventListener('load', function () {
+  const rectanlgesAndFilters = document.querySelectorAll(
+    '.item.transitionDisabled, .filter.transitionDisabled'
+  );
   for (let i = 0; i < rectanlgesAndFilters.length; i++) {
     rectanlgesAndFilters[i].classList.remove('transitionDisabled');
   }
 });
-
-
 
 /* Header Tilt */
 
@@ -50,13 +50,19 @@ const header = document.getElementsByTagName('header')[0];
 function headerHeight() {
   function fullHeight(el) {
     const style = window.getComputedStyle(el);
-    return parseInt(style.getPropertyValue('margin-top')) + el.clientHeight + parseInt(style.getPropertyValue('margin-top'));
+    return (
+      parseInt(style.getPropertyValue('margin-top')) +
+      el.clientHeight +
+      parseInt(style.getPropertyValue('margin-top'))
+    );
   }
 
   const base = window.innerWidth;
   const left = fullHeight(document.getElementById('left'));
   const right = fullHeight(document.getElementById('right'));
-  const deg = 180 / Math.PI * Math.asin((right - left) / Math.sqrt(Math.pow(base, 2) + Math.pow(right - left, 2)));
+  const deg =
+    (180 / Math.PI) *
+    Math.asin((right - left) / Math.sqrt(Math.pow(base, 2) + Math.pow(right - left, 2)));
   headerBg.style.transform = 'skewY(' + deg + 'deg)';
   if (deg >= 0) {
     headerBg.style['transform-origin'] = 'top right';
@@ -78,15 +84,21 @@ function headerHeight() {
 }
 
 headerHeight();
-headerBg.addEventListener('transitionend', function() {
-  this.classList.add('transitionDisabled');
-}, { once: true });
-header.addEventListener('transitionend', function() {
-  this.classList.add('transitionDisabled');
-}, { once: true });
+headerBg.addEventListener(
+  'transitionend',
+  function () {
+    this.classList.add('transitionDisabled');
+  },
+  { once: true }
+);
+header.addEventListener(
+  'transitionend',
+  function () {
+    this.classList.add('transitionDisabled');
+  },
+  { once: true }
+);
 window.addEventListener('resize', headerHeight);
-
-
 
 /* Items */
 
@@ -98,18 +110,22 @@ function projectsResize() {
       heightAdd += parseInt(items[id].content.getBoundingClientRect().height);
     }
   }
-  projects.style.setProperty('--extraHeight', heightAdd + "px");
+  projects.style.setProperty('--extraHeight', heightAdd + 'px');
 }
 
 const shadowOverlay = document.getElementById('shadowOverlay');
-shadowOverlay.getElementsByTagName('button')[0].addEventListener('click', function() {
+shadowOverlay.getElementsByTagName('button')[0].addEventListener('click', function () {
   projects.style.transition = 'max-height 1000ms ease-out';
   projects.style.maxHeight = projects.scrollHeight + 'px';
   shadowOverlay.style.opacity = 0;
-  projects.addEventListener('transitionend', () => {
-    projects.style.maxHeight = 'none';
-    shadowOverlay.style.display = 'none';
-  }, { once: true });
+  projects.addEventListener(
+    'transitionend',
+    () => {
+      projects.style.maxHeight = 'none';
+      shadowOverlay.style.display = 'none';
+    },
+    { once: true }
+  );
 });
 
 class Item {
@@ -118,12 +134,14 @@ class Item {
     this.canOpen = item.classList.contains('collapsible');
     if (this.canOpen) {
       this.content = this.item.nextElementSibling;
-      this.item.addEventListener('click', (e) => {
+      this.item.addEventListener('click', e => {
         if (!e.target.classList.contains('noOpen') && window.getSelection().type !== 'Range') {
           clearQuery();
-          if (this.item.nextElementSibling.style.maxHeight) { //Close
+          if (this.item.nextElementSibling.style.maxHeight) {
+            //Close
             this.close();
-          } else { //Open
+          } else {
+            //Open
             this.open();
           }
         }
@@ -136,13 +154,21 @@ class Item {
       this.content.classList.add('open');
       this.content.style.display = 'block';
       this.content.style.maxHeight = this.content.scrollHeight + 'px';
-      this.content.addEventListener('transitionend', () => {
-        if (this.content.previousElementSibling.classList.contains('open')) { //Prevent leftover listener when double clicking quickly
-          this.content.style.maxHeight = 'none';
-        }
-        projectsResize();
-      }, { once: true });
-      analytics.logEvent(analytics, 'view_item', { event_category: 'engagement', event_label: this.item.getElementsByTagName('h3')[0].innerText }); //Log view_item event to analytics
+      this.content.addEventListener(
+        'transitionend',
+        () => {
+          if (this.content.previousElementSibling.classList.contains('open')) {
+            //Prevent leftover listener when double clicking quickly
+            this.content.style.maxHeight = 'none';
+          }
+          projectsResize();
+        },
+        { once: true }
+      );
+      analytics.logEvent(analytics, 'view_item', {
+        event_category: 'engagement',
+        event_label: this.item.getElementsByTagName('h3')[0].innerText
+      }); //Log view_item event to analytics
     }
   }
   close() {
@@ -152,12 +178,17 @@ class Item {
       this.content.style.maxHeight = this.content.scrollHeight + 'px';
       setTimeout(() => {
         this.content.style.maxHeight = null;
-        this.content.addEventListener('transitionend', () => {
-          if (!this.content.previousElementSibling.classList.contains('open')) { //Prevent leftover listener when double clicking quickly
-            this.content.style.display = 'none';
-          }
-          projectsResize();
-        }, { once: true });
+        this.content.addEventListener(
+          'transitionend',
+          () => {
+            if (!this.content.previousElementSibling.classList.contains('open')) {
+              //Prevent leftover listener when double clicking quickly
+              this.content.style.display = 'none';
+            }
+            projectsResize();
+          },
+          { once: true }
+        );
       }); //Delay so js runs these separately, won't animate otherwise
     }
   }
@@ -198,18 +229,20 @@ for (let i = 0; i < itemsDOM.length; i++) {
 
 const pulses = document.getElementsByClassName('pulse');
 for (let i = 0; i < pulses.length; i++) {
-  pulses[i].addEventListener('click', function() {
-    this.classList.remove('pulse');
-  }, { once: true });
+  pulses[i].addEventListener(
+    'click',
+    function () {
+      this.classList.remove('pulse');
+    },
+    { once: true }
+  );
 }
-
-
 
 /* Ripples */
 
 const circs = document.getElementsByClassName('ripple');
 for (let i = 0; i < circs.length; i++) {
-  circs[i].addEventListener('click', function(e) {
+  circs[i].addEventListener('click', function (e) {
     const ripple = document.createElement('span');
     const diameter = Math.max(this.clientWidth, this.clientHeight);
     const radius = diameter / 2;
@@ -218,13 +251,15 @@ for (let i = 0; i < circs.length; i++) {
     ripple.style.top = e.offsetY - radius + 'px';
     ripple.classList.add('ripplecircle');
     this.append(ripple);
-    ripple.addEventListener('animationend', function() {
-      this.remove();
-    }, { once: true });
+    ripple.addEventListener(
+      'animationend',
+      function () {
+        this.remove();
+      },
+      { once: true }
+    );
   });
 }
-
-
 
 /* Full Screen Image */
 
@@ -237,7 +272,7 @@ function openFullscreen(src, alt) {
   document.body.style.marginRight = window.innerWidth - document.documentElement.clientWidth + 'px';
   document.body.classList.add('disableScroll');
   fullscreenbg.style.display = 'flex';
-  setTimeout(function() {
+  setTimeout(function () {
     fullscreenbg.classList.add('show');
   });
 }
@@ -251,24 +286,26 @@ for (let i = 0; i < images.length; i++) {
 
 function closeFullscreen() {
   fullscreenbg.classList.remove('show');
-  fullscreenbg.addEventListener('transitionend', function() {
-    this.style.display = 'none';
-  }, { once: true });
+  fullscreenbg.addEventListener(
+    'transitionend',
+    function () {
+      this.style.display = 'none';
+    },
+    { once: true }
+  );
   document.body.style.marginRight = 0;
   document.body.classList.remove('disableScroll');
 }
 
-fullscreenbg.addEventListener('click', function() {
+fullscreenbg.addEventListener('click', function () {
   closeFullscreen();
 });
 
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     closeFullscreen();
   }
 });
-
-
 
 /* Filter */
 
@@ -314,7 +351,7 @@ const filterButtons = document.getElementsByClassName('filterButton');
 const filters = {};
 for (let i = 0; i < filterButtons.length; i++) {
   filters[filterButtons[i].id] = new Filter(filterButtons[i]);
-  filterButtons[i].addEventListener('click', function() {
+  filterButtons[i].addEventListener('click', function () {
     if (!transitioning) {
       clearQuery();
       openFilter(this);
@@ -325,16 +362,27 @@ for (let i = 0; i < filterButtons.length; i++) {
 
 function openFilter(filter) {
   let alreadyFiltered = document.getElementsByClassName('filtered');
-  if (!filter.classList.contains('filtered') && (!alreadyFiltered.length || alreadyFiltered[alreadyFiltered.length - 1].classList.contains(filter.id))) { //Not already clicked
+  if (
+    !filter.classList.contains('filtered') &&
+    (!alreadyFiltered.length ||
+      alreadyFiltered[alreadyFiltered.length - 1].classList.contains(filter.id))
+  ) {
+    //Not already clicked
     filter.classList.add('filtered');
     for (let i = 0; i < filterButtons.length; i++) {
-      if (!filterButtons[i].classList.contains('filtered') && !filterButtons[i].classList.contains(filter.id)) { //Hide others
+      if (
+        !filterButtons[i].classList.contains('filtered') &&
+        !filterButtons[i].classList.contains(filter.id)
+      ) {
+        //Hide others
         filters[filterButtons[i].id].hide();
-      } else { //Show subfilters
+      } else {
+        //Show subfilters
         filters[filterButtons[i].id].show();
       }
     }
-    for (const id in items) { //Hide itemss
+    for (const id in items) {
+      //Hide itemss
       if (!items[id].item.classList.contains(filter.id)) {
         items[id].hide();
       }
@@ -351,7 +399,7 @@ function openFilter(filter) {
 }
 
 //Close filters
-document.getElementById('clearFilter').addEventListener('click', function() {
+document.getElementById('clearFilter').addEventListener('click', function () {
   if (!transitioning) {
     clearQuery();
     const shareFilter = document.getElementById('shareFilter');
@@ -360,14 +408,16 @@ document.getElementById('clearFilter').addEventListener('click', function() {
     this.style.display = 'none';
     shareFilter.style.display = 'none';
 
-    for (let i = 0; i < filterButtons.length; i++) { //Show all buttons except subfilters
+    for (let i = 0; i < filterButtons.length; i++) {
+      //Show all buttons except subfilters
       if (!filterButtons[i].classList.contains('subfilter')) {
         filters[filterButtons[i].id].show();
       } else {
         filters[filterButtons[i].id].hide();
       }
     }
-    for (const id in items) { //Show all items
+    for (const id in items) {
+      //Show all items
       items[id].show();
     }
     while (document.getElementsByClassName('filtered')[0]) {
@@ -376,34 +426,46 @@ document.getElementById('clearFilter').addEventListener('click', function() {
   }
 });
 
-
-
 /* Share */
 
 function shareLink(el, title, url) {
   function success() {
     const check = el.getElementsByClassName('check')[0];
     check.classList.add('copied');
-    check.addEventListener('animationend', function() {
-      this.classList.remove('copied');
-    }, { once: true });
+    check.addEventListener(
+      'animationend',
+      function () {
+        this.classList.remove('copied');
+      },
+      { once: true }
+    );
     const shareIcon = el.getElementsByClassName('shareIcon')[0];
     shareIcon.classList.add('copied');
-    shareIcon.addEventListener('animationend', function() {
-      this.classList.remove('copied');
-    }, { once: true });
+    shareIcon.addEventListener(
+      'animationend',
+      function () {
+        this.classList.remove('copied');
+      },
+      { once: true }
+    );
   }
   if (navigator.share) {
-    navigator.share({
-      title: title,
-      url: url
-    }).then(() => {
-      success();
-    }).catch(console.error);
+    navigator
+      .share({
+        title: title,
+        url: url
+      })
+      .then(() => {
+        success();
+      })
+      .catch(console.error);
   } else if (navigator.clipboard) {
-    navigator.clipboard.writeText(url).then(() => {
-      success();
-    }).catch(console.error);
+    navigator.clipboard
+      .writeText(url)
+      .then(() => {
+        success();
+      })
+      .catch(console.error);
   } else {
     alert(url);
   }
@@ -414,7 +476,7 @@ function currentURL() {
 }
 
 //Share filter
-document.getElementById('shareFilter').addEventListener('click', function() {
+document.getElementById('shareFilter').addEventListener('click', function () {
   const filtereds = document.getElementsByClassName('filtered');
   let ids = [];
   let names = [];
@@ -423,23 +485,32 @@ document.getElementById('shareFilter').addEventListener('click', function() {
     names.push(filtereds[i].innerText);
   }
   shareLink(this, names.reverse().join(' ') + ' Filter', currentURL() + '?filter=' + ids.join());
-  analytics.logEvent(analytics, 'share_filter', { event_category: 'engagement', event_label: names.join(' ') }); //Log share_filter event to analytics
+  analytics.logEvent(analytics, 'share_filter', {
+    event_category: 'engagement',
+    event_label: names.join(' ')
+  }); //Log share_filter event to analytics
 });
 
 //Share item
 const shares = document.getElementsByClassName('share');
 for (let i = 0; i < shares.length; i++) {
-  shares[i].addEventListener('click', function() {
-    shareLink(this, shares[i].parentNode.parentNode.getElementsByTagName('h3')[0].innerText, currentURL() + '?item=' + shares[i].parentNode.parentNode.id);
-    analytics.logEvent(analytics, 'share_item', { event_category: 'engagement', event_label: this.parentNode.parentNode.getElementsByTagName('h3')[0].innerText }); //Log share_item event to analytics
+  shares[i].addEventListener('click', function () {
+    shareLink(
+      this,
+      shares[i].parentNode.parentNode.getElementsByTagName('h3')[0].innerText,
+      currentURL() + '?item=' + shares[i].parentNode.parentNode.id
+    );
+    analytics.logEvent(analytics, 'share_item', {
+      event_category: 'engagement',
+      event_label: this.parentNode.parentNode.getElementsByTagName('h3')[0].innerText
+    }); //Log share_item event to analytics
   });
 }
 
-
-
 /* Query paramaters */
 
-function openFilterAndWait(list) { //Open filter(s) one at a time, waiting for each
+function openFilterAndWait(list) {
+  //Open filter(s) one at a time, waiting for each
   if (list.length) {
     waitForNotTransitioning(() => {
       openFilter(document.querySelector('#' + list.shift() + '.filterButton'));
@@ -465,20 +536,29 @@ if (params) {
       behavior: 'smooth'
     });
   }
-  if (params.has('filter') && params.get('filter').split(',').map(id => document.querySelector('#' + id + '.filterButton')).every(Boolean)) { //if each filter is a valid element
+  if (
+    params.has('filter') &&
+    params
+      .get('filter')
+      .split(',')
+      .map(id => document.querySelector('#' + id + '.filterButton'))
+      .every(Boolean)
+  ) {
+    //if each filter is a valid element
     expandProjects();
     openFilterAndWait(params.get('filter').split(','));
   }
 }
 
-
-
 /* Google Analytics */
 
 const links = document.getElementsByTagName('a');
 for (let i = 0; i < links.length; i++) {
-  links[i].addEventListener('click', function() {
-    analytics.logEvent(analytics, 'click_link', { event_category: 'engagement', event_label: this.href }); //Log click_link event to analytics
+  links[i].addEventListener('click', function () {
+    analytics.logEvent(analytics, 'click_link', {
+      event_category: 'engagement',
+      event_label: this.href
+    }); //Log click_link event to analytics
   });
 }
 
@@ -488,20 +568,32 @@ function logOpenFilter() {
   for (let i = 0; i < filtereds.length; i++) {
     names.push(filtereds[i].innerText);
   }
-  analytics.logEvent(analytics, 'view_filter', { event_category: 'engagement', event_label: names.reverse().join(' ') }); //Log view_filter event to analytics
+  analytics.logEvent(analytics, 'view_filter', {
+    event_category: 'engagement',
+    event_label: names.reverse().join(' ')
+  }); //Log view_filter event to analytics
 }
-
-
 
 /* Easter Eggs */
 
 /*Hue, Saturation, and Brightness*/
 
-let hueSatBri = [document.getElementById('hue'), document.getElementById('sat'), document.getElementById('bri')];
+let hueSatBri = [
+  document.getElementById('hue'),
+  document.getElementById('sat'),
+  document.getElementById('bri')
+];
 let hueSatBriVals = [0, 0, 0];
 
 function updateColor() {
-  const changeTo = 'hue-rotate(' + hueSatBriVals[0] + 'deg) saturate(' + (hueSatBriVals[1] / 360 * 200 + 100) % 200 + '%) brightness(' + (hueSatBriVals[2] / 360 * 200 + 100) % 200 + '%)';
+  const changeTo =
+    'hue-rotate(' +
+    hueSatBriVals[0] +
+    'deg) saturate(' +
+    (((hueSatBriVals[1] / 360) * 200 + 100) % 200) +
+    '%) brightness(' +
+    (((hueSatBriVals[2] / 360) * 200 + 100) % 200) +
+    '%)';
   headerBg.style.filter = changeTo;
   document.getElementById('featured').style.filter = changeTo;
   const features = document.getElementsByClassName('feature');
@@ -511,7 +603,7 @@ function updateColor() {
 }
 
 for (let i = 0; i < 3; i++) {
-  hueSatBri[i].addEventListener('click', function() {
+  hueSatBri[i].addEventListener('click', function () {
     hueSatBriVals[i] = (hueSatBriVals[i] + 10) % 360;
     updateColor();
     this.style.transform = 'rotate(' + hueSatBriVals[i] + 'deg)';
@@ -523,7 +615,7 @@ for (let i = 0; i < 3; i++) {
 const splashText = document.getElementById('splashText');
 const defaultText = splashText.innerText;
 let lines = [];
-document.getElementById('tilt').addEventListener('dblclick', function() {
+document.getElementById('tilt').addEventListener('dblclick', function () {
   if (this.classList.contains('hang')) {
     this.classList.remove('hang');
     splashText.innerText = defaultText;
@@ -540,16 +632,18 @@ document.getElementById('tilt').addEventListener('dblclick', function() {
   if (lines.length) {
     setText();
   } else {
-    fetch('splashes.txt').then(async (response) => {
-      if (response.ok) {
-        return response.text();
-      } else {
-        throw await response.text();
-      }
-    }).then((data) => {
-      lines = data.split('\n');
-      setText();
-    });
+    fetch('splashes.txt')
+      .then(async response => {
+        if (response.ok) {
+          return response.text();
+        } else {
+          throw await response.text();
+        }
+      })
+      .then(data => {
+        lines = data.split('\n');
+        setText();
+      });
   }
 });
 
@@ -563,18 +657,22 @@ function setExplosion() {
   }
   function genColor() {
     let col = [0, 0, 0];
-    while (Math.sqrt(0.299*Math.pow(col[0], 2) + 0.587*Math.pow(col[1], 2) + 0.114*Math.pow(col[2], 2)) < 100) {
+    while (
+      Math.sqrt(
+        0.299 * Math.pow(col[0], 2) + 0.587 * Math.pow(col[1], 2) + 0.114 * Math.pow(col[2], 2)
+      ) < 100
+    ) {
       for (let i = 0; i < 3; i++) {
-        col[i] = Math.random()*(1<<8);
+        col[i] = Math.random() * (1 << 8);
       }
     }
     for (let i = 0; i < 3; i++) {
-      col[i] = ("0"+(col[i]|0).toString(16)).slice(-2);
+      col[i] = ('0' + (col[i] | 0).toString(16)).slice(-2);
     }
-    return "#" + col[0] + col[1] + col[2];
+    return '#' + col[0] + col[1] + col[2];
   }
   function burst() {
-    return rand()*2 + 'ch ' + rand() + 'em ' + genColor();
+    return rand() * 2 + 'ch ' + rand() + 'em ' + genColor();
   }
   let textShadow = '';
   for (let i = 0; i < Math.random() * 3 + 2; i++) {
@@ -584,4 +682,4 @@ function setExplosion() {
   hi.style.setProperty('--text-shadow', textShadow);
 }
 setExplosion();
-hi.addEventListener("mouseleave", setExplosion);
+hi.addEventListener('mouseleave', setExplosion);
