@@ -633,11 +633,13 @@ document.getElementById('tilt').addEventListener('dblclick', function () {
     setText();
   } else {
     fetch('splashes.txt')
-      .then(async response => {
+      .then(response => {
         if (response.ok) {
           return response.text();
         } else {
-          throw await response.text();
+          return response.text().then(errorMessage => {
+            throw errorMessage;
+          });
         }
       })
       .then(data => {
