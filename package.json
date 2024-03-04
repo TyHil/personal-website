@@ -1,6 +1,5 @@
 {
-  "name": "tyhil-personal-website",
-  "version": "1.0.0",
+  "name": "personal-website",
   "scripts": {
     "format": "prettier . --write",
     "format:check": "prettier . --check"
