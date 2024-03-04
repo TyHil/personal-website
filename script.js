@@ -645,6 +645,9 @@ document.getElementById('tilt').addEventListener('dblclick', function () {
       .then(data => {
         lines = data.split('\n');
         setText();
+      })
+      .catch(error => {
+        console.error('Error fetching splashes:', error);
       });
   }
 });
