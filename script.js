@@ -634,13 +634,10 @@ document.getElementById('tilt').addEventListener('dblclick', function () {
   } else {
     fetch('splashes.txt')
       .then(response => {
-        if (response.ok) {
-          return response.text();
-        } else {
-          return response.text().then(errorMessage => {
-            throw errorMessage;
-          });
+        if (!response.ok) {
+          throw response.statusText;
         }
+        return response.text();
       })
       .then(data => {
         lines = data.split('\n');
