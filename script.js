@@ -128,6 +128,17 @@ shadowOverlay.getElementsByTagName('button')[0].addEventListener('click', functi
   );
 });
 
+const removedPulses = false;
+function removePulses() {
+  if (!removedPulses) {
+    const pulses = document.getElementsByClassName('pulse');
+    for (let i = 0; i < pulses.length; i++) {
+      pulses[i].classList.remove('pulse');
+    }
+    removedPulses = true;
+  }
+}
+
 class Item {
   constructor(item) {
     this.item = item;
@@ -165,6 +176,7 @@ class Item {
         },
         { once: true }
       );
+      removePulses();
       analytics.logEvent(analytics, 'view_item', {
         event_category: 'engagement',
         event_label: this.item.getElementsByTagName('h3')[0].innerText
@@ -225,17 +237,6 @@ const itemsDOM = document.getElementsByClassName('item');
 const items = {};
 for (let i = 0; i < itemsDOM.length; i++) {
   items[itemsDOM[i].id] = new Item(itemsDOM[i]);
-}
-
-const pulses = document.getElementsByClassName('pulse');
-for (let i = 0; i < pulses.length; i++) {
-  pulses[i].addEventListener(
-    'click',
-    function () {
-      this.classList.remove('pulse');
-    },
-    { once: true }
-  );
 }
 
 /* Ripples */
