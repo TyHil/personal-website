@@ -1,3 +1,9 @@
+#replit
+.cache
+.config
+.local
+
+#submodules
 set-operations-for-spotify
 typewriter-formatting
 cah-maker
