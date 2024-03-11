@@ -52,6 +52,8 @@ body {
 }
 body {
   accent-color: #128a74;
+}
+* {
   scrollbar-color: rgba(255, 255, 255, 0.24) var(--dark0);
 }
 ::-webkit-scrollbar-thumb {
@@ -78,6 +80,8 @@ body {
   }
   body {
     accent-color: #1bcbac;
+  }
+  * {
     scrollbar-color: rgba(0, 0, 0, 0.24) var(--dark0);
   }
   ::-webkit-scrollbar-thumb {
@@ -98,7 +102,7 @@ body {
 
 /* Scrollbar */
 
-body {
+* {
   scrollbar-width: thin;
 }
 body.disableScroll {
