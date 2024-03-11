@@ -218,9 +218,38 @@ input[type='file']::file-selector-button {
   padding: 0.2rem 0.5rem;
 }
 
+/* Footer */
+
+footer {
+  padding: 2rem 1rem;
+  background-color: var(--dark1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+footer div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+footer div p {
+  margin-bottom: 0.25rem;
+}
+footer div a,
+footer div a:visited {
+  color: var(--light1);
+  text-decoration-color: transparent;
+  transition: text-decoration-color 200ms;
+}
+footer div a:hover {
+  text-decoration-color: var(--light1);
+}
+
 /* STYLES */
 
-body {
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
