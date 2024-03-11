@@ -4,6 +4,7 @@ pnpm-lock.yaml
 .cache
 .config
 .local
+.upm
 
 #submodules
 set-operations-for-spotify
