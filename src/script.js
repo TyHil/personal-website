@@ -270,7 +270,7 @@ function openFullscreen(src, alt) {
   let fullscreenimg = document.getElementById('fullscreenimg');
   fullscreenimg.src = src;
   fullscreenimg.alt = alt;
-  openModal(fullscreenbg)
+  openModal(fullscreenbg);
 }
 
 const images = document.querySelectorAll('.cards img');
