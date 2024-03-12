@@ -4,3 +4,6 @@ node_modules
 .cache
 .config
 .local
+
+#firebase
+*debug.log

@@ -25,3 +25,6 @@
 [submodule "cah-maker"]
 	path = cah-maker
 	url = https://github.com/TyHil/cah-maker.git
+[submodule "personal-website-styles"]
+	path = style-guide
+	url = https://github.com/TyHil/personal-website-styles
