@@ -565,33 +565,16 @@ a.button.large.circle.replit {
 /* Fullscreen Images */
 
 #fullscreenbg {
-  z-index: 1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: none;
-  justify-content: center;
-  transition:
-    backdrop-filter 200ms,
-    background-color 200ms;
   cursor: zoom-out;
-}
-#fullscreenbg.show {
-  -webkit-backdrop-filter: blur(0.1rem);
-  backdrop-filter: blur(0.1rem);
-  background-color: rgba(0, 0, 0, 0.8);
 }
 #fullscreenimg {
   width: 100%;
   height: auto;
   -o-object-fit: contain;
   object-fit: contain;
-  opacity: 0;
-  transition: opacity 200ms;
+  transition: opacity 2000ms;
 }
-#fullscreenbg.show #fullscreenimg {
+#fullscreenbg:not(.out) #fullscreenimg {
   opacity: 1;
 }
 

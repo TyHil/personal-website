@@ -270,12 +270,7 @@ function openFullscreen(src, alt) {
   let fullscreenimg = document.getElementById('fullscreenimg');
   fullscreenimg.src = src;
   fullscreenimg.alt = alt;
-  document.body.style.marginRight = window.innerWidth - document.documentElement.clientWidth + 'px';
-  document.body.classList.add('disableScroll');
-  fullscreenbg.style.display = 'flex';
-  setTimeout(function () {
-    fullscreenbg.classList.add('show');
-  });
+  openModal(fullscreenbg)
 }
 
 const images = document.querySelectorAll('.cards img');
@@ -286,16 +281,7 @@ for (let i = 0; i < images.length; i++) {
 }
 
 function closeFullscreen() {
-  fullscreenbg.classList.remove('show');
-  fullscreenbg.addEventListener(
-    'transitionend',
-    function () {
-      this.style.display = 'none';
-    },
-    { once: true }
-  );
-  document.body.style.marginRight = 0;
-  document.body.classList.remove('disableScroll');
+  closeModal(fullscreenbg);
 }
 
 fullscreenbg.addEventListener('click', function () {
