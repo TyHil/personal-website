@@ -7,12 +7,15 @@
     "ignore": [
       "firebase.json",
       "database.rules.json",
+      "*debug.log",
       ".*",
       "**/.git/**",
       "**/.github/**",
       "replit.nix",
       "README.md",
-      "LICENSE.txt"
+      "LICENSE.txt",
+      "package.json",
+      "pnpm-lock.yaml"
     ],
     "headers": [
       {
