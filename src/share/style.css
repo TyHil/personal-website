@@ -1,0 +1,49 @@
+/* STYLES */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+#qrcodeContainer {
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 1rem;
+  background-color: var(--dark1);
+  border-radius: 1.5rem;
+}
+#qrcode {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+#qrcode > img,
+#qrcode > canvas {
+  height: 100%;
+  width: 100%;
+}
+
+#buttons {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+button.large.circle.thangs {
+  padding-top: 0.8rem;
+  padding-bottom: 0.6rem;
+}
+button.large.circle.replit {
+  padding-left: 0.8rem;
+  padding-right: 0.6rem;
+}
+button.selected {
+  background-color: var(--dark2);
+}
+button.selected:hover,
+button.selected:focus-visible {
+  background-color: var(--dark3);
+}

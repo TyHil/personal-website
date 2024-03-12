@@ -128,7 +128,7 @@ shadowOverlay.getElementsByTagName('button')[0].addEventListener('click', functi
   );
 });
 
-const removedPulses = false;
+let removedPulses = false;
 function removePulses() {
   if (!removedPulses) {
     const pulses = document.getElementsByClassName('pulse');

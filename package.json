@@ -1,6 +1,8 @@
 {
   "name": "personal-website",
   "scripts": {
+    "firebase": "firebase emulators:start",
+    "firebase:hosting": "firebase emulators:start --only hosting",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint . --fix",

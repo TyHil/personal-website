@@ -4,3 +4,9 @@ node_modules
 .cache
 .config
 .local
+
+#firebase
+*debug.log
+
+#parcel
+.parcel-cache

@@ -1,0 +1,18 @@
+/* STYLE GUIDE */
+
+/* Footer Extra */
+/*Keep at bottom*/
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+footer {
+  margin-top: auto;
+}
+
+/* STYLES */
+
+main {
+  padding: 1rem;
+}

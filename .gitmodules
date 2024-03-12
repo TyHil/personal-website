@@ -1,27 +1,32 @@
-[submodule "typewriter-formatting"]
-	path = typewriter-formatting
-	url = https://github.com/TyHil/typewriter-formatting.git
+[submodule "src/cah-maker"]
+	path = src/cah-maker
+	url = https://github.com/TyHil/cah-maker
 	branch = main
-[submodule "recipes"]
-	path = recipes
-	url = https://github.com/TyHil/recipes.git
+[submodule "src/typewriter-formatting"]
+	path = src/typewriter-formatting
+	url = https://github.com/TyHil/typewriter-formatting
 	branch = main
-[submodule "response-display"]
-	path = response-display
-	url = https://github.com/TyHil/response-display.git
+[submodule "src/recipes"]
+	path = src/recipes
+	url = https://github.com/TyHil/recipes
 	branch = main
-[submodule "password-generator"]
-	path = password-generator
-	url = https://github.com/TyHil/password-generator.git
+[submodule "src/response-display"]
+	path = src/response-display
+	url = https://github.com/TyHil/response-display
 	branch = main
-[submodule "dvd"]
-	path = dvd
-	url = https://github.com/TyHil/dvd.git
+[submodule "src/password-generator"]
+	path = src/password-generator
+	url = https://github.com/TyHil/password-generator
 	branch = main
-[submodule "set-operations-for-spotify"]
-	path = set-operations-for-spotify
-	url = https://github.com/TyHil/set-operations-for-spotify.git
+[submodule "src/dvd"]
+	path = src/dvd
+	url = https://github.com/TyHil/dvd
 	branch = main
-[submodule "cah-maker"]
-	path = cah-maker
-	url = https://github.com/TyHil/cah-maker.git
+[submodule "src/set-operations-for-spotify"]
+	path = src/set-operations-for-spotify
+	url = https://github.com/TyHil/set-operations-for-spotify
+	branch = main
+[submodule "src/style-guide"]
+	path = src/style-guide
+	url = https://github.com/TyHil/personal-website-styles
+	branch = main
