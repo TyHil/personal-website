@@ -106,7 +106,7 @@ const projects = document.getElementById('projects');
 function projectsResize() {
   let heightAdd = 0;
   for (const id in items) {
-    if (items[id].canOpen) {
+    if (items[id].canOpen && id !== 'resume') {
       heightAdd += parseInt(items[id].content.getBoundingClientRect().height);
     }
   }
