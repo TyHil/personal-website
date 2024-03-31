@@ -123,7 +123,7 @@
     </header>
 
     <main>
-      <div class="item collapsible transitionDisabled" id="resume">
+      <div id="resume" class="item collapsible transitionDisabled">
         <button class="large circle ripple pulse" title="Expand content">
           <img class="arrow svg" src="/images/arrow.svg" alt="Expand arrow icon" />
         </button>
@@ -168,123 +168,146 @@
         <h2>Projects</h2>
         <div id="filters">
           <button
-            class="featured large filter transitionDisabled filterButton ripple"
-            id="featured"
+            id="featured-filter"
+            data-filter="featured"
             title="Filter by featured"
+            class="featured large filter transitionDisabled filterButton ripple"
             >Featured</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple web cpp"
-            id="programming"
+            data-filter="programming"
+            data-children="web cpp"
             title="Filter by programming"
+            class="large filter transitionDisabled filterButton ripple"
             >Programming</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple programming subfilter remove react firebase"
-            id="web"
+            data-filter="web"
+            data-parent="programming"
+            data-children="react firebase"
             title="Filter by web programming"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >Web</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple web subfilter remove"
-            id="react"
+            data-filter="react"
+            data-parent="web"
             title="Filter by React web programming"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >React</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple web subfilter remove"
-            id="firebase"
+            data-filter="firebase"
+            data-parent="web"
             title="Filter by Firebase web programming"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >Firebase</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple programming subfilter remove arduino library"
-            id="cpp"
+            data-filter="cpp"
+            data-parent="programming"
+            data-children="arduino library"
             title="Filter by C++ programming"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >C++</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple cpp subfilter remove"
-            id="arduino"
+            data-filter="arduino"
+            data-parent="cpp"
             title="Filter by Arduino C++ programming"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >Arduino</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple cpp subfilter remove"
-            id="library"
+            data-filter="library"
+            data-parent="cpp"
             title="Filter by library C++ programming"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >Library</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple UI physical"
-            id="design"
+            data-filter="design"
+            data-children="UI physical"
             title="Filter by design"
+            class="large filter transitionDisabled filterButton ripple"
             >Design</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple design subfilter remove css adafruit"
-            id="UI"
+            data-filter="UI"
+            data-parent="design"
+            data-children="css adafruit"
             title="Filter by UI design"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >UI</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple UI subfilter remove"
-            id="css"
+            data-filter="css"
+            data-parent="UI"
             title="Filter by CSS UI design"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >CSS</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple UI subfilter remove"
-            id="adafruit"
+            data-filter="adafruit"
+            data-parent="UI"
             title="Filter by Adafruit GFX Library UI design"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >Adafruit GFX Library</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple design subfilter remove cad paper"
-            id="physical"
+            data-filter="physical"
+            data-parent="design"
+            data-children="cad paper"
             title="Filter by physical design"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >Physical</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple physical subfilter remove"
-            id="cad"
+            data-filter="cad"
+            data-parent="physical"
             title="Filter by CAD physical design"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >CAD</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple physical subfilter remove"
-            id="paper"
+            data-filter="paper"
+            data-parent="physical"
             title="Filter by paper physical design"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >Paper</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple electronics 3dprinting woodworking"
-            id="production"
+            data-filter="production"
+            data-children="electronics 3dprinting woodworking"
             title="Filter by production"
+            class="large filter transitionDisabled filterButton ripple"
             >Production</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple production subfilter remove"
-            id="electronics"
+            data-filter="electronics"
+            data-parent="production"
             title="Filter by electronics production"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >Electronics</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple production subfilter remove"
-            id="3dprinting"
+            data-filter="3dprinting"
+            data-parent="production"
             title="Filter by 3D printing production"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >3D Printing</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple production subfilter remove"
-            id="woodworking"
+            data-filter="woodworking"
+            data-parent="production"
             title="Filter by woodworking production"
+            class="large filter transitionDisabled filterButton ripple subfilter remove"
             >Woodworking</button
           >
           <button
-            class="large filter transitionDisabled filterButton ripple"
-            id="group"
+            data-filter="group"
             title="Filter by group"
+            class="large filter transitionDisabled filterButton ripple"
             >Group</button
           >
           <button
@@ -300,7 +323,11 @@
           </button>
         </div>
 
-        <div class="item transitionDisabled featured programming web react design UI css" id="eve">
+        <div
+          id="eve"
+          data-filters="featured programming web react design UI css"
+          class="item transitionDisabled"
+        >
           <div class="feature" title="Featured item"></div>
           <img loading="lazy" class="icon" src="/images/eve.png" alt="eve Vehicles icon" />
           <div class="text">
@@ -336,8 +363,9 @@
         </div>
 
         <div
-          class="item transitionDisabled featured programming web react design UI css"
           id="govdaddy"
+          data-filters="featured programming web react design UI css"
+          class="item transitionDisabled"
         >
           <div class="feature" title="Featured item"></div>
           <img loading="lazy" class="icon circle" src="/images/govdaddy.png" alt="GovDaddy icon" />
@@ -369,8 +397,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled programming web firebase design UI css"
           id="set-operations"
+          data-filters="programming web firebase design UI css"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -426,8 +455,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled featured programming web react UI css group"
           id="utd-trends"
+          data-filters="featured programming web react UI css group"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -484,8 +514,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled programming web firebase design UI css"
           id="typewriter"
+          data-filters="programming web firebase design UI css"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -541,8 +572,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled programming web design UI css"
           id="fireworks"
+          data-filters="programming web design UI css"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -599,8 +631,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled featured programming cpp arduino production electronics group"
           id="lift"
+          data-filters="featured programming cpp arduino production electronics group"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -644,8 +677,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled programming web firebase design UI css group"
           id="collegematchmaking"
+          data-filters="programming web firebase design UI css group"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -693,8 +727,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled featured programming web firebase design UI css"
           id="website"
+          data-filters="featured programming web firebase design UI css"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -748,7 +783,11 @@
           ></iframe>
         </div>
 
-        <div class="item collapsible transitionDisabled programming cpp library" id="linkedlist">
+        <div
+          id="linkedlist"
+          data-filters="programming cpp library"
+          class="item collapsible transitionDisabled"
+        >
           <button class="large circle ripple" title="Expand content">
             <img
               class="arrow svg"
@@ -797,8 +836,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled design physical cad production woodworking"
           id="desk"
+          data-filters="design physical cad production woodworking"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -874,8 +914,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled design physical cad production 3dprinting"
           id="frog"
+          data-filters="design physical cad production 3dprinting"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -957,8 +998,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled design physical paper production woodworking group"
           id="climbingwall"
+          data-filters="design physical paper production woodworking group"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -1036,8 +1078,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled design physical cad production 3dprinting"
           id="coffeetable"
+          data-filters="design physical cad production 3dprinting"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -1118,8 +1161,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled programming cpp arduino production electronics"
           id="headlamp"
+          data-filters="programming cpp arduino production electronics"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -1195,8 +1239,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
           id="grpv2"
+          data-filters="programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -1292,8 +1337,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled design physical paper production woodworking"
           id="bandsawbox"
+          data-filters="design physical paper production woodworking"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -1365,8 +1411,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled programming cpp arduino production electronics"
           id="desklight"
+          data-filters="programming cpp arduino production electronics"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -1475,8 +1522,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
           id="grpv1"
+          data-filters="programming cpp arduino design UI adafruit physical cad production electronics 3dprinting"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -1553,7 +1601,11 @@
           </div>
         </div>
 
-        <div class="item collapsible transitionDisabled design physical paper" id="drawings">
+        <div
+          id="drawings"
+          data-filters="design physical paper"
+          class="item collapsible transitionDisabled"
+        >
           <button class="large circle ripple" title="Expand content">
             <img
               class="arrow svg"
@@ -1645,7 +1697,7 @@
           </div>
         </div>
 
-        <div class="item collapsible transitionDisabled programming web" id="notes">
+        <div id="notes" data-filters="programming web" class="item collapsible transitionDisabled">
           <button class="large circle ripple" title="Expand content">
             <img
               class="arrow svg"
@@ -1724,8 +1776,9 @@
         </div>
 
         <div
-          class="item collapsible transitionDisabled programming cpp arduino production electronics"
           id="walllight"
+          data-filters="programming cpp arduino production electronics"
+          class="item collapsible transitionDisabled"
         >
           <button class="large circle ripple" title="Expand content">
             <img
@@ -1815,7 +1868,7 @@
           </div>
         </div>
 
-        <div class="item collapsible transitionDisabled" id="photography">
+        <div id="photography" data-filters="" class="item collapsible transitionDisabled">
           <button class="large circle ripple" title="Expand content">
             <img
               class="arrow svg"

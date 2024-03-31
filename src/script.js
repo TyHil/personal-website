@@ -114,19 +114,26 @@ function projectsResize() {
 }
 
 const shadowOverlay = document.getElementById('shadowOverlay');
-shadowOverlay.getElementsByTagName('button')[0].addEventListener('click', function () {
-  projects.style.transition = 'max-height 1000ms ease-out';
-  projects.style.maxHeight = projects.scrollHeight + 'px';
-  shadowOverlay.style.opacity = 0;
-  projects.addEventListener(
-    'transitionend',
-    () => {
-      projects.style.maxHeight = 'none';
-      shadowOverlay.style.display = 'none';
-    },
-    { once: true }
-  );
-});
+let overlayPresent = true;
+function removeShadowOverlay() {
+  if (overlayPresent) {
+    overlayPresent = false;
+    projects.style.transition = 'max-height 1000ms ease-out';
+    projects.style.maxHeight = projects.scrollHeight + 'px';
+    shadowOverlay.style.opacity = 0;
+    projects.addEventListener(
+      'transitionend',
+      () => {
+        projects.style.maxHeight = 'none';
+        shadowOverlay.style.display = 'none';
+      },
+      { once: true }
+    );
+  }
+}
+shadowOverlay
+  .getElementsByTagName('button')[0]
+  .addEventListener('click', removeShadowOverlay, { once: true });
 
 let removedPulses = false;
 function removePulses() {
@@ -205,8 +212,8 @@ class Item {
     }
   }
   hide() {
-    if (this.canOpen && this.item.id !== 'resume' && !this.item.classList.contains('remove')) {
-      if (this.item.classList.contains('open')) {
+    if (this.item.id !== 'resume' && !this.item.classList.contains('remove')) {
+      if (this.canOpen && this.item.classList.contains('open')) {
         this.close();
       }
       this.item.style.maxHeight = this.item.getBoundingClientRect().height + 'px';
@@ -337,7 +344,7 @@ class Filter {
 const filterButtons = document.getElementsByClassName('filterButton');
 const filters = {};
 for (let i = 0; i < filterButtons.length; i++) {
-  filters[filterButtons[i].id] = new Filter(filterButtons[i]);
+  filters[filterButtons[i].dataset.filter] = new Filter(filterButtons[i]);
   filterButtons[i].addEventListener('click', function () {
     if (!transitioning) {
       clearQuery();
@@ -352,25 +359,31 @@ function openFilter(filter) {
   if (
     !filter.classList.contains('filtered') &&
     (!alreadyFiltered.length ||
-      alreadyFiltered[alreadyFiltered.length - 1].classList.contains(filter.id))
+      alreadyFiltered[alreadyFiltered.length - 1].dataset.children
+        .split(' ')
+        .includes(filter.dataset.filter))
   ) {
+    removeShadowOverlay();
     //Not already clicked
     filter.classList.add('filtered');
     for (let i = 0; i < filterButtons.length; i++) {
       if (
-        !filterButtons[i].classList.contains('filtered') &&
-        !filterButtons[i].classList.contains(filter.id)
+        filterButtons[i].classList.contains('filtered') ||
+        filterButtons[i].dataset.parent === filter.dataset.filter
       ) {
-        //Hide others
-        filters[filterButtons[i].id].hide();
-      } else {
         //Show subfilters
-        filters[filterButtons[i].id].show();
+        filters[filterButtons[i].dataset.filter].show();
+      } else {
+        //Hide others
+        filters[filterButtons[i].dataset.filter].hide();
       }
     }
     for (const id in items) {
-      //Hide itemss
-      if (!items[id].item.classList.contains(filter.id)) {
+      //Hide items
+      if (
+        'filters' in items[id].item.dataset &&
+        !items[id].item.dataset.filters.split(' ').includes(filter.dataset.filter)
+      ) {
         items[id].hide();
       }
     }
@@ -398,9 +411,9 @@ document.getElementById('clearFilter').addEventListener('click', function () {
     for (let i = 0; i < filterButtons.length; i++) {
       //Show all buttons except subfilters
       if (!filterButtons[i].classList.contains('subfilter')) {
-        filters[filterButtons[i].id].show();
+        filters[filterButtons[i].dataset.filter].show();
       } else {
-        filters[filterButtons[i].id].hide();
+        filters[filterButtons[i].dataset.filter].hide();
       }
     }
     for (const id in items) {

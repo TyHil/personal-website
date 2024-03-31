@@ -9,7 +9,7 @@ a.button.large.circle {
 
 /* Featured Inputs Extra */
 
-#featured::after {
+#featured-filter::after {
   content: 'Featured';
 }
 
