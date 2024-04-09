@@ -8,13 +8,13 @@
       "firebase.json",
       "database.rules.json",
       "*debug.log",
-      ".*",
+      "**/.*",
       "**/.git/**",
       "**/.github/**",
-      "README.md",
-      "LICENSE.txt",
-      "package.json",
-      "pnpm-lock.yaml"
+      "**/README.md",
+      "**/LICENSE.txt",
+      "**/package.json",
+      "**/pnpm-lock.yaml"
     ],
     "headers": [
       {
