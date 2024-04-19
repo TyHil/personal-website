@@ -515,7 +515,9 @@ a.button.large.circle.replit {
 
 /* Pulse */
 
-.pulse-once, .pulse-once button, .pulse-once a {
+.pulse-once,
+.pulse-once button,
+.pulse-once a {
   animation: pulse 2s;
   animation-delay: 1s;
 }

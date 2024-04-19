@@ -531,7 +531,7 @@ function expandProjects() {
 if (params) {
   if (params.has('item') && document.querySelector('#' + params.get('item') + '.item')) {
     expandProjects();
-    items[params.get('item')].item.classList.add('pulse-once')
+    items[params.get('item')].item.classList.add('pulse-once');
     items[params.get('item')].open();
     document.querySelector('#' + params.get('item') + '.item').scrollIntoView({
       behavior: 'smooth'
