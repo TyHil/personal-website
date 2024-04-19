@@ -481,7 +481,7 @@ document.getElementById('shareFilter').addEventListener('click', function () {
   let ids = [];
   let names = [];
   for (let i = 0; i < filtereds.length; i++) {
-    ids.push(filtereds[i].id);
+    ids.push(filtereds[i].dataset.filter);
     names.push(filtereds[i].innerText);
   }
   shareLink(this, names.reverse().join(' ') + ' Filter', currentURL() + '?filter=' + ids.join());
@@ -513,7 +513,7 @@ function openFilterAndWait(list) {
   //Open filter(s) one at a time, waiting for each
   if (list.length) {
     waitForNotTransitioning(() => {
-      openFilter(document.querySelector('#' + list.shift() + '.filterButton'));
+      openFilter(document.querySelector('.filterButton[data-filter="' + list.shift() + '"]'));
       openFilterAndWait(list);
     });
   } else {
@@ -542,12 +542,15 @@ if (params) {
     params
       .get('filter')
       .split(',')
-      .map(id => document.querySelector('#' + id + '.filterButton'))
+      .map(id => document.querySelector('.filterButton[data-filter="' + id + '"]'))
       .every(Boolean)
   ) {
     //if each filter is a valid element
     expandProjects();
     openFilterAndWait(params.get('filter').split(','));
+    document.getElementById('filters').scrollIntoView({
+      behavior: 'smooth'
+    });
   }
 }
 
