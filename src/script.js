@@ -599,7 +599,7 @@ function updateColor() {
     (((hueSatBriVals[2] / 360) * 200 + 100) % 200) +
     '%)';
   headerBg.style.filter = changeTo;
-  document.getElementById('featured').style.filter = changeTo;
+  document.getElementById('featured-filter').style.filter = changeTo;
   const features = document.getElementsByClassName('feature');
   for (let i = 0; i < features.length; i++) {
     features[i].style.filter = changeTo;
