@@ -9,6 +9,7 @@
     "lint:check": "eslint ."
   },
   "devDependencies": {
+    "@prettier/plugin-xml": "^3.4.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "firebase-tools": "^13.7.1",
@@ -22,7 +23,11 @@
     "singleQuote": true,
     "trailingComma": "none",
     "arrowParens": "avoid",
-    "htmlWhitespaceSensitivity": "strict"
+    "htmlWhitespaceSensitivity": "strict",
+    "plugins": [
+      "@prettier/plugin-xml"
+    ],
+    "xmlWhitespaceSensitivity": "ignore"
   },
   "eslintConfig": {
     "env": {

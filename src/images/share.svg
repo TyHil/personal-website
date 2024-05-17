@@ -1,1 +1,8 @@
-<svg version="1.1" id="prefix__Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 21.8 24" xml:space="preserve" enable-background="new 0 0 21.8 24"><style>.prefix__st0{fill:none;stroke:#000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}</style><path class="prefix__st0" d="M7.2 13.6 14.6 18"/><path class="prefix__st0" d="M14.6 6 7.2 10.4"/><circle cx="17.5" cy="4.4" r="4.4"/><circle cx="4.4" cy="12" r="4.4"/><circle cx="17.5" cy="19.6" r="4.4"/></svg>
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.8 24">
+  <path fill="none" stroke="#000" stroke-width="2" d="M7.2 13.6 14.6 18" />
+  <path fill="none" stroke="#000" stroke-width="2" d="M14.6 6 7.2 10.4" />
+  <circle cx="17.5" cy="4.4" r="4.4" />
+  <circle cx="4.4" cy="12" r="4.4" />
+  <circle cx="17.5" cy="19.6" r="4.4" />
+</svg>

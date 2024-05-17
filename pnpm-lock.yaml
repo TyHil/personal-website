@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
+  '@prettier/plugin-xml':
+    specifier: ^3.4.1
+    version: 3.4.1(prettier@3.2.5)
   eslint:
     specifier: ^8.57.0
     version: 8.57.0
@@ -311,6 +314,15 @@ packages:
       config-chain: 1.1.13
     dev: true
 
+  /@prettier/plugin-xml@3.4.1(prettier@3.2.5):
+    resolution: {integrity: sha512-Uf/6/+9ez6z/IvZErgobZ2G9n1ybxF5BhCd7eMcKqfoWuOzzNUxBipNo3QAP8kRC1VD18TIo84no7LhqtyDcTg==}
+    peerDependencies:
+      prettier: ^3.0.0
+    dependencies:
+      '@xml-tools/parser': 1.0.11
+      prettier: 3.2.5
+    dev: true
+
   /@protobufjs/aspromise@1.1.2:
     resolution: {integrity: sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ==}
     dev: true
@@ -417,6 +429,12 @@ packages:
 
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
+    dev: true
+
+  /@xml-tools/parser@1.0.11:
+    resolution: {integrity: sha512-aKqQ077XnR+oQtHJlrAflaZaL7qZsulWc/i/ZEooar5JiWj1eLt0+Wg28cpa+XLney107wXqneC+oG1IZvxkTA==}
+    dependencies:
+      chevrotain: 7.1.1
     dev: true
 
   /abbrev@2.0.0:
@@ -860,6 +878,12 @@ packages:
 
   /chardet@0.7.0:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
+    dev: true
+
+  /chevrotain@7.1.1:
+    resolution: {integrity: sha512-wy3mC1x4ye+O+QkEinVJkPf5u2vsrDIYW9G7ZuwFl6v/Yu0LwUuT2POsb+NUWApebyxfkQq6+yDfRExbnI5rcw==}
+    dependencies:
+      regexp-to-ast: 0.5.0
     dev: true
 
   /chokidar@3.6.0:
@@ -3705,6 +3729,10 @@ packages:
     resolution: {integrity: sha512-FNpGGo1DycYAdnrKFxCMmKYgo/mILAqtRYbkdQD8Ep/Hk2PQ5+aEAEx+IU713RTDmuBaH0c8P5ZozurNu5ObRQ==}
     dependencies:
       esprima: 4.0.1
+    dev: true
+
+  /regexp-to-ast@0.5.0:
+    resolution: {integrity: sha512-tlbJqcMHnPKI9zSrystikWKwHkBqu2a/Sgw01h3zFjvYrMxEDYHzzoMZnUrbIfpTFEsoRnnviOXNCzFiSc54Qw==}
     dev: true
 
   /registry-auth-token@5.0.2:
