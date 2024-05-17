@@ -43,6 +43,13 @@ window.addEventListener('load', function () {
   }
 });
 
+/* Instagram Referrer Blurb Change */
+
+if (document.referrer.match(/^https?:\/\/([^\/]+\.)?instagram\.com(\/|$)/i)) {
+  document.getElementById('normal-blurb').style.display = 'none';
+  document.getElementById('insta-blurb').style.display = 'block';
+}
+
 /* Header Tilt */
 
 const headerBg = document.getElementById('headerBg');

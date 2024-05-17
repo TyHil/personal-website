@@ -154,6 +154,9 @@ main {
   padding: 0.5rem;
   overflow-wrap: normal;
 }
+#insta-blurb {
+  display: none;
+}
 
 /* Main */
 
@@ -442,6 +445,7 @@ span.ripplecircle {
 .item .text {
   margin-right: auto;
   margin-left: 1rem;
+  overflow-wrap: normal;
 }
 .item .text h3 {
   color: var(--light1);
