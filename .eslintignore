@@ -4,10 +4,10 @@
 .local
 
 #submodules
-set-operations-for-spotify
-typewriter-formatting
-cah-maker
-response-display
-password-generator
-recipes
-dvd
+src/set-operations-for-spotify
+src/typewriter-formatting
+src/cah-maker
+src/response-display
+src/password-generator
+src/recipes
+src/dvd

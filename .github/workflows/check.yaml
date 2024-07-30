@@ -1,6 +1,15 @@
 name: Lint and Format Check
 
-on: push
+on:
+  push:
+    paths-ignore:
+      - 'src/set-operations-for-spotify'
+      - 'src/typewriter-formatting'
+      - 'src/cah-maker'
+      - 'src/response-display'
+      - 'src/password-generator'
+      - 'src/recipes'
+      - 'src/dvd'
 
 jobs:
   main:
