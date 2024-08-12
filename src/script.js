@@ -525,12 +525,12 @@ for (let i = 0; i < shares.length; i++) {
   shares[i].addEventListener('click', function () {
     shareLink(
       this,
-      shares[i].parentNode.parentNode.getElementsByTagName('h3')[0].innerText,
-      currentURL() + '?item=' + shares[i].parentNode.parentNode.id
+      this.parentNode.parentNode.parentNode.getElementsByTagName('h3')[0].innerText,
+      currentURL() + '?item=' + this.parentNode.parentNode.parentNode.id
     );
     analytics.logEvent(analytics, 'share_item', {
       event_category: 'engagement',
-      event_label: this.parentNode.parentNode.getElementsByTagName('h3')[0].innerText
+      event_label: this.parentNode.parentNode.parentNode.getElementsByTagName('h3')[0].innerText
     }); //Log share_item event to analytics
   });
 }

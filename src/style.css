@@ -542,7 +542,7 @@ a.button.large.circle.replit {
 /* Pulse */
 
 .pulse-once,
-.pulse-once button,
+.pulse-once button:not(.tag),
 .pulse-once a {
   animation: pulse 2s;
   animation-delay: 1s;
