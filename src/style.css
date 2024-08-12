@@ -9,7 +9,8 @@ a.button.large.circle {
 
 /* Featured Inputs Extra */
 
-#featured-filter::after {
+#featured-filter::after,
+.tag.featured::after {
   content: 'Featured';
 }
 
@@ -262,8 +263,6 @@ h2 {
   padding: 0.5rem;
   background-color: var(--dark1);
   border-radius: 2rem;
-  display: flex;
-  align-items: center;
   transition:
     border-radius 200ms 400ms,
     padding 200ms,
@@ -273,12 +272,35 @@ h2 {
     margin-top 200ms;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
 }
 .item:first-of-type {
   margin-top: 0;
 }
-.collapsible {
-  cursor: pointer;
+.item .info {
+  display: flex;
+  align-items: center;
+}
+.item .tags {
+  opacity: 0;
+  margin-top: 0;
+  max-height: 0;
+  transition:
+    opacity 200ms,
+    margin-top 200ms,
+    max-height 200ms;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.item.open .tags {
+  opacity: 1;
+  margin-top: 0.5rem;
+  max-height: 4rem;
+}
+.item.open .tags .tag {
+  background-color: var(--dark2);
+  white-space: nowrap;
 }
 .feature {
   position: absolute;
@@ -305,6 +327,8 @@ h2 {
     min-height 200ms,
     margin-top 200ms;
 }
+
+/*Tags*/
 
 /*Dropdown content*/
 
@@ -418,7 +442,7 @@ span.ripplecircle {
     margin 200ms ease-out,
     transform 200ms ease-out;
 }
-.collapsible.open .arrow {
+.item.open .arrow {
   transform: rotate(0deg);
   margin: 0.25rem 0 0 0;
 }
@@ -429,8 +453,6 @@ span.ripplecircle {
   width: 3rem;
   min-width: 3rem;
   height: 3rem;
-}
-.collapsible .icon {
   margin-left: 0.6rem;
 }
 .rounded {

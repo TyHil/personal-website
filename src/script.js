@@ -159,19 +159,20 @@ class Item {
     this.canOpen = item.classList.contains('collapsible');
     if (this.canOpen) {
       this.content = this.item.nextElementSibling;
-      this.item.addEventListener('click', e => {
-        if (!e.target.classList.contains('noOpen') && window.getSelection().type !== 'Range') {
-          clearQuery();
-          if (this.item.nextElementSibling.style.maxHeight) {
-            //Close
-            this.close();
-          } else {
-            //Open
-            this.open();
-          }
-        }
-      });
     }
+    this.item.addEventListener('click', e => {
+      if (!e.target.classList.contains('noOpen') && window.getSelection().type !== 'Range') {
+        clearQuery();
+        if (this.isOpen()) {
+          this.close();
+        } else {
+          this.open();
+        }
+      }
+    });
+  }
+  isOpen() {
+    return this.item.classList.contains('open');
   }
   open() {
     if (this.canOpen) {
@@ -182,7 +183,7 @@ class Item {
       this.content.addEventListener(
         'transitionend',
         () => {
-          if (this.content.previousElementSibling.classList.contains('open')) {
+          if (this.isOpen()) {
             //Prevent leftover listener when double clicking quickly
             this.content.style.maxHeight = 'none';
           }
@@ -195,6 +196,8 @@ class Item {
         event_category: 'engagement',
         event_label: this.item.getElementsByTagName('h3')[0].innerText
       }); //Log view_item event to analytics
+    } else {
+      this.item.classList.add('open');
     }
   }
   close() {
@@ -207,7 +210,7 @@ class Item {
         this.content.addEventListener(
           'transitionend',
           () => {
-            if (!this.content.previousElementSibling.classList.contains('open')) {
+            if (!this.isOpen()) {
               //Prevent leftover listener when double clicking quickly
               this.content.style.display = 'none';
             }
@@ -216,13 +219,13 @@ class Item {
           { once: true }
         );
       }); //Delay so js runs these separately, won't animate otherwise
+    } else {
+      this.item.classList.remove('open');
     }
   }
   hide() {
     if (this.item.id !== 'resume' && !this.item.classList.contains('remove')) {
-      if (this.canOpen && this.item.classList.contains('open')) {
-        this.close();
-      }
+      this.close();
       this.item.style.maxHeight = this.item.getBoundingClientRect().height + 'px';
       setTimeout(() => {
         this.item.classList.add('remove');
@@ -235,7 +238,7 @@ class Item {
   }
   show() {
     if (this.item.id !== 'resume' && this.item.classList.contains('remove')) {
-      this.item.style.display = 'flex';
+      this.item.style.display = 'block';
       setTimeout(() => {
         this.item.style.maxHeight = '300px';
         this.item.classList.remove('remove');
@@ -432,6 +435,24 @@ document.getElementById('clearFilter').addEventListener('click', function () {
     }
   }
 });
+
+/* Add tags to items */
+
+for (const item of Object.values(items)) {
+  if (item.item.dataset.filters) {
+    const tags = item.item.getElementsByClassName('tags')[0];
+    for (const tag of item.item.dataset.filters.split(' ')) {
+      const button = document.createElement('button');
+      button.classList.add('large');
+      button.classList.add('tag');
+      if (tag === 'featured') {
+        button.classList.add('featured');
+      }
+      button.innerText = filters[tag].filter.innerText;
+      tags.append(button);
+    }
+  }
+}
 
 /* Share */
 
