@@ -110,15 +110,6 @@ window.addEventListener('resize', headerHeight);
 /* Items */
 
 const projects = document.getElementById('projects');
-function projectsResize() {
-  let heightAdd = 0;
-  for (const id in items) {
-    if (items[id].canOpen && id !== 'resume') {
-      heightAdd += parseInt(items[id].content.getBoundingClientRect().height);
-    }
-  }
-  projects.style.setProperty('--extraHeight', heightAdd + 'px');
-}
 
 const shadowOverlay = document.getElementById('shadowOverlay');
 let overlayPresent = true;
@@ -175,6 +166,7 @@ class Item {
     return this.item.classList.contains('open');
   }
   open() {
+    removeShadowOverlay();
     if (this.canOpen) {
       this.item.classList.add('open');
       this.content.classList.add('open');
@@ -187,7 +179,6 @@ class Item {
             //Prevent leftover listener when double clicking quickly
             this.content.style.maxHeight = 'none';
           }
-          projectsResize();
         },
         { once: true }
       );
@@ -214,7 +205,6 @@ class Item {
               //Prevent leftover listener when double clicking quickly
               this.content.style.display = 'none';
             }
-            projectsResize();
           },
           { once: true }
         );
