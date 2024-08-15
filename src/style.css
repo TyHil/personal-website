@@ -298,9 +298,13 @@ h2 {
   margin-top: 0.5rem;
   max-height: 4rem;
 }
-.item.open .tags .tag {
+.item .tags .tag {
   background-color: var(--dark2);
   white-space: nowrap;
+}
+.item .tags .tag.featured::before,
+.item .tags .tag.featured::after {
+  opacity: 1;
 }
 .feature {
   position: absolute;
