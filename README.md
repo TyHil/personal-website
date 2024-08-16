@@ -16,7 +16,7 @@ Also includes the following websites:
 ## Set-up
 
 This project requires a working [Node.js](https://nodejs.org/) and [PNPM](https://pnpm.io/)
-installation. To start, clone the repository, and then run `npm run dev` to launch
+installation. To start, clone the repository, and then run `pnpm  dev` to launch
 a local development server at [`localhost:3000`](https://localhost:3000) by default.
 
 ```bash
