@@ -14,7 +14,8 @@
       "**/README.md",
       "**/LICENSE.txt",
       "**/package.json",
-      "**/pnpm-lock.yaml"
+      "**/pnpm-lock.yaml",
+      "**/eslint.config.mjs"
     ],
     "headers": [
       {
