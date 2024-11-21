@@ -29,13 +29,5 @@
     ],
     "xmlWhitespaceSensitivity": "ignore",
     "proseWrap": "always"
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true
-    },
-    "extends": [
-      "prettier"
-    ]
   }
 }
