@@ -1,10 +1,11 @@
 # personal-website
 
-Personal website of Tyler Gordon Hill available at [tylergordonhill.com](https://tylergordonhill.com).
+Personal website of Tyler Gordon Hill available at
+[tylergordonhill.com](https://tylergordonhill.com).
 
 [Style guide](https://github.com/TyHil/personal-website-styles)
 
-Also includes the following websites:
+## Subsites
 
 - [Set Operations for Spotify](https://github.com/TyHil/set-operations-for-spotify)
 - [Typewriter Formatting](https://github.com/TyHil/typewriter-formatting)
@@ -16,14 +17,14 @@ Also includes the following websites:
 ## Set-up
 
 This project requires a working [Node.js](https://nodejs.org/) and [PNPM](https://pnpm.io/)
-installation. To start, clone the repository, and then run `pnpm  dev` to launch
-a local development server at [`localhost:3000`](https://localhost:3000) by default.
+installation. To start, clone the repository, install dependencies, and then run `pnpm  dev` to
+launch a local development server at [`localhost:3000`](https://localhost:3000).
 
 ```bash
 git clone --recurse-submodules https://github.com/TyHil/personal-website.git
 cd personal-website
 pnpm install
-pnpm run dev
+pnpm dev
 ```
 
 ## License
