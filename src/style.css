@@ -604,8 +604,10 @@ a.button.large.circle.replit {
   cursor: zoom-out;
 }
 #fullscreenimg {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  max-height: 100%;
   -o-object-fit: contain;
   object-fit: contain;
   transition: opacity 2000ms;
