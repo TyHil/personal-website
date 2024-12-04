@@ -271,10 +271,10 @@ for (let i = 0; i < circs.length; i++) {
 
 /* Full Screen Image */
 
-let fullscreenbg = document.getElementById('fullscreenbg');
+const fullscreenbg = document.getElementById('fullscreenbg');
+const fullscreenimg = document.getElementById('fullscreenimg');
 
 function openFullscreen(src, alt) {
-  let fullscreenimg = document.getElementById('fullscreenimg');
   fullscreenimg.src = src;
   fullscreenimg.alt = alt;
   openModal(fullscreenbg);
@@ -288,6 +288,8 @@ for (let i = 0; i < images.length; i++) {
 }
 
 function closeFullscreen() {
+  fullscreenimg.src = '';
+  fullscreenimg.alt = '';
   closeModal(fullscreenbg);
 }
 
