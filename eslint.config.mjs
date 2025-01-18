@@ -13,7 +13,7 @@ export default [
       'src/password-generator/',
       'src/recipes/',
       'src/dvd/'
-    ],
+    ]
   },
   {
     languageOptions: {
