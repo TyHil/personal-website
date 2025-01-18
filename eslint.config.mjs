@@ -6,14 +6,16 @@ export default [
       '**/.cache',
       '**/.config',
       '**/.local',
-      'src/set-operations-for-spotify',
-      'src/typewriter-formatting',
-      'src/cah-maker',
-      'src/response-display',
-      'src/password-generator',
-      'src/recipes',
-      'src/dvd'
+      'src/set-operations-for-spotify/',
+      'src/typewriter-formatting/',
+      'src/cah-maker/',
+      'src/response-display/',
+      'src/password-generator/',
+      'src/recipes/',
+      'src/dvd/'
     ],
+  },
+  {
     languageOptions: {
       ecmaVersion: 6
     }
