@@ -35,7 +35,7 @@ jobs:
         run: pnpm install
 
       - name: Run ESLint
-        run: npm run lint:check
+        run: pnpm lint:check
 
       - name: Run Prettier
-        run: npm run format:check
+        run: pnpm format:check
