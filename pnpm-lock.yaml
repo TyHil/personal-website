@@ -20,6 +20,9 @@ importers:
       firebase-tools:
         specifier: ^14.4.0
         version: 14.4.0(@types/node@22.15.19)(encoding@0.1.13)
+      googleapis:
+        specifier: ^149.0.0
+        version: 149.0.0(encoding@0.1.13)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -1249,6 +1252,10 @@ packages:
 
   googleapis-common@7.2.0:
     resolution: {integrity: sha512-/fhDZEJZvOV3X5jmD+fKxMqma5q2Q9nZNSF3kn1F18tpxmA86BcTxAGBQdM0N89Z3bEaIs+HVznSmFJEAmMTjA==}
+    engines: {node: '>=14.0.0'}
+
+  googleapis@149.0.0:
+    resolution: {integrity: sha512-LTMc/njwYy7KTeaUHDcQt7KxftHyghdzm2XzbL46PRLd1AXB09utT9Po2ZJn2X0EApz0pE2T5x5A9zM8iue6zw==}
     engines: {node: '>=14.0.0'}
 
   gopd@1.2.0:
@@ -4174,6 +4181,14 @@ snapshots:
       qs: 6.14.0
       url-template: 2.0.8
       uuid: 9.0.1
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+
+  googleapis@149.0.0(encoding@0.1.13):
+    dependencies:
+      google-auth-library: 9.15.1(encoding@0.1.13)
+      googleapis-common: 7.2.0(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
       - supports-color

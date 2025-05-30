@@ -13,6 +13,7 @@
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
     "firebase-tools": "^14.4.0",
+    "googleapis": "^149.0.0",
     "prettier": "^3.5.3"
   },
   "prettier": {
