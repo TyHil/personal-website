@@ -1,6 +1,7 @@
 /*Page Time*/
 
 const { google } = require('googleapis');
+var admin = require('firebase-admin');
 
 const auth = new google.auth.GoogleAuth({
   credentials: JSON.parse(process.env.GOOGLE_AUTH_CREDENTIALS),
@@ -57,8 +58,29 @@ async function playlistLength() {
 /*Results*/
 
 Promise.all([pageTime(), playlistLength()]).then(results => {
-  console.log({
+  const app = admin.initializeApp({
+    credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)),
+    databaseURL: 'https://tylergordonhill-c8339-default-rtdb.firebaseio.com'
+  });
+
+  const db = admin.database();
+  const ref = db.ref('stats');
+
+  const toUpload = {
     pageTime: results[0],
     playlistLength: results[1]
+  };
+
+  Promise.allSettled(
+    Object.entries(toUpload).map(([key, value]) => {
+      return ref.child(key).set(value);
+    })
+  ).then(results => {
+    results.forEach((result, i) => {
+      if (result.status === 'rejected') {
+        console.error(`Failed to set ${Object.keys(toUpload)[i]}: `, result.reason);
+      }
+    });
+    app.delete();
   });
 });
