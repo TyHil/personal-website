@@ -30,11 +30,11 @@ jobs:
 
       - name: Set up environment variables
         run:
-          echo "GOOGLE_AUTH_CREDENTIALS=${{ secrets.GOOGLE_AUTH_CREDENTIALS }}" >> .env && echo
-          "GOOGLE_ANALYTICS_PROPERTY_ID=${{ secrets.GOOGLE_ANALYTICS_PROPERTY_ID }}" >> .env && echo
-          "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" >> .env && echo
-          "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" >> .env && echo
-          "FIREBASE_SERVICE_ACCOUNT_KEY=${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" >> .env
+          echo 'GOOGLE_AUTH_CREDENTIALS=${{ secrets.GOOGLE_AUTH_CREDENTIALS }}' >> .env && echo
+          'GOOGLE_ANALYTICS_PROPERTY_ID=${{ secrets.GOOGLE_ANALYTICS_PROPERTY_ID }}' >> .env && echo
+          'SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}' >> .env && echo
+          'SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}' >> .env && echo
+          'FIREBASE_SERVICE_ACCOUNT_KEY=${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}' >> .env
 
       - name: Run stats
         run: node --env-file=.env stats/stats.js
