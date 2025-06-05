@@ -574,6 +574,57 @@ if (params) {
   }
 }
 
+/* Stats */
+
+firebase.appCheck().activate('6LfVw0sjAAAAAN0-OJ7XqY-MmsV2dFz_uOAP2QET', true);
+
+const firebaseRef = firebase.database().ref('/stats');
+
+firebaseRef
+  .child('/pageTime')
+  .get()
+  .then(response => {
+    if (!response.exists()) {
+      throw new Error('pageTime does not exist');
+    } else {
+      document.getElementById('pageTime').innerText =
+        Math.round((response.val() / 60 / 60 / 24) * 100) / 100;
+    }
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+firebaseRef
+  .child('/playlistLength')
+  .get()
+  .then(response => {
+    if (!response.exists()) {
+      throw new Error('playlistLength does not exist');
+    } else {
+      document.getElementById('playlistLength').innerText = response.val();
+    }
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+let clicksHere;
+firebaseRef.child('/clicksHere').on('value', response => {
+  if (!response.exists()) {
+    throw new Error('clicksHere does not exist');
+  } else {
+    clicksHere = response.val();
+    document.getElementById('clicksHere').innerText = clicksHere;
+    document.getElementById('clicksHereButton').disabled = false;
+  }
+});
+document.getElementById('clicksHereButton').addEventListener('click', function () {
+  if (!this.disabled) {
+    firebaseRef.child('/clicksHere').set(++clicksHere);
+  }
+});
+
 /* Google Analytics */
 
 const links = document.getElementsByTagName('a');
