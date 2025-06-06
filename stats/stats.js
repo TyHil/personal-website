@@ -55,9 +55,18 @@ async function playlistLength() {
   return data.tracks.total;
 }
 
+/*Pull Requests Opened*/
+
+async function pullsOpened() {
+  const response = await fetch('https://api.github.com/search/issues?q=type:pr+author:TyHil', {
+    headers: { Authorization: 'Bearer ' + process.env.GITHUB_TOKEN }
+  });
+  return (await response.json()).total_count;
+}
+
 /*Results*/
 
-Promise.all([pageTime(), playlistLength()]).then(results => {
+Promise.all([pageTime(), playlistLength(), pullsOpened()]).then(results => {
   const app = admin.initializeApp({
     credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)),
     databaseURL: 'https://tylergordonhill-c8339-default-rtdb.firebaseio.com'
@@ -68,7 +77,8 @@ Promise.all([pageTime(), playlistLength()]).then(results => {
 
   const toUpload = {
     pageTime: results[0],
-    playlistLength: results[1]
+    playlistLength: results[1],
+    pullsOpened: results[2]
   };
 
   Promise.allSettled(

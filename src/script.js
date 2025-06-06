@@ -587,8 +587,9 @@ firebaseRef
     if (!response.exists()) {
       throw new Error('pageTime does not exist');
     } else {
-      document.getElementById('pageTime').innerText =
-        Math.round((response.val() / 60 / 60 / 24) * 100) / 100;
+      document.getElementById('pageTime').innerText = (
+        Math.round((response.val() / 60 / 60 / 24) * 10) / 10
+      ).toLocaleString();
     }
   })
   .catch(error => {
@@ -602,7 +603,21 @@ firebaseRef
     if (!response.exists()) {
       throw new Error('playlistLength does not exist');
     } else {
-      document.getElementById('playlistLength').innerText = response.val();
+      document.getElementById('playlistLength').innerText = response.val().toLocaleString();
+    }
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+firebaseRef
+  .child('/pullsOpened')
+  .get()
+  .then(response => {
+    if (!response.exists()) {
+      throw new Error('pullsOpened does not exist');
+    } else {
+      document.getElementById('pullsOpened').innerText = response.val().toLocaleString();
     }
   })
   .catch(error => {
@@ -615,7 +630,7 @@ firebaseRef.child('/clicksHere').on('value', response => {
     throw new Error('clicksHere does not exist');
   } else {
     clicksHere = response.val();
-    document.getElementById('clicksHere').innerText = clicksHere;
+    document.getElementById('clicksHere').innerText = clicksHere.toLocaleString();
     document.getElementById('clicksHereButton').disabled = false;
   }
 });
