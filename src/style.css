@@ -616,21 +616,22 @@ a.button.large.circle.replit {
 .stat p {
   text-align: center;
 }
-.stat p:nth-of-type(1) {
+.stat .number {
   color: var(--light1);
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
-.stat p:nth-of-type(2) {
+.stat .description {
   color: var(--light2);
 }
-.stat .unit {
+.stat .number .unit {
   color: var(--light2);
   font-size: 1rem;
-  margin-left: 0.25rem;
 }
 .stat button {
   background-color: var(--dark2);
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 .stat button:not([disabled]):hover,
 .stat button:not([disabled]):focus-visible {

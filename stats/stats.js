@@ -2,6 +2,8 @@
 
 const { google } = require('googleapis');
 var admin = require('firebase-admin');
+const fs = require('fs').promises;
+const path = require('path');
 
 const auth = new google.auth.GoogleAuth({
   credentials: JSON.parse(process.env.GOOGLE_AUTH_CREDENTIALS),
@@ -64,33 +66,65 @@ async function pullsOpened() {
   return (await response.json()).total_count;
 }
 
+/*Longest GitHub Streak*/
+
+async function githubStreak() {
+  const response = await fetch('https://api.franznkemaka.com/github-streak/stats/TyHil');
+  return (await response.json()).longestStreak.days;
+}
+
+/*Website Size*/
+
+const ignore = ['.git', 'node_modules'];
+async function getDirectorySize(directoryPath) {
+  let totalSize = 0;
+  const files = await fs.readdir(directoryPath);
+  for (const file of files) {
+    const filePath = path.join(directoryPath, file);
+    const stat = await fs.stat(filePath);
+    if (stat.isFile()) {
+      totalSize += stat.size;
+    } else if (stat.isDirectory() && !ignore.includes(file)) {
+      totalSize += await getDirectorySize(filePath);
+    }
+  }
+  return totalSize;
+}
+async function siteSize() {
+  return getDirectorySize('./');
+}
+
 /*Results*/
 
-Promise.all([pageTime(), playlistLength(), pullsOpened()]).then(results => {
-  const app = admin.initializeApp({
-    credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)),
-    databaseURL: 'https://tylergordonhill-c8339-default-rtdb.firebaseio.com'
-  });
-
-  const db = admin.database();
-  const ref = db.ref('stats');
-
-  const toUpload = {
-    pageTime: results[0],
-    playlistLength: results[1],
-    pullsOpened: results[2]
-  };
-
-  Promise.allSettled(
-    Object.entries(toUpload).map(([key, value]) => {
-      return ref.child(key).set(value);
-    })
-  ).then(results => {
-    results.forEach((result, i) => {
-      if (result.status === 'rejected') {
-        console.error(`Failed to set ${Object.keys(toUpload)[i]}: `, result.reason);
-      }
+Promise.all([pageTime(), playlistLength(), pullsOpened(), githubStreak(), siteSize()]).then(
+  results => {
+    const app = admin.initializeApp({
+      credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)),
+      databaseURL: 'https://tylergordonhill-c8339-default-rtdb.firebaseio.com'
     });
-    app.delete();
-  });
-});
+
+    const db = admin.database();
+    const ref = db.ref('stats');
+
+    const toUpload = {
+      pageTime: results[0],
+      playlistLength: results[1],
+      pullsOpened: results[2],
+      githubStreak: results[3],
+      siteSize: results[4]
+    };
+
+    Promise.allSettled(
+      Object.entries(toUpload).map(([key, value]) => {
+        return ref.child(key).set(value);
+      })
+    ).then(results => {
+      results.forEach((result, i) => {
+        if (result.status === 'rejected') {
+          console.error(`Failed to set ${Object.keys(toUpload)[i]}: `, result.reason);
+        }
+      });
+      app.delete();
+    });
+  }
+);

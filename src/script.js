@@ -587,9 +587,17 @@ firebaseRef
     if (!response.exists()) {
       throw new Error('pageTime does not exist');
     } else {
-      document.getElementById('pageTime').innerText = (
-        Math.round((response.val() / 60 / 60 / 24) * 10) / 10
-      ).toLocaleString();
+      const totalHours = response.val() / 60 / 60;
+      const days = Math.floor(totalHours / 24);
+      document.getElementById('pageTimeDays').innerText = days.toLocaleString();
+      if (days === 1) {
+        document.getElementById('pageTimeDays').nextElementSibling.innerText = ' day ';
+      }
+      const hours = Math.floor(totalHours % 24);
+      document.getElementById('pageTimeHours').innerText = hours.toLocaleString();
+      if (hours === 1) {
+        document.getElementById('pageTimeHours').nextElementSibling.innerText = ' hour';
+      }
     }
   })
   .catch(error => {
@@ -624,6 +632,20 @@ firebaseRef
     console.error(error);
   });
 
+firebaseRef
+  .child('/githubStreak')
+  .get()
+  .then(response => {
+    if (!response.exists()) {
+      throw new Error('githubStreak does not exist');
+    } else {
+      document.getElementById('githubStreak').innerText = response.val().toLocaleString();
+    }
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
 let clicksHere;
 firebaseRef.child('/clicksHere').on('value', response => {
   if (!response.exists()) {
@@ -639,6 +661,22 @@ document.getElementById('clicksHereButton').addEventListener('click', function (
     firebaseRef.child('/clicksHere').set(++clicksHere);
   }
 });
+
+firebaseRef
+  .child('/siteSize')
+  .get()
+  .then(response => {
+    if (!response.exists()) {
+      throw new Error('siteSize does not exist');
+    } else {
+      document.getElementById('siteSize').innerText = (
+        Math.floor((response.val() / 1000 / 1000) * 100) / 100
+      ).toLocaleString();
+    }
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
 /* Google Analytics */
 

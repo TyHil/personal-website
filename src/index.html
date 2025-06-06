@@ -2152,28 +2152,42 @@
         <h2>Stats</h2>
         <div id="statsBox">
           <div class="stat">
-            <p><span id="pageTime">...</span><span class="unit">days</span></p>
-            <p>Global time on this website</p>
+            <p class="number"
+              ><span><span id="pageTimeDays">...</span><span class="unit"> days </span></span
+              ><span><span id="pageTimeHours">...</span><span class="unit"> hours</span></span> </p
+            ><p class="description">Global time on this website</p>
           </div>
           <div class="stat">
-            <p><span id="playlistLength">...</span><span class="unit">songs</span></p>
-            <p>Playlist length</p>
+            <p class="number"
+              ><span id="playlistLength">...</span><span class="unit"> songs</span></p
+            >
+            <p class="description">Playlist length</p>
           </div>
           <div class="stat">
-            <p>34</p>
-            <p>Countries visited</p>
+            <p class="number">34</p>
+            <p class="description">Countries visited</p>
           </div>
           <div class="stat">
-            <p id="pullsOpened">...</p>
-            <p>Pull requests opened</p>
+            <p class="number" id="pullsOpened">...</p>
+            <p class="description">Pull requests opened</p>
           </div>
           <div class="stat">
-            <p id="clicksHere">...</p>
-            <p>Clicks <button id="clicksHereButton" class="small" disabled>here</button></p>
+            <p class="number"><span id="githubStreak">...</span><span class="unit"> days</span></p>
+            <p class="description">Longest commit streak</p>
           </div>
           <div class="stat">
-            <p>3</p>
-            <p>Easter eggs</p>
+            <p class="number" id="clicksHere">...</p>
+            <p class="description"
+              >Clicks <button id="clicksHereButton" class="small" disabled>here</button></p
+            >
+          </div>
+          <div class="stat">
+            <p class="number">3</p>
+            <p class="description">Easter eggs</p>
+          </div>
+          <div class="stat">
+            <p class="number"><span id="siteSize">...</span><span class="unit"> MB</span></p>
+            <p class="description">Website size</p>
           </div>
         </div>
       </section>
