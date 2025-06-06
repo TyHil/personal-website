@@ -580,66 +580,45 @@ firebase.appCheck().activate('6LfVw0sjAAAAAN0-OJ7XqY-MmsV2dFz_uOAP2QET', true);
 
 const firebaseRef = firebase.database().ref('/stats');
 
+const names = {
+  pageTime: function (value) {
+    const totalHours = value / 60 / 60;
+    const days = Math.floor(totalHours / 24);
+    document.getElementById('pageTimeDays').innerText = days.toLocaleString();
+    if (days === 1) {
+      document.getElementById('pageTimeDays').nextElementSibling.innerText = ' day ';
+    }
+    const hours = Math.floor(totalHours % 24);
+    document.getElementById('pageTimeHours').innerText = hours.toLocaleString();
+    if (hours === 1) {
+      document.getElementById('pageTimeHours').nextElementSibling.innerText = ' hour';
+    }
+  },
+  playlistLength: null,
+  pullsOpened: null,
+  githubStreak: null,
+  siteSize: function (value) {
+    document.getElementById('siteSize').innerText = (
+      Math.floor((value / 1000 / 1000) * 100) / 100
+    ).toLocaleString();
+  }
+};
+
 firebaseRef
-  .child('/pageTime')
   .get()
   .then(response => {
     if (!response.exists()) {
-      throw new Error('pageTime does not exist');
+      throw new Error('stats does not exist');
     } else {
-      const totalHours = response.val() / 60 / 60;
-      const days = Math.floor(totalHours / 24);
-      document.getElementById('pageTimeDays').innerText = days.toLocaleString();
-      if (days === 1) {
-        document.getElementById('pageTimeDays').nextElementSibling.innerText = ' day ';
+      for (const [key, value] of Object.entries(response.val())) {
+        if (names.hasOwnProperty(key)) {
+          if (names[key] !== null) {
+            names[key](value);
+          } else {
+            document.getElementById(key).innerText = value.toLocaleString();
+          }
+        }
       }
-      const hours = Math.floor(totalHours % 24);
-      document.getElementById('pageTimeHours').innerText = hours.toLocaleString();
-      if (hours === 1) {
-        document.getElementById('pageTimeHours').nextElementSibling.innerText = ' hour';
-      }
-    }
-  })
-  .catch(error => {
-    console.error(error);
-  });
-
-firebaseRef
-  .child('/playlistLength')
-  .get()
-  .then(response => {
-    if (!response.exists()) {
-      throw new Error('playlistLength does not exist');
-    } else {
-      document.getElementById('playlistLength').innerText = response.val().toLocaleString();
-    }
-  })
-  .catch(error => {
-    console.error(error);
-  });
-
-firebaseRef
-  .child('/pullsOpened')
-  .get()
-  .then(response => {
-    if (!response.exists()) {
-      throw new Error('pullsOpened does not exist');
-    } else {
-      document.getElementById('pullsOpened').innerText = response.val().toLocaleString();
-    }
-  })
-  .catch(error => {
-    console.error(error);
-  });
-
-firebaseRef
-  .child('/githubStreak')
-  .get()
-  .then(response => {
-    if (!response.exists()) {
-      throw new Error('githubStreak does not exist');
-    } else {
-      document.getElementById('githubStreak').innerText = response.val().toLocaleString();
     }
   })
   .catch(error => {
@@ -661,22 +640,6 @@ document.getElementById('clicksHereButton').addEventListener('click', function (
     firebaseRef.child('/clicksHere').set(++clicksHere);
   }
 });
-
-firebaseRef
-  .child('/siteSize')
-  .get()
-  .then(response => {
-    if (!response.exists()) {
-      throw new Error('siteSize does not exist');
-    } else {
-      document.getElementById('siteSize').innerText = (
-        Math.floor((response.val() / 1000 / 1000) * 100) / 100
-      ).toLocaleString();
-    }
-  })
-  .catch(error => {
-    console.error(error);
-  });
 
 /* Google Analytics */
 
