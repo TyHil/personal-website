@@ -590,12 +590,51 @@ a.button.large.circle.replit {
 .testimonial blockquote {
   color: var(--light1);
   font-size: 1.5rem;
-  font-weight: normal;
   margin-bottom: 0.5rem;
 }
 .testimonial p {
   color: var(--light2);
-  font-weight: normal;
+}
+
+/* Stats */
+
+#statsBox {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+.stat {
+  background-color: var(--dark1);
+  border-radius: 2rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.stat p {
+  text-align: center;
+}
+.stat p:nth-of-type(1) {
+  color: var(--light1);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.stat p:nth-of-type(2) {
+  color: var(--light2);
+}
+.stat .unit {
+  color: var(--light2);
+  font-size: 1rem;
+  margin-left: 0.25rem;
+}
+.stat button {
+  background-color: var(--dark2);
+}
+.stat button:not([disabled]):hover,
+.stat button:not([disabled]):focus-visible {
+  background-color: var(--dark3);
 }
 
 /* Fullscreen Images */
