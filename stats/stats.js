@@ -59,18 +59,80 @@ async function playlistLength() {
 
 /*Pull Requests Opened*/
 
+const GITHUB_USERNAME = 'TyHil';
+
 async function pullsOpened() {
-  const response = await fetch('https://api.github.com/search/issues?q=type:pr+author:TyHil', {
-    headers: { Authorization: 'Bearer ' + process.env.GITHUB_TOKEN }
-  });
+  const response = await fetch(
+    'https://api.github.com/search/issues?q=type:pr+author:' + GITHUB_USERNAME,
+    {
+      headers: { Authorization: 'Bearer ' + process.env.GITHUB_TOKEN }
+    }
+  );
   return (await response.json()).total_count;
 }
 
 /*Longest GitHub Streak*/
 
+async function fetchContributionYears() {
+  return fetch('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: { Authorization: 'Bearer ' + process.env.GITHUB_TOKEN },
+    body: JSON.stringify({
+      query: `{
+        user(login: "${GITHUB_USERNAME}") {
+          contributionsCollection {
+            contributionYears
+          }
+        }
+      }`
+    })
+  }).then(data => data.json());
+}
+async function fetchContributions(year) {
+  return fetch('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: { Authorization: 'Bearer ' + process.env.GITHUB_TOKEN },
+    body: JSON.stringify({
+      query: `{
+        user(login: "${GITHUB_USERNAME}") {
+          contributionsCollection(from: "${year}-01-01T00:00:00Z", to: "${year}-12-31T23:59:59Z") {
+            contributionCalendar {
+              totalContributions
+              weeks {
+                contributionDays {
+                  contributionCount
+                  date
+                }
+              }
+            }
+          }
+        }
+      }`
+    })
+  }).then(data => data.json());
+}
 async function githubStreak() {
-  const response = await fetch('https://api.franznkemaka.com/github-streak/stats/TyHil');
-  return (await response.json()).longestStreak.days;
+  const contributionYears = (await fetchContributionYears()).data.user.contributionsCollection
+    .contributionYears;
+  const contributions = (await Promise.all(contributionYears.map(fetchContributions)))
+    .flatMap(
+      contribution => contribution.data.user.contributionsCollection.contributionCalendar.weeks
+    )
+    .flatMap(week => week.contributionDays);
+  contributions.sort((a, b) => a.date.localeCompare(b.date));
+  let streak = 0;
+  let maxStreak = 0;
+  for (contribution of contributions) {
+    if (contribution.contributionCount) {
+      streak++;
+    } else {
+      streak = 0;
+    }
+    if (streak > maxStreak) {
+      maxStreak = streak;
+    }
+  }
+  return maxStreak;
 }
 
 /*Website Size*/
