@@ -628,6 +628,10 @@ a.button.large.circle.replit {
   color: var(--light2);
   font-size: 1rem;
 }
+.stat .description:has(button) {
+  display: flex;
+  white-space: pre;
+}
 .stat button {
   background-color: var(--dark2);
   padding-top: 0.1rem;

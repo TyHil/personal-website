@@ -96,35 +96,26 @@ async function siteSize() {
 
 /*Results*/
 
-Promise.all([pageTime(), playlistLength(), pullsOpened(), githubStreak(), siteSize()]).then(
-  results => {
-    const app = admin.initializeApp({
-      credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)),
-      databaseURL: 'https://tylergordonhill-c8339-default-rtdb.firebaseio.com'
-    });
+const fetches = {
+  pageTime: pageTime(),
+  playlistLength: playlistLength(),
+  pullsOpened: pullsOpened(),
+  githubStreak: githubStreak(),
+  siteSize: siteSize()
+};
 
-    const db = admin.database();
-    const ref = db.ref('stats');
+Promise.all(Object.entries(fetches).map(async ([key, value]) => [key, await value])).then(data => {
+  const app = admin.initializeApp({
+    credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)),
+    databaseURL: 'https://tylergordonhill-c8339-default-rtdb.firebaseio.com'
+  });
 
-    const toUpload = {
-      pageTime: results[0],
-      playlistLength: results[1],
-      pullsOpened: results[2],
-      githubStreak: results[3],
-      siteSize: results[4]
-    };
+  const db = admin.database();
+  const ref = db.ref('stats');
 
-    Promise.allSettled(
-      Object.entries(toUpload).map(([key, value]) => {
-        return ref.child(key).set(value);
-      })
-    ).then(results => {
-      results.forEach((result, i) => {
-        if (result.status === 'rejected') {
-          console.error(`Failed to set ${Object.keys(toUpload)[i]}: `, result.reason);
-        }
-      });
-      app.delete();
-    });
-  }
-);
+  const uploads = data.map(([key, value]) => [key, ref.child(key).set(value)]);
+
+  Promise.all(uploads.map(([, value]) => value)).then(() => {
+    app.delete();
+  });
+});
