@@ -2152,14 +2152,21 @@
         <h2>Stats</h2>
         <div id="statsBox">
           <div class="stat">
-            <p class="number"
-              ><span><span id="pageTimeDays">...</span><span class="unit"> days </span></span
-              ><span><span id="pageTimeHours">...</span><span class="unit"> hours</span></span> </p
-            ><p class="description">Global time on this website</p>
+            <p class="number">
+              <span>
+                <span id="pageTimeDays" class="loading"></span>
+                <span class="unit"> days </span>
+              </span>
+              <span>
+                <span id="pageTimeHours" class="loading"></span>
+                <span class="unit"> hours</span>
+              </span>
+            </p>
+            <p class="description">Global time on this website</p>
           </div>
           <div class="stat">
             <p class="number"
-              ><span id="playlistLength">...</span><span class="unit"> songs</span></p
+              ><span id="playlistLength" class="loading"></span><span class="unit"> songs</span></p
             >
             <p class="description">Playlist length</p>
           </div>
@@ -2168,15 +2175,17 @@
             <p class="description">Countries visited</p>
           </div>
           <div class="stat">
-            <p class="number" id="pullsOpened">...</p>
+            <p id="pullsOpened" class="number loading"></p>
             <p class="description">Pull requests opened</p>
           </div>
           <div class="stat">
-            <p class="number"><span id="githubStreak">...</span><span class="unit"> days</span></p>
+            <p class="number"
+              ><span id="githubStreak" class="loading"></span><span class="unit"> days</span></p
+            >
             <p class="description">Longest commit streak</p>
           </div>
           <div class="stat">
-            <p class="number" id="clicksHere">...</p>
+            <p id="clicksHere" class="number loading"></p>
             <p class="description"
               >Clicks <button id="clicksHereButton" class="small" disabled>here</button></p
             >
@@ -2186,7 +2195,9 @@
             <p class="description">Easter eggs</p>
           </div>
           <div class="stat">
-            <p class="number"><span id="siteSize">...</span><span class="unit"> MB</span></p>
+            <p class="number"
+              ><span id="siteSize" class="loading"></span><span class="unit"> MB</span></p
+            >
             <p class="description">Website size</p>
           </div>
         </div>

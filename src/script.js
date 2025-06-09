@@ -584,23 +584,27 @@ const names = {
   pageTime: function (value) {
     const totalHours = value / 60 / 60;
     const days = Math.floor(totalHours / 24);
-    document.getElementById('pageTimeDays').innerText = days.toLocaleString();
+    const pageTimeDays = document.getElementById('pageTimeDays');
+    pageTimeDays.innerText = days.toLocaleString();
     if (days === 1) {
-      document.getElementById('pageTimeDays').nextElementSibling.innerText = ' day ';
+      pageTimeDays.nextElementSibling.innerText = ' day ';
     }
+    pageTimeDays.classList.remove('loading');
     const hours = Math.floor(totalHours % 24);
-    document.getElementById('pageTimeHours').innerText = hours.toLocaleString();
+    const pageTimeHours = document.getElementById('pageTimeHours');
+    pageTimeHours.innerText = hours.toLocaleString();
     if (hours === 1) {
-      document.getElementById('pageTimeHours').nextElementSibling.innerText = ' hour';
+      pageTimeHours.nextElementSibling.innerText = ' hour';
     }
+    pageTimeHours.classList.remove('loading');
   },
   playlistLength: null,
   pullsOpened: null,
   githubStreak: null,
   siteSize: function (value) {
-    document.getElementById('siteSize').innerText = (
-      Math.floor((value / 1000 / 1000) * 100) / 100
-    ).toLocaleString();
+    const siteSize = document.getElementById('siteSize');
+    siteSize.innerText = (Math.round((value / 1000 / 1000) * 100) / 100).toLocaleString();
+    siteSize.classList.remove('loading');
   }
 };
 
@@ -615,7 +619,9 @@ firebaseRef
           if (names[key] !== null) {
             names[key](value);
           } else {
-            document.getElementById(key).innerText = value.toLocaleString();
+            const element = document.getElementById(key);
+            element.innerText = value.toLocaleString();
+            element.classList.remove('loading');
           }
         }
       }
@@ -623,6 +629,10 @@ firebaseRef
   })
   .catch(error => {
     console.error(error);
+    const loadings = document.getElementsByClassName('loading');
+    for (let i = 0; i < loadings.length; i++) {
+      loadings[i].classList.add('error');
+    }
   });
 
 let clicksHere;
@@ -630,8 +640,9 @@ firebaseRef.child('/clicksHere').on('value', response => {
   if (!response.exists()) {
     throw new Error('clicksHere does not exist');
   } else {
-    clicksHere = response.val();
-    document.getElementById('clicksHere').innerText = clicksHere.toLocaleString();
+    const clicksHere = document.getElementById('clicksHere');
+    clicksHere.innerText = response.val().toLocaleString();
+    clicksHere.classList.remove('loading');
     document.getElementById('clicksHereButton').disabled = false;
   }
 });

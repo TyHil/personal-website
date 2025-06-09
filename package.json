@@ -25,6 +25,7 @@
     "singleQuote": true,
     "trailingComma": "none",
     "arrowParens": "avoid",
+    "endOfLine": "auto",
     "htmlWhitespaceSensitivity": "strict",
     "plugins": [
       "@prettier/plugin-xml"

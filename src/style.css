@@ -641,6 +641,46 @@ a.button.large.circle.replit {
 .stat button:not([disabled]):focus-visible {
   background-color: var(--dark3);
 }
+.stat .loading:after {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-name: loading-ellipsis;
+  animation-timing-function: linear;
+  content: '...';
+  line-height: 1em;
+}
+@keyframes loading-ellipsis {
+  0% {
+    content: '⣷';
+  }
+  12.5% {
+    content: '⣯';
+  }
+  25% {
+    content: '⣟';
+  }
+  37.5% {
+    content: '⡿';
+  }
+  50% {
+    content: '⢿';
+  }
+  62.5% {
+    content: '⣻';
+  }
+  75% {
+    content: '⣽';
+  }
+  87.5%,
+  100% {
+    content: '⣾';
+  }
+}
+.stat .loading.error:after {
+  animation: none;
+  content: '🗙';
+}
 
 /* Fullscreen Images */
 
