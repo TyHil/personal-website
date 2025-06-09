@@ -61,7 +61,7 @@ async function playlistLength() {
 
 const GITHUB_USERNAME = 'TyHil';
 
-async function pullsOpened() {
+async function githubPulls() {
   const response = await fetch(
     'https://api.github.com/search/issues?q=type:pr+author:' + GITHUB_USERNAME,
     {
@@ -111,7 +111,7 @@ async function fetchContributions(year) {
     })
   }).then(data => data.json());
 }
-async function githubStreak() {
+async function githubInfo() {
   const contributionYears = (await fetchContributionYears()).data.user.contributionsCollection
     .contributionYears;
   const contributions = (await Promise.all(contributionYears.map(fetchContributions)))
@@ -120,6 +120,11 @@ async function githubStreak() {
     )
     .flatMap(week => week.contributionDays);
   contributions.sort((a, b) => a.date.localeCompare(b.date));
+  return contributions;
+}
+const githubInfoCalled = githubInfo();
+async function githubStreak() {
+  const contributions = await githubInfoCalled;
   let streak = 0;
   let maxStreak = 0;
   for (contribution of contributions) {
@@ -133,6 +138,10 @@ async function githubStreak() {
     }
   }
   return maxStreak;
+}
+async function githubCommits() {
+  const contributions = await githubInfoCalled;
+  return contributions.reduce((accumulator, current) => accumulator + current.contributionCount, 0);
 }
 
 /*Website Size*/
@@ -156,14 +165,22 @@ async function siteSize() {
   return getDirectorySize('./');
 }
 
+/*Running 14 Day Average Rating*/
+
+async function averageRating(directoryPath) {
+  return 0;
+}
+
 /*Results*/
 
 const fetches = {
   pageTime: pageTime(),
   playlistLength: playlistLength(),
-  pullsOpened: pullsOpened(),
+  githubPulls: githubPulls(),
   githubStreak: githubStreak(),
-  siteSize: siteSize()
+  githubCommits: githubCommits(),
+  siteSize: siteSize(),
+  averageRating: averageRating()
 };
 
 Promise.all(Object.entries(fetches).map(async ([key, value]) => [key, await value])).then(data => {
