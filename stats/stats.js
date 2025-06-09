@@ -5,12 +5,12 @@ var admin = require('firebase-admin');
 const fs = require('fs').promises;
 const path = require('path');
 
-const auth = new google.auth.GoogleAuth({
-  credentials: JSON.parse(process.env.GOOGLE_AUTH_CREDENTIALS),
-  scopes: 'https://www.googleapis.com/auth/analytics.readonly'
-});
-
 async function pageTime() {
+  const auth = new google.auth.GoogleAuth({
+    credentials: JSON.parse(process.env.GOOGLE_ANALYTICS_CREDENTIALS),
+    scopes: 'https://www.googleapis.com/auth/analytics.readonly'
+  });
+
   const client = google.analyticsdata({
     version: 'v1beta',
     auth: await auth.getClient()
@@ -167,8 +167,21 @@ async function siteSize() {
 
 /*Running 14 Day Average Rating*/
 
-async function averageRating(directoryPath) {
-  return 0;
+async function averageRating() {
+  const auth = new google.auth.GoogleAuth({
+    credentials: JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS),
+    scopes: 'https://www.googleapis.com/auth/spreadsheets.readonly'
+  });
+  const client = await auth.getClient();
+  const sheets = google.sheets({ version: 'v4', auth: client });
+
+  const res = await sheets.spreadsheets.values.get({
+    spreadsheetId: process.env.SHEET_ID,
+    range: 'H:H',
+    majorDimension: 'COLUMNS'
+  });
+  const column = res.data.values[0];
+  return Number(column[column.length - 1]);
 }
 
 /*Results*/

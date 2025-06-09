@@ -599,12 +599,18 @@ const names = {
     pageTimeHours.classList.remove('loading');
   },
   playlistLength: null,
-  pullsOpened: null,
+  githubPulls: null,
+  githubCommits: null,
   githubStreak: null,
   siteSize: function (value) {
     const siteSize = document.getElementById('siteSize');
     siteSize.innerText = (Math.round((value / 1000 / 1000) * 100) / 100).toLocaleString();
     siteSize.classList.remove('loading');
+  },
+  averageRating: function (value) {
+    const averageRating = document.getElementById('averageRating');
+    averageRating.innerText = (value + 3).toLocaleString();
+    averageRating.classList.remove('loading');
   }
 };
 
