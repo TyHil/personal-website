@@ -2147,6 +2147,71 @@
           </div>
         </div>
       </section>
+
+      <section id="stats">
+        <h2>Stats</h2>
+        <div id="statsBox">
+          <div class="stat">
+            <p class="number">
+              <span>
+                <span id="pageTimeDays" class="loading"></span>
+                <span class="unit"> days </span>
+              </span>
+              <span>
+                <span id="pageTimeHours" class="loading"></span>
+                <span class="unit"> hours</span>
+              </span>
+            </p>
+            <p class="description">Global time on this website</p>
+          </div>
+          <div class="stat">
+            <p class="number"
+              ><span id="siteSize" class="loading"></span><span class="unit"> MB</span></p
+            >
+            <p class="description">Website size</p>
+          </div>
+          <div class="stat">
+            <p class="number"
+              ><span id="playlistLength" class="loading"></span><span class="unit"> songs</span></p
+            >
+            <p class="description">Playlist length</p>
+          </div>
+          <div class="stat">
+            <p class="number">34</p>
+            <p class="description">Countries visited</p>
+          </div>
+          <div class="stat">
+            <p id="githubPulls" class="number loading"></p>
+            <p class="description">Pull requests opened</p>
+          </div>
+          <div class="stat">
+            <p id="githubCommits" class="number loading"></p>
+            <p class="description">Commits made</p>
+          </div>
+          <div class="stat">
+            <p class="number"
+              ><span id="githubStreak" class="loading"></span><span class="unit"> days</span></p
+            >
+            <p class="description">Longest commit streak</p>
+          </div>
+          <div class="stat">
+            <p id="clicksHere" class="number loading"></p>
+            <p class="description"
+              >Clicks <button id="clicksHereButton" class="small" disabled>here</button></p
+            >
+          </div>
+          <div class="stat">
+            <p class="number">4</p>
+            <p class="description">Easter eggs</p>
+          </div>
+          <div class="stat">
+            <p class="number"
+              ><span id="averageRating" class="loading"></span><span class="unit"> stars</span></p
+            >
+            <p class="description">Running 14 day average mood</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
@@ -2185,6 +2250,8 @@
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics-compat.js"></script>
     <script src="/style-guide/script.js"></script>
     <script src="/style-guide/modal/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-check-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-database-compat.js"></script>
     <script src="/script.js"></script>
   </body>
 </html>

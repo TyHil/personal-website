@@ -16,8 +16,15 @@ export default [
     ]
   },
   {
+    ignores: ['stats/'],
     languageOptions: {
       ecmaVersion: 6
+    }
+  },
+  {
+    files: ['stats/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2020
     }
   },
   eslintConfigPrettier

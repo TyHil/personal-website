@@ -574,6 +574,90 @@ if (params) {
   }
 }
 
+/* Stats */
+
+firebase.appCheck().activate('6LfVw0sjAAAAAN0-OJ7XqY-MmsV2dFz_uOAP2QET', true);
+
+const firebaseRef = firebase.database().ref('/stats');
+
+const names = {
+  pageTime: function (value) {
+    const totalHours = value / 60 / 60;
+    const days = Math.floor(totalHours / 24);
+    const pageTimeDays = document.getElementById('pageTimeDays');
+    pageTimeDays.innerText = days.toLocaleString();
+    if (days === 1) {
+      pageTimeDays.nextElementSibling.innerText = ' day ';
+    }
+    pageTimeDays.classList.remove('loading');
+    const hours = Math.floor(totalHours % 24);
+    const pageTimeHours = document.getElementById('pageTimeHours');
+    pageTimeHours.innerText = hours.toLocaleString();
+    if (hours === 1) {
+      pageTimeHours.nextElementSibling.innerText = ' hour';
+    }
+    pageTimeHours.classList.remove('loading');
+  },
+  playlistLength: null,
+  githubPulls: null,
+  githubCommits: null,
+  githubStreak: null,
+  siteSize: function (value) {
+    const siteSize = document.getElementById('siteSize');
+    siteSize.innerText = (Math.round((value / 1000 / 1000) * 100) / 100).toLocaleString();
+    siteSize.classList.remove('loading');
+  },
+  averageRating: function (value) {
+    const averageRating = document.getElementById('averageRating');
+    averageRating.innerText = (value + 3).toLocaleString();
+    averageRating.classList.remove('loading');
+  }
+};
+
+firebaseRef
+  .get()
+  .then(response => {
+    if (!response.exists()) {
+      throw new Error('stats does not exist');
+    } else {
+      for (const [key, value] of Object.entries(response.val())) {
+        if (names.hasOwnProperty(key)) {
+          if (names[key] !== null) {
+            names[key](value);
+          } else {
+            const element = document.getElementById(key);
+            element.innerText = value.toLocaleString();
+            element.classList.remove('loading');
+          }
+        }
+      }
+    }
+  })
+  .catch(error => {
+    console.error(error);
+    const loadings = document.getElementsByClassName('loading');
+    for (let i = 0; i < loadings.length; i++) {
+      loadings[i].classList.add('error');
+    }
+  });
+
+let clicksHere;
+firebaseRef.child('/clicksHere').on('value', response => {
+  if (!response.exists()) {
+    throw new Error('clicksHere does not exist');
+  } else {
+    const clicksHere = document.getElementById('clicksHere');
+    clicksHere.innerText = response.val().toLocaleString();
+    clicksHere.classList.remove('loading');
+    document.getElementById('clicksHereButton').disabled = false;
+  }
+});
+document.getElementById('clicksHereButton').addEventListener('click', function () {
+  if (!this.disabled) {
+    firebaseRef.child('/clicksHere').set(++clicksHere);
+  }
+});
+
 /* Google Analytics */
 
 const links = document.getElementsByTagName('a');

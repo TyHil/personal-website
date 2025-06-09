@@ -1,0 +1,42 @@
+name: Update stats
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install packages
+        run: pnpm install
+
+      - name: Set up environment variables
+        run:
+          echo 'GOOGLE_ANALYTICS_CREDENTIALS=${{ secrets.GOOGLE_ANALYTICS_CREDENTIALS }}' >> .env &&
+          echo 'GOOGLE_ANALYTICS_PROPERTY_ID=${{ secrets.GOOGLE_ANALYTICS_PROPERTY_ID }}' >> .env &&
+          echo 'SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}' >> .env && echo
+          'SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}' >> .env && echo
+          'FIREBASE_SERVICE_ACCOUNT_KEY=${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}' >> .env && echo
+          'GITHUB_TOKEN=${{ secrets._GITHUB_TOKEN }}' >> .env && echo 'GOOGLE_SHEETS_CREDENTIALS=${{
+          secrets.GOOGLE_SHEETS_CREDENTIALS }}' >> .env && echo 'SHEET_ID=${{ secrets.SHEET_ID }}'
+          >> .env
+
+      - name: Run stats
+        run: node --env-file=.env stats/stats.js

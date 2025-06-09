@@ -12,7 +12,9 @@
     "@prettier/plugin-xml": "^3.4.1",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
+    "firebase-admin": "^13.4.0",
     "firebase-tools": "^14.4.0",
+    "googleapis": "^149.0.0",
     "prettier": "^3.5.3"
   },
   "prettier": {
@@ -23,6 +25,7 @@
     "singleQuote": true,
     "trailingComma": "none",
     "arrowParens": "avoid",
+    "endOfLine": "auto",
     "htmlWhitespaceSensitivity": "strict",
     "plugins": [
       "@prettier/plugin-xml"

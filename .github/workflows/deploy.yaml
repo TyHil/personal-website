@@ -9,6 +9,7 @@ on:
       - '**/LICENSE.txt'
       - '**/.replit'
       - '**/replit.nix'
+      - 'stats'
 
 concurrency:
   group: 'deploy'

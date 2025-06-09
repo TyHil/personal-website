@@ -590,12 +590,96 @@ a.button.large.circle.replit {
 .testimonial blockquote {
   color: var(--light1);
   font-size: 1.5rem;
-  font-weight: normal;
   margin-bottom: 0.5rem;
 }
 .testimonial p {
   color: var(--light2);
-  font-weight: normal;
+}
+
+/* Stats */
+
+#statsBox {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+.stat {
+  background-color: var(--dark1);
+  border-radius: 2rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.stat p {
+  text-align: center;
+}
+.stat .number {
+  color: var(--light1);
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+.stat .description {
+  color: var(--light2);
+}
+.stat .number .unit {
+  color: var(--light2);
+  font-size: 1rem;
+}
+.stat .description:has(button) {
+  display: flex;
+  white-space: pre;
+}
+.stat button {
+  background-color: var(--dark2);
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+.stat button:not([disabled]):hover,
+.stat button:not([disabled]):focus-visible {
+  background-color: var(--dark3);
+}
+.stat .loading:after {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-name: loading-ellipsis;
+  animation-timing-function: linear;
+  content: '...';
+  line-height: 1em;
+}
+@keyframes loading-ellipsis {
+  0% {
+    content: '⣷';
+  }
+  12.5% {
+    content: '⣯';
+  }
+  25% {
+    content: '⣟';
+  }
+  37.5% {
+    content: '⡿';
+  }
+  50% {
+    content: '⢿';
+  }
+  62.5% {
+    content: '⣻';
+  }
+  75% {
+    content: '⣽';
+  }
+  87.5%,
+  100% {
+    content: '⣾';
+  }
+}
+.stat .loading.error:after {
+  animation: none;
+  content: '🗙';
 }
 
 /* Fullscreen Images */
