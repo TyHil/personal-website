@@ -646,9 +646,10 @@ firebaseRef.child('/clicksHere').on('value', response => {
   if (!response.exists()) {
     throw new Error('clicksHere does not exist');
   } else {
-    const clicksHere = document.getElementById('clicksHere');
-    clicksHere.innerText = response.val().toLocaleString();
-    clicksHere.classList.remove('loading');
+    clicksHere = response.val();
+    const element = document.getElementById('clicksHere');
+    element.innerText = clicksHere.toLocaleString();
+    element.classList.remove('loading');
     document.getElementById('clicksHereButton').disabled = false;
   }
 });
