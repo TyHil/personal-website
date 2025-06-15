@@ -7,8 +7,6 @@ on:
     paths-ignore:
       - '**/README.md'
       - '**/LICENSE.txt'
-      - '**/.replit'
-      - '**/replit.nix'
       - 'stats/**'
 
 concurrency:
