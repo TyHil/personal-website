@@ -28,7 +28,7 @@ async function pageTime() {
   return parseInt(response.data.totals[0].metricValues[0].value);
 }
 
-/*Spotify Playlist Length*/
+/*Spotify playlist length*/
 
 const PLAYLIST_ID = '3vKSA2SfmKbzQpS91bdFQJ';
 
@@ -57,7 +57,7 @@ async function playlistLength() {
   return data.tracks.total;
 }
 
-/*Pull Requests Opened*/
+/*Pull requests opened*/
 
 const GITHUB_USERNAME = 'TyHil';
 
@@ -71,7 +71,7 @@ async function githubPulls() {
   return (await response.json()).total_count;
 }
 
-/*Longest GitHub Streak*/
+/*Longest gitHub streak and number of commits*/
 
 async function fetchContributionYears() {
   return fetch('https://api.github.com/graphql', {
@@ -122,9 +122,15 @@ async function githubInfo() {
   contributions.sort((a, b) => a.date.localeCompare(b.date));
   return contributions;
 }
-const githubInfoCalled = githubInfo();
+let sharedgithubPromise;
+async function sharedGithubInfo() {
+  if (!sharedgithubPromise) {
+    sharedgithubPromise = githubInfo();
+  }
+  return sharedgithubPromise;
+}
 async function githubStreak() {
-  const contributions = await githubInfoCalled;
+  const contributions = await sharedGithubInfo();
   let streak = 0;
   let maxStreak = 0;
   for (contribution of contributions) {
@@ -140,11 +146,11 @@ async function githubStreak() {
   return maxStreak;
 }
 async function githubCommits() {
-  const contributions = await githubInfoCalled;
+  const contributions = await sharedGithubInfo();
   return contributions.reduce((accumulator, current) => accumulator + current.contributionCount, 0);
 }
 
-/*Website Size*/
+/*Website size*/
 
 const ignore = ['.git', 'node_modules'];
 async function getDirectorySize(directoryPath) {
@@ -165,7 +171,7 @@ async function siteSize() {
   return getDirectorySize('./');
 }
 
-/*Running 14 Day Average Rating*/
+/*Running 14 day average rating*/
 
 async function averageRating() {
   const auth = new google.auth.GoogleAuth({
@@ -197,6 +203,8 @@ const fetches = {
 };
 
 Promise.all(Object.entries(fetches).map(async ([key, value]) => [key, await value])).then(data => {
+  console.log('Results:', Object.fromEntries(data));
+
   const app = admin.initializeApp({
     credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)),
     databaseURL: 'https://tylergordonhill-c8339-default-rtdb.firebaseio.com'
