@@ -2100,16 +2100,38 @@
         <a href="/legal/privacy-policy">Privacy Policy</a>
         <a href="/sitemap.xml">Sitemap</a>
       </div>
+      <button id="footer-theme" class="large circle ripple">
+        <img class="svg" src="/style-guide/footer/theme.svg" alt="Theme icon" />
+      </button>
     </footer>
 
     <div id="fullscreenbg" class="modalBg out">
       <img id="fullscreenimg" class="modal" />
     </div>
 
+    <div id="theme-modal" class="modalBg out">
+      <div class="modal">
+        <h2>Theme</h2>
+        <div>
+          <input type="radio" id="theme-system" name="theme" value="system">
+          <label for="theme-system">System</label>
+        </div>
+        <div>
+          <input type="radio" id="theme-light" name="theme" value="light">
+          <label for="theme-light">Light</label>
+        </div>
+        <div>
+          <input type="radio" id="theme-dark" name="theme" value="dark">
+          <label for="theme-dark">Dark</label>
+        </div>
+      </div>
+    </div>
+
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics-compat.js"></script>
     <script src="/style-guide/script.js"></script>
     <script src="/style-guide/modal/script.js"></script>
+    <script src="/style-guide/footer/script.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-check-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-database-compat.js"></script>
     <script src="/script.js"></script>

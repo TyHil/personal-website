@@ -51,7 +51,6 @@ header #left {
   margin: 0 0.6rem;
 }
 h1 {
-  color: var(--dark0);
   font-size: clamp(1.25rem, 40px + (60 - 40) * ((100vw - 480px) / (800 - 480)), 3.75rem);
   margin: 0;
   overflow-wrap: normal;
@@ -60,11 +59,18 @@ span.noWrap {
   white-space: nowrap;
 }
 h4 {
-  color: var(--dark1);
   font-weight: normal;
   font-size: 1.25rem;
   margin-top: 0.6rem;
   margin-bottom: 0;
+}
+h1,
+:root.always-dark h1 {
+  color: var(--dark0);
+}
+h4,
+:root.always-dark h4 {
+  color: var(--dark1);
 }
 @media (prefers-color-scheme: light) {
   h1 {
@@ -73,6 +79,12 @@ h4 {
   h4 {
     color: var(--light2);
   }
+}
+:root.always-light h1 {
+  color: var(--light1);
+}
+:root.always-light h4 {
+  color: var(--light2);
 }
 
 /*Header Right*/
@@ -91,10 +103,8 @@ header #right {
   min-height: 3rem;
   padding: 0.7rem 1rem;
   border-radius: 1.5rem;
-  text-decoration-color: var(--dark1);
 }
 .links h5 {
-  color: var(--dark1);
   font-weight: normal;
   font-size: 1rem;
   margin: 0;
@@ -109,17 +119,41 @@ header #right {
 .links.ripple:focus-visible {
   background-color: rgba(255, 255, 255, 0.1);
 }
+.links,
+:root.always-dark .links {
+  text-decoration-color: var(--dark1);
+}
+.links h5,
+:root.always-dark .links h5 {
+  color: var(--dark1);
+}
+.links.ripple:hover,
+.links.ripple:focus-visible,
+:root.always-dark .links.ripple:hover,
+:root.always-dark .links.ripple:focus-visible {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 @media (prefers-color-scheme: light) {
-  .links h5 {
-    color: var(--light2);
-  }
   .links {
     text-decoration-color: var(--light2);
+  }
+  .links h5 {
+    color: var(--light2);
   }
   .links.ripple:hover,
   .links.ripple:focus-visible {
     background-color: rgba(0, 0, 0, 0.1);
   }
+}
+:root.always-light .links {
+  text-decoration-color: var(--light2);
+}
+:root.always-light .links h5 {
+  color: var(--light2);
+}
+:root.always-light .links.ripple:hover,
+:root.always-light .links.ripple:focus-visible {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /*Blurb*/
@@ -418,12 +452,18 @@ span.ripplecircle {
   border-radius: 50%;
   transform: scale(0);
   animation: ripplecircle 600ms linear;
+}
+span.ripplecircle,
+:root.always-dark > span.ripplecircle {
   background-color: rgba(255, 255, 255, 0.4);
 }
 @media (prefers-color-scheme: light) {
   span.ripplecircle {
     background-color: rgba(0, 0, 0, 0.4);
   }
+}
+:root.always-light > span.ripplecircle {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 @keyframes ripplecircle {
   to {
