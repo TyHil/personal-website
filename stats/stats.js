@@ -54,7 +54,7 @@ async function playlistLength() {
     }
   });
   const data = await response.json();
-  return data.tracks.total;
+  return data.items.total;
 }
 
 /*Pull requests opened*/
