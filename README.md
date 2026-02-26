@@ -27,6 +27,14 @@ pnpm install
 pnpm dev
 ```
 
+## Stats
+
+Load fun stats into the database
+
+```bash
+node --env-file=.env stats/stats.js
+```
+
 ## License
 
 GPL-3.0 License
