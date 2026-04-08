@@ -641,24 +641,6 @@ firebaseRef
     }
   });
 
-let clicksHere;
-firebaseRef.child('/clicksHere').on('value', response => {
-  if (!response.exists()) {
-    throw new Error('clicksHere does not exist');
-  } else {
-    clicksHere = response.val();
-    const element = document.getElementById('clicksHere');
-    element.innerText = clicksHere.toLocaleString();
-    element.classList.remove('loading');
-    document.getElementById('clicksHereButton').disabled = false;
-  }
-});
-document.getElementById('clicksHereButton').addEventListener('click', function () {
-  if (!this.disabled) {
-    firebaseRef.child('/clicksHere').set(++clicksHere);
-  }
-});
-
 /* Google Analytics */
 
 const links = document.getElementsByTagName('a');
