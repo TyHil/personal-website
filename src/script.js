@@ -599,7 +599,8 @@ const names = {
     pageTimeHours.classList.remove('loading');
   },
   playlistLength: null,
-  githubPulls: null,
+  githubPRsOpened: null,
+  githubPRsReviewed: null,
   githubCommits: null,
   githubStreak: null,
   siteSize: function (value) {

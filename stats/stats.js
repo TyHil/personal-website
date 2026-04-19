@@ -61,9 +61,18 @@ async function playlistLength() {
 
 const GITHUB_USERNAME = 'TyHil';
 
-async function githubPulls() {
+async function githubPRsOpened() {
   const response = await fetch(
     'https://api.github.com/search/issues?q=type:pr+author:' + GITHUB_USERNAME,
+    {
+      headers: { Authorization: 'Bearer ' + process.env.GITHUB_TOKEN }
+    }
+  );
+  return (await response.json()).total_count;
+}
+async function githubPRsReviewed() {
+  const response = await fetch(
+    'https://api.github.com/search/issues?q=type:pr+reviewed-by:' + GITHUB_USERNAME,
     {
       headers: { Authorization: 'Bearer ' + process.env.GITHUB_TOKEN }
     }
@@ -176,7 +185,8 @@ async function siteSize() {
 const fetches = {
   pageTime: pageTime(),
   playlistLength: playlistLength(),
-  githubPulls: githubPulls(),
+  githubPRsOpened: githubPRsOpened(),
+  githubPRsReviewed: githubPRsReviewed(),
   githubStreak: githubStreak(),
   githubCommits: githubCommits(),
   siteSize: siteSize(),
