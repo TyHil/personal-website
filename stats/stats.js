@@ -1,4 +1,4 @@
-/*Page Time*/
+/* Page Time */
 
 const { google } = require('googleapis');
 var admin = require('firebase-admin');
@@ -28,7 +28,7 @@ async function pageTime() {
   return parseInt(response.data.totals[0].metricValues[0].value);
 }
 
-/*Spotify playlist length*/
+/* Spotify playlist length */
 
 const PLAYLIST_ID = '3vKSA2SfmKbzQpS91bdFQJ';
 
@@ -57,7 +57,7 @@ async function playlistLength() {
   return data.items.total;
 }
 
-/*Pull requests opened*/
+/* Pull requests opened and reviewed */
 
 const GITHUB_USERNAME = 'TyHil';
 
@@ -80,7 +80,7 @@ async function githubPRsReviewed() {
   return (await response.json()).total_count;
 }
 
-/*Longest gitHub streak and number of commits*/
+/* Longest gitHub streak and number of commits */
 
 async function fetchContributionYears() {
   return fetch('https://api.github.com/graphql', {
@@ -159,7 +159,7 @@ async function githubCommits() {
   return contributions.reduce((accumulator, current) => accumulator + current.contributionCount, 0);
 }
 
-/*Website size*/
+/* Website size */
 
 const ignore = ['.git', 'node_modules'];
 async function getDirectorySize(directoryPath) {
@@ -180,7 +180,26 @@ async function siteSize() {
   return getDirectorySize('./');
 }
 
-/*Results*/
+/* Last Gas Tank MPG */
+
+async function lastMPG() {
+  const auth = new google.auth.GoogleAuth({
+    credentials: JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS),
+    scopes: 'https://www.googleapis.com/auth/spreadsheets.readonly'
+  });
+  const client = await auth.getClient();
+  const sheets = google.sheets({ version: 'v4', auth: client });
+
+  const res = await sheets.spreadsheets.values.get({
+    spreadsheetId: process.env.SHEET_ID,
+    range: 'F:F',
+    majorDimension: 'COLUMNS'
+  });
+  const column = res.data.values[0];
+  return Number(column[column.length - 1]);
+}
+
+/* Results */
 
 const fetches = {
   pageTime: pageTime(),
@@ -190,6 +209,7 @@ const fetches = {
   githubStreak: githubStreak(),
   githubCommits: githubCommits(),
   siteSize: siteSize(),
+  lastMPG: lastMPG()
 };
 
 Promise.all(Object.entries(fetches).map(async ([key, value]) => [key, await value])).then(data => {
