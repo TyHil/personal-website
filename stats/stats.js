@@ -171,25 +171,6 @@ async function siteSize() {
   return getDirectorySize('./');
 }
 
-/*Running 14 day average rating*/
-
-async function averageRating() {
-  const auth = new google.auth.GoogleAuth({
-    credentials: JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS),
-    scopes: 'https://www.googleapis.com/auth/spreadsheets.readonly'
-  });
-  const client = await auth.getClient();
-  const sheets = google.sheets({ version: 'v4', auth: client });
-
-  const res = await sheets.spreadsheets.values.get({
-    spreadsheetId: process.env.SHEET_ID,
-    range: 'H:H',
-    majorDimension: 'COLUMNS'
-  });
-  const column = res.data.values[0];
-  return Number(column[column.length - 1]);
-}
-
 /*Results*/
 
 const fetches = {
@@ -199,7 +180,6 @@ const fetches = {
   githubStreak: githubStreak(),
   githubCommits: githubCommits(),
   siteSize: siteSize(),
-  averageRating: averageRating()
 };
 
 Promise.all(Object.entries(fetches).map(async ([key, value]) => [key, await value])).then(data => {
