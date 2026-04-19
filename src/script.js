@@ -607,7 +607,8 @@ const names = {
     const siteSize = document.getElementById('siteSize');
     siteSize.innerText = (Math.round((value / 1000 / 1000) * 100) / 100).toLocaleString();
     siteSize.classList.remove('loading');
-  }
+  },
+  lastMPG: null
 };
 
 firebaseRef
