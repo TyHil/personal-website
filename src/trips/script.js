@@ -41,19 +41,19 @@ const map = new jsVectorMap({
     { name: 'France', coords: [46.23, 2.21] },
     { name: 'Italy', coords: [41.87, 12.57] },
     { name: 'Czechia', coords: [49.82, 15.47] },
-    { name: 'Hungary', coords: [47.16, 19.50] },
+    { name: 'Hungary', coords: [47.16, 19.5] },
     { name: 'Austria', coords: [47.52, 14.55] },
     { name: 'Chile', coords: [-35.68, -71.54] },
     { name: 'Easter Island', coords: [-27.11, -109.35] },
-    { name: 'Peru', coords: [-9.20, -74.99] },
-    { name: 'South Dakota', coords: [43.97, -99.90] },
+    { name: 'Peru', coords: [-9.2, -74.99] },
+    { name: 'South Dakota', coords: [43.97, -99.9] },
     { name: 'Romania', coords: [45.94, 24.97] },
     { name: 'Bulgaria', coords: [42.73, 25.49] },
     { name: 'Boston', coords: [42.36, -71.06] },
-    { name: 'Arkansas', coords: [35.20, -91.83] },
+    { name: 'Arkansas', coords: [35.2, -91.83] },
     { name: 'Georgia', coords: [32.16, -82.91] },
     { name: 'North Carolina', coords: [35.76, -79.02] },
-    { name: 'Alaska', coords: [63.59, -154.49] },
+    { name: 'Alaska', coords: [63.59, -154.49] }
   ],
   lines: [
     { from: 'Los Angeles', to: 'Austin' },
@@ -92,6 +92,6 @@ const map = new jsVectorMap({
     { from: 'North Carolina', to: 'Austin' },
     { from: 'Austin', to: 'North Carolina' },
     { from: 'Alaska', to: 'Austin' },
-    { from: 'Austin', to: 'Alaska' },
+    { from: 'Austin', to: 'Alaska' }
   ]
 });
