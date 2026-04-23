@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <!-- HTML Meta Tags -->
+    <title>Trips</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Catalog of trips." />
+    <meta name="canonical" href="https://tylergordonhill.com/trips" />
+    <meta name="theme-color" content="#128A74" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Trips" />
+    <meta property="og:description" content="Catalog of trips." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tylergordonhill.com/trips" />
+    <meta property="og:image" content="https://tylergordonhill.com/images/linkpreview.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta
+      property="og:image:alt"
+      content="Screenshot of the main website displaying the name Tyler Gordon Hill, contact links, a link to a resume, and the start to a list of projects with LIFT Aircraft Contract Work at the top. "
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:domain" content="tylergordonhill.com" />
+
+    <!-- Link Tags -->
+    <link rel="icon" href="/images/tabicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/jsvectormap/dist/jsvectormap.min.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/style-guide/style.css" type="text/css" />
+    <link rel="stylesheet" href="/style-guide/header/style.css" type="text/css" />
+    <link rel="stylesheet" href="/style-guide/svg/style.css" type="text/css" />
+    <link rel="stylesheet" href="/style-guide/modal/style.css" type="text/css" />
+    <link rel="stylesheet" href="/style-guide/inputs/style.css" type="text/css" />
+    <link rel="stylesheet" href="/style-guide/footer/style.css" type="text/css" />
+    <link rel="stylesheet" href="/trips/style.css" type="text/css" />
+  </head>
+
+  <body>
+    <header>
+      <h2 id="title">Trips</h2>
+      <a id="byLine" href="/">Tyler Gordon Hill</a>
+    </header>
+
+    <main>
+      <div id="map"></div>
+    </main>
+
+    <footer>
+      <div id="footer-main">
+        <div>
+          <p><strong>Contact and Social</strong></p>
+          <a href="mailto:tylergordonhill@gmail.com" target="_blank" rel="noopener">Email</a>
+          <a href="http://www.linkedin.com/in/tylergordonhill" target="_blank" rel="noopener"
+            >LinkedIn</a
+          >
+          <a href="https://github.com/TyHil" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://thangs.com/TylerHill" target="_blank" rel="noopener">Thangs</a>
+        </div>
+        <div>
+          <p><strong>Subsites</strong></p>
+          <a href="/set-operations-for-spotify">Set Operations for Spotify</a>
+          <a href="/typewriter-formatting">Typewriter Formatting</a>
+          <a href="/cah-maker">Cards Against Humanity Card Maker</a>
+          <a href="/response-display">Response Display</a>
+          <a href="/password-generator">Password Generator</a>
+          <a href="/recipes">Recipes</a>
+        </div>
+      </div>
+      <div id="footer-sub">
+        <a href="/legal/privacy-policy">Privacy Policy</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+      <button id="footer-theme" class="large circle">
+        <img class="svg" src="/style-guide/footer/theme.svg" alt="Theme icon" />
+      </button>
+    </footer>
+
+    <div id="theme-modal" class="modalBg out">
+      <div class="modal">
+        <h2>Theme</h2>
+        <div>
+          <input type="radio" id="theme-system" name="theme" value="system" />
+          <label for="theme-system">System</label>
+        </div>
+        <div>
+          <input type="radio" id="theme-light" name="theme" value="light" />
+          <label for="theme-light">Light</label>
+        </div>
+        <div>
+          <input type="radio" id="theme-dark" name="theme" value="dark" />
+          <label for="theme-dark">Dark</label>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsvectormap"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsvectormap/dist/maps/world.js"></script>
+    <script src="/style-guide/script.js"></script>
+    <script src="/style-guide/modal/script.js"></script>
+    <script src="/style-guide/footer/script.js"></script>
+    <script type="module" src="/trips/script.js"></script>
+  </body>
+</html>
