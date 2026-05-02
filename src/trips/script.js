@@ -5,6 +5,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matc
 }
 
 /* Map */
+// Documentation: https://jvm-docs.vercel.app/docs/installation
 
 const map = new jsVectorMap({
   map: 'world',
@@ -37,23 +38,29 @@ const map = new jsVectorMap({
     { name: 'Los Angeles', coords: [34.05, -118.24] },
     { name: 'Denver', coords: [39.74, -104.99] },
     { name: 'Arizona', coords: [34.05, -111.09] },
-    { name: 'New York', coords: [40.71, -74.01] },
     { name: 'France', coords: [46.23, 2.21] },
     { name: 'Italy', coords: [41.87, 12.57] },
-    { name: 'Czechia', coords: [49.82, 15.47] },
     { name: 'Hungary', coords: [47.16, 19.5] },
     { name: 'Austria', coords: [47.52, 14.55] },
-    { name: 'Chile', coords: [-35.68, -71.54] },
+    { name: 'Czechia', coords: [49.82, 15.47] },
     { name: 'Easter Island', coords: [-27.11, -109.35] },
+    { name: 'Chile', coords: [-35.68, -71.54] },
     { name: 'Peru', coords: [-9.2, -74.99] },
     { name: 'South Dakota', coords: [43.97, -99.9] },
-    { name: 'Romania', coords: [45.94, 24.97] },
     { name: 'Bulgaria', coords: [42.73, 25.49] },
+    { name: 'Romania', coords: [45.94, 24.97] },
     { name: 'Boston', coords: [42.36, -71.06] },
     { name: 'Arkansas', coords: [35.2, -91.83] },
-    { name: 'Georgia', coords: [32.16, -82.91] },
     { name: 'North Carolina', coords: [35.76, -79.02] },
-    { name: 'Alaska', coords: [63.59, -154.49] }
+    { name: 'Alaska', coords: [63.59, -154.49] },
+    { name: 'Georgia', coords: [42.32, 43.36] },
+    { name: 'Ukraine', coords: [48.38, 31.18] },
+    { name: 'New York', coords: [40.71, -74.01] },
+    { name: 'Tanzania', coords: [-6.37, 34.89] },
+    { name: 'Georgia (state)', coords: [32.16, -82.91] },
+    { name: 'Tennessee', coords: [35.51, -86.58] },
+    { name: 'Cambodia', coords: [11.99, 104.98] },
+    { name: 'Vietnam', coords: [14.06, 108.28] }
   ],
   lines: [
     { from: 'Los Angeles', to: 'Austin' },
@@ -87,11 +94,24 @@ const map = new jsVectorMap({
     { from: 'Austin', to: 'Boston' },
     { from: 'Arkansas', to: 'Austin' },
     { from: 'Austin', to: 'Arkansas' },
-    { from: 'Georgia', to: 'Austin' },
-    { from: 'Austin', to: 'Georgia' },
+    { from: 'Georgia (state)', to: 'Austin' },
+    { from: 'Austin', to: 'Georgia (state)' },
     { from: 'North Carolina', to: 'Austin' },
     { from: 'Austin', to: 'North Carolina' },
     { from: 'Alaska', to: 'Austin' },
-    { from: 'Austin', to: 'Alaska' }
+    { from: 'Austin', to: 'Alaska' },
+    { from: 'Ukraine', to: 'Austin' },
+    { from: 'Georgia', to: 'Ukraine' },
+    { from: 'New York', to: 'Georgia' },
+    { from: 'Austin', to: 'New York' },
+    { from: 'Tanzania', to: 'Austin' },
+    { from: 'Austin', to: 'Tanzania' },
+    { from: 'Georgia (state)', to: 'Austin' },
+    { from: 'Tennessee', to: 'Georgia (state)' },
+    { from: 'Austin', to: 'Tennessee' },
+    { from: 'Vietnam', to: 'Austin' },
+    { from: 'Cambodia', to: 'Vietnam' },
+    { from: 'Vietnam', to: 'Cambodia' },
+    { from: 'Austin', to: 'Vietnam' }
   ]
 });
