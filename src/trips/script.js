@@ -106,7 +106,7 @@ const map = new jsVectorMap({
     { from: 'Austin', to: 'New York' },
     { from: 'Tanzania', to: 'Austin' },
     { from: 'Austin', to: 'Tanzania' },
-    { from: 'Georgia (state)', to: 'Austin' },
+    //{ from: 'Georgia (state)', to: 'Austin' },
     { from: 'Tennessee', to: 'Georgia (state)' },
     { from: 'Austin', to: 'Tennessee' },
     { from: 'Vietnam', to: 'Austin' },
