@@ -10,6 +10,7 @@ on:
       - 'src/password-generator'
       - 'src/recipes'
       - 'src/dvd'
+      - 'src/style-guide'
 
 jobs:
   main:
