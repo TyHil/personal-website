@@ -9,13 +9,13 @@
     "lint:check": "eslint ."
   },
   "devDependencies": {
-    "@prettier/plugin-xml": "^3.4.1",
-    "eslint": "^9.27.0",
-    "eslint-config-prettier": "^10.1.5",
-    "firebase-admin": "^13.4.0",
-    "firebase-tools": "^14.4.0",
-    "googleapis": "^149.0.0",
-    "prettier": "^3.5.3"
+    "@prettier/plugin-xml": "^3.4.2",
+    "eslint": "^10.6.0",
+    "eslint-config-prettier": "^10.1.8",
+    "firebase-admin": "^14.1.0",
+    "firebase-tools": "^15.22.3",
+    "googleapis": "^173.0.0",
+    "prettier": "^3.8.5"
   },
   "prettier": {
     "printWidth": 100,
