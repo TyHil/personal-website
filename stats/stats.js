@@ -4,6 +4,7 @@ const { google } = require('googleapis');
 var admin = require('firebase-admin');
 const fs = require('fs').promises;
 const path = require('path');
+const { getDatabase } = require('firebase-admin/database');
 
 async function pageTime() {
   const auth = new google.auth.GoogleAuth({
@@ -216,11 +217,11 @@ Promise.all(Object.entries(fetches).map(async ([key, value]) => [key, await valu
   console.log('Results:', Object.fromEntries(data));
 
   const app = admin.initializeApp({
-    credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)),
+    credential: admin.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)),
     databaseURL: 'https://tylergordonhill-c8339-default-rtdb.firebaseio.com'
   });
 
-  const db = admin.database();
+  const db = getDatabase();
   const ref = db.ref('stats');
 
   const uploads = data.map(([key, value]) => [key, ref.child(key).set(value)]);
