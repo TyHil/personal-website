@@ -363,7 +363,11 @@ h2 {
     margin-top 200ms;
 }
 
-/*Tags*/
+/*Notes Modal*/
+
+#notes-modal .modal a {
+  align-self: flex-start;
+}
 
 /*Dropdown content*/
 

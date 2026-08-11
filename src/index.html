@@ -1753,24 +1753,13 @@
               >
                 <img class="svg" src="/images/github.svg" alt="GitHub icon" />
               </a>
-              <a
-                href="https://chrome.google.com/webstore/detail/notes/mmpafhpdjeiogbfmncenmkbemhacfcge"
-                target="_blank"
-                rel="noopener"
-                title="Open Google Chrome Web Store listing in a new tab"
-                class="button large circle ripple noOpen"
+              <button
+                id="notes-open"
+                title="Choose a web store to open the listing in a new tab"
+                class="large circle ripple noOpen"
               >
                 <img class="svg" src="/images/openexternal.svg" alt="Open external icon" />
-              </a>
-              <a
-                href="https://addons.mozilla.org/en-US/firefox/addon/notes-extension/"
-                target="_blank"
-                rel="noopener"
-                title="Open Firefox Add-ons listing in a new tab"
-                class="button large circle ripple noOpen"
-              >
-                <img class="svg" src="/images/openexternal.svg" alt="Open external icon" />
-              </a>
+              </button>
               <button title="Share link to project" class="large circle ripple noOpen share">
                 <img class="svg check" src="/images/check.svg" alt="Copied!" />
                 <img class="shareIcon svg" src="/images/share.svg" alt="Share icon" />
@@ -2124,6 +2113,31 @@
 
     <div id="fullscreenbg" class="modalBg out">
       <img id="fullscreenimg" class="modal" />
+    </div>
+
+    <div id="notes-modal" class="modalBg out">
+      <div class="modal">
+        <h2>Web Store Listings</h2>
+        <a
+          href="https://addons.mozilla.org/en-US/firefox/addon/notes-extension/"
+          target="_blank"
+          rel="noopener"
+          class="button large ripple"
+        >
+          Firefox Add-ons Listing
+        </a>
+        <a href="/" target="_blank" rel="noopener" class="button large ripple">
+          Edge Add-ons Listing
+        </a>
+        <a
+          href="https://chrome.google.com/webstore/detail/notes/mmpafhpdjeiogbfmncenmkbemhacfcge"
+          target="_blank"
+          rel="noopener"
+          class="button large ripple"
+        >
+          Chrome Web Store Listing
+        </a>
+      </div>
     </div>
 
     <div id="theme-modal" class="modalBg out">

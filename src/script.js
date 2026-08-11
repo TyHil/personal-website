@@ -239,6 +239,10 @@ for (let i = 0; i < itemsDOM.length; i++) {
   items[itemsDOM[i].id] = new Item(itemsDOM[i]);
 }
 
+document.getElementById('notes-open').addEventListener('click', function () {
+  openModal(document.getElementById('notes-modal'));
+});
+
 /* Ripples */
 
 const circs = document.getElementsByClassName('ripple');
