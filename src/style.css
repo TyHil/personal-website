@@ -25,6 +25,7 @@ body {
 /* Header */
 
 header {
+  --gap: 1rem;
   display: flex;
   width: auto;
   align-items: flex-start;
@@ -33,6 +34,11 @@ header {
   transition-delay: 200ms;
   padding: 0.5rem;
   position: relative;
+}
+@media print {
+  header {
+    --gap: 4rem;
+  }
 }
 #headerBg {
   background-image: var(--primary);
@@ -178,12 +184,12 @@ main {
   shape-outside: polygon(
     0% 0%,
     100% 0%,
-    100% calc(var(--right) + 1rem),
-    0% calc(var(--left) + 1rem)
+    100% calc(var(--right) + var(--gap)),
+    0% calc(var(--left) + var(--gap))
   );
   shape-margin: 0.5rem;
   width: 100%;
-  height: calc(max(var(--right), var(--left)) + 1rem);
+  height: calc(max(var(--right), var(--left)) + var(--gap));
 }
 #blurb {
   padding: 0.5rem;
@@ -267,6 +273,9 @@ h2 {
   overflow: hidden;
   position: relative;
 }
+html.no-js #projects {
+  max-height: none;
+}
 #shadowOverlay {
   content: '';
   position: absolute;
@@ -281,6 +290,9 @@ h2 {
   justify-content: center;
   align-items: flex-end;
   transition: opacity 200ms ease-out;
+}
+html.no-js #shadowOverlay {
+  display: none;
 }
 #shadowOverlay button {
   pointer-events: auto;

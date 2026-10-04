@@ -80,7 +80,7 @@ function headerHeight() {
   if (bottomDiff < 0) {
     bottomDiff = 0;
   }
-  header.style.marginBottom = 'calc(1rem + ' + bottomDiff + 'px)';
+  header.style.marginBottom = 'calc(var(--gap) + ' + bottomDiff + 'px)';
 }
 
 headerHeight();
