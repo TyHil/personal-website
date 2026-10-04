@@ -121,12 +121,16 @@ header #right {
   min-width: 1.6rem;
   width: 1.6rem;
 }
+.links.button {
+  text-decoration: underline;
+  background-color: transparent;
+}
 .links.ripple:hover,
 .links.ripple:focus-visible {
   background-color: rgba(255, 255, 255, 0.1);
 }
-.links,
-:root.always-dark .links {
+.links.button,
+:root.always-dark .links.button {
   text-decoration-color: var(--dark1);
 }
 .links h5,
@@ -140,7 +144,7 @@ header #right {
   background-color: rgba(255, 255, 255, 0.1);
 }
 @media (prefers-color-scheme: light) {
-  .links {
+  .links.button {
     text-decoration-color: var(--light2);
   }
   .links h5 {
@@ -151,7 +155,7 @@ header #right {
     background-color: rgba(0, 0, 0, 0.1);
   }
 }
-:root.always-light .links {
+:root.always-light .links.button {
   text-decoration-color: var(--light2);
 }
 :root.always-light .links h5 {
@@ -443,48 +447,6 @@ html.no-js #shadowOverlay {
   scrollbar-width: thin;
 }
 
-/* Ripple circles */
-
-.ripple {
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: background-color 200ms;
-}
-.ripple img {
-  pointer-events: none;
-}
-.ripple:hover,
-.ripple:focus-visible,
-#clearFilter:hover,
-#clearFilter:focus-visible {
-  background-color: var(--dark2);
-}
-span.ripplecircle {
-  position: absolute;
-  border-radius: 50%;
-  transform: scale(0);
-  animation: ripplecircle 600ms linear;
-}
-span.ripplecircle,
-:root.always-dark > span.ripplecircle {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-@media (prefers-color-scheme: light) {
-  span.ripplecircle {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-}
-:root.always-light > span.ripplecircle {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-@keyframes ripplecircle {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
 /* Item insides */
 
 /*Dropdown arrows*/
@@ -676,19 +638,6 @@ a.button.large.circle.thangs {
 .stat .number .unit {
   color: var(--light2);
   font-size: 1rem;
-}
-.stat .description:has(button) {
-  display: flex;
-  white-space: pre;
-}
-.stat button {
-  background-color: var(--dark2);
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-}
-.stat button:not([disabled]):hover,
-.stat button:not([disabled]):focus-visible {
-  background-color: var(--dark3);
 }
 .stat .loading:after {
   animation-duration: 1s;
