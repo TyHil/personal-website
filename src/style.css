@@ -329,21 +329,26 @@ html.no-js #shadowOverlay {
   align-items: center;
 }
 .item .tags {
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
   margin-top: 0;
-  max-height: 0;
   transition:
+    grid-template-rows 200ms,
     opacity 200ms,
-    margin-top 200ms,
-    max-height 200ms;
+    margin-top 200ms;
+}
+.item .tags-inner {
+  min-height: 0;
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 .item.open .tags {
+  grid-template-rows: 1fr;
   opacity: 1;
   margin-top: 0.5rem;
-  max-height: 4rem;
 }
 .item .tags .tag {
   background-color: var(--dark2);

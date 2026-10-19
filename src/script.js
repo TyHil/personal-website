@@ -407,6 +407,8 @@ document.getElementById('clearFilter').addEventListener('click', function () {
 for (const item of Object.values(items)) {
   if (item.item.dataset.filters) {
     const tags = item.item.getElementsByClassName('tags')[0];
+    const inner = document.createElement('div');
+    inner.classList.add('tags-inner');
     for (const tag of item.item.dataset.filters.split(' ')) {
       const button = document.createElement('button');
       button.classList.add('large');
@@ -415,8 +417,9 @@ for (const item of Object.values(items)) {
         button.classList.add('featured');
       }
       button.innerText = filters[tag].filter.innerText;
-      tags.append(button);
+      inner.append(button);
     }
+    tags.append(inner);
   }
 }
 
